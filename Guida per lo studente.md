@@ -194,7 +194,7 @@ I passi per ottenere il badge di Coveralls sono i seguenti:
 Qualora doveste accorgervi che il badge con il coverage non si aggiorna - nonstante le modifiche ai casi di test - potete forzare il refresh aggiungendo `&service=github` al link, come mostrato di seguito:
 
 ```
-[![Coverage Status](https://coveralls.io/repos/github/softeng1920-inf-uniba/base2021/badge.svg?branch=master&t=0yipNR&service=github)](https://coveralls.io/github/softeng2021-inf-uniba/base2021?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/softeng2021-inf-uniba/base2021/badge.svg?branch=master&t=0yipNR&service=github)](https://coveralls.io/github/softeng2021-inf-uniba/base2021?branch=master)
 ```
 
 
@@ -386,13 +386,13 @@ Si svolgano le seguenti operazioni:
 
 Ad esempio, se il comando precedente (copiato da GitHub dal riquadro mostrato in figura), è:
 ```
-docker pull docker.pkg.github.com/softeng1920-inf-uniba/provaprogetto1920-prova/prova:latest
+docker pull docker.pkg.github.com/softeng2021-inf-uniba/provaprogetto2021-prova/prova:latest
 ```
 
 il comando per eseguire il container sarà:
 
 ```
-docker run --rm -it docker.pkg.github.com/softeng1920-inf-uniba/provaprogetto1920-prova/prova:latest
+docker run --rm -it docker.pkg.github.com/softeng2021-inf-uniba/provaprogetto2021-prova/prova:latest
 ```
 
 (in altre parole, il secondo comando si ottiene dal primo sostituendo a `docker pull` le parole `docker run --rm -it`).
