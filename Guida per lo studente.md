@@ -123,15 +123,15 @@ A questo punto, il membro del team che ha generato il token dovrà:
 - selezionare la voce *"Secrets"* dalla barra laterale;
   ![SaveTokenInSecret_6](./res/img/guida-studente/SaveTokenInSecret_6.png)
 - fare click sul link *"Add a new secret"*; compariranno una text box con l'etichetta *"Name"* e una text area con l'etichetta *"Value"*:
-  - inserire la stringa `GITHUB_ACCESS_TOKEN` nella textbox con l'etichetta *"Name"*;
+  - inserire la stringa `GH_ACCESS_TOKEN` nella textbox con l'etichetta *"Name"*;
   - inserire il Personal Access Token precedentemente generato nella textarea con l'etichetta *"Value"*;
   - concludere l'operazione cliccando sul pulsante *"Add secret"*.
 - ripetere l'operazione per l'aggiunta di un secret col proprio username: fare click sul link *"Add a new secret"*;
-  - inserire la stringa `GITHUB_USERNAME` nella textbox con l'etichetta *"Name"*;
+  - inserire la stringa `GH_USERNAME` nella textbox con l'etichetta *"Name"*;
   - inserire il proprio username GitHub nella textarea con l'etichetta *"Value"*;
   - concludere l'operazione cliccando sul pulsante *"Add secret"*.
 
-**N.B.:** È fondamentale che i nomi dei due GitHub Secret vengano scritti esattamente come sono riportati in questa guida: `GITHUB_ACCESS_TOKEN` e `GITHUB_USERNAME`(rispettando le maiuscole e gli underscore).
+**N.B.:** È fondamentale che i nomi dei due GitHub Secret vengano scritti esattamente come sono riportati in questa guida: `GH_ACCESS_TOKEN ` e `GH_USERNAME`(rispettando le maiuscole e gli underscore).
 
 
 
@@ -167,7 +167,7 @@ Una volta attivato il progetto, fare click su **DETAILS** per visualizzare il _t
 1. copiare il token dalla pagina dedicata al vostro repository sul sito di Coveralls;
 2. fare click su "Settings" in alto a destra nella pagina dedicata al vostro repository su GitHub
    (si ricorda che soltanto il membro del gruppo con i diritti di amministratore può visualizzare questa voce di menù);
-3. fare click su "Secrets" nella barra laterale e successivamente sul link "Add a new secret", riportato subito sotto `GITHUB_ACCESS_TOKEN` (il Secret con il token di accesso per GitHub Packages che avevate salvato al passo precedente);
+3. fare click su "Secrets" nella barra laterale e successivamente sul link "Add a new secret", riportato subito sotto `GH_ACCESS_TOKEN ` (il Secret con il token di accesso per GitHub Packages che avevate salvato al passo precedente);
 4. avvalorare il campo `Name` con la stringa `COVERALLS_REPO_TOKEN` (da riportare letteralmente, tutta in maiuscolo come mostrata qui) e il campo `Value` con il token di Coveralls copiato al punto 1;
 5. completare la procedura di inserimento del Secret facendo click sul pulsante `Add secret`, in basso nel form.
 
