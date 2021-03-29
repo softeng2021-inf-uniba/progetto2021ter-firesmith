@@ -1,4 +1,4 @@
-# Dama italiana 
+# Dama italiana [![CI/CD](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml/badge.svg)](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml)
 
 
 La struttura della repository si presenta nel seguente modo:
