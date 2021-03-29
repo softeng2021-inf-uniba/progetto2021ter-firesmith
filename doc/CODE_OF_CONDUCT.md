@@ -1,27 +1,26 @@
-Scrum team member code of conduct
-June 30, 2012
-This post defines a code of conduct that I try to adhere to on a Scrum team.
+# Codice di condotta dei membri del team firesmith
+### 29 marzo 2021
 
-Team participation
+Questo documento elenca le regole a cui ogni membro del gruppo firesmith deve aderire.
 
-Fixing my team's broken builds is my highest priority.
-Participating in my team's code reviews is my second highest priority.
-Improving my team's velocity is more important than improving my individual velocity.
-I will not be late for team meetings.
-I will ask for help when I need it.
-I will provide help when asked.
-I will be honest at all times.
-If I don't believe something is possible I will say so without hesitation.
+## Partecipazione di squadra
+* Correggere le build non funzionanti del team ha la massima priorità.
+* Partecipare alle revisioni del codice del team è la seconda priorità.
+* Migliorare la produttività della squadra è più importante di quella individuale.
+* Ogni membro della squadra rispetterà l'orario dei daily meeting.
+* I membri della squadra potranno chiedere aiuto qualvolta ne avranno bisogno.
+* I membri del team forniranno aiuto quando richiesto.
+* Ogni membro del team deve rispettare le opinioni altrui.
+* Ogni membro che non crede di poter riuscire a risolvere un problema, deve avvisare il team durante l'assegnazione dei compiti.
 
-Peer reviews
+## Revisioni dei pull request
 
-I will be professional and tactful when providing review comments.
-I will be open to receiving feedback when others review my work.
+* Il team dovrà essere professionale e rispondere rispettosamente quando verrano forniti commenti di revisione.
+* Ogni membro della squadra deve essere disponibile a ricevere feedback quando altri rivedranno il lavoro.
 
-Writing code
+## Scrittura del codice
 
-I will express myself through code.
-I will add comments to code only if I have failed to express myself through code.
-I will write code that adheres to my team's formatting and style conventions.
-I will not submit production code without thorough in-memory unit tests.
-I will not submit code that causes any tool to emit a warning.
+* Ognuno deve scrivere un codice ben fatto e comprensibile in base alle sue qualità. 
+* Il codice deve essere opportunamente commentato quando necessario.
+* Il codice deve rispettare le convenzioni di formattazione e stile del mio team.
+* Ogni codice deve essere correlato ai suoi unit test che devono essere esaustivi.
