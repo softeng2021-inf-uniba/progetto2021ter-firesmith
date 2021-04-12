@@ -52,17 +52,28 @@ public final class AppMain {
 			System.out.println("Application started.");
 		}
 
+                int i = 0;
+                boolean isTrue = false;
+
+                while (i < args.length && !isTrue) {
+                    if (args[i].equals("--help") || args[i].equals("-h")) {
+                        Help();
+                        isTrue = true;
+                    }
+                    i++;
+                }
 	}
         
         public static void Help() {
             System.out.println("\n | ---------- Dama Help Center ---------- | ");
             System.out.println("Benvenuto in Dama, il gioco tradizionale per 2 giocatori");
             System.out.println("Ecco un elenco dei comandi che puoi eseguire:"
-                + "\n - Gioca"
-                + "\n - Esci"
-                + "\n - Mostrare la damiera con numerazione"
-                + "\n - Mostrare la damiera con i pezzi"
-                + "\n - Mostrare il tempo di gioco");
+                + "\n - Nuova Partita (gioca)"
+                + "\n - Abbandona (abbandona)"
+                + "\n - Esci (esci)"
+                + "\n - Mostrare la damiera con numerazione (numeri)"
+                + "\n - Mostrare la damiera con i pezzi (damiera)"
+                + "\n - Mostrare il tempo di gioco (tempo)");
         }
   
 }
