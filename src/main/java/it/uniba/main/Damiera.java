@@ -11,5 +11,6 @@ package it.uniba.main;
  */
 public class Damiera {
 
+    public char damiera[][] = new char [8][];
     
 }
