@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
 
-import it.uniba.sotorrent.GoogleDocsUtils;
+// import it.uniba.sotorrent.GoogleDocsUtils;
+// disattivato per problemi di compilazione
 
 /**
  * The main class for the project. It must be customized to meet the project
@@ -52,5 +53,16 @@ public final class AppMain {
 		}
 
 	}
-
+        
+        public static void Help() {
+            System.out.println("\n | ---------- Dama Help Center ---------- | ");
+            System.out.println("Benvenuto in Dama, il gioco tradizionale per 2 giocatori");
+            System.out.println("Ecco un elenco dei comandi che puoi eseguire:"
+                + "\n - Gioca"
+                + "\n - Esci"
+                + "\n - Mostrare la damiera con numerazione"
+                + "\n - Mostrare la damiera con i pezzi"
+                + "\n - Mostrare il tempo di gioco");
+        }
+  
 }
