@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
+import java.util.Scanner;
 
 // import it.uniba.sotorrent.GoogleDocsUtils;
 // disattivato per problemi di compilazione
@@ -85,6 +86,32 @@ public final class AppMain {
             System.out.print("\n");
             
         }
+          System.out.println("Scrivere un comando:" 
+                +"\n - --help | -h" 
+                + "\n - gioca"
+                + "\n - numeri");
+                  Scanner in=new Scanner(System.in);
+                  String comando=in.nextLine();
+                  
+                  switch(comando){
+                      case "--help":Help();
+                      break;
+                      
+                      case "-h":Help();
+                      break;
+                      
+                      case "gioca":Partita p1=new Partita();
+                      p1.Gioca();
+                      break;
+                      
+                      case"numeri":
+                      break;
+                      
+                      default:
+                      System.out.println("Inserire un comando valido");
+                      break;
+                  }
+        
     }
 
     public static void Help() {
