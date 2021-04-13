@@ -11,18 +11,20 @@ package it.uniba.main;
  */
 public class Partita {
     
+    private boolean partitaInCorso=false ;
+    
     public void Gioca(){
-
+        if(partitaInCorso==true){
+            System.out.println("Finisci la partita in corso");
+            return;
+        }
+        else{
+            partitaInCorso=true;
+            System.out.println("Iniziando una nuova partita...");
+            
+        }
     }
-    
-    public void MostraDamieraNum(){
-        
-    }
-    
-    public void MostraDamieraPz(){
-        
-    }
-    
+   
     public void MostraTempo(){
         
     }
