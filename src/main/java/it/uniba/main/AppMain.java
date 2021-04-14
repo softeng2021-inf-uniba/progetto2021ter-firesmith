@@ -62,31 +62,9 @@ public final class AppMain {
             }
             i++;
         }
-        char damiera[][] = new char[8][];
-        int numCasella = 1;
-        int k;
-        int j;
-
-        for (k = 0; k < damiera.length; k++) {
-           
-            for (j = 0; j < damiera.length; j++) {
-                if((k + j) % 2 == 0){
-                    
-     System.out.print(numCasella);
-     
-                    //System.out.print(numCasella);
-                    numCasella++;
-                }
-                else{
-                    System.out.print("-");
-                }
-                   
-            }
-           
-            System.out.print("\n");
-            
-        }
-          System.out.println("Scrivere un comando:" 
+        Damiera d1 = new Damiera();
+        
+        System.out.println("Scrivere un comando:" 
                 +"\n - --help | -h" 
                 + "\n - gioca"
                 + "\n - numeri");
@@ -101,17 +79,17 @@ public final class AppMain {
                       break;
                       
                       case "gioca":Partita p1=new Partita();
-                      p1.Gioca();
+                        p1.Gioca();
                       break;
                       
                       case"numeri":
+                          d1.StampaNumeri();
                       break;
                       
                       default:
                       System.out.println("Inserire un comando valido");
                       break;
                   }
-        
     }
 
     public static void Help() {
