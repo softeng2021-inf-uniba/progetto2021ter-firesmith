@@ -9,8 +9,45 @@ package it.uniba.main;
  *
  * @author utente
  */
+
 public class Damiera {
 
-    public char damiera[][] = new char [8][];
-    
+    final static int RIGHE = 8;
+    final static int COLONNE = 8;
+    final static int[][] damiera = new int[][] {
+            {1,0,2,0,3,0,4,0},
+            {0,5,0,6,0,7,0,8},
+            {9,0,10,0,11,0,12,0},
+            {0,13,0,14,0,15,0,16},
+            {17,0,18,0,19,0,20,0},
+            {0,21,0,22,0,23,0,24},
+            {25,0,26,0,27,0,28,0},
+            {0,29,0,30,0,31,0,32}
+    };
+
+
+    public void StampaNumeri() {
+
+        System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (damiera[i][j] != 0) {
+                    if (damiera[i][j] > 0 && damiera[i][j] < 10) {
+                        System.out.print("│ " + damiera[i][j] + "  ");
+                    } else {
+                        System.out.print("│ " + damiera[i][j] + " ");
+                    }
+                } else {
+                    System.out.print("│    ");
+                }
+            }
+            System.out.print("│");
+            System.out.println();
+            if (i != RIGHE - 1) {
+                System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
+            } else {
+                System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
+            }
+        }
+    }
 }
