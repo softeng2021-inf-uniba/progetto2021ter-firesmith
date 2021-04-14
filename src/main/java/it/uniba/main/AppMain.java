@@ -61,30 +61,8 @@ public final class AppMain {
             }
             i++;
         }
-        char damiera[][] = new char[8][];
-        int numCasella = 1;
-        int k;
-        int j;
-
-        for (k = 0; k < damiera.length; k++) {
-           
-            for (j = 0; j < damiera.length; j++) {
-                if((k + j) % 2 == 0){
-                    
-     System.out.print(numCasella);
-     
-                    //System.out.print(numCasella);
-                    numCasella++;
-                }
-                else{
-                    System.out.print("-");
-                }
-                   
-            }
-           
-            System.out.print("\n");
-            
-        }
+        Damiera d1 = new Damiera();
+        d1.StampaNumeri();
     }
 
     public static void Help() {
