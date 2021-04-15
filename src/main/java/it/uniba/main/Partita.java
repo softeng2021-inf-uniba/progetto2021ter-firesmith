@@ -31,7 +31,7 @@ public class Partita {
 
             System.out.println("Iniziando una nuova partita..." +
                                 "\nScegli il giocatore: " +
-                                "\n- Bianco" +
+                                "\n- Bianco"+
                                 "\n- Nero");
 
             ImpostaGiocatore();
@@ -45,10 +45,13 @@ public class Partita {
         boolean PartitaInCorso = true;
 
         do {
-            System.out.print("Scrivere un comando:"
+            System.out.print("** MENU COMANDI PARTITA **"
+                    +"\n Scrivere un comando:"
                     +"\n - --help | -h"
                     + "\n - numeri"
-                    + "\n - damiera" +
+                    + "\n - damiera"
+                    + "\n - abbandona"
+                    + "\n - esci" +
                     "\n> ");
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
@@ -78,12 +81,26 @@ public class Partita {
                     PartitaInCorso = false;
                     break;
                 case "esci":
-                    // TODO DA IMPLEMENTARE @Giacomo
-                    PartitaInCorso = false;
+                    System.out.println("Per confermare l'uscita dal gioco inserire [Si/No]: ");
+                    Scanner usc = new Scanner(System.in);
+                    String uscita = usc.nextLine();
+                    if (uscita.equals("Si"))
+                    {
+                        PartitaInCorso = false;
+                        System.out.println(">Uscita dal gioco...");
+                        System.exit(0);
+                    }
+                    else if (uscita.equals("No"))
+                    {
+                        System.out.println(">Ritorno al menù... \n");
+                    }
+                    else
+                    {
+                        System.out.println(">Comando non valido \n");
+                    }
                     break;
-
                 default:
-                    System.out.println("Inserire un comando valido");
+                    System.out.println(">Inserire un comando valido \n");
                     break;
             }
         } while (PartitaInCorso == true);
@@ -105,7 +122,7 @@ public class Partita {
             giocatore2= "Bianco";
         }
         else {
-            System.out.println("Inserito comando sbagliato");
+            System.out.println("\n Inserito comando sbagliato \n");
             return;
         }
 
