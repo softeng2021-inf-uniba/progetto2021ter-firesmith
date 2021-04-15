@@ -81,23 +81,7 @@ public class Partita {
                     PartitaInCorso = false;
                     break;
                 case "esci":
-                    System.out.println("Per confermare l'uscita dal gioco inserire [Si/No]: ");
-                    Scanner usc = new Scanner(System.in);
-                    String uscita = usc.nextLine();
-                    if (uscita.equals("Si"))
-                    {
-                        PartitaInCorso = false;
-                        System.out.println(">Uscita dal gioco...");
-                        System.exit(0);
-                    }
-                    else if (uscita.equals("No"))
-                    {
-                        System.out.println(">Ritorno al menù... \n");
-                    }
-                    else
-                    {
-                        System.out.println(">Comando non valido \n");
-                    }
+                    Esci();
                     break;
                 default:
                     System.out.println(">Inserire un comando valido \n");
@@ -153,8 +137,23 @@ public class Partita {
             }
     }
 
-    public void Esci(){
-
+    public static void Esci(){
+        System.out.println("Per confermare l'uscita dal gioco inserire [Si/No]: ");
+        Scanner usc = new Scanner(System.in);
+        String uscita = usc.nextLine();
+        if (uscita.equals("Si"))
+        {
+            System.out.println("\n Uscita dal gioco...");
+            System.exit(0);
+        }
+        else if (uscita.equals("No"))
+        {
+            System.out.println("\n Ritorno al menù... \n");
+        }
+        else
+        {
+            System.out.println("\n Comando non valido \n");
+        }
     }
 
 }
