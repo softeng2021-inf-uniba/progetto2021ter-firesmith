@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
+import java.util.Scanner;
 
 // import it.uniba.sotorrent.GoogleDocsUtils;
 // disattivato per problemi di compilazione
@@ -62,7 +63,49 @@ public final class AppMain {
             i++;
         }
         Damiera d1 = new Damiera();
-        d1.StampaNumeri();
+
+        // Comandi primo inserimento
+        boolean NuovaPartita = false;
+
+        do {
+            System.out.print("Scrivere un comando:"
+                    +"\n - --help | -h"
+                    + "\n - gioca"
+                    + "\n - numeri"
+                    + "\n - damiera" +
+                    "\n> ");
+            Scanner in = new Scanner(System.in);
+            String comando = in.nextLine();
+
+            switch(comando){
+                case "--help":
+                    Help();
+                    break;
+
+                case "-h":
+                    Help();
+                    break;
+
+                case "gioca":
+                    Partita p1 = new Partita();
+                    p1.Gioca();
+                    NuovaPartita = true;
+                    break;
+
+                case "numeri":
+                    d1.StampaNumeri();
+                    break;
+
+                case "damiera":
+                    System.out.println("Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)");
+                    break;
+
+                default:
+                    System.out.println("Inserire un comando valido");
+                    break;
+            }
+        } while (NuovaPartita == false);
+
     }
 
     public static void Help() {
@@ -74,7 +117,8 @@ public final class AppMain {
                 + "\n - Esci (esci)"
                 + "\n - Mostrare la damiera con numerazione (numeri)"
                 + "\n - Mostrare la damiera con i pezzi (damiera)"
-                + "\n - Mostrare il tempo di gioco (tempo)");
+                + "\n - Mostrare il tempo di gioco (tempo)" +
+                "\n");
 
     }
 
