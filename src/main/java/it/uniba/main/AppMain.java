@@ -28,6 +28,7 @@ public final class AppMain {
      *
      * @param args The command-line arguments.
      */
+
     public static void main(final String[] args) {
 
         System.out.println("Current working dir: " + System.getProperty("user.dir"));
@@ -101,23 +102,7 @@ public final class AppMain {
                     System.out.println("Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)");
                     break;
                 case "esci":
-                    System.out.println("Per confermare l'uscita dal gioco inserire [Si/No]: ");
-                    Scanner usc = new Scanner(System.in);
-                    String uscita = usc.nextLine();
-                    if (uscita.equals("Si"))
-                    {
-                        NuovaPartita = true;
-                        System.out.println("\n Uscita dal gioco...");
-                        System.exit(0);
-                    }
-                    else if (uscita.equals("No"))
-                    {
-                        System.out.println("\n Ritorno al menù... \n");
-                    }
-                    else
-                    {
-                        System.out.println("\n Comando non valido \n");
-                    }
+                    Partita.Esci();
                     break;
                 default:
                     System.out.println("\n Inserire un comando valido \n");
@@ -141,3 +126,4 @@ public final class AppMain {
     }
 
 }
+
