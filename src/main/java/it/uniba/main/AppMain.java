@@ -64,32 +64,48 @@ public final class AppMain {
         }
         Damiera d1 = new Damiera();
 
-        System.out.println("Scrivere un comando:"
-                +"\n - --help | -h"
-                + "\n - gioca"
-                + "\n - numeri");
-        Scanner in=new Scanner(System.in);
-        String comando=in.nextLine();
+        // Comandi primo inserimento
+        boolean NuovaPartita = false;
 
-        switch(comando){
-            case "--help":Help();
-                break;
+        do {
+            System.out.print("Scrivere un comando:"
+                    +"\n - --help | -h"
+                    + "\n - gioca"
+                    + "\n - numeri"
+                    + "\n - damiera" +
+                    "\n> ");
+            Scanner in = new Scanner(System.in);
+            String comando = in.nextLine();
 
-            case "-h":Help();
-                break;
+            switch(comando){
+                case "--help":
+                    Help();
+                    break;
 
-            case "gioca":Partita p1=new Partita();
-                p1.Gioca();
-                break;
+                case "-h":
+                    Help();
+                    break;
 
-            case"numeri":
-                d1.StampaNumeri();
-                break;
+                case "gioca":
+                    Partita p1 = new Partita();
+                    p1.Gioca();
+                    NuovaPartita = true;
+                    break;
 
-            default:
-                System.out.println("Inserire un comando valido");
-                break;
-        }
+                case "numeri":
+                    d1.StampaNumeri();
+                    break;
+
+                case "damiera":
+                    System.out.println("Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)");
+                    break;
+
+                default:
+                    System.out.println("Inserire un comando valido");
+                    break;
+            }
+        } while (NuovaPartita == false);
+
     }
 
     public static void Help() {
@@ -101,7 +117,8 @@ public final class AppMain {
                 + "\n - Esci (esci)"
                 + "\n - Mostrare la damiera con numerazione (numeri)"
                 + "\n - Mostrare la damiera con i pezzi (damiera)"
-                + "\n - Mostrare il tempo di gioco (tempo)");
+                + "\n - Mostrare il tempo di gioco (tempo)" +
+                "\n");
 
     }
 
