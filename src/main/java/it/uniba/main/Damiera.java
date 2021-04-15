@@ -50,4 +50,34 @@ public class Damiera {
             }
         }
     }
+
+    public void StampaPezzi() {
+        System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (damiera[i][j] != 0) {
+                    if (damiera[i][j] > 0 && damiera[i][j] <= 12) {
+                        System.out.print("│ ⛀  ");
+                    } else {
+                        if (damiera[i][j] >= 13 && damiera[i][j] < 21) {
+                            System.out.print("│    ");
+                        } else {
+                            if (damiera[i][j] >= 21 && damiera[i][j] <= 32) {
+                                System.out.print("│ ⛂  ");
+                            }
+                        }
+                    }
+                } else {
+                    System.out.print("│    ");
+                }
+            }
+            System.out.print("│");
+            System.out.println();
+            if (i != RIGHE - 1) {
+                System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
+            } else {
+                System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
+            }
+        }
+    }
 }
