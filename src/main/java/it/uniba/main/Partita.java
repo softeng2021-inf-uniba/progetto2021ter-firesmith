@@ -73,7 +73,10 @@ public class Partita {
                 case "gioca":
                     System.out.println("La partita è già in corso!");
                     break;
-
+                case "abbandona":
+                    Abbandona();
+                    PartitaInCorso = false;
+                    break;
                 case "esci":
                     // TODO DA IMPLEMENTARE @Giacomo
                     PartitaInCorso = false;
@@ -114,7 +117,23 @@ public class Partita {
              }
 
     public void Abbandona(){
-
+            System.out.print("Vuoi abbandonare la partita?" +
+                    "\n> [SI/NO] ");
+            Scanner input1 = new Scanner(System.in);
+            String conferma=input1.nextLine();
+            if(conferma.equals("SI")){
+                if(IsWhite==true){
+                    System.out.println("Il bianco abbandona la partita," +
+                            "il nero vince");
+                } else{
+                    System.out.println("Il nero abbandona la partita," +
+                            "il bianco vince");
+                }
+            } else if(conferma.equals("NO")){
+                return;
+            } else{
+              System.out.println("Comando non valido") ;
+            }
     }
 
     public void Esci(){

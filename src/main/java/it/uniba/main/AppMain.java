@@ -89,7 +89,7 @@ public final class AppMain {
                 case "gioca":
                     Partita p1 = new Partita();
                     p1.Gioca();
-                    NuovaPartita = true;
+                   // NuovaPartita = true;
                     break;
 
                 case "numeri":
