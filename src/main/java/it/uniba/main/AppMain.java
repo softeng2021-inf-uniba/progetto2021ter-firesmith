@@ -72,7 +72,8 @@ public final class AppMain {
                     +"\n - --help | -h"
                     + "\n - gioca"
                     + "\n - numeri"
-                    + "\n - damiera" +
+                    + "\n - damiera"
+                    + "\n - esci" +
                     "\n> ");
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
@@ -99,13 +100,30 @@ public final class AppMain {
                 case "damiera":
                     System.out.println("Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)");
                     break;
-
+                case "esci":
+                    System.out.println("Per confermare l'uscita dal gioco inserire [Si/No]: ");
+                    Scanner usc = new Scanner(System.in);
+                    String uscita = usc.nextLine();
+                    if (uscita.equals("Si"))
+                    {
+                        NuovaPartita = true;
+                        System.out.println("\n Uscita dal gioco...");
+                        System.exit(0);
+                    }
+                    else if (uscita.equals("No"))
+                    {
+                        System.out.println("\n Ritorno al menù... \n");
+                    }
+                    else
+                    {
+                        System.out.println("\n Comando non valido \n");
+                    }
+                    break;
                 default:
-                    System.out.println("Inserire un comando valido");
+                    System.out.println("\n Inserire un comando valido \n");
                     break;
             }
         } while (NuovaPartita == false);
-
     }
 
     public static void Help() {
