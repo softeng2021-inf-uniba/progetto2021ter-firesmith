@@ -130,18 +130,18 @@ public class Partita {
 
         long resultTime = (endTime-startTime)/1000;
         if(resultTime < 60) {
-            System.out.println("Il tempo trascorso dall'inizio della partita è: " + resultTime + " secondi");
+            System.out.println("Il tempo trascorso dall'inizio della partita è: " + resultTime +  " secondi ("+giocatore1+")");
         } else {
-            System.out.format("Il tempo trascorso dall'inizio della partita è:  %.2f"  + " minuto/i", (float)resultTime/60 + "\n");
+            System.out.format("Il tempo trascorso dall'inizio della partita è:  %.2f"  + " minuto/i("+giocatore1+")", (float)resultTime/60 + "\n");
         }
     }
 
     public void Abbandona(){
             System.out.print("Vuoi abbandonare la partita?" +
-                    "\n> [SI/NO] ");
+                    "\n> [Si/No] ");
             Scanner input1 = new Scanner(System.in);
             String conferma=input1.nextLine();
-            if(conferma.equals("SI")){
+            if(conferma.equals("Si")){
                 if(IsWhite==true){
                     System.out.println("Il bianco abbandona la partita," +
                             "il nero vince");
@@ -149,7 +149,7 @@ public class Partita {
                     System.out.println("Il nero abbandona la partita," +
                             "il bianco vince");
                 }
-            } else if(conferma.equals("NO")){
+            } else if(conferma.equals("No")){
                 return;
             } else{
               System.out.println("Comando non valido") ;
