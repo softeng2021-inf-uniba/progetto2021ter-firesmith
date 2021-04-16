@@ -19,7 +19,10 @@ public class Partita {
 
     private String giocatore1 = "",giocatore2 = "" ;
     private boolean IsBlack = false, IsWhite = false;
-    Damiera d1 = new Damiera();
+
+    private long startTime = System.currentTimeMillis();
+
+    Damiera d1;
 
     public void Gioca(){
         if(partitaInCorso==true){
@@ -51,6 +54,7 @@ public class Partita {
                     + "\n - numeri"
                     + "\n - damiera"
                     + "\n - abbandona"
+                    + "\n - tempo"
                     + "\n - esci" +
                     "\n> ");
             Scanner in = new Scanner(System.in);
@@ -80,9 +84,17 @@ public class Partita {
                     Abbandona();
                     PartitaInCorso = false;
                     break;
+
                 case "esci":
                     Esci();
                     break;
+
+
+                case "tempo":
+                    MostraTempo(startTime);
+                    break;
+
+
                 default:
                     System.out.println(">Inserire un comando valido \n");
                     break;
@@ -98,7 +110,7 @@ public class Partita {
         if(Giocatore.equals("Bianco")) {
             IsWhite = true;
             giocatore1 = Giocatore;
-            giocatore2="Nero";
+            giocatore2 = "Nero";
         }
         else if (Giocatore.equals("Nero")) {
             IsBlack = true;
@@ -113,9 +125,16 @@ public class Partita {
 
     }
 
-    public void MostraTempo(){
+    public void MostraTempo(long startTime){
+        long endTime = System.currentTimeMillis();
 
-             }
+        long resultTime = (endTime-startTime)/1000;
+        if(resultTime < 60) {
+            System.out.println("Il tempo trascorso dall'inizio della partita è: " + resultTime + " secondi");
+        } else {
+            System.out.format("Il tempo trascorso dall'inizio della partita è:  %.2f"  + " minuto/i", (float)resultTime/60 + "\n");
+        }
+    }
 
     public void Abbandona(){
             System.out.print("Vuoi abbandonare la partita?" +
