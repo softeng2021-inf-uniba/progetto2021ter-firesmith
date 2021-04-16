@@ -74,6 +74,7 @@ public final class AppMain {
                     + "\n - gioca"
                     + "\n - numeri"
                     + "\n - damiera"
+                    + "\n - tempo"
                     + "\n - esci" +
                     "\n> ");
             Scanner in = new Scanner(System.in);
@@ -101,6 +102,11 @@ public final class AppMain {
                 case "damiera":
                     System.out.println("Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)");
                     break;
+
+                case "tempo":
+                    System.out.println("Nessuna partita in corso | Inserire prima il comando 'gioca' per iniziarne una");
+                    break;
+
                 case "esci":
                     Partita.Esci();
                     break;
