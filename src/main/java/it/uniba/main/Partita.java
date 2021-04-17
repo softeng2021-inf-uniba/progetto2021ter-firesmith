@@ -129,7 +129,7 @@ public class Partita {
         if(resultTime < 60) {
             System.out.println("Il tempo trascorso dall'inizio della partita è: " + resultTime +  " secondi ("+giocatore1+")");
         } else {
-            System.out.format("Il tempo trascorso dall'inizio della partita è:  %.2f"  + " minuto/i("+giocatore1+")", (float)resultTime/60 + "\n");
+            System.out.println("Il tempo trascorso dall'inizio della partita è: " + resultTime/60 + " minuto/i (" + giocatore1 + ")" + "\n");
         }
     }
 
