@@ -15,22 +15,21 @@ import static it.uniba.main.AppMain.Help;
  */
 public class Partita {
 
-    private boolean partitaInCorso=false ;
+    private boolean partitaInCorso = false ;
 
-    private String giocatore1 = "",giocatore2 = "" ;
+    private String giocatore1 = "", giocatore2 = "" ;
     private boolean IsBlack = false, IsWhite = false;
 
     private long startTime = System.currentTimeMillis();
 
-    Damiera d1;
+     Damiera d1 = new Damiera();
 
     public void Gioca(){
-        if(partitaInCorso==true){
+        if(partitaInCorso == true){
             System.out.println("Finisci la partita in corso");
             return;
-        }
-        else{
-            partitaInCorso=true;
+        } else {
+            partitaInCorso = true;
 
             System.out.println("Iniziando una nuova partita..." +
                                 "\nScegli il giocatore: " +
@@ -111,13 +110,11 @@ public class Partita {
             IsWhite = true;
             giocatore1 = Giocatore;
             giocatore2 = "Nero";
-        }
-        else if (Giocatore.equals("Nero")) {
+        } else if (Giocatore.equals("Nero")) {
             IsBlack = true;
             giocatore1 = Giocatore;
             giocatore2= "Bianco";
-        }
-        else {
+        } else {
             System.out.println("\n Inserito comando sbagliato \n");
             return;
         }
@@ -145,13 +142,13 @@ public class Partita {
                 if(IsWhite==true){
                     System.out.println("Il bianco abbandona la partita," +
                             "il nero vince");
-                } else{
+                } else {
                     System.out.println("Il nero abbandona la partita," +
                             "il bianco vince");
                 }
             } else if(conferma.equals("No")){
                 return;
-            } else{
+            } else {
               System.out.println("Comando non valido") ;
             }
     }
@@ -164,13 +161,9 @@ public class Partita {
         {
             System.out.println("\n Uscita dal gioco...");
             System.exit(0);
-        }
-        else if (uscita.equals("No"))
-        {
+        } else if (uscita.equals("No")) {
             System.out.println("\n Ritorno al menù... \n");
-        }
-        else
-        {
+        } else {
             System.out.println("\n Comando non valido \n");
         }
     }
