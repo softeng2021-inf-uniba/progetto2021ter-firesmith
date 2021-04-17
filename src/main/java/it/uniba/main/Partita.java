@@ -44,7 +44,6 @@ public class Partita {
     }
 
     public void ComandiPartita() {
-        boolean PartitaInCorso = true;
 
         do {
             System.out.print("** MENU COMANDI PARTITA **"
@@ -81,7 +80,6 @@ public class Partita {
                     break;
                 case "abbandona":
                     Abbandona();
-                    PartitaInCorso = false;
                     break;
 
                 case "esci":
@@ -98,7 +96,7 @@ public class Partita {
                     System.out.println(">Inserire un comando valido \n");
                     break;
             }
-        } while (PartitaInCorso == true);
+        } while (partitaInCorso == true);
     }
 
     public void ImpostaGiocatore() {
@@ -144,6 +142,7 @@ public class Partita {
                 if(IsWhite==true){
                     System.out.println("Il bianco abbandona la partita," +
                             "il nero vince");
+                    partitaInCorso = false;
                 } else {
                     System.out.println("Il nero abbandona la partita," +
                             "il bianco vince");
