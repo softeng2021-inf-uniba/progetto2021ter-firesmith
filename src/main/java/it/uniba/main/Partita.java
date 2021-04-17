@@ -102,22 +102,24 @@ public class Partita {
     }
 
     public void ImpostaGiocatore() {
-        // TODO switch(comando)
-        Scanner input = new Scanner(System.in);
-        String Giocatore = input.nextLine();
-        //...controlli per ortografia...
-        if(Giocatore.equals("Bianco")) {
-            IsWhite = true;
-            giocatore1 = Giocatore;
-            giocatore2 = "Nero";
-        } else if (Giocatore.equals("Nero")) {
-            IsBlack = true;
-            giocatore1 = Giocatore;
-            giocatore2= "Bianco";
-        } else {
-            System.out.println("\n Inserito comando sbagliato \n");
-            return;
-        }
+        do {
+            Scanner input = new Scanner(System.in);
+            String Giocatore = input.nextLine();
+            //...controlli per ortografia...
+            if (Giocatore.equals("Bianco")) {
+                IsWhite = true;
+                giocatore1 = Giocatore;
+                giocatore2 = "Nero";
+            } else if (Giocatore.equals("Nero")) {
+                IsBlack = true;
+                giocatore1 = Giocatore;
+                giocatore2 = "Bianco";
+            } else {
+                System.out.print("\n Inserito comando sbagliato "+
+                                    "Riprova \n >");
+
+            }
+        }while (IsWhite == false & IsBlack==false);
 
 
     }
