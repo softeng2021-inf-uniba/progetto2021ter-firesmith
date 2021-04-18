@@ -13,6 +13,8 @@ import static it.uniba.main.AppMain.*;
  *
  * @author anton
  */
+
+/*CLASSE PARTITA: classe che racchiude i metodi e gli attributi necessari per gestire una partita*/
 public class Partita {
 
     private boolean partitaInCorso = false ;
@@ -20,9 +22,10 @@ public class Partita {
     private String giocatore1 = "", giocatore2 = "" ;
     private boolean IsBlack = false, IsWhite = false;
 
-    private long startTime = System.currentTimeMillis();
+    private long startTime = System.currentTimeMillis(); // Variabile in cui è memorizzato l'istante di tempo
+                                                        // in cui inizia la partita
 
-     Damiera d1 = new Damiera();
+    Damiera d1 = new Damiera();
 
     public void Gioca(){
         if(partitaInCorso == true){
@@ -55,6 +58,7 @@ public class Partita {
         ComandiPartita();
     }
 
+    //Switch che include tutti i metodi che fungono da comandi per la partita
     public void ComandiPartita() {
 
         do {
@@ -92,6 +96,7 @@ public class Partita {
                 case "gioca":
                     System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
                     break;
+
                 case "abbandona":
                     Abbandona();
                     break;
@@ -113,11 +118,12 @@ public class Partita {
         } while (partitaInCorso == true);
     }
 
+    // Metodo che imposta il colore per entrambi i giocatori, sulla base della scelta del giocatore 1
     public void ImpostaGiocatore() {
         do {
             Scanner input = new Scanner(System.in);
             String Giocatore = input.nextLine();
-            //...controlli per ortografia...
+
             if (Giocatore.equals("Bianco")) {
                 IsWhite = true;
                 giocatore1 = Giocatore;
@@ -131,11 +137,13 @@ public class Partita {
                                     "\n➤ ");
 
             }
-        }while (IsWhite == false & IsBlack==false);
+        }while (IsWhite == false & IsBlack==false); // Controllo sui flag, che permette di inserire correttamente
+                                                    // il colore per il giocatore 1
 
 
     }
 
+    // Metodo che mostra il tempo trascorso per il giocatore 1 (il primo che interagisce con il programma)
     public void MostraTempo(long startTime){
         long endTime = System.currentTimeMillis();
 
@@ -147,11 +155,12 @@ public class Partita {
         }
     }
 
+    // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
     public void Abbandona(){
             System.out.print("\nVuoi abbandonare la partita?" +
                     "\n➤ [Si/No] ");
             Scanner input1 = new Scanner(System.in);
-            String conferma=input1.nextLine();
+            String conferma = input1.nextLine();
             if(conferma.equals("Si")){
                 if(IsWhite==true){
                     System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
@@ -163,10 +172,11 @@ public class Partita {
             } else if(conferma.equals("No")){
                 return;
             } else {
-              System.out.println(" ⚠ Comando non valido") ;
+              System.out.println("\n ⚠ Comando non valido\n") ;
             }
     }
 
+    // Metodo con il quale si può terminare immediatamente il programma
     public static void Esci(){
         System.out.print("\nPer confermare l'uscita dal gioco inserire [Si/No]" +
                 "\n➤ ");
