@@ -69,7 +69,10 @@ public final class AppMain {
         boolean NuovaPartita = false;
 
         do {
-            System.out.print("Scrivere un comando:"
+            System.out.print("┌─────────────────────────────────┒"
+                    +      "\n│ Dama Italiana by Team Firesmith │"
+                    +      "\n└─────────────────────────────────┘"
+                    +"\nScrivere un comando:"
                     +"\n - --help | -h"
                     + "\n - gioca"
                     + "\n - numeri"
@@ -111,7 +114,7 @@ public final class AppMain {
                     Partita.Esci();
                     break;
                 default:
-                    System.out.println("\n Inserire un comando valido \n");
+                    System.out.println("\n ⚠ Inserire un comando valido \n");
                     break;
             }
         } while (NuovaPartita == false);

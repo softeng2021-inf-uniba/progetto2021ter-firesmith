@@ -7,7 +7,7 @@ package it.uniba.main;
 
 import java.util.*;
 
-import static it.uniba.main.AppMain.Help;
+import static it.uniba.main.AppMain.*;
 
 /**
  *
@@ -26,19 +26,21 @@ public class Partita {
 
     public void Gioca(){
         if(partitaInCorso == true){
-            System.out.println("Finisci la partita in corso");
+            System.out.println("Attenzione, una partita è in corso!");
             return;
         } else {
             partitaInCorso = true;
 
-            System.out.println("Iniziando una nuova partita..." +
+            System.out.print("\nIniziando una nuova partita..." +
                                 "\nScegli il giocatore: " +
                                 "\n- Bianco"+
-                                "\n- Nero");
+                                "\n- Nero" +
+                                "\n> ");
 
             ImpostaGiocatore();
             System.out.println("Il giocatore 1 ha scelto il colore: " + giocatore1);
             System.out.println("Il giocatore 2 ha scelto il colore: " + giocatore2);
+            System.out.println();
         }
         ComandiPartita();
     }
@@ -46,7 +48,9 @@ public class Partita {
     public void ComandiPartita() {
 
         do {
-            System.out.print("** MENU COMANDI PARTITA **"
+            System.out.print("┌──────────────────────┒"
+                    +"      \n│ Menù comandi partita │"
+                    +      "\n└──────────────────────┘"
                     +"\n Scrivere un comando:"
                     +"\n - --help | -h"
                     + "\n - numeri"
@@ -93,7 +97,7 @@ public class Partita {
 
 
                 default:
-                    System.out.println(">Inserire un comando valido \n");
+                    System.out.println("> Inserire un comando valido \n");
                     break;
             }
         } while (partitaInCorso == true);
@@ -113,8 +117,9 @@ public class Partita {
                 giocatore1 = Giocatore;
                 giocatore2 = "Bianco";
             } else {
-                System.out.print("\n Inserito comando sbagliato "+
-                                    "Riprova \n >");
+                System.out.print("\nInserito comando sbagliato!"+
+                                    "\nRiprova " +
+                                    "\n> ");
 
             }
         }while (IsWhite == false & IsBlack==false);
@@ -146,6 +151,7 @@ public class Partita {
                 } else {
                     System.out.println("Il nero abbandona la partita," +
                             "il bianco vince");
+                    partitaInCorso = false;
                 }
             } else if(conferma.equals("No")){
                 return;
