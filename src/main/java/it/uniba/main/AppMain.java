@@ -112,6 +112,7 @@ public final class AppMain {
                 case "esci":
                     Partita.Esci();
                     break;
+
                 default:
                     System.out.println("\n ⚠ Inserire un comando valido \n");
                     break;
@@ -132,7 +133,6 @@ public final class AppMain {
                 + "\n ♢ Mostrare la damiera con i pezzi (damiera)"
                 + "\n ♢ Mostrare il tempo di gioco (tempo)" +
                 "\n");
-
     }
 
 }
