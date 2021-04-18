@@ -63,10 +63,13 @@ public final class AppMain {
             }
             i++;
         }
+
+
         Damiera d1 = new Damiera();
 
-        // Comandi primo inserimento
         boolean NuovaPartita = false;
+
+        // Menù Iniziale
 
         do {
             System.out.print("┌─────────────────────────────────┒"
@@ -120,6 +123,7 @@ public final class AppMain {
         } while (NuovaPartita == false);
     }
 
+    // Metodo che mostra informazioni sui comandi disponibili
     public static void Help() {
         System.out.println("\n┌───────────────────────────┒"
                         +  "\n│     Dama Help Center      │"
