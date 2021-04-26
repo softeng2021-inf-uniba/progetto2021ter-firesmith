@@ -75,6 +75,7 @@ public class Partita {
                     "\n➤ ");
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
+            comando = comando.toLowerCase();
 
             switch(comando){
                 case "--help":
@@ -105,6 +106,10 @@ public class Partita {
                     Esci();
                     break;
 
+                case "mosse":
+
+                    break;
+
 
                 case "tempo":
                     MostraTempo(startTime);
@@ -123,15 +128,16 @@ public class Partita {
         do {
             Scanner input = new Scanner(System.in);
             String Giocatore = input.nextLine();
+            Giocatore = Giocatore.toLowerCase();
 
-            if (Giocatore.equals("Bianco")) {
+            if (Giocatore.equals("bianco")) {
                 IsWhite = true;
                 giocatore1 = Giocatore;
-                giocatore2 = "Nero";
-            } else if (Giocatore.equals("Nero")) {
+                giocatore2 = "nero";
+            } else if (Giocatore.equals("nero")) {
                 IsBlack = true;
                 giocatore1 = Giocatore;
-                giocatore2 = "Bianco";
+                giocatore2 = "bianco";
             } else {
                 System.out.print("\n ⚠ Inserito comando sbagliato! Riprova."+
                                     "\n➤ ");
@@ -161,8 +167,8 @@ public class Partita {
                     "\n➤ [Si/No] ");
             Scanner input1 = new Scanner(System.in);
             String conferma = input1.nextLine();
-            conferma.toLowerCase();
-            
+            conferma = conferma.toLowerCase();
+
             if(conferma.equals("si")){
                 if(IsWhite==true){
                     System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
@@ -171,7 +177,7 @@ public class Partita {
                     System.out.println("\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
                     partitaInCorso = false;
                 }
-            } else if(conferma.equals("No")){
+            } else if(conferma.equals("no")){
                 return;
             } else {
               System.out.println("\n ⚠ Comando non valido\n") ;
@@ -184,7 +190,9 @@ public class Partita {
                 "\n➤ ");
         Scanner usc = new Scanner(System.in);
         String uscita = usc.nextLine();
-        if (uscita.equals("Si"))
+        uscita = uscita.toLowerCase();
+
+        if (uscita.equals("si"))
         {
             System.out.println("\n \uD83D\uDEAA Uscita dal gioco...");
             System.exit(0);
