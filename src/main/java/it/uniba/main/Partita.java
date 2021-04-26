@@ -161,7 +161,9 @@ public class Partita {
                     "\n➤ [Si/No] ");
             Scanner input1 = new Scanner(System.in);
             String conferma = input1.nextLine();
-            if(conferma.equals("Si")){
+            conferma.toLowerCase();
+            
+            if(conferma.equals("si")){
                 if(IsWhite==true){
                     System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
                     partitaInCorso = false;
