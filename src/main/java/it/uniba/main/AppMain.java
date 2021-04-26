@@ -53,75 +53,9 @@ public final class AppMain {
             System.out.println("Application started.");
         }
 
-        int i = 0;
-        boolean isTrue = false;
-
-        while (i < args.length && !isTrue) {
-            if (args[i].equals("--help") || args[i].equals("-h")) {
-                Help();
-                isTrue = true;
-            }
-            i++;
-        }
-
-
-        Damiera d1 = new Damiera();
-
-        boolean NuovaPartita = false;
-
-        // Menù Iniziale
-
-        do {
-            System.out.print("┌─────────────────────────────────┒"
-                    +      "\n│ Dama Italiana by Team Firesmith │"
-                    +      "\n└─────────────────────────────────┘"
-                    +"\nScrivere un comando:"
-                    + "\n ♢ --help | -h"
-                    + "\n ♢ gioca"
-                    + "\n ♢ numeri"
-                    + "\n ♢ damiera"
-                    + "\n ♢ tempo"
-                    + "\n ♢ esci" +
-                    "\n➤ ");
-            Scanner in = new Scanner(System.in);
-            String comando = in.nextLine();
-
-            switch(comando){
-                case "--help":
-                    Help();
-                    break;
-
-                case "-h":
-                    Help();
-                    break;
-
-                case "gioca":
-                    Partita p1 = new Partita();
-                    p1.Gioca();
-                    break;
-
-                case "numeri":
-                    d1.StampaNumeri();
-                    break;
-
-                case "damiera":
-                    System.out.println("\n \uD83D\uDCA1 Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)\n");
-                    break;
-
-                case "tempo":
-                    System.out.println("\n \uD83D\uDCA1 Nessuna partita in corso, inizia una nuova partita (gioca)\n");
-                    break;
-
-                case "esci":
-                    Partita.Esci();
-                    break;
-
-                default:
-                    System.out.println("\n ⚠ Inserire un comando valido \n");
-                    break;
-            }
-        } while (NuovaPartita == false);
+        Menu.Generale();
     }
+
 
     // Metodo che mostra informazioni sui comandi disponibili
     public static void Help() {

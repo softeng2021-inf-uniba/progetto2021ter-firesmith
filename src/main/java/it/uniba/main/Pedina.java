@@ -3,14 +3,14 @@ package it.uniba.main;
 public class Pedina {
     private int posRiga;
     private int posColonna;
-    private int giocatore;
+    private static boolean isWhite;
     private boolean isValid;
     private boolean isDama = false;
 
-    public Pedina(int posRiga, int posColonna, int giocatore, boolean isValid) {
+    public Pedina(int posRiga, int posColonna, boolean isWhite, boolean isValid) {
         this.posRiga = posRiga;
         this.posColonna = posColonna;
-        this.giocatore = giocatore;
+        this.isWhite = isWhite;
         this.isValid = isValid;
     }
 
@@ -26,9 +26,11 @@ public class Pedina {
         isDama = dama;
     }
 
-    public void setGiocatore(int giocatore) {
-        this.giocatore = giocatore;
+    public void setGiocatore(boolean isWhite) {
+        this.isWhite = isWhite;
     }
+
+    public static boolean getGiocatore() { return isWhite; }
 
     public int getPosRiga() {
         return posRiga;
