@@ -15,13 +15,10 @@ public class Partita {
 
     boolean partitaInCorso = false;
 
-    Giocatore giocatore1 = new Giocatore();
-    Giocatore giocatore2 = new Giocatore();
+    static Giocatore giocatore1 = new Giocatore();
+    static Giocatore giocatore2 = new Giocatore();
 
     private boolean IsBlack = false, IsWhite = false;
-
-    private final long startTime = System.currentTimeMillis(); // Variabile in cui è memorizzato l'istante di tempo
-    // in cui inizia la partita
 
     Damiera d1 = new Damiera();
 
@@ -53,30 +50,31 @@ public class Partita {
             }
             System.out.println();
         }
-        Menu.Partita();
-        /* int counter = 1;
+
+        int counter = 1; //TODO da eliminare
         do {
-            System.out.println("Turno " + counter);
+            System.out.println("Turno " + counter); //TODO da eliminare
             if ((giocatore1.getColore()).equals("bianco")) {
                 System.out.println("Tocca al giocatore 1");
                 Menu.Partita();
-                if(partitaInCorso == true) {
+                CalcolaTempo(giocatore1);
+                if (partitaInCorso) {
                     System.out.println("Tocca al giocatore 2");
                     Menu.Partita();
+                    CalcolaTempo(giocatore2);
                 }
             } else {
                 System.out.println("Tocca al giocatore 2");
                 Menu.Partita();
-                if(partitaInCorso == true) {
+                CalcolaTempo(giocatore2);
+                if (partitaInCorso) {
                     System.out.println("Tocca al giocatore 1");
                     Menu.Partita();
+                    CalcolaTempo(giocatore1);
                 }
             }
             counter++;
         } while (partitaInCorso == false);
-
-         */
-
     }
 
     // Metodo che imposta il colore per entrambi i giocatori, sulla base della scelta del giocatore 1
@@ -105,22 +103,41 @@ public class Partita {
     }
 
     // Metodo che mostra il tempo trascorso per il giocatore 1 (il primo che interagisce con il programma)
-    /*public static void MostraTempo(long startTime) {
+    public static void MostraTempo() {
         String g1 = giocatore1.getColore(), g2 = giocatore2.getColore();
 
+        long startTimeGiocatore1 = giocatore1.getTempo();
+        long startTimeGiocatore2 = giocatore2.getTempo();
         long endTime = System.currentTimeMillis();
 
-        long resultTime = (endTime - startTime) / 1000;
-        if (resultTime < 60) {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime + " secondi (" + g1 + ")\n");
+        long resultTime1 = (endTime - startTimeGiocatore1) / 1000;
+        long resultTime2 = (endTime - startTimeGiocatore2) / 1000;
+
+        // giocatore1.setTempo(resultTime);
+
+        if (resultTime1 < 60) {
+            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " +
+                    "\n ♢ " + resultTime1 + " secondi (" + g1 + ")\n" +
+                    "\n ♢ " + resultTime2 + " secondi (" + g2 + ")");
         } else {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime / 60 + " minuto/i (" + g2 + ")" + "\n");
+            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime1 / 60 + " minuto/i (" + g2 + ")" + "\n");
         }
-    }*/
+    }
 
     public static void AggiornaDamiera() {
 
     }
+
+    public static void CalcolaTempo(Giocatore g) {
+
+        long startTime = g.getTempo();
+        long endTime = System.currentTimeMillis();
+
+        long resultTime = (endTime - startTime) / 1000;
+
+        g.setTempo(resultTime);
+    }
 }
+
 
 

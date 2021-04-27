@@ -65,7 +65,7 @@ public class Menu {
                     Messaggi.MsgInserimentoSbagliato();
                     break;
             }
-        } while (NuovaPartita == false);
+        } while (!NuovaPartita);
     }
 
     public static void Partita() {
@@ -147,14 +147,14 @@ public class Menu {
                     break;
 
                 case "tempo":
-                    //Partita.MostraTempo();
+                    Partita.MostraTempo();
                     break;
 
                 default:
                     Messaggi.MsgInserimentoSbagliato();
                     break;
             }
-        } while (partitaInCorso == true);
+        } while (partitaInCorso);
     }
 
         // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
@@ -169,15 +169,17 @@ public class Menu {
         if(conferma.equals("si")){
             boolean IsWhite = Pedina.getGiocatore();
 
-            if(IsWhite==true){
+            if(IsWhite){
                 System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
                 return (partitaInCorso = false);
             } else {
                 System.out.println("\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
                 return (partitaInCorso = false);
             }
-        } else if(conferma.equals("no")){
+
+        } else if(conferma.equals("no")){ //TODO
             return (partitaInCorso = true);
+
         } else {
             Messaggi.MsgInserimentoSbagliato();
         }
