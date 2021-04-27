@@ -1,12 +1,14 @@
 package it.uniba.main;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
-import static it.uniba.main.AppMain.Help;
 
 public class Menu {
 
     public static void Generale() {
+
         Damiera d1 = new Damiera(); // crea una nuova damiera
         boolean NuovaPartita = false; // se la partita è in corso, fa uscire dal menù
         // Menù Iniziale
@@ -15,7 +17,7 @@ public class Menu {
                     +      "\n│ Dama Italiana by Team Firesmith │"
                     +      "\n└─────────────────────────────────┘"
                     +"\nScrivere un comando:"
-                    + "\n ♢ --help | -h"
+                    + "\n ♢ help | --help | -h"
                     + "\n ♢ gioca"
                     + "\n ♢ numeri"
                     + "\n ♢ damiera"
@@ -27,14 +29,14 @@ public class Menu {
 
             switch(comando){
                 case "--help":
-                    Help();
+                    Messaggi.Help();
                     break;
 
                 case "-h":
-                    Help();
+                    Messaggi.Help();
                     break;
                 case "help":
-                    Help();
+                    Messaggi.Help();
                     break;
 
                 case "gioca":
@@ -55,27 +57,33 @@ public class Menu {
                     break;
 
                 case "esci":
+                    Messaggi.MsgUscita();
                     Uscita();
                     break;
 
                 default:
-                    System.out.println("\n ⚠ Inserire un comando valido \n");
+                    Messaggi.MsgInserimentoSbagliato();
                     break;
             }
         } while (NuovaPartita == false);
     }
 
     public static void Partita() {
+        final String Spostamento = "^[1-32]+[-]+[1-32]$";
+        Pattern p1 = Pattern.compile(Spostamento);
+
+        final String Presa = "^[1-32]+[x]+[1-32]$";
+        Pattern p2 = Pattern.compile(Presa);
+
         Damiera d1 = new Damiera(); // crea una nuova damiera
         boolean partitaInCorso = true;
-        long startTime = System.currentTimeMillis();
 
         do {
             System.out.print("┌──────────────────────┒"
                     +"      \n│ Menù comandi partita │"
                     +      "\n└──────────────────────┘"
                     + "\nScrivere un comando:"
-                    + "\n ♢ --help | -h"
+                    + "\n ♢ help | --help | -h"
                     + "\n ♢ numeri"
                     + "\n ♢ damiera"
                     + "\n ♢ abbandona"
@@ -86,17 +94,28 @@ public class Menu {
             String comando = in.nextLine();
             comando = comando.toLowerCase();
 
+            Matcher m1 = p1.matcher(comando);
+            Matcher m2 = p2.matcher(comando);
+
+            if (m1.matches()) {
+                comando = "spostamento";
+            } else {
+                if (m2.matches()) {
+                    comando = "presa";
+                }
+            }
+
             switch(comando){
                 case "--help":
-                    Help();
+                    Messaggi.Help();
                     break;
 
                 case "-h":
-                    Help();
+                    Messaggi.Help();
                     break;
 
                 case "help":
-                    Help();
+                    Messaggi.Help();
                     break;
 
                 case "numeri":
@@ -111,6 +130,14 @@ public class Menu {
                     System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
                     break;
 
+                case "spostamento":
+                    System.out.println("Sto effettuando uno spostamento...");
+                    break;
+
+                case "presa":
+                    System.out.println("Sto effettuando una presa...");
+                    break;
+
                 case "abbandona":
                     partitaInCorso = Abbandona();
                     break;
@@ -120,11 +147,11 @@ public class Menu {
                     break;
 
                 case "tempo":
-                    //Partita.MostraTemp
+                    //Partita.MostraTempo();
                     break;
 
                 default:
-                    System.out.println("\n ⚠ Inserire un comando valido \n");
+                    Messaggi.MsgInserimentoSbagliato();
                     break;
             }
         } while (partitaInCorso == true);
@@ -152,7 +179,7 @@ public class Menu {
         } else if(conferma.equals("no")){
             return (partitaInCorso = true);
         } else {
-            System.out.println("\n ⚠ Comando non valido\n") ;
+            Messaggi.MsgInserimentoSbagliato();
         }
          return partitaInCorso;
      }
@@ -167,12 +194,12 @@ public class Menu {
 
         if (uscita.equals("si"))
         {
-            System.out.println("\n \uD83D\uDEAA Uscita dal gioco...");
+            Messaggi.MsgUscita();
             System.exit(0);
         } else if (uscita.equals("No")) {
             System.out.println("\n ↩ Ritorno al menù... \n");
         } else {
-            System.out.println("\n ⚠ Comando non valido \n");
+            Messaggi.MsgInserimentoSbagliato();
         }
     }
 }

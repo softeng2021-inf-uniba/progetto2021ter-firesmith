@@ -25,7 +25,6 @@ public class Damiera {
             {0,29,0,30,0,31,0,32}
     };
 
-
     public void StampaNumeri() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
