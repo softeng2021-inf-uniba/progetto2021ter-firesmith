@@ -1,8 +1,8 @@
 package it.uniba.main;
 
 public class Mossa {
-    private int Riga;
-    private int Colonna;
+    private static int Riga;
+    private static int Colonna;
     private char TipoMossa;
     private boolean isValid;
 
@@ -44,6 +44,19 @@ public class Mossa {
         isValid = valid;
     }
 
+    public static int ottieniCoordX(int x) {
+
+        Riga = Damiera.RicercaX(x);
+
+        return Riga;
+    }
+
+    public static int ottieniCoordY(int y) {
+
+        Colonna = Damiera.RicercaY(y);
+
+        return Colonna;
+    }
 
     /*
     Damiera 32 caselle
@@ -53,43 +66,19 @@ public class Mossa {
         Possono solo spostarsi su caselle di valore maggiore
     Le ultime 3 righe in basso sono inizialmente del Nero
         Possono solo spostarsi su caselle di valore minore
+     */
 
-            {B,null,B,0,B,0,B,0},
-            {0,B,0,B,0,B,0,B},
-            {B,0,B,0,B,0,B,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,N,0,N,0,N,0,N},
-            {N,0,N,0,N,0,N,0},
-            {0,N,0,N,0,N,0,N}
+   public static void SpostamentoSemplice(int pos1, int pos2) {
+       int x1 = Mossa.ottieniCoordX(pos1);
+       int y1 = Mossa.ottieniCoordY(pos2);
 
-            {1,0,2,0,3,0,4,0},
-            {0,5,0,6,0,7,0,8},
-            {9,0,10,0,11,0,12,0},
-            {0,13,0,14,0,15,0,16},
-            {17,0,18,0,19,0,20,0},
-            {0,21,0,22,0,23,0,24},
-            {25,0,26,0,27,0,28,0},
-            {0,29,0,30,0,31,0,32}
-
-            1x5 11205
-            10x14 1012014
-            22x18 2212018
-
-            1 int x char 5 int
-    */
-
-    public boolean SpostamentoSemplice(int Riga, int Colonna, char TipoMossa) {
-        if (TipoMossa == '-' && Riga <= 8 && Colonna <= 8) {
-            return isValid = true;
-        } else {
-            return isValid = false;
-        }
+        System.out.println(x1 + "" + y1);
         // se i dati inseriti sono corretti
         // imposta Riga come nuova riga della Pedina
         // imposta Colonna come nuova colonna della Pedina
         // aggiorna la Damiera in Partita
         // return isValid a Partita per controllo
+
     }
 }
 

@@ -94,8 +94,17 @@ public class Menu {
             String comando = in.nextLine();
             comando = comando.toLowerCase();
 
+            // Non fare puttanate <3
             Matcher m1 = p1.matcher(comando);
             Matcher m2 = p2.matcher(comando);
+
+
+            String[] array = comando.split("-");
+            String part1 = array[0];
+            String part2 = array[1];
+
+            int pos1 = Integer.parseInt(part1);
+            int pos2 = Integer.parseInt(part2);
 
             if (m1.matches()) {
                 comando = "spostamento";
@@ -132,6 +141,7 @@ public class Menu {
 
                 case "spostamento":
                     System.out.println("Sto effettuando uno spostamento...");
+                    Mossa.SpostamentoSemplice(pos1,pos2);
                     break;
 
                 case "presa":

@@ -109,6 +109,31 @@ public class Damiera {
         }
     }*/
 
+    //entrambe ritornano per forza quindi non può ritornare null
+    public static int RicercaX (int pos) {
+        int i1 = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (damiera[i][j] == pos) {
+                    i1 = i;
+                }
+            }
+        }
+        return i1;
+    }
+
+    public static int RicercaY (int pos) {
+        int j1 = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (damiera[i][j] == pos) {
+                    j1 = j;
+                }
+            }
+        }
+        return j1;
+    }
+
     public void StampaPezzi() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
