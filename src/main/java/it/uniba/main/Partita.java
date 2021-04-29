@@ -9,45 +9,40 @@ import java.util.*;
 
 import static it.uniba.main.AppMain.*;
 
-/**
- *
- * @author anton
- */
 
 /*CLASSE PARTITA: classe che racchiude i metodi e gli attributi necessari per gestire una partita*/
 public class Partita {
 
-    private boolean partitaInCorso = false ;
+    boolean partitaInCorso = false;
 
-    private String giocatore1 = "", giocatore2 = "" ;
+    static Giocatore giocatore1 = new Giocatore();
+    static Giocatore giocatore2 = new Giocatore();
+
     private boolean IsBlack = false, IsWhite = false;
-
-    private long startTime = System.currentTimeMillis(); // Variabile in cui è memorizzato l'istante di tempo
-                                                        // in cui inizia la partita
 
     Damiera d1 = new Damiera();
 
-    public void Gioca(){
-        if(partitaInCorso == true){
+    public void Gioca() {
+        if (partitaInCorso == true) {
             System.out.println(" ⚠ Attenzione, una partita è in corso!");
             return;
         } else {
             partitaInCorso = true;
 
             System.out.print("\n ⚔ Iniziando una nuova partita... ⚔ \n" +
-                                "\nScegli il giocatore: " +
-                                "\n ♦ Bianco"+
-                                "\n ♢ Nero" +
-                                "\n➤ ");
+                    "\nScegli il giocatore: " +
+                    "\n ♦ Bianco" +
+                    "\n ♢ Nero" +
+                    "\n➤ ");
 
             ImpostaGiocatore();
-            System.out.print("\nIl giocatore 1 ha scelto il colore: " + giocatore1 + " ");
+            System.out.print("\nIl giocatore 1 ha scelto il colore: " + giocatore1.getColore() + " ");
             if (IsWhite) {
                 System.out.println("⛂");  // Pedina bianca
             } else {
                 System.out.println("⛀");  // Pedina nera
             }
-            System.out.print("Il giocatore 2 ha scelto il colore: " + giocatore2 + " ");
+            System.out.print("Il giocatore 2 ha scelto il colore: " + giocatore2.getColore() + " ");
             if (IsWhite) {
                 System.out.println("⛀");  // Pedina nera
             } else {
@@ -55,142 +50,94 @@ public class Partita {
             }
             System.out.println();
         }
-        ComandiPartita();
-    }
 
-    //Switch che include tutti i metodi che fungono da comandi per la partita
-    public void ComandiPartita() {
-
+        int counter = 1; //TODO da eliminare
         do {
-            System.out.print("┌──────────────────────┒"
-                    +"      \n│ Menù comandi partita │"
-                    +      "\n└──────────────────────┘"
-                    + "\nScrivere un comando:"
-                    + "\n ♢ --help | -h"
-                    + "\n ♢ numeri"
-                    + "\n ♢ damiera"
-                    + "\n ♢ abbandona"
-                    + "\n ♢ tempo"
-                    + "\n ♢ esci" +
-                    "\n➤ ");
-            Scanner in = new Scanner(System.in);
-            String comando = in.nextLine();
-
-            switch(comando){
-                case "--help":
-                    Help();
-                    break;
-
-                case "-h":
-                    Help();
-                    break;
-
-                case "numeri":
-                    d1.StampaNumeri();
-                    break;
-
-                case "damiera":
-                    d1.StampaPezzi();
-                    break;
-
-                case "gioca":
-                    System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
-                    break;
-
-                case "abbandona":
-                    Abbandona();
-                    break;
-
-                case "esci":
-                    Esci();
-                    break;
-
-
-                case "tempo":
-                    MostraTempo(startTime);
-                    break;
-
-
-                default:
-                    System.out.println("\n ⚠ Inserire un comando valido \n");
-                    break;
+            System.out.println("Turno " + counter); //TODO da eliminare
+            if ((giocatore1.getColore()).equals("bianco")) {
+                System.out.println("Tocca al giocatore 1");
+                Menu.Partita();
+                CalcolaTempo(giocatore1);
+                if (partitaInCorso) {
+                    System.out.println("Tocca al giocatore 2");
+                    Menu.Partita();
+                    CalcolaTempo(giocatore2);
+                }
+            } else {
+                System.out.println("Tocca al giocatore 2");
+                Menu.Partita();
+                CalcolaTempo(giocatore2);
+                if (partitaInCorso) {
+                    System.out.println("Tocca al giocatore 1");
+                    Menu.Partita();
+                    CalcolaTempo(giocatore1);
+                }
             }
-        } while (partitaInCorso == true);
+            counter++;
+        } while (partitaInCorso == false);
     }
 
     // Metodo che imposta il colore per entrambi i giocatori, sulla base della scelta del giocatore 1
     public void ImpostaGiocatore() {
+
         do {
             Scanner input = new Scanner(System.in);
             String Giocatore = input.nextLine();
+            Giocatore = Giocatore.toLowerCase();
 
-            if (Giocatore.equals("Bianco")) {
-                IsWhite = true;
-                giocatore1 = Giocatore;
-                giocatore2 = "Nero";
-            } else if (Giocatore.equals("Nero")) {
-                IsBlack = true;
-                giocatore1 = Giocatore;
-                giocatore2 = "Bianco";
+            if (Giocatore.equals("bianco")) {
+                IsWhite = true;                 // serve solo per il while
+                giocatore1.setColore(Giocatore);
+                giocatore2.setColore("nero");
+            } else if (Giocatore.equals("nero")) {
+                IsBlack = true;                 // serve solo per il while
+                giocatore1.setColore(Giocatore);
+                giocatore2.setColore("bianco");
             } else {
-                System.out.print("\n ⚠ Inserito comando sbagliato! Riprova."+
-                                    "\n➤ ");
+                System.out.print("\n ⚠ Inserito comando sbagliato! Riprova." +
+                        "\n➤ ");
 
             }
-        }while (IsWhite == false & IsBlack==false); // Controllo sui flag, che permette di inserire correttamente
-                                                    // il colore per il giocatore 1
-
-
+        } while (IsWhite == false & IsBlack == false); // Controllo sui flag, che permette di inserire correttamente
+        // il colore per il giocatore 1
     }
 
     // Metodo che mostra il tempo trascorso per il giocatore 1 (il primo che interagisce con il programma)
-    public void MostraTempo(long startTime){
+    public static void MostraTempo() {
+        String g1 = giocatore1.getColore(), g2 = giocatore2.getColore();
+
+        long startTimeGiocatore1 = giocatore1.getTempo();
+        long startTimeGiocatore2 = giocatore2.getTempo();
         long endTime = System.currentTimeMillis();
 
-        long resultTime = (endTime-startTime)/1000;
-        if(resultTime < 60) {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime +  " secondi ("+giocatore1+")\n");
+        long resultTime1 = (endTime - startTimeGiocatore1) / 1000;
+        long resultTime2 = (endTime - startTimeGiocatore2) / 1000;
+
+        // giocatore1.setTempo(resultTime);
+
+        if (resultTime1 < 60) {
+            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " +
+                    "\n ♢ " + resultTime1 + " secondi (" + g1 + ")\n" +
+                    "\n ♢ " + resultTime2 + " secondi (" + g2 + ")");
         } else {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime/60 + " minuto/i (" + giocatore1 + ")" + "\n");
+            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime1 / 60 + " minuto/i (" + g2 + ")" + "\n");
         }
     }
 
-    // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
-    public void Abbandona(){
-            System.out.print("\nVuoi abbandonare la partita?" +
-                    "\n➤ [Si/No] ");
-            Scanner input1 = new Scanner(System.in);
-            String conferma = input1.nextLine();
-            if(conferma.equals("Si")){
-                if(IsWhite==true){
-                    System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
-                    partitaInCorso = false;
-                } else {
-                    System.out.println("\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
-                    partitaInCorso = false;
-                }
-            } else if(conferma.equals("No")){
-                return;
-            } else {
-              System.out.println("\n ⚠ Comando non valido\n") ;
-            }
+    public static void AggiornaDamiera() {
+
     }
 
-    // Metodo con il quale si può terminare immediatamente il programma
-    public static void Esci(){
-        System.out.print("\nPer confermare l'uscita dal gioco inserire [Si/No]" +
-                "\n➤ ");
-        Scanner usc = new Scanner(System.in);
-        String uscita = usc.nextLine();
-        if (uscita.equals("Si"))
-        {
-            System.out.println("\n \uD83D\uDEAA Uscita dal gioco...");
-            System.exit(0);
-        } else if (uscita.equals("No")) {
-            System.out.println("\n ↩ Ritorno al menù... \n");
-        } else {
-            System.out.println("\n ⚠ Comando non valido \n");
-        }
-    }
+    public static void CalcolaTempo(Giocatore g) {
 
+        long startTime = g.getTempo();
+        long endTime = System.currentTimeMillis();
+
+        long resultTime = (endTime - startTime) / 1000;
+
+        g.setTempo(resultTime);
+    }
 }
+
+
+
