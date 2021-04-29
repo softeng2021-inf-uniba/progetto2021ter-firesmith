@@ -69,10 +69,10 @@ public class Menu {
     }
 
     public static void Partita() {
-        final String Spostamento = "^[1-32]+[-]+[1-32]$";
+        final String Spostamento = "^([1-3]{0,1}[0-9]{1})([-]{1})([1-3]{0,1}[0-9]{1})$";
         Pattern p1 = Pattern.compile(Spostamento);
 
-        final String Presa = "^[1-32]+[x]+[1-32]$";
+        final String Presa = "^([1-3]{0,1}[0-9]{1})([x]{1})([1-3]{0,1}[0-9]{1})$";
         Pattern p2 = Pattern.compile(Presa);
 
         Damiera d1 = new Damiera(); // crea una nuova damiera
@@ -167,7 +167,7 @@ public class Menu {
         conferma = conferma.toLowerCase();
 
         if(conferma.equals("si")){
-            boolean IsWhite = Pedina.getGiocatore();
+           boolean IsWhite = Pedina.getIsWhite();
 
             if(IsWhite){
                 System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");

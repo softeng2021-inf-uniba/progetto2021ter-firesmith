@@ -12,6 +12,39 @@ public class Mossa {
         this.TipoMossa = TipoMossa;
     }
 
+    public int getRiga() {
+        return Riga;
+    }
+
+    public void setRiga(int riga) {
+        Riga = riga;
+    }
+
+    public int getColonna() {
+        return Colonna;
+    }
+
+    public void setColonna(int colonna) {
+        Colonna = colonna;
+    }
+
+    public char getTipoMossa() {
+        return TipoMossa;
+    }
+
+    public void setTipoMossa(char tipoMossa) {
+        TipoMossa = tipoMossa;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+
     /*
     Damiera 32 caselle
     Ogni pedina conosce il suo colore
@@ -20,7 +53,8 @@ public class Mossa {
         Possono solo spostarsi su caselle di valore maggiore
     Le ultime 3 righe in basso sono inizialmente del Nero
         Possono solo spostarsi su caselle di valore minore
-            {B,0,B,0,B,0,B,0},
+
+            {B,null,B,0,B,0,B,0},
             {0,B,0,B,0,B,0,B},
             {B,0,B,0,B,0,B,0},
             {0,0,0,0,0,0,0,0},
