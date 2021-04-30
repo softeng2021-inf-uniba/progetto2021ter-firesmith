@@ -1,8 +1,8 @@
 package it.uniba.main;
 
 public class Mossa {
-    private int Riga;
-    private int Colonna;
+    private static int Riga;
+    private static int Colonna;
     private char TipoMossa;
     private boolean isValid;
 
@@ -44,6 +44,19 @@ public class Mossa {
         isValid = valid;
     }
 
+    public static int ottieniCoordX(int x) {
+
+        Riga = Damiera.RicercaX(x);
+
+        return Riga;
+    }
+
+    public static int ottieniCoordY(int y) {
+
+        Colonna = Damiera.RicercaY(y);
+
+        return Colonna;
+    }
 
     /*
     Damiera 32 caselle
@@ -53,45 +66,78 @@ public class Mossa {
         Possono solo spostarsi su caselle di valore maggiore
     Le ultime 3 righe in basso sono inizialmente del Nero
         Possono solo spostarsi su caselle di valore minore
+     */
 
-            {B,null,B,0,B,0,B,0},
-            {0,B,0,B,0,B,0,B},
-            {B,0,B,0,B,0,B,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,N,0,N,0,N,0,N},
-            {N,0,N,0,N,0,N,0},
-            {0,N,0,N,0,N,0,N}
+    public static boolean SpostamentoSempliceWhite(int pos1, int pos2, Damiera damiera) {
+        boolean mossaValida = true;
 
-            {1,0,2,0,3,0,4,0},
-            {0,5,0,6,0,7,0,8},
-            {9,0,10,0,11,0,12,0},
-            {0,13,0,14,0,15,0,16},
-            {17,0,18,0,19,0,20,0},
-            {0,21,0,22,0,23,0,24},
-            {25,0,26,0,27,0,28,0},
-            {0,29,0,30,0,31,0,32}
 
-            1x5 11205
-            10x14 1012014
-            22x18 2212018
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
 
-            1 int x char 5 int
-    */
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
 
-    public boolean SpostamentoSemplice(int Riga, int Colonna, char TipoMossa) {
-        if (TipoMossa == '-' && Riga <= 8 && Colonna <= 8) {
-            return isValid = true;
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 > x1) {
+            if ((x2 == x1 + 1) && (y2 == y1 + 1 || y2 == y1 - 1)) {
+                if(damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
+
+                    damiera.damieraPezzi[x1][y1].setBlank(true);
+                    damiera.damieraPezzi[x2][y2].setBlank(false);
+                    damiera.damieraPezzi[x2][y2].seteBianco(true);
+
+                    damiera.StampaPezzi();
+                }else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                    mossaValida = false;
+                }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
         } else {
-            return isValid = false;
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
         }
-        // se i dati inseriti sono corretti
-        // imposta Riga come nuova riga della Pedina
-        // imposta Colonna come nuova colonna della Pedina
-        // aggiorna la Damiera in Partita
-        // return isValid a Partita per controllo
+        return mossaValida;
+    }
+
+    public static boolean SpostamentoSempliceBlack(int pos1, int pos2, Damiera damiera) {
+        boolean mossaValida = true;
+
+
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
+
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
+
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 < x1) {
+            if ((x2 == x1 - 1) && (y2 == y1 - 1 || y2 == y1 + 1)) {
+
+                damiera.damieraPezzi[x1][y1].setBlank(true);
+                damiera.damieraPezzi[x2][y2].setBlank(false);
+                damiera.damieraPezzi[x2][y2].seteNero(true);
+
+                damiera.StampaPezzi();
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
     }
 }
+
+
+
 
 
 

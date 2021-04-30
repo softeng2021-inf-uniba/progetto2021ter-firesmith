@@ -25,9 +25,9 @@ public class Damiera {
             {0, 29, 0, 30, 0, 31, 0, 32}
     };
 
-    private Pedina[][] damieraPezzi = new Pedina[RIGHE][COLONNE];
+    public Pedina[][] damieraPezzi = new Pedina[RIGHE][COLONNE];
 
-    public Damiera() {
+    public  Damiera() {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
 
@@ -42,13 +42,17 @@ public class Damiera {
                 if (damiera[i][j] > 0 && damiera[i][j] <= 12) {
                     damieraPezzi[i][j].seteBianco(true);
                     damieraPezzi[i][j].seteNero(false);
-
-                } else if (damiera[i][j] >= 21 && damiera[i][j] <= 32) {
-                    damieraPezzi[i][j].seteBianco(false);
-                    damieraPezzi[i][j].seteNero(true);
+                    damieraPezzi[i][j].setBlank(false);
 
                 } else if (damiera[i][j] >= 13 && damiera[i][j] < 21) {
+                    damieraPezzi[i][j].seteBianco(false);
+                    damieraPezzi[i][j].seteNero(false);
                     damieraPezzi[i][j].setBlank(true);
+
+                } else if (damiera[i][j] >= 21 && damiera[i][j] <= 32) {
+                    damieraPezzi[i][j].seteNero(true);
+                    damieraPezzi[i][j].seteBianco(false);
+                    damieraPezzi[i][j].setBlank(false);
                 }
             }
         }
@@ -108,6 +112,31 @@ public class Damiera {
             }
         }
     }*/
+
+    //entrambe ritornano per forza quindi non può ritornare null
+    public static int RicercaX (int pos) {
+        int i1 = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (damiera[i][j] == pos) {
+                    i1 = i;
+                }
+            }
+        }
+        return i1;
+    }
+
+    public static int RicercaY (int pos) {
+        int j1 = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (damiera[i][j] == pos) {
+                    j1 = j;
+                }
+            }
+        }
+        return j1;
+    }
 
     public void StampaPezzi() {
 
