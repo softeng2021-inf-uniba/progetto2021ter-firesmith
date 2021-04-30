@@ -89,6 +89,7 @@ public class Mossa {
                     damiera.damieraPezzi[x2][y2].seteBianco(true);
 
                     damiera.StampaPezzi();
+
                 } else {
                     System.out.println("Mossa non valida, riprovare: ");
                     mossaValida = false;
@@ -134,10 +135,104 @@ public class Mossa {
                 System.out.println("Mossa non valida, riprovare: ");
                 mossaValida = false;
             }
-
-        } return mossaValida;
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
     }
 }
+
+    /*  - si può catturare un pezzo avversario solo se ha una casella libera dietro di sè
+            - una pedina prende solo in avanti;
+            - una pedina prende solo pedine e non dame;
+            - una dama prende sia avanti sia indietro;
+            - una dama prende sia pedine sia dame
+        - Una presa, semplice o multipla, conta per una sola mossa giocata
+     */
+    /*public static boolean PresaSempliceWhite(int pos1,int pos2,Damiera damiera){
+        boolean mossaValida = true;
+
+
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
+
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
+
+       //11 =2,4  15 = x3 = 3,y3 = 5  20 = x2=4,y2=6
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 > x1) {
+            if ((x2 == x1 + 2) && (y2 == y1 + 2 || y2 == y1 - 2)) {
+                if (damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
+                    //if((x3 == x2 + 1) && (y3_1 == y2 - 1 || y3_2 == y2 + 1)) {
+                        //aggiungere ulteriori controlli su dama
+                        //if (!damiera.damieraPezzi[x3][y3].getBlank() && !damiera.damieraPezzi[x3][y3].isDama()) {
+
+
+                                damiera.damieraPezzi[x1][y1].setBlank(true);
+                                damiera.damieraPezzi[x2][y2].setBlank(false);
+                                damiera.damieraPezzi[x2][y2].seteBianco(true);
+
+                                damiera.StampaPezzi();
+                            }
+                        } else {
+                            System.out.println("Mossa non valida, riprovare: ");
+                            mossaValida = false;
+                        }
+                    }else {
+                        System.out.println("Mossa non valida, riprovare: ");
+                        mossaValida = false;
+                    }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
+    }
+
+    public static boolean PresaSempliceBlack(int pos1,int pos2, Damiera damiera) {
+        boolean mossaValida = true;
+
+
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
+
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
+
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 > x1) {
+            if ((x2 == x1 + 2) && (y2 == y1 + 2 || y2 == y1 - 2)) {
+                if (damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
+
+                    damiera.damieraPezzi[x1][y1].setBlank(true);
+                    damiera.damieraPezzi[x2][y2].setBlank(false);
+                    damiera.damieraPezzi[x2][y2].seteBianco(true);
+
+                    damiera.StampaPezzi();
+                } else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                    mossaValida = false;
+                }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
+
+    }
+}*/
 
 
 

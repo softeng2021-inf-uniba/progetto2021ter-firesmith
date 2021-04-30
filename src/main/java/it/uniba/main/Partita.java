@@ -58,12 +58,10 @@ public class Partita {
             if ((giocatore1.getColore()).equals("bianco")) {
                 System.out.println("Tocca al giocatore 1");
                 flag = Menu.Partita(giocatore1.getColore(),d1);//falso = partita in corso,menu chiuso
-                System.out.println(flag);
                 CalcolaTempo(giocatore1);
                 if (!flag) {
                     System.out.println("Tocca al giocatore 2");
                     flag = Menu.Partita(giocatore2.getColore(),d1);
-                    System.out.println(flag);
                     CalcolaTempo(giocatore2);
                 }else {
                     partitaInCorso=false;
@@ -72,12 +70,10 @@ public class Partita {
             } else {
                 System.out.println("Tocca al giocatore 2");
                 flag = Menu.Partita(giocatore2.getColore(),d1);
-                System.out.println(flag);
                 CalcolaTempo(giocatore2);
                 if (!flag) {
                     System.out.println("Tocca al giocatore 1");
                     flag = Menu.Partita(giocatore1.getColore(),d1);
-                    System.out.println(flag);
                     CalcolaTempo(giocatore1);
                 }else {
                     partitaInCorso=false;
