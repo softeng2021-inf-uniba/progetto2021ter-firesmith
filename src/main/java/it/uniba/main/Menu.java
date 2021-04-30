@@ -100,10 +100,11 @@ public class Menu {
             int pos1 = 0;
             int pos2 = 0;
 
+            //si crea un array di stringhe dove vengono memorizzati diversi token
             String[] array = comando.split("-|x");
 
 
-            if ((array.length > 1) && (!array[0].equals("0")) && (!array[1].equals("0")) && !array[1].equals("0")) {
+            if ((array.length > 1) && (!array[0].equals("0")) && (!array[1].equals("0")) && !array[1].equals("0") && !array[0].equals("") && !array[1].equals("")) {
                 String part1 = array[0];
                 String part2 = array[1];
 

@@ -82,14 +82,14 @@ public class Mossa {
 
         if (x2 > x1) {
             if ((x2 == x1 + 1) && (y2 == y1 + 1 || y2 == y1 - 1)) {
-                if(damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
+                if (damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
 
                     damiera.damieraPezzi[x1][y1].setBlank(true);
                     damiera.damieraPezzi[x2][y2].setBlank(false);
                     damiera.damieraPezzi[x2][y2].seteBianco(true);
 
                     damiera.StampaPezzi();
-                }else {
+                } else {
                     System.out.println("Mossa non valida, riprovare: ");
                     mossaValida = false;
                 }
@@ -118,21 +118,24 @@ public class Mossa {
 
         if (x2 < x1) {
             if ((x2 == x1 - 1) && (y2 == y1 - 1 || y2 == y1 + 1)) {
+                if (damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
 
-                damiera.damieraPezzi[x1][y1].setBlank(true);
-                damiera.damieraPezzi[x2][y2].setBlank(false);
-                damiera.damieraPezzi[x2][y2].seteNero(true);
+                    damiera.damieraPezzi[x1][y1].setBlank(true);
+                    damiera.damieraPezzi[x2][y2].setBlank(false);
+                    damiera.damieraPezzi[x2][y2].seteNero(true);
 
-                damiera.StampaPezzi();
+                    damiera.StampaPezzi();
+
+                } else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                    mossaValida = false;
+                }
             } else {
                 System.out.println("Mossa non valida, riprovare: ");
                 mossaValida = false;
             }
-        } else {
-            System.out.println("Mossa non valida, riprovare: ");
-            mossaValida = false;
-        }
-        return mossaValida;
+
+        } return mossaValida;
     }
 }
 
