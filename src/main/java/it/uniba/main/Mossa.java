@@ -68,19 +68,76 @@ public class Mossa {
         Possono solo spostarsi su caselle di valore minore
      */
 
-   public static void SpostamentoSemplice(int pos1, int pos2) {
-       int x1 = Mossa.ottieniCoordX(pos1);
-       int y1 = Mossa.ottieniCoordY(pos2);
+    public static boolean SpostamentoSempliceWhite(int pos1, int pos2, Damiera damiera) {
+        boolean mossaValida = true;
 
-        System.out.println(x1 + "" + y1);
-        // se i dati inseriti sono corretti
-        // imposta Riga come nuova riga della Pedina
-        // imposta Colonna come nuova colonna della Pedina
-        // aggiorna la Damiera in Partita
-        // return isValid a Partita per controllo
 
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
+
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
+
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 > x1) {
+            if ((x2 == x1 + 1) && (y2 == y1 + 1 || y2 == y1 - 1)) {
+                if(damiera.damieraPezzi[x2][y2].getBlank() && !damiera.damieraPezzi[x1][y1].getBlank()) {
+
+                    damiera.damieraPezzi[x1][y1].setBlank(true);
+                    damiera.damieraPezzi[x2][y2].setBlank(false);
+                    damiera.damieraPezzi[x2][y2].seteBianco(true);
+
+                    damiera.StampaPezzi();
+                }else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                    mossaValida = false;
+                }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
+    }
+
+    public static boolean SpostamentoSempliceBlack(int pos1, int pos2, Damiera damiera) {
+        boolean mossaValida = true;
+
+
+        int x1 = Mossa.ottieniCoordX(pos1);
+        int y1 = Mossa.ottieniCoordY(pos1);
+
+        int x2 = Mossa.ottieniCoordX(pos2);
+        int y2 = Mossa.ottieniCoordY(pos2);
+
+        System.out.println("pos1: " + x1 + "," + y1 + "\npos2: " + x2 + "," + y2);
+
+        if (x2 < x1) {
+            if ((x2 == x1 - 1) && (y2 == y1 - 1 || y2 == y1 + 1)) {
+
+                damiera.damieraPezzi[x1][y1].setBlank(true);
+                damiera.damieraPezzi[x2][y2].setBlank(false);
+                damiera.damieraPezzi[x2][y2].seteNero(true);
+
+                damiera.StampaPezzi();
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+                mossaValida = false;
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+            mossaValida = false;
+        }
+        return mossaValida;
     }
 }
+
+
+
 
 
 

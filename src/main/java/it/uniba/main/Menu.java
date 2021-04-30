@@ -4,8 +4,9 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-
 public class Menu {
+    private static final String Spostamento = "^([1-3]{0,1}[0-9]{1})([-]{1})([1-3]{0,1}[0-9]{1})$";
+    private static final String Presa = "^([1-3]{0,1}[0-9]{1})([x]{1})([1-3]{0,1}[0-9]{1})$";
 
     public static void Generale() {
 
@@ -14,9 +15,9 @@ public class Menu {
         // Menù Iniziale
         do {
             System.out.print("┌─────────────────────────────────┒"
-                    +      "\n│ Dama Italiana by Team Firesmith │"
-                    +      "\n└─────────────────────────────────┘"
-                    +"\nScrivere un comando:"
+                    + "\n│ Dama Italiana by Team Firesmith │"
+                    + "\n└─────────────────────────────────┘"
+                    + "\nScrivere un comando:"
                     + "\n ♢ help | --help | -h"
                     + "\n ♢ gioca"
                     + "\n ♢ numeri"
@@ -27,7 +28,7 @@ public class Menu {
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
 
-            switch(comando){
+            switch (comando) {
                 case "--help":
                     Messaggi.Help();
                     break;
@@ -68,20 +69,18 @@ public class Menu {
         } while (!NuovaPartita);
     }
 
-    public static void Partita() {
-        final String Spostamento = "^([1-3]{0,1}[0-9]{1})([-]{1})([1-3]{0,1}[0-9]{1})$";
-        Pattern p1 = Pattern.compile(Spostamento);
+    public static boolean Partita(String Colore,Damiera d1) {
 
-        final String Presa = "^([1-3]{0,1}[0-9]{1})([x]{1})([1-3]{0,1}[0-9]{1})$";
+        Pattern p1 = Pattern.compile(Spostamento);
         Pattern p2 = Pattern.compile(Presa);
 
-        Damiera d1 = new Damiera(); // crea una nuova damiera
         boolean partitaInCorso = true;
+        boolean mossaValida = true;
 
         do {
             System.out.print("┌──────────────────────┒"
-                    +"      \n│ Menù comandi partita │"
-                    +      "\n└──────────────────────┘"
+                    + "      \n│ Menù comandi partita │"
+                    + "\n└──────────────────────┘"
                     + "\nScrivere un comando:"
                     + "\n ♢ help | --help | -h"
                     + "\n ♢ numeri"
@@ -98,23 +97,29 @@ public class Menu {
             Matcher m1 = p1.matcher(comando);
             Matcher m2 = p2.matcher(comando);
 
+            int pos1 = 0;
+            int pos2 = 0;
 
-            String[] array = comando.split("-");
-            String part1 = array[0];
-            String part2 = array[1];
+            String[] array = comando.split("-|x");
 
-            int pos1 = Integer.parseInt(part1);
-            int pos2 = Integer.parseInt(part2);
 
-            if (m1.matches()) {
-                comando = "spostamento";
-            } else {
-                if (m2.matches()) {
-                    comando = "presa";
+            if ((array.length > 1) && (!array[0].equals("0")) && (!array[1].equals("0")) && !array[1].equals("0")) {
+                String part1 = array[0];
+                String part2 = array[1];
+
+                pos1 = Integer.parseInt(part1);
+                pos2 = Integer.parseInt(part2);
+
+                if (m1.matches()) {
+                    comando = "spostamento";
+                } else {
+                    if (m2.matches()) {
+                        comando = "presa";
+                    }
                 }
             }
 
-            switch(comando){
+            switch (comando) {
                 case "--help":
                     Messaggi.Help();
                     break;
@@ -141,11 +146,21 @@ public class Menu {
 
                 case "spostamento":
                     System.out.println("Sto effettuando uno spostamento...");
-                    Mossa.SpostamentoSemplice(pos1,pos2);
+                    if(Colore.equals("bianco")) {
+                        mossaValida = Mossa.SpostamentoSempliceWhite(pos1, pos2, d1);
+                    } else {
+                        mossaValida = Mossa.SpostamentoSempliceBlack(pos1, pos2, d1);
+                    }
+                    partitaInCorso=false;
                     break;
 
                 case "presa":
                     System.out.println("Sto effettuando una presa...");
+                    if(Colore.equals("bianco")) {
+                        Mossa.SpostamentoSempliceWhite(pos1, pos2, d1);
+                    } else {
+                        Mossa.SpostamentoSempliceBlack(pos1, pos2, d1);
+                    }
                     break;
 
                 case "abbandona":
@@ -164,22 +179,23 @@ public class Menu {
                     Messaggi.MsgInserimentoSbagliato();
                     break;
             }
-        } while (partitaInCorso);
+        } while (partitaInCorso && mossaValida);
+        return partitaInCorso;
     }
 
-        // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
-        public static boolean Abbandona() {
+    // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
+    public static boolean Abbandona() {
         boolean partitaInCorso = true;
         System.out.print("\nVuoi abbandonare la partita?" +
-                         "\n➤ [Si/No] ");
+                "\n➤ [Si/No] ");
         Scanner input1 = new Scanner(System.in);
         String conferma = input1.nextLine();
         conferma = conferma.toLowerCase();
 
-        if(conferma.equals("si")){
-           boolean IsWhite = Pedina.getIsWhite();
+        if (conferma.equals("si")) {
+            boolean IsWhite = Pedina.getIsWhite();
 
-            if(IsWhite){
+            if (IsWhite) {
                 System.out.println("\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
                 return (partitaInCorso = false);
             } else {
@@ -187,14 +203,14 @@ public class Menu {
                 return (partitaInCorso = false);
             }
 
-        } else if(conferma.equals("no")){ //TODO
+        } else if (conferma.equals("no")) { //TODO
             return (partitaInCorso = true);
 
         } else {
             Messaggi.MsgInserimentoSbagliato();
         }
-         return partitaInCorso;
-     }
+        return partitaInCorso;
+    }
 
     // Metodo con il quale si può terminare immediatamente il programma
     public static void Uscita() {
@@ -204,8 +220,7 @@ public class Menu {
         String uscita = usc.nextLine();
         uscita = uscita.toLowerCase();
 
-        if (uscita.equals("si"))
-        {
+        if (uscita.equals("si")) {
             Messaggi.MsgUscita();
             System.exit(0);
         } else if (uscita.equals("No")) {
@@ -215,3 +230,6 @@ public class Menu {
         }
     }
 }
+
+
+

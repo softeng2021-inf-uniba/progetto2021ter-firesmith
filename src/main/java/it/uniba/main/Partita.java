@@ -20,10 +20,11 @@ public class Partita {
 
     private boolean IsBlack = false, IsWhite = false;
 
+
     Damiera d1 = new Damiera();
 
     public void Gioca() {
-        if (partitaInCorso == true) {
+        if (partitaInCorso) {
             System.out.println(" ⚠ Attenzione, una partita è in corso!");
             return;
         } else {
@@ -38,43 +39,52 @@ public class Partita {
             ImpostaGiocatore();
             System.out.print("\nIl giocatore 1 ha scelto il colore: " + giocatore1.getColore() + " ");
             if (IsWhite) {
-                System.out.println("⛂");  // Pedina bianca
+                System.out.println("⛀");  // Pedina bianca
             } else {
-                System.out.println("⛀");  // Pedina nera
+                System.out.println("⛂");  // Pedina nera
             }
             System.out.print("Il giocatore 2 ha scelto il colore: " + giocatore2.getColore() + " ");
             if (IsWhite) {
-                System.out.println("⛀");  // Pedina nera
+                System.out.println("⛂");  // Pedina nera
             } else {
-                System.out.println("⛂");  // Pedina bianca
+                System.out.println("⛀");  // Pedina bianca
             }
             System.out.println();
         }
-
+        boolean flag;
         int counter = 1; //TODO da eliminare
         do {
             System.out.println("Turno " + counter); //TODO da eliminare
             if ((giocatore1.getColore()).equals("bianco")) {
                 System.out.println("Tocca al giocatore 1");
-                Menu.Partita();
+                flag = Menu.Partita(giocatore1.getColore(),d1);//falso = partita in corso,menu chiuso
+                System.out.println(flag);
                 CalcolaTempo(giocatore1);
-                if (partitaInCorso) {
+                if (!flag) {
                     System.out.println("Tocca al giocatore 2");
-                    Menu.Partita();
+                    flag = Menu.Partita(giocatore2.getColore(),d1);
+                    System.out.println(flag);
                     CalcolaTempo(giocatore2);
+                }else {
+                    partitaInCorso=false;
                 }
+
             } else {
                 System.out.println("Tocca al giocatore 2");
-                Menu.Partita();
+                flag = Menu.Partita(giocatore2.getColore(),d1);
+                System.out.println(flag);
                 CalcolaTempo(giocatore2);
-                if (partitaInCorso) {
+                if (!flag) {
                     System.out.println("Tocca al giocatore 1");
-                    Menu.Partita();
+                    flag = Menu.Partita(giocatore1.getColore(),d1);
+                    System.out.println(flag);
                     CalcolaTempo(giocatore1);
+                }else {
+                    partitaInCorso=false;
                 }
             }
             counter++;
-        } while (partitaInCorso == false);
+        } while (partitaInCorso);
     }
 
     // Metodo che imposta il colore per entrambi i giocatori, sulla base della scelta del giocatore 1
