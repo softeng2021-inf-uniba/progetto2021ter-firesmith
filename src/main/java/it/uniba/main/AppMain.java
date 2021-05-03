@@ -53,7 +53,8 @@ public final class AppMain {
             System.out.println("Application started.");
         }
 
-        Menu.Generale();
+        Menu menu = new Menu();
+        Menu.Generico();
     }
 
 }
