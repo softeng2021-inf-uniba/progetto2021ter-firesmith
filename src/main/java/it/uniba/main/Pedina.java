@@ -1,88 +1,35 @@
 package it.uniba.main;
 
+/** <<entity>> */
+
 public class Pedina {
-    private static boolean isWhite;
+
+    // isWhite = true, se la pedina è bianca
+    // isWhite = false, se la pedina è nera
+    // isValid = true, se la pedina è in una casella valida
+    // isValid = false, se la pedina è in una casella non valida
+    // isBlank = true, se la pedina occupa una casella
+    // isBlank = false, se la pedina non occupa una casella
     private int posRiga;
     private int posColonna;
-
-    private boolean eBianco;
-    private boolean eNero;
-
+    private boolean isWhite;
     private boolean isValid;
-    private boolean isDama;
     private boolean isBlank;
 
-    // Costruttore pedina
     public Pedina(int posRiga, int posColonna) {
         this.posRiga = posRiga;
         this.posColonna = posColonna;
     }
 
-    // Metodi set
-    public void setPosRiga(int posRiga) {
-        this.posRiga = posRiga;
-    }
+    public void setRiga(int posRiga) { this.posRiga = posRiga; }
+    public void setColonna(int posColonna) { this.posColonna = posColonna; }
+    public void setWhite(boolean isWhite) { this.isWhite = isWhite; }
+    public void setValid(boolean isValid) { this.isValid = isValid; }
+    public void setBlank(boolean isBlank) { this.isBlank = isBlank; }
 
-    public void setPosColonna(int posColonna) {
-        this.posColonna = posColonna;
-    }
-
-    public void setDama(boolean dama) {
-        isDama = dama;
-    }
-
-    public static void setIsWhite(boolean isWhite) {
-        Pedina.isWhite = isWhite;
-    }
-
-    public void seteBianco(boolean eBianco) {
-        this.eBianco = eBianco;
-    }
-
-    public void seteNero(boolean eNero) {
-        this.eNero = eNero;
-    }
-
-    public void setBlank(boolean blank) {
-        isBlank = blank;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
-    }
-
-
-
-    // Metodi get
-    public static boolean getIsWhite() {
-        return isWhite;
-    }
-
-    public boolean iseBianco() {
-        return eBianco;
-    }
-
-    public boolean getValid() {
-        return isValid;
-    }
-
-    public boolean getBlank() {
-        return isBlank;
-    }
-
-    public boolean iseNero() {
-        return eNero;
-    }
-
-    public boolean isDama() {
-        return isDama;
-    }
-
-    public int getPosRiga() {
-        return posRiga;
-    }
-
-    public int getPosColonna() {
-        return posColonna;
-    }
+    public int getRiga() { return posRiga; }
+    public int getColonna() { return posColonna; }
+    public boolean getWhite() { return isWhite; }
+    public boolean getValid() { return isValid; }
+    public boolean getBlank() { return isBlank; }
 }

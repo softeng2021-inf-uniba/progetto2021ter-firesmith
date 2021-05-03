@@ -1,29 +1,32 @@
 package it.uniba.main;
 
+import java.util.ArrayList;
+
+/** <<entity>> */
+
+/*
+     Oggetto Giocatore
+     - String Colore
+     - long Tempo
+     - ArrayList<String> CronologiaMosse
+     - int PedineMangiate
+ */
+
 public class Giocatore {
+
+    // Colore = "bianco" oppure "nero" #FIXME in ENUM
     private String Colore;
     private long Tempo;
-    private int[][] CronologiaMosse; // deve essere un array/buffer
+    private ArrayList<String> CronologiaMosse = new ArrayList<String>();
     private int PedineMangiate;
 
-    public void setColore(String colore) {
-        Colore = colore;
-    }
-
-    public void setTempo(long tempo) {
-        Tempo = tempo;
-    }
-
-    public void setCronologiaMosse(int[][] cronologiaMosse) {
-        CronologiaMosse = cronologiaMosse;
-    }
-
-    public void setPedineMangiate(int pedineMangiate) {
-        PedineMangiate = pedineMangiate;
-    }
+    public void setColore(String Colore) { this.Colore = Colore; }
+    public void setTempo(long Tempo) { this.Tempo = Tempo; }
+    public void setCronologiaMosse(String mossa) { CronologiaMosse.add(mossa); }
+    public void setPedineMangiate() { PedineMangiate++; }
 
     public String getColore() { return Colore; }
     public long getTempo() { return Tempo; }
-    public int[][] getCronologiaMosse() { return CronologiaMosse; }
+    public void getCronologiaMosse() { System.out.print(CronologiaMosse); }
     public int getPedineMangiate() { return PedineMangiate; }
 }
