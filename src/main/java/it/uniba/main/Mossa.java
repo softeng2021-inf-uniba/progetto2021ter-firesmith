@@ -10,10 +10,12 @@ public class Mossa {
 
     private int posizione1;
     private int posizione2;
+    private int posizione3;
     private boolean isValid;
 
     public void setPosizione1(int posizione1) { this.posizione1 = posizione1; }
     public void setPosizione2(int posizione2) { this.posizione2 = posizione2; }
+    public void setPosizione3(int posizione3) {this.posizione3 = posizione3; }
     public void setValid(boolean isValid) { this.isValid = isValid; }
 
     public int getPosizione1() { return posizione1; }
@@ -213,14 +215,11 @@ public class Mossa {
                         damiera.DamieraPedine[x2][y2].setBlank(false);
                         damiera.DamieraPedine[x2][y2].setWhite(false);
 
-
                         //1° caso: la presa viene effettuatta a sx rispetto alla casella iniziale (y4 = y2 - 1)
                         if(!damiera.DamieraPedine[x4][y4_1].getBlank() && damiera.DamieraPedine[x4][y4_1].getWhite()) {
                             damiera.DamieraPedine[x4][y4_1].setBlank(true);
                             damiera.DamieraPedine[x4][y4_1].setWhite(false);
                             isValid = true;
-
-
 
                         }
                         //2° caso: la presa viene effettuatta a dx rispetto alla casella iniziale (y4 = y2 + 1)
@@ -245,4 +244,5 @@ public class Mossa {
             System.out.println("Mossa non valida, riprovare: ");
         }
     }
+
 }
