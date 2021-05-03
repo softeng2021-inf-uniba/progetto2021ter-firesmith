@@ -10,11 +10,20 @@ package it.uniba.main;
  * @author utente
  */
 
+/*
+    Metodi classe Damiera
+     - Damiera()
+     - StampaPosizioniPedine()
+     - StampaDamieraPedine()
+     - CercaRiga()
+     - CercaColonna()
+ */
 public class Damiera {
 
     final static int RIGHE = 8;
     final static int COLONNE = 8;
-    final static int[][] damiera = new int[][]{
+    // Questa damiera viene usata per calcolare le coordinate delle pedine da spostare
+    final static int[][] PosizioniPedine = new int[][] {
             {1, 0, 2, 0, 3, 0, 4, 0},
             {0, 5, 0, 6, 0, 7, 0, 8},
             {9, 0, 10, 0, 11, 0, 12, 0},
@@ -25,80 +34,58 @@ public class Damiera {
             {0, 29, 0, 30, 0, 31, 0, 32}
     };
 
-    public Pedina[][] damieraPezzi = new Pedina[RIGHE][COLONNE];
+    // Alloca la memoria per una damiera fatta di oggetti Pedine
+    public Pedina[][] DamieraPedine = new Pedina[RIGHE][COLONNE];
 
-    public  Damiera() {
+    public Damiera() {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
 
-                damieraPezzi[i][j] = new Pedina(i, j);
+                DamieraPedine[i][j] = new Pedina(i, j);
 
-                if (damiera[i][j] != 0) {
-                    damieraPezzi[i][j].setValid(true);
+                // isValid = true, se la pedina sta su un numero
+                // isValid = false, se la pedina sta su uno 0
+                if (PosizioniPedine[i][j] != 0) {
+                    DamieraPedine[i][j].setValid(true);
                 } else {
-                    damieraPezzi[i][j].setValid(false);
+                    DamieraPedine[i][j].setValid(false);
                 }
 
-                if (damiera[i][j] > 0 && damiera[i][j] <= 12) {
-                    damieraPezzi[i][j].seteBianco(true);
-                    damieraPezzi[i][j].seteNero(false);
-                    damieraPezzi[i][j].setBlank(false);
-
-                } else if (damiera[i][j] >= 13 && damiera[i][j] < 21) {
-                    damieraPezzi[i][j].seteBianco(false);
-                    damieraPezzi[i][j].seteNero(false);
-                    damieraPezzi[i][j].setBlank(true);
-
-                } else if (damiera[i][j] >= 21 && damiera[i][j] <= 32) {
-                    damieraPezzi[i][j].seteNero(true);
-                    damieraPezzi[i][j].seteBianco(false);
-                    damieraPezzi[i][j].setBlank(false);
-                }
-            }
-        }
-    }
-
-    public void StampaNumeri() {
-
-        System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
-                if (damiera[i][j] != 0) {
-                    if (damiera[i][j] > 0 && damiera[i][j] < 10) {
-                        System.out.print("│ " + damiera[i][j] + "  ");
-                    } else {
-                        System.out.print("│ " + damiera[i][j] + " ");
-                    }
+                // isBlank = true, se la pedine non esiste (non ha valore)
+                // isBlank = false, se la pedina esiste (ha valore)
+                // Le pedine bianche stanno dalla posizione 1 alla posizione 12
+                if (PosizioniPedine[i][j] > 0 && PosizioniPedine[i][j] <= 12) {
+                    DamieraPedine[i][j].setWhite(true);
+                    DamieraPedine[i][j].setBlank(false);
                 } else {
-                    System.out.print("│    ");
-                }
-            }
-            System.out.print("│");
-            System.out.println();
-            if (i != RIGHE - 1) {
-                System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
-            } else {
-                System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
-            }
-        }
-    }
-
-    /*public void StampaPezzi() {
-        System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (damiera[i][j] != 0) {
-                    if (damiera[i][j] > 0 && damiera[i][j] <= 12) {
-                        System.out.print("│ ⛀  ");
+                    // Tra la posizione 13 e 21 non ci sono pedine
+                    if (PosizioniPedine[i][j] >= 13 && PosizioniPedine[i][j] < 21) {
+                        DamieraPedine[i][j].setWhite(false);
+                        DamieraPedine[i][j].setBlank(true);
                     } else {
-                        if (damiera[i][j] >= 13 && damiera[i][j] < 21) {
-                            System.out.print("│    ");
-                        } else {
-                            if (damiera[i][j] >= 21 && damiera[i][j] <= 32) {
-                                System.out.print("│ ⛂  ");
-                            }
+                        // Le pedine nere stanno dalla posizione 21 alla posizione 32
+                        if (PosizioniPedine[i][j] >= 21 && PosizioniPedine[i][j] <= 32) {
+                            DamieraPedine[i][j].setWhite(false);
+                            DamieraPedine[i][j].setBlank(false);
                         }
                     }
+                }
+            }
+        }
+    }
+
+    // Stampa la matrice che contiene la posizione delle pedine
+    public void StampaPosizioniPedine() {
+
+        System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (PosizioniPedine[i][j] != 0) {
+                    if (PosizioniPedine[i][j] > 0 && PosizioniPedine[i][j] < 10) {
+                        System.out.print("│ " + PosizioniPedine[i][j] + "  ");
+                    } else {
+                        System.out.print("│ " + PosizioniPedine[i][j] + " ");
+                    }
                 } else {
                     System.out.print("│    ");
                 }
@@ -111,41 +98,18 @@ public class Damiera {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
             }
         }
-    }*/
-
-    //entrambe ritornano per forza quindi non può ritornare null
-    public static int RicercaX (int pos) {
-        int i1 = 0;
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
-                if (damiera[i][j] == pos) {
-                    i1 = i;
-                }
-            }
-        }
-        return i1;
     }
 
-    public static int RicercaY (int pos) {
-        int j1 = 0;
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
-                if (damiera[i][j] == pos) {
-                    j1 = j;
-                }
-            }
-        }
-        return j1;
-    }
-
-    public void StampaPezzi() {
+    // Stampa la damiera con le pedine del colore bianco o nero
+    public void StampaDamieraPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
-                boolean PedinaBianca = damieraPezzi[i][j].iseBianco();
-                boolean PedinaEsistente = damieraPezzi[i][j].getValid();
-                boolean PedinaVuota = damieraPezzi[i][j].getBlank();
+
+                boolean PedinaBianca = DamieraPedine[i][j].getWhite();
+                boolean PedinaEsistente = DamieraPedine[i][j].getValid();
+                boolean PedinaVuota = DamieraPedine[i][j].getBlank();
 
                 if (PedinaEsistente && !PedinaVuota) {
                     if (PedinaBianca) {
@@ -158,13 +122,39 @@ public class Damiera {
                 }
 
             }
+
             System.out.print("│");
             System.out.println();
+
             if (i != RIGHE - 1) {
                 System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
             } else {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
             }
         }
+    }
+
+    public int CercaRiga(int pos) {
+        int riga = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (PosizioniPedine[i][j] == pos) {
+                    riga = i;
+                }
+            }
+        }
+        return riga;
+    }
+
+    public int CercaColonna(int pos) {
+        int colonna = 0;
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+                if (PosizioniPedine[i][j] == pos) {
+                    colonna = j;
+                }
+            }
+        }
+        return colonna;
     }
 }
