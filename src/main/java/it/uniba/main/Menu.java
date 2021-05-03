@@ -114,6 +114,7 @@ public class Menu {
                     + "\n ♢ abbandona"
                     + "\n ♢ tempo"
                     + "\n ♢ 'spostamento' (es. 9-13)"
+                    + "\n ♢ 'presa semplice' (es. 5x14)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -204,6 +205,20 @@ public class Menu {
                     TurnoBianco = partita.getTurno();
                     break;
 
+                case "presa semplice":
+                    System.out.println("Sto effettuando la presa...");
+
+                    mossa.PresaSempliceWhite(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoBianco = partita.getTurno();
+                    break;
+
                 case "abbandona":
                     Abbandona(bianco);
                     TurnoBianco = partita.getTurno();
@@ -259,7 +274,8 @@ public class Menu {
                     + "\n ♢ damiera"
                     + "\n ♢ abbandona"
                     + "\n ♢ tempo"
-                    + "\n ♢ 'spostamento' (es. 9-13)"
+                    + "\n ♢ 'spostamento' (es. 13-9)"
+                    + "\n ♢ 'presa semplice' (es. 18x9)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -350,6 +366,21 @@ public class Menu {
                     }
                     TurnoNero = partita.getTurno();
                     break;
+
+                case "presa semplice":
+                    System.out.println("Sto effettuando la presa...");
+
+                    mossa.PresaSempliceBlack(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoNero = partita.getTurno();
+                    break;
+
                 case "abbandona":
                     Abbandona(nero);
                     TurnoNero = partita.getTurno();
