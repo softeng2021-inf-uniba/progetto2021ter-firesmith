@@ -54,7 +54,7 @@ public final class AppMain {
         }
 
         Menu menu = new Menu();
-        Menu.Generico();
+        menu.Generico();
     }
 
 }

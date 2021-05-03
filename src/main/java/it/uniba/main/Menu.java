@@ -22,8 +22,10 @@ public class Menu {
     boolean Bianco = false;
     boolean Nero = false;
 
-    private static final String Spostamento = "^([1-3]{0,1}[0-9]{1})([-]{1})([1-3]{0,1}[0-9]{1})$";
-    private static final String Presa = "^([1-3]{0,1}[0-9]{1})([x]{1})([1-3]{0,1}[0-9]{1})$";
+    //public static final String ALLCASES = "\\d{1,2}([x]{1}|[-]{1})\\d{1,2}([x]{1}\\d{1,2})?";*/
+    public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
+    public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
+    public static final String PRESA_M = "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1}";
 
     // All'avvio del programma, non c'è nessuna partita in corso
 
@@ -47,6 +49,8 @@ public class Menu {
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
+
+            comando = comando.toLowerCase(); //Trasforma l'input in minuscolo
 
             // Controlla cosa è stato inserito
             switch(comando){
@@ -93,6 +97,10 @@ public class Menu {
 
         boolean TurnoBianco = true; // Inizio turno giocatore bianco
 
+        Mossa mossa = new Mossa(0,0);
+
+        boolean chk = false;
+
         boolean StatoPartita = partita.getStato();
 
         do {
@@ -105,6 +113,7 @@ public class Menu {
                     + "\n ♢ damiera"
                     + "\n ♢ abbandona"
                     + "\n ♢ tempo"
+                    + "\n ♢ 'spostamento' (es. 9-13)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -112,6 +121,51 @@ public class Menu {
             String comando = in.nextLine();
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
 
+            // Gestione regex (bianco)
+            Pattern p1 = Pattern.compile(SPOSTAMENTO);
+            Pattern p2 = Pattern.compile(PRESA_S);
+            Pattern p3 = Pattern.compile(PRESA_M);
+
+            Matcher m1 = p1.matcher(comando);
+            Matcher m2 = p2.matcher(comando);
+            Matcher m3 = p3.matcher(comando);
+
+            int PosizioneIniziale = 0;
+            int PosizioneFinale = 0;
+            int PosizioneFinale2 = 0;
+
+            String[] array = comando.split("-|x");
+
+            try {
+                if ((array.length > 1)) {
+
+                    String PosizioneInizialeTemp = array[0];
+                    String PosizioneFinaleTemp = array[1];
+
+
+                    PosizioneIniziale = Integer.parseInt(PosizioneInizialeTemp);
+                    PosizioneFinale = Integer.parseInt(PosizioneFinaleTemp);
+
+
+                    mossa.setPosizione1(PosizioneIniziale);
+                    mossa.setPosizione2(PosizioneFinale);
+
+                    if(array.length > 2) {
+                        String PosizioneFinale2Temp = array[2];
+                        PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
+                    }
+
+                    if (m1.matches()) {
+                        comando = "spostamento";
+                    } else if (m2.matches()) {
+                        comando = "presa semplice";
+                    } else if (m3.matches()) {
+                        comando = "presa multipla";
+                    }
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println("\nIllegal string (exception)");
+            }
             switch(comando){
                 case "--help":
                     msg.Help();
@@ -135,6 +189,19 @@ public class Menu {
 
                 case "gioca":
                     msg.MsgInfoPartita();
+                    break;
+                case "spostamento":
+                    System.out.println("Sto effettuando lo spostamento...");
+
+                    mossa.SpostamentoSempliceBianco(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                    } else {
+                        partita.setTurno(true);
+                    }
+
+                    TurnoBianco = partita.getTurno();
                     break;
 
                 case "abbandona":
@@ -173,10 +240,14 @@ public class Menu {
     // 	Se Partita = true, la partita è in corso
     // 	Se Partita = false, la partita non è in corso/è stata terminata
     public void GiocatoreNero(Giocatore nero) {
+        Mossa mossa = new Mossa(0,0);
 
+        boolean StatoPartita = partita.getStato();
         // TurnoNero = true, se il turno è in corso
         // TurnoNero = false, se il turno è finito
         boolean TurnoNero = true; // Inizio turno giocatore nero
+
+        boolean chk = false;
 
         do {
             System.out.print("┌──────────────────────┒"
@@ -188,6 +259,7 @@ public class Menu {
                     + "\n ♢ damiera"
                     + "\n ♢ abbandona"
                     + "\n ♢ tempo"
+                    + "\n ♢ 'spostamento' (es. 9-13)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -195,6 +267,52 @@ public class Menu {
             String comando = in.nextLine();
 
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
+
+            // Gestione regex (nero)
+
+            Pattern p1 = Pattern.compile(SPOSTAMENTO);
+            Pattern p2 = Pattern.compile(PRESA_S);
+            Pattern p3 = Pattern.compile(PRESA_M);
+
+            Matcher m1 = p1.matcher(comando);
+            Matcher m2 = p2.matcher(comando);
+            Matcher m3 = p3.matcher(comando);
+
+            int PosizioneIniziale = 0;
+            int PosizioneFinale = 0;
+            int PosizioneFinale2 = 0;
+
+            String[] array = comando.split("-|x");
+
+            try {
+                if ((array.length > 1)) {
+
+                    String PosizioneInizialeTemp = array[0];
+                    String PosizioneFinaleTemp = array[1];
+
+                    PosizioneIniziale = Integer.parseInt(PosizioneInizialeTemp);
+                    PosizioneFinale = Integer.parseInt(PosizioneFinaleTemp);
+
+                    mossa.setPosizione1(PosizioneIniziale);
+                    mossa.setPosizione2(PosizioneFinale);
+
+                    if(array.length > 2 && !array[2].equals("")) {
+                        String PosizioneFinale2Temp = array[2];
+                        PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
+
+                    }
+
+                    if (m1.matches()) {
+                        comando = "spostamento";
+                    } else if (m2.matches()) {
+                        comando = "presa semplice";
+                    } else if (m3.matches()) {
+                        comando = "presa multipla";
+                    }
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("\nIllegal string (exception)");
+            }
 
             switch(comando){
                 case "--help":
@@ -220,7 +338,18 @@ public class Menu {
                 case "gioca":
                     msg.MsgInfoPartita();
                     break;
+                case "spostamento":
+                    System.out.println("Sto effettuando lo spostamento...");
 
+                    mossa.SpostamentoSempliceNero(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoNero = partita.getTurno();
+                    break;
                 case "abbandona":
                     Abbandona(nero);
                     TurnoNero = partita.getTurno();
