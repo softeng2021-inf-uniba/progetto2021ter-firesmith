@@ -51,6 +51,8 @@ public class Pedina {
         isValid = valid;
     }
 
+
+
     // Metodi get
     public static boolean getIsWhite() {
         return isWhite;
@@ -70,6 +72,10 @@ public class Pedina {
 
     public boolean iseNero() {
         return eNero;
+    }
+
+    public boolean isDama() {
+        return isDama;
     }
 
     public int getPosRiga() {
