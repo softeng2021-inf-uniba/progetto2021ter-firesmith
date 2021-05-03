@@ -10,140 +10,44 @@ import java.util.*;
 import static it.uniba.main.AppMain.*;
 
 
-/*CLASSE PARTITA: classe che racchiude i metodi e gli attributi necessari per gestire una partita*/
+/** <<entity>> */
+
 public class Partita {
 
-    boolean partitaInCorso = false;
+    // stato = false, se la partita non è in corso
+    // stato = true, se la partita è in corso
+    // turno = false, se il turno non è finito
+    // turno = true, se il turno è finito
+    // abbandona = false, se non è stato usato il comando abbandona
+    // abbandona = true, se è stato usato il comando abbandona
+    private boolean stato = false;
+    private boolean turno = false;
+    private boolean abbandona = false;
+    private Giocatore giocatore1 = new Giocatore();
+    private Giocatore giocatore2 = new Giocatore();
+    private Damiera damiera = new Damiera();
 
-    static Giocatore giocatore1 = new Giocatore();
-    static Giocatore giocatore2 = new Giocatore();
-
-    private boolean IsBlack = false, IsWhite = false;
-
-
-    Damiera d1 = new Damiera();
-
-    public void Gioca() {
-        if (partitaInCorso) {
-            System.out.println(" ⚠ Attenzione, una partita è in corso!");
-            return;
-        } else {
-            partitaInCorso = true;
-
-            System.out.print("\n ⚔ Iniziando una nuova partita... ⚔ \n" +
-                    "\nScegli il giocatore: " +
-                    "\n ♦ Bianco" +
-                    "\n ♢ Nero" +
-                    "\n➤ ");
-
-            ImpostaGiocatore();
-            System.out.print("\nIl giocatore 1 ha scelto il colore: " + giocatore1.getColore() + " ");
-            if (IsWhite) {
-                System.out.println("⛀");  // Pedina bianca
-            } else {
-                System.out.println("⛂");  // Pedina nera
-            }
-            System.out.print("Il giocatore 2 ha scelto il colore: " + giocatore2.getColore() + " ");
-            if (IsWhite) {
-                System.out.println("⛂");  // Pedina nera
-            } else {
-                System.out.println("⛀");  // Pedina bianca
-            }
-            System.out.println();
-        }
-        boolean flag;
-        int counter = 1; //TODO da eliminare
-        do {
-            System.out.println("Turno " + counter); //TODO da eliminare
-            if ((giocatore1.getColore()).equals("bianco")) {
-                System.out.println("Tocca al giocatore 1");
-                flag = Menu.Partita(giocatore1.getColore(),d1);//falso = partita in corso,menu chiuso
-                CalcolaTempo(giocatore1);
-                if (!flag) {
-                    System.out.println("Tocca al giocatore 2");
-                    flag = Menu.Partita(giocatore2.getColore(),d1);
-                    CalcolaTempo(giocatore2);
-                }else {
-                    partitaInCorso=false;
-                }
-
-            } else {
-                System.out.println("Tocca al giocatore 2");
-                flag = Menu.Partita(giocatore2.getColore(),d1);
-                CalcolaTempo(giocatore2);
-                if (!flag) {
-                    System.out.println("Tocca al giocatore 1");
-                    flag = Menu.Partita(giocatore1.getColore(),d1);
-                    CalcolaTempo(giocatore1);
-                }else {
-                    partitaInCorso=false;
-                }
-            }
-            counter++;
-        } while (partitaInCorso);
+    // Creo la partita
+    public Partita() {
+        stato = false;
+        turno = false;
+        abbandona = false;
+        Giocatore giocatore1 = new Giocatore();
+        Giocatore giocatore2 = new Giocatore();
+        Damiera damiera = new Damiera();
     }
 
-    // Metodo che imposta il colore per entrambi i giocatori, sulla base della scelta del giocatore 1
-    public void ImpostaGiocatore() {
+    public void setGiocatore1(Giocatore giocatore1) { this.giocatore1 = giocatore1; }
+    public void setGiocatore2(Giocatore giocatore2) { this.giocatore2 = giocatore2; }
+    public void setDamiera(Damiera damiera) { this.damiera = damiera; }
+    public void setStato(boolean stato) { this.stato = stato; }
+    public void setTurno(boolean turno) { this.turno = turno; }
+    public void setAbbandona(boolean abbandona) { this.abbandona = abbandona; }
+    public Giocatore getGiocatore1() { return giocatore1; }
+    public Giocatore getGiocatore2() { return giocatore2; }
+    public Damiera getDamiera() { return damiera; }
+    public boolean getStato() { return stato; }
+    public boolean getTurno() { return turno; }
+    public boolean getAbbandona() { return abbandona; }
 
-        do {
-            Scanner input = new Scanner(System.in);
-            String Giocatore = input.nextLine();
-            Giocatore = Giocatore.toLowerCase();
-
-            if (Giocatore.equals("bianco")) {
-                IsWhite = true;                 // serve solo per il while
-                giocatore1.setColore(Giocatore);
-                giocatore2.setColore("nero");
-            } else if (Giocatore.equals("nero")) {
-                IsBlack = true;                 // serve solo per il while
-                giocatore1.setColore(Giocatore);
-                giocatore2.setColore("bianco");
-            } else {
-                System.out.print("\n ⚠ Inserito comando sbagliato! Riprova." +
-                        "\n➤ ");
-
-            }
-        } while (IsWhite == false & IsBlack == false); // Controllo sui flag, che permette di inserire correttamente
-        // il colore per il giocatore 1
-    }
-
-    // Metodo che mostra il tempo trascorso per il giocatore 1 (il primo che interagisce con il programma)
-    public static void MostraTempo() {
-        String g1 = giocatore1.getColore(), g2 = giocatore2.getColore();
-
-        long startTimeGiocatore1 = giocatore1.getTempo();
-        long startTimeGiocatore2 = giocatore2.getTempo();
-        long endTime = System.currentTimeMillis();
-
-        long resultTime1 = (endTime - startTimeGiocatore1) / 1000;
-        long resultTime2 = (endTime - startTimeGiocatore2) / 1000;
-
-        // giocatore1.setTempo(resultTime);
-
-        if (resultTime1 < 60) {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " +
-                    "\n ♢ " + resultTime1 + " secondi (" + g1 + ")\n" +
-                    "\n ♢ " + resultTime2 + " secondi (" + g2 + ")");
-        } else {
-            System.out.println("\n \uD83D\uDD51 Il tempo trascorso dall'inizio della partita è: " + resultTime1 / 60 + " minuto/i (" + g2 + ")" + "\n");
-        }
-    }
-
-    public static void AggiornaDamiera() {
-
-    }
-
-    public static void CalcolaTempo(Giocatore g) {
-
-        long startTime = g.getTempo();
-        long endTime = System.currentTimeMillis();
-
-        long resultTime = (endTime - startTime) / 1000;
-
-        g.setTempo(resultTime);
-    }
 }
-
-
-
