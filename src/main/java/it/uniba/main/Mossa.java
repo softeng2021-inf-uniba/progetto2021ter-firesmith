@@ -245,4 +245,38 @@ public class Mossa {
         }
     }
 
+    //Metodo che si occupa di effettuare una presa per il bianco
+    public void PresaMultiplaWhite(Damiera damiera){
+
+        //la presa multipla è una concatenazione di due prese semplici
+        PresaSempliceWhite(damiera);
+
+        int x3 = damiera.CercaRiga(posizione3);
+        int y3 = damiera.CercaColonna(posizione3);
+
+        System.out.println("posizione3: " + x3 + "," + y3 + " posizione: " + posizione3);
+
+        setPosizione1(posizione2);
+        setPosizione2(posizione3);
+
+        PresaSempliceWhite(damiera);
+    }
+
+    //Metodo che si occupa di effettuare una presa multipla per il nero
+    public void PresaMultiplaBlack(Damiera damiera) {
+
+        //la presa multipla è una concatenazione di due prese semplici
+        PresaSempliceBlack(damiera);
+
+        int x3 = damiera.CercaRiga(posizione3);
+        int y3 = damiera.CercaColonna(posizione3);
+
+        System.out.println("posizione3: " + x3 + "," + y3);
+
+        setPosizione1(posizione2);
+        setPosizione2(posizione3);
+
+        PresaSempliceBlack(damiera);
+    }
+
 }
