@@ -25,4 +25,86 @@ public class Mossa {
         this.posizione2 = posizione1;
         this.isValid = false;
     }
+
+    //Metodo che si occupa di far muovere le pedine del giocatore bianco
+    public void SpostamentoSempliceBianco(Damiera damiera) {
+
+        //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
+        int x1 = damiera.CercaRiga(posizione1);
+        int x2 = damiera.CercaRiga(posizione2);
+
+        int y1 = damiera.CercaColonna(posizione1);
+        int y2 = damiera.CercaColonna(posizione2);
+
+        System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
+
+        //vengono effettuati una serie di controlli per controllare che le pedine vengano spostate solo "dall'alto verso il basso" (bianco) e che la (casella in) pos2 disti dalla (casella in) pos1 esattemente 1
+        if (x2 > x1) {
+            if ((x2 == x1 + 1) &&  // q
+                    (y2 == y1 + 1 ||
+                            y2 == y1 - 1)) {
+
+                //qui viene controllata che la casella iniziale sia effettivamente occupata da una pedina (bianca) e quella di arrivo sia vuota
+                if (damiera.DamieraPedine[x2][y2].getBlank() &&
+                        !damiera.DamieraPedine[x1][y1].getBlank()) {
+
+                    //vengono settati i vari flag in modo da ricostruire graficamente la situazione
+                    damiera.DamieraPedine[x1][y1].setBlank(true);
+                    damiera.DamieraPedine[x2][y2].setBlank(false);
+                    damiera.DamieraPedine[x2][y2].setWhite(true);
+                    isValid = true;
+
+                    damiera.StampaDamieraPedine();
+
+                } else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+        }
+    }
+
+    //Metodo che si occupa di far muovere le pedine del giocatore nero
+    public void SpostamentoSempliceNero(Damiera damiera) {
+
+        //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
+        int x1 = damiera.CercaRiga(posizione1);
+        int x2 = damiera.CercaRiga(posizione2);
+
+        int y1 = damiera.CercaColonna(posizione1);
+        int y2 = damiera.CercaColonna(posizione2);
+
+        System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
+
+        //vengono effettuati una serie di controlli per controllare che le pedine vengano spostate solo "dall'alto verso il basso" (bianco) e che la (casella in) pos2 disti dalla (casella in) pos1 esattemente 1
+        if (x2 < x1) {
+            if ((x2 == x1 - 1) &&
+                    (y2 == y1 + 1 ||
+                            y2 == y1 - 1)) {
+
+                //qui viene controllata che la casella iniziale sia effettivamente occupata da una pedina (nera) e quella di arrivo sia vuota
+                if (damiera.DamieraPedine[x2][y2].getBlank() &&
+                        !damiera.DamieraPedine[x1][y1].getBlank()) {
+
+                    //vengono settati i vari flag in modo da ricostruire graficamente la situazione
+                    damiera.DamieraPedine[x1][y1].setBlank(true);
+                    damiera.DamieraPedine[x2][y2].setBlank(false);
+                    damiera.DamieraPedine[x2][y2].setWhite(false);
+                    isValid = true;
+
+                    damiera.StampaDamieraPedine();
+
+                } else {
+                    System.out.println("Mossa non valida, riprovare: ");
+                }
+            } else {
+                System.out.println("Mossa non valida, riprovare: ");
+            }
+        } else {
+            System.out.println("Mossa non valida, riprovare: ");
+        }
+    }
 }
