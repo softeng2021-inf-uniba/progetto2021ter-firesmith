@@ -219,6 +219,19 @@ public class Menu {
                     TurnoBianco = partita.getTurno();
                     break;
 
+                case "presa multipla":
+                    System.out.println("Sto effettuando la presa...");
+                    mossa.PresaMultiplaWhite(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoBianco = partita.getTurno();
+                    break;
+
                 case "abbandona":
                     Abbandona(bianco);
                     TurnoBianco = partita.getTurno();
@@ -371,6 +384,20 @@ public class Menu {
                     System.out.println("Sto effettuando la presa...");
 
                     mossa.PresaSempliceBlack(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoNero = partita.getTurno();
+                    break;
+
+                case "presa multipla":
+                    System.out.println("Sto effettuando la presa...");
+
+                    mossa.PresaMultiplaBlack(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
