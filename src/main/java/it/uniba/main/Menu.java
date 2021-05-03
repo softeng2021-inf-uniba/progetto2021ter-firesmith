@@ -115,6 +115,7 @@ public class Menu {
                     + "\n ♢ tempo"
                     + "\n ♢ 'spostamento' (es. 9-13)"
                     + "\n ♢ 'presa semplice' (es. 5x14)"
+                    + "\n ♢ 'presa multipla' (es. 2x9x18)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -289,6 +290,7 @@ public class Menu {
                     + "\n ♢ tempo"
                     + "\n ♢ 'spostamento' (es. 13-9)"
                     + "\n ♢ 'presa semplice' (es. 18x9)"
+                    + "\n ♢ 'presa multipla' (es. 18x9x2)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 

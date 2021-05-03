@@ -122,14 +122,12 @@ public class Mossa {
 
         //viene creata una 3a variabile che ha doppia coordinata y in quanto deve considerare i due casi in cui la presa venga effettuata a sx o dx. La casella individuata da x4 e y4 rappresenta la casella "di mezzo" fra quella in pos1 e quella in pos2
         int x4 = x2 - 1;
-        int y4_1 = 0;
+        int y4_1 = y2 - 1;
         int y4_2 = y2 + 1;
 
         //controllo anti-eccezione ArrayOutOfBounds
         if(y2 == 0) {
             y4_1 = 2;
-        } else {
-            y4_1 = y2 - 1;
         }
 
         System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
@@ -191,20 +189,17 @@ public class Mossa {
         //viene creata una 3a variabile che ha doppia coordinata y in quanto deve considerare i due casi in cui la presa venga effettuata a sx o dx. La casella individuata da x3 e y3 rappresenta la casella "di mezzo" fra quella in pos1 e quella in pos2
         int x4 = x2 + 1;
         int y4_2 = y2 + 1;
-        int y4_1 = 0;
+        int y4_1 = y2 - 1;
 
         //controllo anti-eccezione ArrayOutOfBounds
         if(y2 == 0) {
             y4_1 = 2;
-        } else {
-            y4_1 = y2 - 1;
         }
 
         System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
 
         //vengono effettuati una serie di controlli per controllare che le pedine vengano spostate solo "dall'alto verso il basso" (bianco) e che la (casella in) pos2 disti dalla (casella in) pos1 esattemente 2
         if (x2 < x1) {
-            System.out.println("NB: è il turno del giocatore nero");
             if ((x2 == x1 - 2) && (y2 == y1 - 2 || y2 == y1 + 2)) {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
 
