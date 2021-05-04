@@ -155,6 +155,7 @@ public class Menu {
                     if(array.length > 2) {
                         String PosizioneFinale2Temp = array[2];
                         PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
+                        mossa.setPosizione3(PosizioneFinale2);
                     }
 
                     if (m1.matches()) {
@@ -330,7 +331,7 @@ public class Menu {
                     if(array.length > 2 && !array[2].equals("")) {
                         String PosizioneFinale2Temp = array[2];
                         PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
-
+                        mossa.setPosizione3(PosizioneFinale2);
                     }
 
                     if (m1.matches()) {
