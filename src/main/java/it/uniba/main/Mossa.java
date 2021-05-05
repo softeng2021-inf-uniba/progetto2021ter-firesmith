@@ -111,7 +111,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di effettuare una presa per il bianco
-    public void PresaSempliceWhite(Damiera damiera){
+    public boolean PresaSempliceWhite(Damiera damiera){
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -120,16 +120,9 @@ public class Mossa {
         int y1 = damiera.CercaColonna(posizione1);
         int y2 = damiera.CercaColonna(posizione2);
 
-        //viene creata una 3a variabile che ha doppia coordinata y in quanto deve considerare i due casi in cui la presa venga effettuata a sx o dx. La casella individuata da x4 e y4 rappresenta la casella "di mezzo" fra quella in pos1 e quella in pos2
-        int x4 = x2 - 1;
-        int y4_1 = y2 - 1;
-        int y4_2 = y2 + 1;
 
-        //controllo anti-eccezione ArrayOutOfBounds
-        if(y2 == 0 || y2 == 7) {
-            y4_1 = 1;
-            y4_2 = 6;
-        }
+        int x4 = x2 - 1;
+
 
         System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
 
@@ -167,24 +160,27 @@ public class Mossa {
 
                         }
 
-                        //damiera.StampaDamieraPedine();
-
                     } else {
                         System.out.println("Mossa non valida, riprovare: ");
+                        isValid = false;
                     }
                 }else {
                     System.out.println("Mossa non valida, riprovare: ");
+                    isValid = false;
                 }
             } else {
                 System.out.println("Mossa non valida, riprovare: ");
+                isValid = false;
             }
         } else {
             System.out.println("Mossa non valida, riprovare: ");
+            isValid = false;
         }
+        return isValid;
     }
 
     //Metodo che si occupa di effettuare una presa per il nero
-    public void PresaSempliceBlack(Damiera damiera) {
+    public boolean PresaSempliceBlack(Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -195,14 +191,6 @@ public class Mossa {
 
         //viene creata una 3a variabile che ha doppia coordinata y in quanto deve considerare i due casi in cui la presa venga effettuata a sx o dx. La casella individuata da x3 e y3 rappresenta la casella "di mezzo" fra quella in pos1 e quella in pos2
         int x4 = x2 + 1;
-        int y4_1 = y2 + 1;
-        int y4_2 = y2 - 1;
-
-        //controllo anti-eccezione ArrayOutOfBounds 14 = x=3 y=3 10 x=2 y=2
-        if(y2 == 0 || y2 == 7) {
-            y4_1 = 1;
-            y4_2 = 6;
-        }
 
         System.out.println("posizione1: " + x1 + "," + y1 + "\nposizione2: " + x2 + "," + y2);
 
@@ -236,20 +224,23 @@ public class Mossa {
                             isValid = true;
                         }
 
-                        //damiera.StampaDamieraPedine();
-
                     } else {
                         System.out.println("Mossa non valida, riprovare: ");
+                        isValid = false;
                     }
                 }else {
                     System.out.println("Mossa non valida, riprovare: ");
+                    isValid = false;
                 }
             } else {
                 System.out.println("Mossa non valida, riprovare: ");
+                isValid = false;
             }
         } else {
             System.out.println("Mossa non valida, riprovare: ");
+            isValid = false;
         }
+        return isValid;
     }
 
     //Metodo che si occupa di effettuare una presa per il bianco: è una concatenazione di due prese semplici
@@ -279,6 +270,7 @@ public class Mossa {
         } else {
             System.out.println("Presa multipla non valida");
         }
+
     }
 
     //Metodo che si occupa di effettuare una presa multipla per il nero
@@ -310,7 +302,6 @@ public class Mossa {
     }
 
     public boolean PresaMultiplaWhiteProva(Damiera DamieraCopia){ //PROVA
-
 
         boolean prova = false;
         boolean prova1 = PresaSempliceWhite(DamieraCopia);
@@ -357,13 +348,8 @@ public class Mossa {
         boolean prova1 = PresaSempliceBlack(DamieraCopia);
         boolean prova2 = false;
 
-        System.out.println("Stampa prova" + prova1);
-        //DamieraCopia.StampaDamieraPedine();
-
         int x3 = DamieraCopia.CercaRiga(posizione3);
         int y3 = DamieraCopia.CercaColonna(posizione3);
-
-        System.out.println("posizione3PROVA: " + x3 + "," + y3 + " posizionePROVA: " + posizione3);
 
         if(prova1)
         {
@@ -372,7 +358,7 @@ public class Mossa {
             setPosizione1(posizione2);
             setPosizione2(posizione3);
 
-            prova2 =  PresaSempliceBlack(DamieraCopia);
+            prova2 = PresaSempliceBlack(DamieraCopia);
             if(prova2) {
                 System.out.println("SECONDA MOSSA VALIDA" + prova2);
                 prova = true;
