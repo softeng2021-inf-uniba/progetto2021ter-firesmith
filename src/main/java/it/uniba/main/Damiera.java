@@ -140,12 +140,21 @@ public class Damiera {
                 boolean PedinaBianca = DamieraPedine[i][j].getWhite();
                 boolean PedinaEsistente = DamieraPedine[i][j].getValid();
                 boolean PedinaVuota = DamieraPedine[i][j].getBlank();
+                boolean Dama = DamieraPedine[i][j].getDama();
 
                 if (PedinaEsistente && !PedinaVuota) {
                     if (PedinaBianca) {
-                        System.out.print("│ ⛀  ");
+                        if (Dama) {
+                            System.out.print("│ \u2631  ");
+                        } else {
+                            System.out.print("│ ⛀  ");
+                        }
                     } else {
-                        System.out.print("│ ⛂  ");
+                        if (Dama) {
+                            System.out.print("│ \u2633  ");
+                        } else {
+                            System.out.print("│ ⛂  ");
+                        }
                     }
                 } else {
                     System.out.print("│    ");

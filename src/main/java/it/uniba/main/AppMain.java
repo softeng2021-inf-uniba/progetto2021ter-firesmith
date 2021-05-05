@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
 import java.util.Scanner;
+import it.uniba.sotorrent.GoogleDocsUtils;
 
-// import it.uniba.sotorrent.GoogleDocsUtils;
-// disattivato per problemi di compilazione
 
 /** Class Type: <<Boundary>>
  *  Responsabilities: The main class for the project.
