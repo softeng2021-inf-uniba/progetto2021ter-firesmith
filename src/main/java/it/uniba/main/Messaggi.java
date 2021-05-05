@@ -1,22 +1,10 @@
 package it.uniba.main;
 
-/** <<boundary>> */
-
-/*
-    Metodi classe Messaggi
-     - Help()
-     - MsgUscita()
-     - MsgTornaMenu()
-     - MsgErroreIns()
-     - MsgInfoPartita()
-     - MsgInfoPartitaDamiera()
-     - MsgErrorePartita()
-     - MsgBiancoAbbandona()
-     - MsgNeroAbbandona()
-     - MsgInizioPartita()
-     - MsgSpostamento()
-     - MsgPresa()
+/** Class Type: <<boundary>> *
+ *  Responsabilities: Classe che contiene tutti i vari messaggi rivolti all'utente
  */
+
+
 public class Messaggi {
 
     public void Help() {

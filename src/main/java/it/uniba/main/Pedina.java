@@ -1,6 +1,9 @@
 package it.uniba.main;
 
-/** <<entity>> */
+
+/** Class Type: <<Entity>>
+ *  Responsabilities: Classe che rappresenta genericamente le pedine di gioco
+ */
 
 public class Pedina {
 

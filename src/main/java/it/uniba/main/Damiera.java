@@ -5,19 +5,11 @@
  */
 package it.uniba.main;
 
-/**
- *
- * @author utente
+/** Class Type: <<Entity>>
+ *  Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco *
  */
 
-/*
-    Metodi classe Damiera
-     - Damiera()
-     - StampaPosizioniPedine()
-     - StampaDamieraPedine()
-     - CercaRiga()
-     - CercaColonna()
- */
+
 public class Damiera {
 
     final static int RIGHE = 8;

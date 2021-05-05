@@ -4,17 +4,11 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-/*
-    Metodi classe Menu
-     - Generico()
-     - GiocatoreBianco()
-     - GiocatoreNero()
-     - Abbandona(Giocatore)
-     - Uscita()
-     - Gioca()
-     - ImpostaGiocatore()
-
+/** Class Type: <<Control>> *
+ *  Responsabilities: Classe che gestisce le interazioni tra le varie classi; funge da interfaccia per l'utente
  */
+
+
 public class Menu {
     Messaggi msg = new Messaggi();
     Partita partita = new Partita();
