@@ -22,6 +22,8 @@ public class Menu {
     boolean Bianco = false;
     boolean Nero = false;
 
+    boolean presaTripla = false;
+
     //public static final String ALLCASES = "\\d{1,2}([x]{1}|[-]{1})\\d{1,2}([x]{1}\\d{1,2})?";*/
     public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
     public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
@@ -117,6 +119,7 @@ public class Menu {
                     + "\n ♢ 'spostamento' (es. 9-13)"
                     + "\n ♢ 'presa semplice' (es. 5x14)"
                     + "\n ♢ 'presa multipla' (es. 2x9x18 o 2x9x18x25)"
+                    + "\n ♢ prese"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -163,6 +166,9 @@ public class Menu {
                             String PosizioneFinale3Temp = array[3];
                             PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
                             mossa.setPosizione4(PosizioneFinale3);
+
+                            presaTripla = true;
+
                         }
                     }
 
@@ -224,6 +230,9 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.getDamiera().StampaDamieraPedine();
+
+                        bianco.setPedineMangiate(1);
+
                     } else {
                         partita.setTurno(true);
                     }
@@ -237,10 +246,22 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.getDamiera().StampaDamieraPedine();
+
+                        if(!presaTripla) {
+                            bianco.setPedineMangiate(2);
+                        } else {
+                            bianco.setPedineMangiate(3);
+                        }
+
+
                     } else {
                         partita.setTurno(true);
                     }
                     TurnoBianco = partita.getTurno();
+                    break;
+
+                case "prese":
+                    partita.StampaPedineMangiate();
                     break;
 
                 case "abbandona":
@@ -301,6 +322,7 @@ public class Menu {
                     + "\n ♢ 'spostamento' (es. 13-9)"
                     + "\n ♢ 'presa semplice' (es. 18x9)"
                     + "\n ♢ 'presa multipla' (es. 18x9x2 o 25x18x9x2)"
+                    + "\n ♢ prese"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -346,6 +368,9 @@ public class Menu {
                             String PosizioneFinale3Temp = array[3];
                             PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
                             mossa.setPosizione4(PosizioneFinale3);
+
+                            presaTripla = true;
+
                         }
                     }
 
@@ -406,6 +431,9 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.getDamiera().StampaDamieraPedine();
+
+                        nero.setPedineMangiate(1);
+
                     } else {
                         partita.setTurno(true);
                     }
@@ -420,10 +448,21 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.getDamiera().StampaDamieraPedine();
+
+                        if(!presaTripla) {
+                            nero.setPedineMangiate(2);
+                        } else {
+                            nero.setPedineMangiate(3);
+                        }
+
                     } else {
                         partita.setTurno(true);
                     }
                     TurnoNero = partita.getTurno();
+                    break;
+
+                case "prese":
+                    partita.StampaPedineMangiate();
                     break;
 
                 case "abbandona":

@@ -23,7 +23,7 @@ public class Giocatore {
     public void setColore(String Colore) { this.Colore = Colore; }
     public void setTempo(long Tempo) { this.Tempo = Tempo; }
     public void setCronologiaMosse(String mossa) { CronologiaMosse.add(mossa); }
-    public void setPedineMangiate() { PedineMangiate++; }
+    public void setPedineMangiate(int valore) { PedineMangiate += valore; }
 
     public String getColore() { return Colore; }
     public long getTempo() { return Tempo; }
