@@ -11,15 +11,18 @@ public class Mossa {
     private int posizione1;
     private int posizione2;
     private int posizione3;
+    private int posizione4;
     private boolean isValid;
 
     public void setPosizione1(int posizione1) { this.posizione1 = posizione1; }
     public void setPosizione2(int posizione2) { this.posizione2 = posizione2; }
     public void setPosizione3(int posizione3) {this.posizione3 = posizione3; }
+    public void setPosizione4(int posizione4) {this.posizione4 = posizione4; }
     public void setValid(boolean isValid) { this.isValid = isValid; }
 
     public int getPosizione1() { return posizione1; }
     public int getPosizione2() { return posizione2; }
+    public int getPosizione3() { return posizione3; }
     public boolean getValid() { return isValid; }
 
     public Mossa(int posizione1, int posizione2) {
@@ -130,17 +133,13 @@ public class Mossa {
         if (x2 > x1) {
             if ((x2 == x1 + 2) && (y2 == y1 + 2 || y2 == y1 - 2)) {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
-                        //se a sx o dx sono vuote
-                    if ((!damiera.DamieraPedine[x4][y1+1].getBlank() || (!damiera.DamieraPedine[x4][y1-1].getBlank()))) {
-
-                        //vengono settati i vari flag in modo da ricostruire graficamente la situazione
-                        damiera.DamieraPedine[x1][y1].setBlank(true);
-                        damiera.DamieraPedine[x2][y2].setBlank(false);
-                        damiera.DamieraPedine[x2][y2].setWhite(true);
-
 
                         //1° caso, DESTRA: la presa viene effettuatta a DESTRA rispetto alla casella iniziale (y4 = y2 - 1)
                         if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && !damiera.DamieraPedine[x4][y2-1].getWhite()) {
+
+                            damiera.DamieraPedine[x1][y1].setBlank(true);
+                            damiera.DamieraPedine[x2][y2].setBlank(false);
+                            damiera.DamieraPedine[x2][y2].setWhite(true);
 
                             damiera.DamieraPedine[x4][y2-1].setBlank(true);
                             damiera.DamieraPedine[x4][y2-1].setWhite(true);
@@ -152,6 +151,11 @@ public class Mossa {
                         }
                         //2° caso, SINISTRA: la presa viene effettuatta a sx rispetto alla casella iniziale (y4 = y2 + 1)
                         else if (y2 < y1 && !damiera.DamieraPedine[x4][y2+1].getBlank() &&!damiera.DamieraPedine[x4][y2+1].getWhite()) {
+
+                            damiera.DamieraPedine[x1][y1].setBlank(true);
+                            damiera.DamieraPedine[x2][y2].setBlank(false);
+                            damiera.DamieraPedine[x2][y2].setWhite(true);
+
                             damiera.DamieraPedine[x4][y2+1].setBlank(true);
                             damiera.DamieraPedine[x4][y2+1].setWhite(true);
 
@@ -159,11 +163,6 @@ public class Mossa {
                             isValid = true;
 
                         }
-
-                    } else {
-                        System.out.println("Mossa non valida, riprovare: ");
-                        isValid = false;
-                    }
                 }else {
                     System.out.println("Mossa non valida, riprovare: ");
                     isValid = false;
@@ -199,15 +198,13 @@ public class Mossa {
             if ((x2 == x1 - 2) && (y2 == y1 - 2 || y2 == y1 + 2)) {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
 
-                    if ((!damiera.DamieraPedine[x4][y1+1].getBlank() || (!damiera.DamieraPedine[x4][y1-1].getBlank()))) {
-
-                        //vengono settati i vari flag in modo da ricostruire graficamente la situazione
-                        damiera.DamieraPedine[x1][y1].setBlank(true);
-                        damiera.DamieraPedine[x2][y2].setBlank(false);
-                        damiera.DamieraPedine[x2][y2].setWhite(false);
-
                         //1° caso, DESTRA: la presa viene effettuatta a dx rispetto alla casella iniziale (y4 = y2 - 1)
                         if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && damiera.DamieraPedine[x4][y2-1].getWhite()) {
+
+                            damiera.DamieraPedine[x1][y1].setBlank(true);
+                            damiera.DamieraPedine[x2][y2].setBlank(false);
+                            damiera.DamieraPedine[x2][y2].setWhite(false);
+
                             damiera.DamieraPedine[x4][y2-1].setBlank(true);
                             damiera.DamieraPedine[x4][y2-1].setWhite(false);
 
@@ -218,16 +215,15 @@ public class Mossa {
                         }
                         //2° caso, SINISTRA: la presa viene effettuatta a sx rispetto alla casella iniziale (y4 = y2 + 1)
                         else if (y2 < y1 && !damiera.DamieraPedine[x4][y2+1].getBlank() && damiera.DamieraPedine[x4][y2+1].getWhite()) {
+                            damiera.DamieraPedine[x1][y1].setBlank(true);
+                            damiera.DamieraPedine[x2][y2].setBlank(false);
+                            damiera.DamieraPedine[x2][y2].setWhite(false);
+
                             damiera.DamieraPedine[x4][y2+1].setBlank(true);
                             damiera.DamieraPedine[x4][y2+1].setWhite(false);
                             System.out.println("y2+1: "+damiera.DamieraPedine[x4][y2+1].getBlank() + " | " + x4 + ", " + (y2+1));
                             isValid = true;
                         }
-
-                    } else {
-                        System.out.println("Mossa non valida, riprovare: ");
-                        isValid = false;
-                    }
                 }else {
                     System.out.println("Mossa non valida, riprovare: ");
                     isValid = false;
@@ -251,24 +247,41 @@ public class Mossa {
         //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
         int pos1 = getPosizione1();
         int pos2 = getPosizione2();
+        int pos3 = getPosizione3();
+
+        System.out.println("'GIUSTE' pos1= " + pos1 + "pos2: " + pos2 + "pos3: " + pos3 );
 
         //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
         if(PresaMultiplaWhiteProva(DamieraCopia)) {
 
+            //1a PRESA
             setPosizione1(pos1);
             setPosizione2(pos2);
-
+            System.out.println("PRESA1: pos1= " + pos1 + "pos2: " + pos2);
             PresaSempliceWhite(damiera);
 
-            int x3 = damiera.CercaRiga(posizione3);
-            int y3 = damiera.CercaColonna(posizione3);
+            System.out.println("PRESA1: pos1= " + pos1 + "pos2: " + pos2);
 
-            System.out.println("posizione3: " + x3 + "," + y3 + " posizione: " + posizione3);
-
+            //2a PRESA
             setPosizione1(posizione2);
             setPosizione2(posizione3);
 
+            System.out.println("PRESA1: posizione2= " + posizione2 + "posizione3: " + posizione3);
             PresaSempliceWhite(damiera);
+
+            System.out.println("PRESA1: posizione2= " + posizione2 + "posizione3: " + posizione3);
+            if(posizione4 != 0) {
+                //3a PRESA
+                setPosizione1(pos3);
+                setPosizione2(posizione4);
+
+                System.out.println("PRESA1: pos3= " + pos3 + "posizione4: " + posizione4);
+
+                PresaSempliceWhite(damiera);
+
+                System.out.println("PRESA1: pos3= " + pos3 + "posizione4: " + posizione4);
+            }
+
         } else {
             System.out.println("Presa multipla non valida");
         }
@@ -283,22 +296,38 @@ public class Mossa {
         //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
         int pos1 = getPosizione1();
         int pos2 = getPosizione2();
+        int pos3 = getPosizione3();
 
         //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
-        if (PresaMultiplaBlackProva(DamieraCopia)) {
+        if(PresaMultiplaBlackProva(DamieraCopia)) {
 
+            //1a PRESA
             setPosizione1(pos1);
             setPosizione2(pos2);
-
+            System.out.println("PRESA1: pos1= " + pos1 + "pos2: " + pos2);
             PresaSempliceBlack(damiera);
 
-            int x3 = damiera.CercaRiga(posizione3);
-            int y3 = damiera.CercaColonna(posizione3);
+            System.out.println("PRESA1: pos1= " + pos1 + "pos2: " + pos2);
 
+            //2a PRESA
             setPosizione1(posizione2);
             setPosizione2(posizione3);
 
+            System.out.println("PRESA1: posizione2= " + posizione2 + "posizione3: " + posizione3);
             PresaSempliceBlack(damiera);
+
+            System.out.println("PRESA1: posizione2= " + posizione2 + "posizione3: " + posizione3);
+            if(posizione4 != 0) {
+                //3a PRESA
+                setPosizione1(pos3);
+                setPosizione2(posizione4);
+
+                System.out.println("PRESA1: pos3= " + pos3 + "posizione4: " + posizione4);
+
+                PresaSempliceBlack(damiera);
+
+                System.out.println("PRESA1: pos3= " + pos3 + "posizione4: " + posizione4);
+            }
 
         } else {
             System.out.println("Presa multipla non valida");
@@ -310,21 +339,29 @@ public class Mossa {
         boolean prova = false;
         boolean prova1 = PresaSempliceWhite(DamieraCopia);
         boolean prova2 = false;
+        boolean prova3 = false;
 
-        int x3 = DamieraCopia.CercaRiga(posizione3);
-        int y3 = DamieraCopia.CercaColonna(posizione3);
-
-        //se la prima prima prova di presa è valida provo la seconda presa
-        if(prova1)
-        {
+        if(prova1) {
             System.out.println("PRIMA MOSSA VALIDA" + prova1);
 
             setPosizione1(posizione2);
             setPosizione2(posizione3);
 
-            prova2 =  PresaSempliceWhite(DamieraCopia);
+            prova2 = PresaSempliceWhite(DamieraCopia);
             if(prova2) {
+                System.out.println("SECONDA MOSSA VALIDA" + prova2);
                 prova = true;
+                if(posizione4 != 0) {
+                    setPosizione1(posizione3);
+                    setPosizione2(posizione4);
+                    prova3 = PresaSempliceWhite(DamieraCopia);
+                    if(prova3){
+                        prova = true;
+                    }
+                    else {
+                        prova = false;
+                    }
+                }
             }
             else {
                 System.out.println("SECONDA MOSSA NON VALIDA" + prova2);
@@ -332,15 +369,6 @@ public class Mossa {
             }
         } else {
             System.out.println("PRIMA MOSSA NON VALIDA" + prova1);
-        }
-
-        //RIDONDANTE
-        if(prova1 && prova2) {
-            System.out.println("PRESA MULTIPLA VALIDA" + prova2);
-            prova = true;
-        } else {
-            System.out.println("PRESA MULTIPLA NON VALIDA" + prova2);
-            prova = false;
         }
 
         return prova;
@@ -351,12 +379,12 @@ public class Mossa {
         boolean prova = false;
         boolean prova1 = PresaSempliceBlack(DamieraCopia);
         boolean prova2 = false;
+        boolean prova3 = false;
 
         int x3 = DamieraCopia.CercaRiga(posizione3);
         int y3 = DamieraCopia.CercaColonna(posizione3);
 
-        if(prova1)
-        {
+        if(prova1) {
             System.out.println("PRIMA MOSSA VALIDA" + prova1);
 
             setPosizione1(posizione2);
@@ -366,6 +394,17 @@ public class Mossa {
             if(prova2) {
                 System.out.println("SECONDA MOSSA VALIDA" + prova2);
                 prova = true;
+                if(posizione4 != 0) {
+                    setPosizione1(posizione3);
+                    setPosizione2(posizione4);
+                    prova3 = PresaSempliceBlack(DamieraCopia);
+                    if(prova3){
+                        prova = true;
+                    }
+                    else {
+                        prova = false;
+                    }
+                }
             }
             else {
                 System.out.println("SECONDA MOSSA NON VALIDA" + prova2);
@@ -373,15 +412,6 @@ public class Mossa {
             }
         } else {
             System.out.println("PRIMA MOSSA NON VALIDA" + prova1);
-        }
-
-        //RIDONDANTE
-        if(prova1 && prova2) {
-            System.out.println("PRESA MULTIPLA VALIDA" + prova2);
-            prova = true;
-        } else {
-            System.out.println("PRESA MULTIPLA NON VALIDA" + prova2);
-            prova = false;
         }
 
         return prova;
