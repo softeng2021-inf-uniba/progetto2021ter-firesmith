@@ -18,6 +18,7 @@ public class Pedina {
     private boolean isWhite;
     private boolean isValid;
     private boolean isBlank;
+    private boolean isDama;
 
     public Pedina(int posRiga, int posColonna) {
         this.posRiga = posRiga;
@@ -29,10 +30,12 @@ public class Pedina {
     public void setWhite(boolean isWhite) { this.isWhite = isWhite; }
     public void setValid(boolean isValid) { this.isValid = isValid; }
     public void setBlank(boolean isBlank) { this.isBlank = isBlank; }
+    public void setDama(boolean isDama) {this.isDama = isDama; }
 
     public int getRiga() { return posRiga; }
     public int getColonna() { return posColonna; }
     public boolean getWhite() { return isWhite; }
     public boolean getValid() { return isValid; }
     public boolean getBlank() { return isBlank; }
+    public boolean getDama() {return  isDama; }
 }

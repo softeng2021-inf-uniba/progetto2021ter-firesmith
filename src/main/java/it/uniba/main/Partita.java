@@ -84,7 +84,11 @@ public class Partita {
 
     public void getCronologiaMosse() {
         ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
+        System.out.println("\nMOSSE EFFETTUATE\n" +
+                "───────────────");
         while (CronoMosse.hasNext()){
             System.out.println(CronoMosse.next());
-        }}
+        }
+        System.out.println("\n──────────────────");
+    }
 }
