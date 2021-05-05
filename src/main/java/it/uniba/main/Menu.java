@@ -120,12 +120,14 @@ public class Menu {
                     + "\n ♢ 'presa semplice' (es. 5x14)"
                     + "\n ♢ 'presa multipla' (es. 2x9x18 o 2x9x18x25)"
                     + "\n ♢ prese"
+                    + "\n ♢ mosse"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
+            String presa=comando;
 
             // Gestione regex (bianco)
             Pattern p1 = Pattern.compile(SPOSTAMENTO);
@@ -214,6 +216,7 @@ public class Menu {
                     mossa.SpostamentoSempliceBianco(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
+                        bianco.setCronologiaMosse("Bianco :" + presa);
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
@@ -229,6 +232,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
+                        bianco.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         bianco.setPedineMangiate(1);
@@ -245,6 +249,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
+                        bianco.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         if(!presaTripla) {
@@ -261,7 +266,15 @@ public class Menu {
                     break;
 
                 case "prese":
+
                     partita.StampaPedineMangiate();
+
+                    break;
+
+                    case "mosse":
+
+                        bianco.getCronologiaMosse();
+
                     break;
 
                 case "abbandona":
@@ -323,6 +336,7 @@ public class Menu {
                     + "\n ♢ 'presa semplice' (es. 18x9)"
                     + "\n ♢ 'presa multipla' (es. 18x9x2 o 25x18x9x2)"
                     + "\n ♢ prese"
+                    + "\n ♢ mosse"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -330,6 +344,7 @@ public class Menu {
             String comando = in.nextLine();
 
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
+            String presa=comando;
 
             // Gestione regex (nero)
 
@@ -416,6 +431,7 @@ public class Menu {
                     mossa.SpostamentoSempliceNero(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
+                        nero.setCronologiaMosse("Bianco :" + presa);
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
@@ -430,6 +446,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
+                        nero.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         nero.setPedineMangiate(1);
@@ -447,6 +464,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
+                        nero.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         if(!presaTripla) {
@@ -463,6 +481,11 @@ public class Menu {
 
                 case "prese":
                     partita.StampaPedineMangiate();
+                    break;
+                case "mosse":
+
+                    nero.getCronologiaMosse();
+
                     break;
 
                 case "abbandona":

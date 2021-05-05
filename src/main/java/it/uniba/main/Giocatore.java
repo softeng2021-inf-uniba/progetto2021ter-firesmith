@@ -1,6 +1,6 @@
 package it.uniba.main;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /** <<entity>> */
 
@@ -27,6 +27,10 @@ public class Giocatore {
 
     public String getColore() { return Colore; }
     public long getTempo() { return Tempo; }
-    public void getCronologiaMosse() { System.out.print(CronologiaMosse); }
+    public void getCronologiaMosse() {
+        ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
+        while (CronoMosse.hasNext()){
+            System.out.println(CronoMosse.next());
+        }}
     public int getPedineMangiate() { return PedineMangiate; }
 }
