@@ -50,4 +50,32 @@ public class Partita {
     public boolean getTurno() { return turno; }
     public boolean getAbbandona() { return abbandona; }
 
+    public void StampaPedineMangiate() {
+
+        System.out.println("\nPEDINE MANGIATE\n" +
+                "───────────────"); //TODO \u2501
+
+        if(giocatore1.getColore().equals("bianco")) {
+            System.out.print("Bianco: ");
+            for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
+                System.out.print("⛀");
+            }
+            System.out.print("\nNero: ");
+            for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
+                System.out.print("⛂");
+            }
+            System.out.println();
+        } else if (giocatore1.getColore().equals("nero")) {
+            System.out.print("Nero: ");
+            for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
+                System.out.print("⛂");
+            }
+            System.out.print("\nBianco: ");
+            for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
+                System.out.print("⛀");
+            }
+        }
+        System.out.println("\n──────────────────");
+    }
+
 }
