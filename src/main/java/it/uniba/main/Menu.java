@@ -216,7 +216,7 @@ public class Menu {
                     mossa.SpostamentoSempliceBianco(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        bianco.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco :" + presa);
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
@@ -232,7 +232,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        bianco.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         bianco.setPedineMangiate(1);
@@ -249,7 +249,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        bianco.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         if(!presaTripla) {
@@ -273,7 +273,7 @@ public class Menu {
 
                     case "mosse":
 
-                        bianco.getCronologiaMosse();
+                        partita.getCronologiaMosse();
 
                     break;
 
@@ -431,7 +431,7 @@ public class Menu {
                     mossa.SpostamentoSempliceNero(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        nero.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Nero :" + presa);
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
@@ -446,7 +446,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        nero.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Nero :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         nero.setPedineMangiate(1);
@@ -464,7 +464,7 @@ public class Menu {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        nero.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Nero :" + presa);
                         partita.getDamiera().StampaDamieraPedine();
 
                         if(!presaTripla) {
@@ -484,7 +484,7 @@ public class Menu {
                     break;
                 case "mosse":
 
-                    nero.getCronologiaMosse();
+                    partita.getCronologiaMosse();
 
                     break;
 
