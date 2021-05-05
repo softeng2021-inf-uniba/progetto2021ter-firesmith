@@ -138,7 +138,7 @@ public class Mossa {
             if ((x2 == x1 + 2) && (y2 == y1 + 2 || y2 == y1 - 2)) {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
                         //se a sx o dx sono vuote
-                    if ((!damiera.DamieraPedine[x4][y2-1].getBlank() || (!damiera.DamieraPedine[x4][y2+1].getBlank()))) {
+                    if ((!damiera.DamieraPedine[x4][y1+1].getBlank() || (!damiera.DamieraPedine[x4][y1-1].getBlank()))) {
 
                         //vengono settati i vari flag in modo da ricostruire graficamente la situazione
                         damiera.DamieraPedine[x1][y1].setBlank(true);
@@ -211,7 +211,7 @@ public class Mossa {
             if ((x2 == x1 - 2) && (y2 == y1 - 2 || y2 == y1 + 2)) {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
 
-                    if ((!damiera.DamieraPedine[x4][y2+1].getBlank() || (!damiera.DamieraPedine[x4][y2-1].getBlank()))) {
+                    if ((!damiera.DamieraPedine[x4][y1+1].getBlank() || (!damiera.DamieraPedine[x4][y1-1].getBlank()))) {
 
                         //vengono settati i vari flag in modo da ricostruire graficamente la situazione
                         damiera.DamieraPedine[x1][y1].setBlank(true);
@@ -252,38 +252,149 @@ public class Mossa {
         }
     }
 
-    //Metodo che si occupa di effettuare una presa per il bianco
+    //Metodo che si occupa di effettuare una presa per il bianco: è una concatenazione di due prese semplici
     public void PresaMultiplaWhite(Damiera damiera){
 
-        //la presa multipla è una concatenazione di due prese semplici
-        PresaSempliceWhite(damiera);
+        Damiera DamieraCopia = new Damiera(damiera);
 
-        int x3 = damiera.CercaRiga(posizione3);
-        int y3 = damiera.CercaColonna(posizione3);
+        //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
+        int pos1 = getPosizione1();
+        int pos2 = getPosizione2();
 
-        System.out.println("posizione3: " + x3 + "," + y3 + " posizione: " + posizione3);
+        //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
+        if(PresaMultiplaWhiteProva(DamieraCopia)) {
 
-        setPosizione1(posizione2);
-        setPosizione2(posizione3);
+            //la presa multipla è una concatenazione di due prese semplici
+            PresaSempliceWhite(damiera);
 
-        PresaSempliceWhite(damiera);
+            int x3 = damiera.CercaRiga(posizione3);
+            int y3 = damiera.CercaColonna(posizione3);
+
+            System.out.println("posizione3: " + x3 + "," + y3 + " posizione: " + posizione3);
+
+            setPosizione1(posizione2);
+            setPosizione2(posizione3);
+
+            PresaSempliceWhite(damiera);
+        } else {
+            System.out.println("Presa multipla non valida");
+        }
     }
 
     //Metodo che si occupa di effettuare una presa multipla per il nero
     public void PresaMultiplaBlack(Damiera damiera) {
 
-        //la presa multipla è una concatenazione di due prese semplici
-        PresaSempliceBlack(damiera);
+        Damiera DamieraCopia = new Damiera(damiera);
 
-        int x3 = damiera.CercaRiga(posizione3);
-        int y3 = damiera.CercaColonna(posizione3);
+        //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
+        int pos1 = getPosizione1();
+        int pos2 = getPosizione2();
 
-        System.out.println("posizione3: " + x3 + "," + y3);
+        //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
+        if (PresaMultiplaBlackProva(DamieraCopia)) {
 
-        setPosizione1(posizione2);
-        setPosizione2(posizione3);
+            //la presa multipla è una concatenazione di due prese semplici
+            PresaSempliceBlack(damiera);
 
-        PresaSempliceBlack(damiera);
+            int x3 = damiera.CercaRiga(posizione3);
+            int y3 = damiera.CercaColonna(posizione3);
+
+            setPosizione1(posizione2);
+            setPosizione2(posizione3);
+
+            PresaSempliceBlack(damiera);
+
+        } else {
+            System.out.println("Presa multipla non valida");
+        }
+    }
+
+    public boolean PresaMultiplaWhiteProva(Damiera DamieraCopia){ //PROVA
+
+
+        boolean prova = false;
+        boolean prova1 = PresaSempliceWhite(DamieraCopia);
+        boolean prova2 = false;
+
+        int x3 = DamieraCopia.CercaRiga(posizione3);
+        int y3 = DamieraCopia.CercaColonna(posizione3);
+
+        //se la prima prima prova di presa è valida provo la seconda presa
+        if(prova1)
+        {
+            System.out.println("PRIMA MOSSA VALIDA" + prova1);
+
+            setPosizione1(posizione2);
+            setPosizione2(posizione3);
+
+            prova2 =  PresaSempliceWhite(DamieraCopia);
+            if(prova2) {
+                prova = true;
+            }
+            else {
+                System.out.println("SECONDA MOSSA NON VALIDA" + prova2);
+                prova = false;
+            }
+        } else {
+            System.out.println("PRIMA MOSSA NON VALIDA" + prova1);
+        }
+
+        //RIDONDANTE
+        if(prova1 && prova2) {
+            System.out.println("PRESA MULTIPLA VALIDA" + prova2);
+            prova = true;
+        } else {
+            System.out.println("PRESA MULTIPLA NON VALIDA" + prova2);
+            prova = false;
+        }
+
+        return prova;
+    }
+
+    public boolean PresaMultiplaBlackProva(Damiera DamieraCopia){ //PROVA
+
+        boolean prova = false;
+        boolean prova1 = PresaSempliceBlack(DamieraCopia);
+        boolean prova2 = false;
+
+        System.out.println("Stampa prova" + prova1);
+        //DamieraCopia.StampaDamieraPedine();
+
+        int x3 = DamieraCopia.CercaRiga(posizione3);
+        int y3 = DamieraCopia.CercaColonna(posizione3);
+
+        System.out.println("posizione3PROVA: " + x3 + "," + y3 + " posizionePROVA: " + posizione3);
+
+        if(prova1)
+        {
+            System.out.println("PRIMA MOSSA VALIDA" + prova1);
+
+            setPosizione1(posizione2);
+            setPosizione2(posizione3);
+
+            prova2 =  PresaSempliceBlack(DamieraCopia);
+            if(prova2) {
+                System.out.println("SECONDA MOSSA VALIDA" + prova2);
+                prova = true;
+            }
+            else {
+                System.out.println("SECONDA MOSSA NON VALIDA" + prova2);
+                prova = false;
+            }
+        } else {
+            System.out.println("PRIMA MOSSA NON VALIDA" + prova1);
+        }
+
+        //RIDONDANTE
+        if(prova1 && prova2) {
+            System.out.println("PRESA MULTIPLA VALIDA" + prova2);
+            prova = true;
+        } else {
+            System.out.println("PRESA MULTIPLA NON VALIDA" + prova2);
+            prova = false;
+        }
+
+        return prova;
     }
 
 }
