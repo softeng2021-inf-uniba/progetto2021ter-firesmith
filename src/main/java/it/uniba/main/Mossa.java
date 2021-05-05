@@ -56,6 +56,9 @@ public class Mossa {
                     damiera.DamieraPedine[x2][y2].setBlank(false);
                     damiera.DamieraPedine[x2][y2].setWhite(true);
                     isValid = true;
+                    if(getPosizione2() > 28 && getPosizione2() <= 32){
+                        damiera.DamieraPedine[x2][y2].setDama(true);
+                    }
 
                     damiera.StampaDamieraPedine();
 
@@ -98,6 +101,10 @@ public class Mossa {
                     damiera.DamieraPedine[x2][y2].setWhite(false);
                     isValid = true;
 
+                    if(getPosizione2() >= 1 && getPosizione2() <= 4){
+                        damiera.DamieraPedine[x2][y2].setDama(true);
+                    }
+
                     damiera.StampaDamieraPedine();
 
                 } else {
@@ -133,7 +140,7 @@ public class Mossa {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
 
                         //1° caso, DESTRA: la presa viene effettuatta a DESTRA rispetto alla casella iniziale (y4 = y2 - 1)
-                        if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && !damiera.DamieraPedine[x4][y2-1].getWhite()) {
+                        if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && !damiera.DamieraPedine[x4][y2-1].getWhite()  && !damiera.DamieraPedine[x4][y2-1].getDama()) {
 
                             damiera.DamieraPedine[x1][y1].setBlank(true);
                             damiera.DamieraPedine[x2][y2].setBlank(false);
@@ -145,6 +152,10 @@ public class Mossa {
                             System.out.println("y2-1: "+ damiera.DamieraPedine[x4][y2-1].getBlank() + " | " + x4 + ", " + (y2-1));
 
                             isValid = true;
+
+                            if (getPosizione2() > 28 && getPosizione2() <= 32){
+                                damiera.DamieraPedine[x2][y2].setDama(true);
+                            }
 
                         }
                         //2° caso, SINISTRA: la presa viene effettuatta a sx rispetto alla casella iniziale (y4 = y2 + 1)
@@ -159,6 +170,10 @@ public class Mossa {
 
                             System.out.println("y2+1: "+ damiera.DamieraPedine[x4][y2+1].getBlank() + " | " + x4 + ", " + (y2+1));
                             isValid = true;
+
+                            if (getPosizione2() > 28 && getPosizione2() <= 32){
+                                damiera.DamieraPedine[x2][y2].setDama(true);
+                            }
 
                         }
                 }else {
@@ -197,7 +212,7 @@ public class Mossa {
                 if (damiera.DamieraPedine[x2][y2].getBlank() && !damiera.DamieraPedine[x1][y1].getBlank()) {
 
                         //1° caso, DESTRA: la presa viene effettuatta a dx rispetto alla casella iniziale (y4 = y2 - 1)
-                        if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && damiera.DamieraPedine[x4][y2-1].getWhite()) {
+                        if(y2 > y1 && !damiera.DamieraPedine[x4][y2-1].getBlank() && damiera.DamieraPedine[x4][y2-1].getWhite()  && !damiera.DamieraPedine[x4][y2-1].getDama()) {
 
                             damiera.DamieraPedine[x1][y1].setBlank(true);
                             damiera.DamieraPedine[x2][y2].setBlank(false);
@@ -210,9 +225,13 @@ public class Mossa {
 
                             isValid = true;
 
+                            if(getPosizione2() >= 1 && getPosizione2() <= 4){
+                                damiera.DamieraPedine[x2][y2].setDama(true);
+                            }
+
                         }
                         //2° caso, SINISTRA: la presa viene effettuatta a sx rispetto alla casella iniziale (y4 = y2 + 1)
-                        else if (y2 < y1 && !damiera.DamieraPedine[x4][y2+1].getBlank() && damiera.DamieraPedine[x4][y2+1].getWhite()) {
+                        else if (y2 < y1 && !damiera.DamieraPedine[x4][y2+1].getBlank() && damiera.DamieraPedine[x4][y2+1].getWhite() && !damiera.DamieraPedine[x4][y2+1].getDama()) {
                             damiera.DamieraPedine[x1][y1].setBlank(true);
                             damiera.DamieraPedine[x2][y2].setBlank(false);
                             damiera.DamieraPedine[x2][y2].setWhite(false);
@@ -220,7 +239,12 @@ public class Mossa {
                             damiera.DamieraPedine[x4][y2+1].setBlank(true);
                             damiera.DamieraPedine[x4][y2+1].setWhite(false);
                             System.out.println("y2+1: "+damiera.DamieraPedine[x4][y2+1].getBlank() + " | " + x4 + ", " + (y2+1));
+
                             isValid = true;
+
+                            if(getPosizione2() >= 1 && getPosizione2() <= 4){
+                                damiera.DamieraPedine[x2][y2].setDama(true);
+                            }
                         }
                 }else {
                     System.out.println("Mossa non valida, riprovare: ");
