@@ -74,6 +74,44 @@ public class Damiera {
         }
     }
 
+    // copy constructor
+    public Damiera(Damiera other) {
+        for (int i = 0; i < RIGHE; i++) {
+            for (int j = 0; j < COLONNE; j++) {
+
+                DamieraPedine[i][j] = new Pedina(i, j);
+
+                // isValid = true, se la pedina sta su un numero
+                // isValid = false, se la pedina sta su uno 0
+                if (PosizioniPedine[i][j] != 0) {
+                    DamieraPedine[i][j].setValid(other.DamieraPedine[i][j].getValid());
+                } else {
+                    DamieraPedine[i][j].setValid(other.DamieraPedine[i][j].getValid());
+                }
+
+                // isBlank = true, se la pedine non esiste (non ha valore)
+                // isBlank = false, se la pedina esiste (ha valore)
+                // Le pedine bianche stanno dalla posizione 1 alla posizione 12
+                if (PosizioniPedine[i][j] > 0 && PosizioniPedine[i][j] <= 12) {
+                    DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
+                    DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                } else {
+                    // Tra la posizione 13 e 21 non ci sono pedine
+                    if (PosizioniPedine[i][j] >= 13 && PosizioniPedine[i][j] < 21) {
+                        DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
+                        DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                    } else {
+                        // Le pedine nere stanno dalla posizione 21 alla posizione 32
+                        if (PosizioniPedine[i][j] >= 21 && PosizioniPedine[i][j] <= 32) {
+                            DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
+                            DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Stampa la matrice che contiene la posizione delle pedine
     public void StampaPosizioniPedine() {
 

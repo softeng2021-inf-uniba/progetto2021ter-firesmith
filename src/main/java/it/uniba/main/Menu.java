@@ -25,7 +25,7 @@ public class Menu {
     //public static final String ALLCASES = "\\d{1,2}([x]{1}|[-]{1})\\d{1,2}([x]{1}\\d{1,2})?";*/
     public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
     public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
-    public static final String PRESA_M = "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1}";
+    public static final String PRESA_M = "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
 
     // All'avvio del programma, non c'è nessuna partita in corso
 
@@ -67,6 +67,7 @@ public class Menu {
                     break;
 
                 case "gioca":
+                    partita = new Partita();
                     Gioca();
                     break;
 
@@ -104,9 +105,9 @@ public class Menu {
         boolean StatoPartita = partita.getStato();
 
         do {
-            System.out.print("┌──────────────────────┒"
-                    +"      \n│ Menù comandi partita │"
-                    +      "\n└──────────────────────┘"
+            System.out.print("┌───────────────────────┒"
+                    +"      \n│ Menù Giocatore Bianco │"
+                    +      "\n└───────────────────────┘"
                     + "\nScrivere un comando:"
                     + "\n ♢ --help | -h | help"
                     + "\n ♢ numeri"
@@ -115,6 +116,7 @@ public class Menu {
                     + "\n ♢ tempo"
                     + "\n ♢ 'spostamento' (es. 9-13)"
                     + "\n ♢ 'presa semplice' (es. 5x14)"
+                    + "\n ♢ 'presa multipla' (es. 2x9x18 o 2x9x18x25)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -134,6 +136,7 @@ public class Menu {
             int PosizioneIniziale = 0;
             int PosizioneFinale = 0;
             int PosizioneFinale2 = 0;
+            int PosizioneFinale3 = 0;
 
             String[] array = comando.split("-|x");
 
@@ -154,6 +157,13 @@ public class Menu {
                     if(array.length > 2) {
                         String PosizioneFinale2Temp = array[2];
                         PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
+                        mossa.setPosizione3(PosizioneFinale2);
+
+                        if(array.length > 3 && !array[3].equals("")) {
+                            String PosizioneFinale3Temp = array[3];
+                            PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
+                            mossa.setPosizione4(PosizioneFinale3);
+                        }
                     }
 
                     if (m1.matches()) {
@@ -191,6 +201,7 @@ public class Menu {
                 case "gioca":
                     msg.MsgInfoPartita();
                     break;
+
                 case "spostamento":
                     System.out.println("Sto effettuando lo spostamento...");
 
@@ -209,6 +220,19 @@ public class Menu {
                     System.out.println("Sto effettuando la presa...");
 
                     mossa.PresaSempliceWhite(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoBianco = partita.getTurno();
+                    break;
+
+                case "presa multipla":
+                    System.out.println("Sto effettuando la presa...");
+                    mossa.PresaMultiplaWhite(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
@@ -266,7 +290,7 @@ public class Menu {
 
         do {
             System.out.print("┌──────────────────────┒"
-                    +"      \n│ Menù comandi partita │"
+                    +"      \n│ Menù Giocatore Nero  │"
                     +      "\n└──────────────────────┘"
                     + "\nScrivere un comando:"
                     + "\n ♢ --help | -h | help"
@@ -276,6 +300,7 @@ public class Menu {
                     + "\n ♢ tempo"
                     + "\n ♢ 'spostamento' (es. 13-9)"
                     + "\n ♢ 'presa semplice' (es. 18x9)"
+                    + "\n ♢ 'presa multipla' (es. 18x9x2 o 25x18x9x2)"
                     + "\n ♢ esci"
                     + "\n➤ ");
 
@@ -297,6 +322,7 @@ public class Menu {
             int PosizioneIniziale = 0;
             int PosizioneFinale = 0;
             int PosizioneFinale2 = 0;
+            int PosizioneFinale3 = 0;
 
             String[] array = comando.split("-|x");
 
@@ -315,7 +341,12 @@ public class Menu {
                     if(array.length > 2 && !array[2].equals("")) {
                         String PosizioneFinale2Temp = array[2];
                         PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
-
+                        mossa.setPosizione3(PosizioneFinale2);
+                        if(array.length > 3 && !array[3].equals("")) {
+                            String PosizioneFinale3Temp = array[3];
+                            PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
+                            mossa.setPosizione4(PosizioneFinale3);
+                        }
                     }
 
                     if (m1.matches()) {
@@ -371,6 +402,20 @@ public class Menu {
                     System.out.println("Sto effettuando la presa...");
 
                     mossa.PresaSempliceBlack(partita.getDamiera());
+                    chk = mossa.getValid();
+                    if (chk) {
+                        partita.setTurno(false);
+                        partita.getDamiera().StampaDamieraPedine();
+                    } else {
+                        partita.setTurno(true);
+                    }
+                    TurnoNero = partita.getTurno();
+                    break;
+
+                case "presa multipla":
+                    System.out.println("Sto effettuando la presa...");
+
+                    mossa.PresaMultiplaBlack(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
