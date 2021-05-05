@@ -26,6 +26,7 @@ public class Partita {
     private Giocatore giocatore1 = new Giocatore();
     private Giocatore giocatore2 = new Giocatore();
     private Damiera damiera = new Damiera();
+    private ArrayList<String> CronologiaMosse = new ArrayList<String>();
 
     // Creo la partita
     public Partita() {
@@ -43,6 +44,8 @@ public class Partita {
     public void setStato(boolean stato) { this.stato = stato; }
     public void setTurno(boolean turno) { this.turno = turno; }
     public void setAbbandona(boolean abbandona) { this.abbandona = abbandona; }
+    public void setCronologiaMosse(String mossa) { CronologiaMosse.add(mossa); }
+
     public Giocatore getGiocatore1() { return giocatore1; }
     public Giocatore getGiocatore2() { return giocatore2; }
     public Damiera getDamiera() { return damiera; }
@@ -78,4 +81,9 @@ public class Partita {
         System.out.println("\n──────────────────");
     }
 
+    public void getCronologiaMosse() {
+        ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
+        while (CronoMosse.hasNext()){
+            System.out.println(CronoMosse.next());
+        }}
 }
