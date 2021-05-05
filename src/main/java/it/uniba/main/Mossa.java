@@ -1,11 +1,9 @@
 package it.uniba.main;
 
-/*
-    Oggetto Mossa
-     - int posizione1
-     - int posizione2
-     - boolean isValid
+/** Class Type: <<Control>>
+ *  Responsabilities: Classe che si occupa di effettuare tutti i movimenti delle pedine per ciascun giocatore
  */
+
 public class Mossa {
 
     private int posizione1;

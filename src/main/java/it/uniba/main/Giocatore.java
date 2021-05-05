@@ -2,15 +2,11 @@ package it.uniba.main;
 
 import java.util.*;
 
-/** <<entity>> */
-
-/*
-     Oggetto Giocatore
-     - String Colore
-     - long Tempo
-     - ArrayList<String> CronologiaMosse
-     - int PedineMangiate
+/** Class Type: <<Entity>> *
+ *  Responsabilities: Classe che rappresenta il giocatore partecipante alla partita *
  */
+
+
 
 public class Giocatore {
 

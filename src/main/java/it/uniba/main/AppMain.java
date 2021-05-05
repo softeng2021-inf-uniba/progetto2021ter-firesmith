@@ -8,12 +8,13 @@ import java.util.Scanner;
 
 // import it.uniba.sotorrent.GoogleDocsUtils;
 // disattivato per problemi di compilazione
-/**
- * The main class for the project. It must be customized to meet the project
- * assignment specifications.
+
+/** Class Type: <<Boundary>>
+ *  Responsabilities: The main class for the project.
  *
  * <b>DO NOT RENAME</b>
  */
+
 public final class AppMain {
 
     /**
