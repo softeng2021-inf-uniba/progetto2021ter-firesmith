@@ -6,8 +6,7 @@
 package it.uniba.main;
 
 import java.util.*;
-
-import static it.uniba.main.AppMain.*;
+import java.time.*;
 
 /** Class Type: <<entity>>
  *  Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
@@ -85,10 +84,36 @@ public class Partita {
     public void getCronologiaMosse() {
         ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
         System.out.println("\nMOSSE EFFETTUATE\n" +
-                "───────────────");
+                "────────────────");
         while (CronoMosse.hasNext()){
             System.out.println(CronoMosse.next());
         }
-        System.out.println("\n──────────────────");
+        System.out.println("\n────────────────");
     }
+    /*
+        raga comunque ricordo che il tempo per ogni giocatore funziona solo con Instant e Duration
+    ma ci sono problemi di stamoa diciamo
+    bisogna salvare il long nel giocatore
+    Duration ha un metodo che si chiama between e restituisce un long
+    e poi fare dei setTempo delle duration
+    poi ad ogni turno bisogna fare getTempo e sommare il nuovo between
+
+    * // fuori dallo switch del turno
+
+            Instant start = Instant.now()
+
+        // fine ciclo while turno
+        long elapsed ...
+        setTempo(elapsed)
+
+
+
+        public void Tempo() {
+            Instant finish = Instant.now();
+            long elapsed = between(start, finish).toSeconds();
+            System.out.println("Tempo passato: " + (getTempo() + elapsed));
+        } */
+
+
+
 }

@@ -41,7 +41,7 @@ public class Menu {
                     + "\n ♢ damiera"
                     + "\n ♢ tempo"
                     + "\n ♢ esci" +
-                    "\n➤ ");
+                    "\n\n➤ ");
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
@@ -116,7 +116,7 @@ public class Menu {
                     + "\n ♢ prese"
                     + "\n ♢ mosse"
                     + "\n ♢ esci"
-                    + "\n➤ ");
+                    + "\n\n➤ ");
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
@@ -214,6 +214,7 @@ public class Menu {
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
 
                     TurnoBianco = partita.getTurno();
@@ -227,12 +228,12 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Bianco :" + presa);
-                        partita.getDamiera().StampaDamieraPedine();
 
                         bianco.setPedineMangiate(1);
 
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
                     TurnoBianco = partita.getTurno();
                     break;
@@ -244,7 +245,7 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Bianco :" + presa);
-                        partita.getDamiera().StampaDamieraPedine();
+
 
                         if(!presaTripla) {
                             bianco.setPedineMangiate(2);
@@ -255,20 +256,17 @@ public class Menu {
 
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
                     TurnoBianco = partita.getTurno();
                     break;
 
                 case "prese":
-
                     partita.StampaPedineMangiate();
-
                     break;
 
                     case "mosse":
-
                         partita.getCronologiaMosse();
-
                     break;
 
                 case "abbandona":
@@ -332,7 +330,7 @@ public class Menu {
                     + "\n ♢ prese"
                     + "\n ♢ mosse"
                     + "\n ♢ esci"
-                    + "\n➤ ");
+                    + "\n\n➤ ");
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
@@ -429,6 +427,7 @@ public class Menu {
                         partita.setTurno(false);
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
                     TurnoNero = partita.getTurno();
                     break;
@@ -441,12 +440,12 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Nero :" + presa);
-                        partita.getDamiera().StampaDamieraPedine();
 
                         nero.setPedineMangiate(1);
 
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
                     TurnoNero = partita.getTurno();
                     break;
@@ -459,7 +458,6 @@ public class Menu {
                     if (chk) {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Nero :" + presa);
-                        partita.getDamiera().StampaDamieraPedine();
 
                         if(!presaTripla) {
                             nero.setPedineMangiate(2);
@@ -469,6 +467,7 @@ public class Menu {
 
                     } else {
                         partita.setTurno(true);
+                        System.out.println(" ⚠ Mossa non valida");
                     }
                     TurnoNero = partita.getTurno();
                     break;
@@ -476,10 +475,9 @@ public class Menu {
                 case "prese":
                     partita.StampaPedineMangiate();
                     break;
+
                 case "mosse":
-
                     partita.getCronologiaMosse();
-
                     break;
 
                 case "abbandona":
@@ -604,8 +602,6 @@ public class Menu {
                     // turno = false, se il turno è terminato
 
                     System.out.println("Fine turno giocatore " + partita.getGiocatore1().getColore());
-                    System.out.println(" ---> Stato partita: " + partita.getStato());
-                    System.out.println(" ---> Abbandona: " + partita.getAbbandona());
 
                     // controllo se la partita è ancora in corso
                     // partita = true, se la partita è ancora in corso
@@ -622,8 +618,6 @@ public class Menu {
                         // turno = false, se il turno è terminato
 
                         System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
-                        System.out.println(" ---> Stato partita: " + partita.getStato());
-                        System.out.println(" ---> Abbandona: " + partita.getAbbandona());
                     }
                 } else {
                     // Giocatore2 = bianco (muove per primo)
@@ -634,8 +628,6 @@ public class Menu {
                     // turno = false, se il turno è terminato
 
                     System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
-                    System.out.println(" ---> Stato partita: " + partita.getStato());
-                    System.out.println(" ---> Abbandona: " + partita.getAbbandona());
 
                     // controllo se la partita è ancora in corso
                     // partita = true, se la partita è ancora in corso
@@ -652,8 +644,6 @@ public class Menu {
                         // turno = false, se il turno è terminato
 
                         System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
-                        System.out.println(" ---> Stato partita: " + partita.getStato());
-                        System.out.println(" ---> Abbandona: " + partita.getAbbandona());
                     }
                 }
                 NumeroTurno++;
@@ -682,7 +672,7 @@ public class Menu {
                         "\n➤ ");
 
             }
-        } while (Bianco == false & Nero == false); // Controllo sui flag, che permette di inserire correttamente
+        } while (!Bianco & !Nero); // Controllo sui flag, che permette di inserire correttamente
         // il colore per il giocatore 1
 
         System.out.print("\nIl [giocatore 1] ha scelto il colore: " + partita.getGiocatore1().getColore() + " ");
