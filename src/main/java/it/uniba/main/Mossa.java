@@ -255,7 +255,9 @@ public class Mossa {
         //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
         if(PresaMultiplaWhiteProva(DamieraCopia)) {
 
-            //la presa multipla è una concatenazione di due prese semplici
+            setPosizione1(pos1);
+            setPosizione2(pos2);
+
             PresaSempliceWhite(damiera);
 
             int x3 = damiera.CercaRiga(posizione3);
@@ -285,7 +287,9 @@ public class Mossa {
         //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
         if (PresaMultiplaBlackProva(DamieraCopia)) {
 
-            //la presa multipla è una concatenazione di due prese semplici
+            setPosizione1(pos1);
+            setPosizione2(pos2);
+
             PresaSempliceBlack(damiera);
 
             int x3 = damiera.CercaRiga(posizione3);
