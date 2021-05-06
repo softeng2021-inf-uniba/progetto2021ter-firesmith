@@ -145,13 +145,13 @@ public class Damiera {
                 if (PedinaEsistente && !PedinaVuota) {
                     if (PedinaBianca) {
                         if (Dama) {
-                            System.out.print("│ \u2631  ");
+                            System.out.print("│ \u26C1  ");
                         } else {
                             System.out.print("│ ⛀  ");
                         }
                     } else {
                         if (Dama) {
-                            System.out.print("│ \u2633  ");
+                            System.out.print("│ \u26C3  ");
                         } else {
                             System.out.print("│ ⛂  ");
                         }
