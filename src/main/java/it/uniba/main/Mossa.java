@@ -47,7 +47,7 @@ public class Mossa {
 
                 //qui viene controllata che la casella iniziale sia effettivamente occupata da una pedina (bianca) e quella di arrivo sia vuota
                 if (damiera.DamieraPedine[x2][y2].getBlank() &&
-                        !damiera.DamieraPedine[x1][y1].getBlank()) {
+                        !damiera.DamieraPedine[x1][y1].getBlank() && damiera.DamieraPedine[x1][y1].getWhite()) {
 
                     //vengono settati i vari flag in modo da ricostruire graficamente la situazione
                     damiera.DamieraPedine[x1][y1].setBlank(true);
@@ -90,7 +90,7 @@ public class Mossa {
 
                 //qui viene controllata che la casella iniziale sia effettivamente occupata da una pedina (nera) e quella di arrivo sia vuota
                 if (damiera.DamieraPedine[x2][y2].getBlank() &&
-                        !damiera.DamieraPedine[x1][y1].getBlank()) {
+                        !damiera.DamieraPedine[x1][y1].getBlank() && !damiera.DamieraPedine[x1][y1].getWhite()) {
 
                     //vengono settati i vari flag in modo da ricostruire graficamente la situazione
                     damiera.DamieraPedine[x1][y1].setBlank(true);
