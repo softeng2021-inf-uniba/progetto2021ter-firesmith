@@ -37,7 +37,7 @@ public class Menu {
                     +      "\n│ Dama Italiana by Team Firesmith │"
                     +      "\n└─────────────────────────────────┘"
                     +"\nScrivere un comando:"
-                    + "\n ♢ --help | -h"
+                    + "\n\n ♢ --help | -h"
                     + "\n ♢ gioca"
                     + "\n ♢ numeri"
                     + "\n ♢ damiera"
@@ -105,27 +105,12 @@ public class Menu {
         boolean StatoPartita = partita.getStato();
 
         do {
-            System.out.print("┌───────────────────────┒"
-                    +"      \n│ Menù Giocatore Bianco │"
-                    +      "\n└───────────────────────┘"
-                    + "\nScrivere un comando:"
-                    + "\n ♢ --help | -h | help"
-                    + "\n ♢ numeri"
-                    + "\n ♢ damiera"
-                    + "\n ♢ abbandona"
-                    + "\n ♢ tempo"
-                    + "\n ♢ 'spostamento' (es. 9-13)"
-                    + "\n ♢ 'presa semplice' (es. 5x14)"
-                    + "\n ♢ 'presa multipla' (es. 2x9x18 o 2x9x18x25)"
-                    + "\n ♢ prese"
-                    + "\n ♢ mosse"
-                    + "\n ♢ esci"
-                    + "\n\n➤ ");
+            msg.MsgMenuBianco();
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
-            String presa=comando;
+            String presa = comando;
 
             // Gestione regex (bianco)
             Pattern p1 = Pattern.compile(SPOSTAMENTO);
@@ -277,8 +262,7 @@ public class Menu {
                     Abbandona(bianco);
                     TurnoBianco = partita.getTurno();
                     StatoPartita = partita.getStato();
-                    System.out.println("Stato turno bianco: " + partita.getTurno());
-                    System.out.println("Stato partita in corso: " + partita.getStato());
+
                     break;
 
                 case "esci":
@@ -325,28 +309,13 @@ public class Menu {
         boolean chk = false;
 
         do {
-            System.out.print("┌──────────────────────┒"
-                    +"      \n│ Menù Giocatore Nero  │"
-                    +      "\n└──────────────────────┘"
-                    + "\nScrivere un comando:"
-                    + "\n ♢ --help | -h | help"
-                    + "\n ♢ numeri"
-                    + "\n ♢ damiera"
-                    + "\n ♢ abbandona"
-                    + "\n ♢ tempo"
-                    + "\n ♢ 'spostamento' (es. 13-9)"
-                    + "\n ♢ 'presa semplice' (es. 18x9)"
-                    + "\n ♢ 'presa multipla' (es. 18x9x2 o 25x18x9x2)"
-                    + "\n ♢ prese"
-                    + "\n ♢ mosse"
-                    + "\n ♢ esci"
-                    + "\n\n➤ ");
+            msg.MsgMenuNero();
 
             Scanner in = new Scanner(System.in);
             String comando = in.nextLine();
 
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
-            String presa=comando;
+            String presa = comando;
 
             // Gestione regex (nero)
 
@@ -493,8 +462,6 @@ public class Menu {
                 case "abbandona":
                     Abbandona(nero);
                     TurnoNero = partita.getTurno();
-                    System.out.println("Stato turno nero: " + partita.getTurno());
-                    System.out.println("Stato partita in corso: " + partita.getStato());
                     break;
 
                 case "esci":
@@ -503,8 +470,6 @@ public class Menu {
 
                 case "tempo":
                     Instant finish = Instant.now();
-                    //long elapsed = Duration.between(start, finish).getSeconds();
-                    //nero.setTempo(elapsed);
                     partita.Tempo(nero,start,finish);
                     break;
 
@@ -528,62 +493,82 @@ public class Menu {
         // partita = false, se abbandona partita (partita non in corso)
         boolean StatoPartita = true;
         boolean StatoTurno = true;
+        boolean Valido = false;
 
 
-        System.out.print("\nVuoi abbandonare la partita?" +
-                "\n➤ [Si/No] ");
-        Scanner input1 = new Scanner(System.in);
-        String conferma = input1.nextLine();
-        conferma = conferma.toLowerCase();
+            System.out.print("\nVuoi abbandonare la partita?" +
+                    "\n➤ [Si/No] ");
+            do {
+                Scanner input1 = new Scanner(System.in);
+                String conferma = input1.nextLine();
+                conferma = conferma.toLowerCase();
 
-        if (conferma.equals("si")) {
-            String Colore = giocatore.getColore();
 
-            if (Colore.equals("bianco")) {
-                msg.MsgBiancoAbbandona();
-                StatoPartita = false; // Abbandona partita bianco
-                StatoTurno = false;
-                partita.setStato(StatoPartita);
-                partita.setTurno(StatoTurno);
-                partita.setAbbandona(true);
-            } else {
-                msg.MsgNeroAbbandona();
-                StatoPartita = false;	// Abbandona partita nero
-                StatoTurno = false;
-                partita.setStato(StatoPartita);
-                partita.setTurno(StatoTurno);
-                partita.setAbbandona(true);
-            }
+                if (conferma.equals("si")) {
+                    String Colore = giocatore.getColore();
+                    Valido = true;
 
-        } else if (conferma.equals("no")) {
-            StatoPartita = true;			// Continua partita in corso
-            StatoTurno = true;
-            partita.setStato(StatoPartita);
-            partita.setTurno(StatoTurno);
+                    if (Colore.equals("bianco")) {
+                        msg.MsgBiancoAbbandona();
+                        StatoPartita = false; // Abbandona partita bianco
+                        StatoTurno = false;
+                        partita.setStato(StatoPartita);
+                        partita.setTurno(StatoTurno);
+                        partita.setAbbandona(true);
+                        Bianco = false;
+                        Nero = false;
+                    } else {
+                        msg.MsgNeroAbbandona();
+                        StatoPartita = false;    // Abbandona partita nero
+                        StatoTurno = false;
+                        partita.setStato(StatoPartita);
+                        partita.setTurno(StatoTurno);
+                        partita.setAbbandona(true);
+                        Nero = false;
+                        Bianco = false;
+                    }
 
-        } else {
-            msg.MsgErroreIns();
-        }
+                } else if (conferma.equals("no")) {
+                    StatoPartita = true;            // Continua partita in corso
+                    StatoTurno = true;
+                    partita.setStato(StatoPartita);
+                    partita.setTurno(StatoTurno);
+                    Valido = true;
+
+                } else {
+                    msg.MsgErroreIns();
+                    System.out.print("➤");
+                }
+            } while (!Valido);
     }
 
     // Metodo con il quale si può terminare immediatamente il programma
     public void Uscita() {
-        System.out.print("\nPer confermare l'uscita dal gioco inserire [Si/No]" +
-                "\n➤ ");
-        Scanner esci = new Scanner(System.in);
-        String uscita = esci.nextLine();
-        uscita = uscita.toLowerCase();
+        boolean Valido = false;
 
-        if (uscita.equals("si")) {
+        System.out.print("\n\nPer confermare l'uscita dal gioco inserire [Si/No]" +
+                "\n➤ ");
+        do {
+            Scanner esci = new Scanner(System.in);
+            String uscita = esci.nextLine();
+            uscita = uscita.toLowerCase();
+
+          if (uscita.equals("si")) {
             msg.MsgUscita();
             System.exit(0);
             partita.setStato(false);
-        } else if (uscita.equals("No")) {
-            System.out.println("\n ↩ Ritorno al menù... \n");
+            Valido = true;
+
+        } else if (uscita.equals("no")) {
+            msg.MsgTornaMenu();
             partita.setStato(true);
+            Valido = true;
+
         } else {
             msg.MsgErroreIns();
-        }
+              System.out.print("➤");
+         }
+        } while (!Valido);
     }
 
     public void Gioca() {
@@ -622,7 +607,7 @@ public class Menu {
                     // partita = true, se la partita è ancora in corso
                     // partita = false, la partita è stata terminata (abbandona)
                     if (partita.getAbbandona()) {
-                        System.out.println("Partita terminata (hai inserito abbandona?)");
+                        System.out.println("Partita terminata!");
                     } else {
                         // Giocatore2 = nero (muove per ultimo)
                         System.out.println("Tocca al giocatore " + partita.getGiocatore2().getColore());
@@ -648,7 +633,7 @@ public class Menu {
                     // partita = true, se la partita è ancora in corso
                     // partita = false, la partita è stata terminata (abbandona)
                     if (partita.getAbbandona()) {
-                        System.out.println("Partita terminata (hai inserito abbandona?)");
+                        System.out.println("Partita terminata!");
                     } else {
                         // Giocatore1 = nero (muove per ultimo)
                         System.out.println("Tocca al giocatore " + partita.getGiocatore1().getColore());
@@ -667,42 +652,43 @@ public class Menu {
     }
 
     public void ImpostaGiocatore() {
-        do {
-            Scanner input = new Scanner(System.in);
-            String colore = input.nextLine();
-            colore = colore.toLowerCase();
-            Giocatore giocatore1 = partita.getGiocatore1();
-            Giocatore giocatore2 = partita.getGiocatore2();
 
-            if (colore.equals("bianco")) {
-                Bianco = true;                 // serve solo per il while
-                giocatore1.setColore(colore);
-                giocatore2.setColore("nero");
-            } else if (colore.equals("nero")) {
-                Nero = true;                 // serve solo per il while
-                giocatore1.setColore(colore);
-                giocatore2.setColore("bianco");
-            } else {
-                System.out.print("\n ⚠ Inserito comando sbagliato! Riprova." +
-                        "\n➤ ");
+            do {
+                Scanner input = new Scanner(System.in);
+                String colore = input.nextLine();
+                colore = colore.toLowerCase();
+                Giocatore giocatore1 = partita.getGiocatore1();
+                Giocatore giocatore2 = partita.getGiocatore2();
 
-            }
-        } while (!Bianco & !Nero); // Controllo sui flag, che permette di inserire correttamente
-        // il colore per il giocatore 1
+                if (colore.equals("bianco")) {
+                    Bianco = true;                 // serve solo per il while
+                    giocatore1.setColore(colore);
+                    giocatore2.setColore("nero");
+                } else if (colore.equals("nero")) {
+                    Nero = true;                 // serve solo per il while
+                    giocatore1.setColore(colore);
+                    giocatore2.setColore("bianco");
+                } else {
+                    System.out.print("\n ⚠ Inserito comando sbagliato! Riprova." +
+                            "\n➤ ");
+                }
+            } while (!Bianco && !Nero); // Controllo sui flag, che permette di inserire correttamente
+            // il colore per il giocatore 1
 
-        System.out.print("\nIl [giocatore 1] ha scelto il colore: " + partita.getGiocatore1().getColore() + " ");
+
+        System.out.print("\n\nIl [giocatore 1] ha scelto il colore: " + partita.getGiocatore1().getColore() + " ");
         if (Bianco) {
-            System.out.println("⛀");  // Pedina bianca
+            System.out.println("⛂");  // Pedina bianca
         } else {
-            System.out.println("⛂");  // Pedina nera
+            System.out.println("⛀");  // Pedina nera
         }
         System.out.print("Il [giocatore 2] ha scelto il colore: " + partita.getGiocatore2().getColore() + " ");
         if (Bianco) {
-            System.out.println("⛂");  // Pedina nera
+            System.out.println("⛀");  // Pedina nera
         } else {
-            System.out.println("⛀");  // Pedina bianca
+            System.out.println("⛂");  // Pedina bianca
         }
-        System.out.println();
+
     }
 }
 
