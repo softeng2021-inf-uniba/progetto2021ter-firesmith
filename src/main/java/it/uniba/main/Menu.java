@@ -3,6 +3,8 @@ package it.uniba.main;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.time.*;
+import static java.time.Duration.between;
 
 /** Class Type: <<Control>> *
  *  Responsabilities: Classe che gestisce le interazioni tra le varie classi; funge da interfaccia per l'utente
@@ -91,6 +93,8 @@ public class Menu {
     }
 
     public void GiocatoreBianco(Giocatore bianco) {
+
+        Instant start = Instant.now();
 
         boolean TurnoBianco = true; // Inizio turno giocatore bianco
 
@@ -282,9 +286,10 @@ public class Menu {
                     break;
 
                 case "tempo":
-                    // Classe Partita
-                    // partita.MostraTempo();
-                    // System.out.println("Tempo trascorso: " + bianco.getTempo());
+                    Instant finish = Instant.now();
+                    //long elapsed = Duration.between(start, finish).getSeconds();
+                    //bianco.setTempo(elapsed);
+                    partita.Tempo(bianco,start,finish);
                     break;
 
                 default:
@@ -293,6 +298,9 @@ public class Menu {
             }
         } while (TurnoBianco && StatoPartita);
 
+        Instant finish = Instant.now();
+        long elapsed = Duration.between(start, finish).getSeconds();
+        bianco.setTempo(elapsed);
         // Se TurnoBianco = false, tocca al giocatore Nero
         // Se TurnoBianco = true, tocca ancora al giocatore Bianco
         // Se StatoPartita = false, partita terminata
@@ -311,6 +319,8 @@ public class Menu {
         // TurnoNero = true, se il turno è in corso
         // TurnoNero = false, se il turno è finito
         boolean TurnoNero = true; // Inizio turno giocatore nero
+
+        Instant start = Instant.now();
 
         boolean chk = false;
 
@@ -492,9 +502,10 @@ public class Menu {
                     break;
 
                 case "tempo":
-                    // TODO da implementare
-                    // partita.MostraTempo();
-                    // System.out.println("Tempo trascorso: " + nero.getTempo());
+                    Instant finish = Instant.now();
+                    //long elapsed = Duration.between(start, finish).getSeconds();
+                    //nero.setTempo(elapsed);
+                    partita.Tempo(nero,start,finish);
                     break;
 
                 default:
@@ -502,6 +513,10 @@ public class Menu {
                     break;
             }
         } while (TurnoNero);
+
+        Instant finish = Instant.now();
+        long elapsed = Duration.between(start, finish).getSeconds();
+        nero.setTempo(elapsed);
 
         // Se TurnoNero = false, tocca al giocatore Nero
         // Se TurnoNero = true, tocca ancora al giocatore Bianco
