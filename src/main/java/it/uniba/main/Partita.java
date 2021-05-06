@@ -92,40 +92,46 @@ public class Partita {
 
     public void StampaPedineMangiate() {
 
-        System.out.println("\nPEDINE MANGIATE\n" +
+        System.out.println("\n\nPEDINE MANGIATE\n" +
                 "───────────────"); //TODO \u2501
 
         if (giocatore1.getColore().equals("bianco")) {
             System.out.print("Bianco: ");
             for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛂");
+                System.out.print("⛀");
             }
             System.out.print("\nNero: ");
             for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
-                System.out.print("⛀");
+                System.out.print("⛂");
             }
             System.out.println();
         } else if (giocatore1.getColore().equals("nero")) {
             System.out.print("Nero: ");
             for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛀");
+                System.out.print("⛂");
             }
             System.out.print("\nBianco: ");
             for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
-                System.out.print("⛂");
+                System.out.print("⛀");
             }
         }
-        System.out.println("\n──────────────────");
+        System.out.println("\n───────────────");
     }
 
     public void getCronologiaMosse() {
         ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
-        System.out.println("\nMOSSE EFFETTUATE\n" +
-                             "────────────────");
-        while (CronoMosse.hasNext()) {
-            System.out.println(CronoMosse.next());
+        if(CronologiaMosse.size() != 0) {
+            System.out.println("\n\nMOSSE EFFETTUATE\n" +
+                    "────────────────");
+            while (CronoMosse.hasNext()) {
+                System.out.println(CronoMosse.next());
+            }
+            System.out.println("\n────────────────");
         }
-        System.out.println("\n────────────────");
+        else {
+            System.out.println("\n ⚠ Non ci sono ancora mosse\n");
+        }
+
     }
 
     public void Tempo(Giocatore giocatore, Instant start, Instant finish) {
@@ -133,8 +139,8 @@ public class Partita {
         long elapsed = Duration.between(start, finish).getSeconds();
         giocatore.setTempo(elapsed);
 
-        System.out.println("\nTEMPO TRASCORSO\n" +
-                             "───────────────");
+        System.out.println("\n\nTEMPO TRASCORSO\n" +
+                             "────────────────.─");
 
         if (giocatore1.getColore().equals("bianco")) {
 
@@ -165,6 +171,7 @@ public class Partita {
                 System.out.println("Nero: " + giocatore1.getTempo() / 60 + " minuto/i");
             }
         }
+        System.out.println("────────────────");
     }
 }
 
