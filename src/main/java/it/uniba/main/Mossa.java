@@ -30,7 +30,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di far muovere le pedine del giocatore bianco
-    public void SpostamentoSempliceBianco(Damiera damiera) {
+    public void SpostamentoSempliceNero(Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -72,7 +72,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di far muovere le pedine del giocatore nero
-    public void SpostamentoSempliceNero(Damiera damiera) {
+    public void SpostamentoSempliceBianco(Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -115,7 +115,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di effettuare una presa per il bianco
-    public boolean PresaSempliceWhite(Damiera damiera){
+    public boolean PresaSempliceBlack(Damiera damiera){
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -180,7 +180,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di effettuare una presa per il nero
-    public boolean PresaSempliceBlack(Damiera damiera) {
+    public boolean PresaSempliceWhite(Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
         int x1 = damiera.CercaRiga(posizione1);
@@ -243,7 +243,7 @@ public class Mossa {
     }
 
     //Metodo che si occupa di effettuare una presa per il bianco: è una concatenazione di due prese semplici
-    public void PresaMultiplaWhite(Damiera damiera){
+    public void PresaMultiplaBlack(Damiera damiera){
 
         Damiera DamieraCopia = new Damiera(damiera);
 
@@ -252,42 +252,6 @@ public class Mossa {
         int pos2 = getPosizione2();
         int pos3 = getPosizione3();
 
-
-        //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
-        if(PresaMultiplaWhiteProva(DamieraCopia)) {
-
-            //1a PRESA
-            setPosizione1(pos1);
-            setPosizione2(pos2);
-
-            PresaSempliceWhite(damiera);
-
-
-            //2a PRESA
-            setPosizione1(posizione2);
-            setPosizione2(posizione3);
-
-            PresaSempliceWhite(damiera);
-
-            if(posizione4 != 0) {
-                //3a PRESA
-                setPosizione1(pos3);
-                setPosizione2(posizione4);
-
-                PresaSempliceWhite(damiera);
-            }
-        }
-    }
-
-    //Metodo che si occupa di effettuare una presa multipla per il nero
-    public void PresaMultiplaBlack(Damiera damiera) {
-
-        Damiera DamieraCopia = new Damiera(damiera);
-
-        //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
-        int pos1 = getPosizione1();
-        int pos2 = getPosizione2();
-        int pos3 = getPosizione3();
 
         //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
         if(PresaMultiplaBlackProva(DamieraCopia)) {
@@ -297,6 +261,7 @@ public class Mossa {
             setPosizione2(pos2);
 
             PresaSempliceBlack(damiera);
+
 
             //2a PRESA
             setPosizione1(posizione2);
@@ -310,45 +275,45 @@ public class Mossa {
                 setPosizione2(posizione4);
 
                 PresaSempliceBlack(damiera);
-
             }
-
         }
     }
 
-    public boolean PresaMultiplaWhiteProva(Damiera DamieraCopia){ //PROVA
+    //Metodo che si occupa di effettuare una presa multipla per il nero
+    public void PresaMultiplaWhite(Damiera damiera) {
 
-        boolean prova = false;
-        boolean prova1 = PresaSempliceWhite(DamieraCopia);
-        boolean prova2 = false;
-        boolean prova3 = false;
+        Damiera DamieraCopia = new Damiera(damiera);
 
-        if (prova1) {
+        //salvo le posizioni poichè verranno sovrascritte con la damiera di copia
+        int pos1 = getPosizione1();
+        int pos2 = getPosizione2();
+        int pos3 = getPosizione3();
 
+        //se la presa provata nella damiera di prova è valida, allora la eseguo su quella originale
+        if(PresaMultiplaWhiteProva(DamieraCopia)) {
+
+            //1a PRESA
+            setPosizione1(pos1);
+            setPosizione2(pos2);
+
+            PresaSempliceWhite(damiera);
+
+            //2a PRESA
             setPosizione1(posizione2);
             setPosizione2(posizione3);
 
-            prova2 = PresaSempliceWhite(DamieraCopia);
-            if (prova2) {
+            PresaSempliceWhite(damiera);
 
-                prova = true;
-                if (posizione4 != 0) {
-                    setPosizione1(posizione3);
-                    setPosizione2(posizione4);
-                    prova3 = PresaSempliceWhite(DamieraCopia);
-                    if (prova3){
-                        prova = true;
-                    }
-                    else {
-                        prova = false;
-                    }
-                }
+            if(posizione4 != 0) {
+                //3a PRESA
+                setPosizione1(pos3);
+                setPosizione2(posizione4);
+
+                PresaSempliceWhite(damiera);
+
             }
-            else {
-                prova = false;
-            }
+
         }
-        return prova;
     }
 
     public boolean PresaMultiplaBlackProva(Damiera DamieraCopia){ //PROVA
@@ -371,6 +336,41 @@ public class Mossa {
                     setPosizione1(posizione3);
                     setPosizione2(posizione4);
                     prova3 = PresaSempliceBlack(DamieraCopia);
+                    if (prova3){
+                        prova = true;
+                    }
+                    else {
+                        prova = false;
+                    }
+                }
+            }
+            else {
+                prova = false;
+            }
+        }
+        return prova;
+    }
+
+    public boolean PresaMultiplaWhiteProva(Damiera DamieraCopia){ //PROVA
+
+        boolean prova = false;
+        boolean prova1 = PresaSempliceWhite(DamieraCopia);
+        boolean prova2 = false;
+        boolean prova3 = false;
+
+        if (prova1) {
+
+            setPosizione1(posizione2);
+            setPosizione2(posizione3);
+
+            prova2 = PresaSempliceWhite(DamieraCopia);
+            if (prova2) {
+
+                prova = true;
+                if (posizione4 != 0) {
+                    setPosizione1(posizione3);
+                    setPosizione2(posizione4);
+                    prova3 = PresaSempliceWhite(DamieraCopia);
                     if (prova3){
                         prova = true;
                     }
