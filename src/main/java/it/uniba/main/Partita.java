@@ -95,26 +95,16 @@ public class Partita {
         System.out.println("\n\nPEDINE MANGIATE\n" +
                 "───────────────"); //TODO \u2501
 
-        if (giocatore1.getColore().equals("bianco")) {
             System.out.print("Bianco: ");
             for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛀");
+                System.out.print("⛂");
             }
             System.out.print("\nNero: ");
             for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
-                System.out.print("⛂");
-            }
-            System.out.println();
-        } else if (giocatore1.getColore().equals("nero")) {
-            System.out.print("Nero: ");
-            for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛂");
-            }
-            System.out.print("\nBianco: ");
-            for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
                 System.out.print("⛀");
             }
-        }
+            System.out.println();
+
         System.out.println("\n───────────────");
     }
 

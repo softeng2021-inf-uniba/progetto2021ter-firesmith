@@ -202,7 +202,7 @@ public class Menu {
                     if (chk) {
                         partita.setCronologiaMosse("Bianco :" + presa);
                         partita.setTurno(false);
-                        System.out.println("Spostamento effettuato");
+                        msg.MsgSpostamentoEffettuato();
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -221,7 +221,7 @@ public class Menu {
                         partita.setCronologiaMosse("Bianco :" + presa);
 
                         bianco.setPedineMangiate(1);
-                        System.out.println("PRESA EFFETTUATA");
+                        msg.MsgMossaEffettuata();
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -243,7 +243,7 @@ public class Menu {
                         } else {
                             bianco.setPedineMangiate(3);
                         }
-                        System.out.println("PRESA EFFETTUATA");
+                        msg.MsgMossaEffettuata();
 
                     } else {
                         partita.setTurno(true);
@@ -406,7 +406,7 @@ public class Menu {
                     if (chk) {
                         partita.setCronologiaMosse("Nero :" + presa);
                         partita.setTurno(false);
-                        System.out.println("Spostamento Effettuato");
+                        msg.MsgSpostamentoEffettuato();
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -424,7 +424,7 @@ public class Menu {
                         partita.setCronologiaMosse("Nero :" + presa);
 
                         nero.setPedineMangiate(1);
-                        System.out.println("PRESA EFFETTUATA");
+                        msg.MsgMossaEffettuata();
 
                     } else {
                         partita.setTurno(true);
@@ -447,7 +447,7 @@ public class Menu {
                         } else {
                             nero.setPedineMangiate(3);
                         }
-                        System.out.println("PRESA EFFETTUATA");
+                        msg.MsgMossaEffettuata();
 
                     } else {
                         partita.setTurno(true);
