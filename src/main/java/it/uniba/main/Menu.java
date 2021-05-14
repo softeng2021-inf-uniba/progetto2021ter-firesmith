@@ -273,8 +273,8 @@ public class Menu {
 
                 case "tempo":
                     Instant finish = Instant.now();
-                    //long elapsed = Duration.between(start, finish).getSeconds();
-                    //bianco.setTempo(elapsed);
+                    long elapsed = Duration.between(start, finish).getSeconds();
+                    bianco.setTempo(elapsed);
                     partita.Tempo(bianco,start,finish);
                     break;
 
@@ -475,6 +475,8 @@ public class Menu {
 
                 case "tempo":
                     Instant finish = Instant.now();
+                    long elapsed = Duration.between(start, finish).getSeconds();
+                    nero.setTempo(elapsed);
                     partita.Tempo(nero,start,finish);
                     break;
 

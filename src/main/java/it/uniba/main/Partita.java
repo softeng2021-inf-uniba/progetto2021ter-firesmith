@@ -7,6 +7,7 @@ package it.uniba.main;
 
 import java.util.*;
 import java.time.*;
+import java.util.concurrent.TimeUnit;
 
 /** Class Type: <<entity>>
  *  Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
@@ -130,36 +131,24 @@ public class Partita {
         giocatore.setTempo(elapsed);
 
         System.out.println("\n\nTEMPO TRASCORSO\n" +
-                             "────────────────.─");
+                             "────────────────");
 
         if (giocatore1.getColore().equals("bianco")) {
 
             if (giocatore1.getTempo() < 60) {
                 System.out.println("Bianco: " + giocatore1.getTempo() + " secondi");
             } else {
-                System.out.println("Bianco: " + giocatore1.getTempo() / 60 + " minuto/i");
+                System.out.println("Bianco: " + giocatore1.getTempo() / 60 + " minuto/i " + (giocatore1.getTempo()-60) + " secondi");
             }
 
             if (giocatore2.getTempo() < 60) {
                 System.out.println("Nero: " + giocatore2.getTempo() + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i");
+                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + (giocatore2.getTempo()-60) + " secondi");
+
             }
             System.out.println();
 
-        } else if (giocatore1.getColore().equals("nero")) {
-
-            if (giocatore2.getTempo() < 60) {
-                System.out.println("Bianco: " + giocatore2.getTempo() + " secondi");
-            } else {
-                System.out.println("Bianco: " + giocatore2.getTempo() / 60 + " minuto/i");
-            }
-
-            if (giocatore1.getTempo() < 60) {
-                System.out.println("Nero: " + giocatore1.getTempo() + " secondi");
-            } else {
-                System.out.println("Nero: " + giocatore1.getTempo() / 60 + " minuto/i");
-            }
         }
         System.out.println("────────────────");
     }
