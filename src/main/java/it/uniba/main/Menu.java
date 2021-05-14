@@ -94,6 +94,7 @@ public class Menu {
 
     public void GiocatoreBianco(Giocatore bianco) {
 
+
         Instant start = Instant.now();
 
         boolean TurnoBianco = true; // Inizio turno giocatore bianco
@@ -201,6 +202,7 @@ public class Menu {
                     if (chk) {
                         partita.setCronologiaMosse("Bianco :" + presa);
                         partita.setTurno(false);
+                        System.out.println("Spostamento effettuato");
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -219,7 +221,7 @@ public class Menu {
                         partita.setCronologiaMosse("Bianco :" + presa);
 
                         bianco.setPedineMangiate(1);
-
+                        System.out.println("PRESA EFFETTUATA");
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -241,7 +243,7 @@ public class Menu {
                         } else {
                             bianco.setPedineMangiate(3);
                         }
-
+                        System.out.println("PRESA EFFETTUATA");
 
                     } else {
                         partita.setTurno(true);
@@ -404,6 +406,7 @@ public class Menu {
                     if (chk) {
                         partita.setCronologiaMosse("Nero :" + presa);
                         partita.setTurno(false);
+                        System.out.println("Spostamento Effettuato");
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -421,6 +424,7 @@ public class Menu {
                         partita.setCronologiaMosse("Nero :" + presa);
 
                         nero.setPedineMangiate(1);
+                        System.out.println("PRESA EFFETTUATA");
 
                     } else {
                         partita.setTurno(true);
@@ -443,6 +447,7 @@ public class Menu {
                         } else {
                             nero.setPedineMangiate(3);
                         }
+                        System.out.println("PRESA EFFETTUATA");
 
                     } else {
                         partita.setTurno(true);
@@ -578,10 +583,11 @@ public class Menu {
         } else {
             StatoPartita = true; 							// Inizia una nuova partita
             partita.setStato(StatoPartita);		// Imposta la nuova partita
-
-            msg.MsgInizioPartita();
-
-            ImpostaGiocatore(); // Prende in input il colore del primo giocatore
+            Giocatore giocatore1 = partita.getGiocatore1();
+            Giocatore giocatore2 = partita.getGiocatore2();
+            giocatore1.setColore("bianco");
+            giocatore2.setColore("nero");
+            // Prende in input il colore del primo giocatore
 
             // Impostazione turno giocatore
             int NumeroTurno = 1;
@@ -593,9 +599,7 @@ public class Menu {
                         +  "\n│     Turno " + NumeroTurno + "       │"
                         +  "\n└───────────────────┘\n");
 
-                if (partita.getGiocatore1().getColore().equals("bianco")) {
                     // Giocatore1 = bianco (muove per primo)
-                    System.out.println("Tocca al giocatore " + partita.getGiocatore1().getColore());
 
                     GiocatoreBianco(partita.getGiocatore1());
                     // turno = true, se il turno è in corso
@@ -610,7 +614,6 @@ public class Menu {
                         System.out.println("Partita terminata!");
                     } else {
                         // Giocatore2 = nero (muove per ultimo)
-                        System.out.println("Tocca al giocatore " + partita.getGiocatore2().getColore());
                         partita.setTurno(false); // Reimposta il turno per far giocare l'avversario
 
                         GiocatoreNero(partita.getGiocatore2());
@@ -619,39 +622,13 @@ public class Menu {
 
                         System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
                     }
-                } else {
-                    // Giocatore2 = bianco (muove per primo)
-                    System.out.println("Tocca al giocatore " + partita.getGiocatore2().getColore());
 
-                    GiocatoreBianco(partita.getGiocatore2());
-                    // turno = true, se il turno è in corso
-                    // turno = false, se il turno è terminato
-
-                    System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
-
-                    // controllo se la partita è ancora in corso
-                    // partita = true, se la partita è ancora in corso
-                    // partita = false, la partita è stata terminata (abbandona)
-                    if (partita.getAbbandona()) {
-                        System.out.println("Partita terminata!");
-                    } else {
-                        // Giocatore1 = nero (muove per ultimo)
-                        System.out.println("Tocca al giocatore " + partita.getGiocatore1().getColore());
-                        partita.setTurno(false); // Reimposta il turno per far giocare l'avversario
-
-                        GiocatoreNero(partita.getGiocatore1());
-                        // turno = true, se il turno è in corso
-                        // turno = false, se il turno è terminato
-
-                        System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
-                    }
-                }
                 NumeroTurno++;
             } while (partita.getStato());
         }
     }
 
-    public void ImpostaGiocatore() {
+   /* public void ImpostaGiocatore() {
 
             do {
                 Scanner input = new Scanner(System.in);
@@ -690,5 +667,7 @@ public class Menu {
         }
 
     }
+
+    */
 }
 
