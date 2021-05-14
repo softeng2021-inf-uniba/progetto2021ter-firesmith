@@ -132,7 +132,7 @@ public class Partita {
 
         System.out.println("\n\nTEMPO TRASCORSO\n" +
                              "────────────────");
-
+        //calcola il tempo trascorso all inizio del turno bianco o all'inizio del turno nero , nel caso passi il minuto cambia la stampa .
         if (giocatore1.getColore().equals("bianco")) {
 
             if (giocatore1.getTempo() < 60) {
@@ -144,7 +144,7 @@ public class Partita {
             if (giocatore2.getTempo() < 60) {
                 System.out.println("Nero: " + giocatore2.getTempo() + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + ((giocatore1.getTempo() / 1) % 60) + " secondi");
+                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + ((giocatore2.getTempo() / 1) % 60) + " secondi");
 
             }
             System.out.println();
