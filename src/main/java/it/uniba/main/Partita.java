@@ -138,13 +138,13 @@ public class Partita {
             if (giocatore1.getTempo() < 60) {
                 System.out.println("Bianco: " + giocatore1.getTempo() + " secondi");
             } else {
-                System.out.println("Bianco: " + giocatore1.getTempo() / 60 + " minuto/i " + (giocatore1.getTempo()-60) + " secondi");
+                System.out.println("Bianco: " + (giocatore1.getTempo() / 60) + " minuto/i " + ((giocatore1.getTempo() / 1) % 60) + " secondi");
             }
 
             if (giocatore2.getTempo() < 60) {
                 System.out.println("Nero: " + giocatore2.getTempo() + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + (giocatore2.getTempo()-60) + " secondi");
+                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + ((giocatore1.getTempo() / 1) % 60) + " secondi");
 
             }
             System.out.println();
