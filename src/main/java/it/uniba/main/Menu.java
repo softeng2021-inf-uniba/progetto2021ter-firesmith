@@ -1,36 +1,56 @@
 package it.uniba.main;
 
-import java.util.*;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.time.*;
-
-import static java.time.Duration.between;
+import java.time.Instant;
+import java.time.Duration;
 
 /**
  * Class Type: <<Control>> *
- * Responsabilities: Classe che gestisce le interazioni tra le varie classi; funge da interfaccia per l'utente
+ * Responsabilities: Classe che gestisce le interazioni tra le varie classi;
+ * funge da interfaccia per l'utente.
  */
 
 
 public class Menu {
-    Messaggi msg = new Messaggi();
-    Partita partita = new Partita();
 
+    private Partita partita = new Partita();
 
-    boolean presaTripla = false;
+    private boolean presaTripla = false;
 
-    //public static final String ALLCASES = "\\d{1,2}([x]{1}|[-]{1})\\d{1,2}([x]{1}\\d{1,2})?";*/
+    //getter e setter
+    public Partita getPartita() {
+        return partita;
+    }
+
+    public void setPartita(final Partita p) {
+        partita = p;
+    }
+
+    public boolean isPresaTripla() {
+        return presaTripla;
+    }
+
+    public void setPresaTripla(final boolean prTripla) {
+        presaTripla = prTripla;
+    }
+
+    public static final int ONE = 1;
+    public static final int TWO = 2;
+    public static final int THREE = 3;
+
     public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
     public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
-    public static final String PRESA_M = "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
+    public static final String PRESA_M =
+            "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
 
     // All'avvio del programma, non c'è nessuna partita in corso
 
     // Menu da mostrare ad avvio programma
-    public void Generico() {
+    public void generico() {
         // Serve per controllare se la partita è in corso
-        boolean Inizio = partita.getStato();
+        boolean inizio = getPartita().getStato();
 
         do {
             System.out.print("┌─────────────────────────────────┒"
@@ -42,10 +62,10 @@ public class Menu {
                     + "\n ♢ numeri"
                     + "\n ♢ damiera"
                     + "\n ♢ tempo"
-                    + "\n ♢ esci" +
-                    "\n\n➤ ");
+                    + "\n ♢ esci"
+                    + "\n\n➤ ");
 
-            Scanner in = new Scanner(System.in , "UTF-8");
+            Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
 
             comando = comando.toLowerCase(); //Trasforma l'input in minuscolo
@@ -53,62 +73,61 @@ public class Menu {
             // Controlla cosa è stato inserito
             switch (comando) {
                 case "--help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "-h":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "gioca":
-                    partita = new Partita();
+                    setPartita(new Partita());
                     gioca();
                     break;
 
                 case "numeri":
-                    partita.getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().StampaPosizioniPedine();
                     break;
 
                 case "damiera":
-                    msg.MsgInfoPartitaDamiera();
+                    Messaggi.MsgInfoPartitaDamiera();
                     break;
 
                 case "tempo":
-                    msg.MsgInfoPartita();
+                    Messaggi.MsgInfoPartita();
                     break;
 
                 case "esci":
-                    Uscita();
-                    partita.setStato(false);
-                    Inizio = partita.getStato();
+                    uscita();
+                    getPartita().setStato(false);
+                    inizio = getPartita().getStato();
                     break;
 
                 default:
-                    msg.MsgErroreIns();
+                    Messaggi.MsgErroreIns();
                     break;
             }
-        } while (!Inizio); // Partita = false
+        } while (!inizio); // Partita = false
     }
 
-    public void GiocatoreBianco(Giocatore bianco) {
-
+    public void giocatoreBianco(final Giocatore bianco) {
 
         Instant start = Instant.now();
 
-        boolean TurnoBianco = true; // Inizio turno giocatore bianco
+        boolean turnoBianco = true; // Inizio turno giocatore bianco
 
         Mossa mossa = new Mossa(0, 0);
 
         boolean chk = false;
 
-        boolean StatoPartita = partita.getStato();
+        boolean statoPartita = getPartita().getStato();
 
         do {
-            msg.MsgMenuBianco();
+            Messaggi.MsgMenuBianco();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -124,38 +143,38 @@ public class Menu {
             Matcher m2 = p2.matcher(comando);
             Matcher m3 = p3.matcher(comando);
 
-            int PosizioneIniziale = 0;
-            int PosizioneFinale = 0;
-            int PosizioneFinale2 = 0;
-            int PosizioneFinale3 = 0;
+            int posIniziale = 0;
+            int posFinale = 0;
+            int posFinale2 = 0;
+            int posFinale3 = 0;
 
             String[] array = comando.split("-|x");
 
             try {
                 if ((array.length > 1)) {
 
-                    String PosizioneInizialeTemp = array[0];
-                    String PosizioneFinaleTemp = array[1];
+                    String posInizialeTemp = array[0];
+                    String posFinaleTemp = array[1];
 
 
-                    PosizioneIniziale = Integer.parseInt(PosizioneInizialeTemp);
-                    PosizioneFinale = Integer.parseInt(PosizioneFinaleTemp);
+                    posIniziale = Integer.parseInt(posInizialeTemp);
+                    posFinale = Integer.parseInt(posFinaleTemp);
 
 
-                    mossa.setPosizione1(PosizioneIniziale);
-                    mossa.setPosizione2(PosizioneFinale);
+                    mossa.setPosizione1(posIniziale);
+                    mossa.setPosizione2(posFinale);
 
-                    if (array.length > 2) {
-                        String PosizioneFinale2Temp = array[2];
-                        PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
-                        mossa.setPosizione3(PosizioneFinale2);
+                    if (array.length > TWO) {
+                        String posFinale2Temp = array[TWO];
+                        posFinale2 = Integer.parseInt(posFinale2Temp);
+                        mossa.setPosizione3(posFinale2);
 
-                        if (array.length > 3 && !array[3].equals("")) {
-                            String PosizioneFinale3Temp = array[3];
-                            PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
-                            mossa.setPosizione4(PosizioneFinale3);
+                        if (array.length > THREE && !array[THREE].equals("")) {
+                            String posFinale3Temp = array[THREE];
+                            posFinale3 = Integer.parseInt(posFinale3Temp);
+                            mossa.setPosizione4(posFinale3);
 
-                            presaTripla = true;
+                            setPresaTripla(true);
 
                         }
                     }
@@ -173,146 +192,146 @@ public class Menu {
             }
             switch (comando) {
                 case "--help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "-h":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "numeri":
-                    partita.getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().StampaPosizioniPedine();
                     break;
 
                 case "damiera":
-                    partita.getDamiera().StampaDamieraPedine();
+                    getPartita().getDamiera().StampaDamieraPedine();
                     break;
 
                 case "gioca":
-                    msg.MsgInfoPartita();
+                    Messaggi.MsgErrorePartita();
                     break;
 
                 case "spostamento":
                     System.out.println("Sto effettuando lo spostamento...");
 
-                    mossa.SpostamentoSempliceBianco(partita.getDamiera());
+                    mossa.SpostamentoSempliceBianco(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setCronologiaMosse("Bianco :" + presa);
-                        partita.setTurno(false);
-                        msg.MsgSpostamentoEffettuato();
+                        getPartita().setCronologiaMosse("Bianco :" + presa);
+                        getPartita().setTurno(false);
+                        Messaggi.MsgSpostamentoEffettuato();
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
 
-                    TurnoBianco = partita.getTurno();
+                    turnoBianco = getPartita().getTurno();
                     break;
 
                 case "presa semplice":
                     System.out.println("Sto effettuando la presa...");
 
-                    mossa.PresaSempliceWhite(partita.getDamiera());
+                    mossa.PresaSempliceWhite(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setTurno(false);
-                        partita.setCronologiaMosse("Bianco :" + presa);
+                        getPartita().setTurno(false);
+                        getPartita().setCronologiaMosse("Bianco :" + presa);
 
                         bianco.setPedineMangiate(1);
-                        msg.MsgMossaEffettuata();
+                        Messaggi.MsgMossaEffettuata();
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
-                    TurnoBianco = partita.getTurno();
+                    turnoBianco = getPartita().getTurno();
                     break;
 
                 case "presa multipla":
                     System.out.println("Sto effettuando la presa...");
-                    mossa.PresaMultiplaWhite(partita.getDamiera());
+                    mossa.PresaMultiplaWhite(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setTurno(false);
-                        partita.setCronologiaMosse("Bianco :" + presa);
+                        getPartita().setTurno(false);
+                        getPartita().setCronologiaMosse("Bianco :" + presa);
 
 
-                        if (!presaTripla) {
-                            bianco.setPedineMangiate(2);
+                        if (!isPresaTripla()) {
+                            bianco.setPedineMangiate(TWO);
                         } else {
-                            bianco.setPedineMangiate(3);
+                            bianco.setPedineMangiate(THREE);
                         }
-                        msg.MsgMossaEffettuata();
+                        Messaggi.MsgMossaEffettuata();
 
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
-                    TurnoBianco = partita.getTurno();
+                    turnoBianco = getPartita().getTurno();
                     break;
 
                 case "prese":
-                    partita.stampaPedineMangiate();
+                    getPartita().stampaPedineMangiate();
                     break;
 
                 case "mosse":
-                    partita.getCronologiaMosse();
+                    getPartita().getCronologiaMosse();
                     break;
 
                 case "abbandona":
-                    Abbandona(bianco);
-                    TurnoBianco = partita.getTurno();
-                    StatoPartita = partita.getStato();
+                    abbandona(bianco);
+                    turnoBianco = getPartita().getTurno();
+                    statoPartita = getPartita().getStato();
 
                     break;
 
                 case "esci":
-                    Uscita();                         // System.exit(0);
+                    uscita();                         // System.exit(0);
                     break;
 
                 case "tempo":
                     Instant finish = Instant.now();
                     long elapsed = Duration.between(start, finish).getSeconds();
                     bianco.setTempo(elapsed);
-                    partita.tempo(bianco, start, finish);
+                    getPartita().tempo(bianco, start, finish);
                     break;
 
                 default:
-                    msg.MsgErroreIns();
+                    Messaggi.MsgErroreIns();
                     break;
             }
-        } while (TurnoBianco && StatoPartita);
+        } while (turnoBianco && statoPartita);
 
         Instant finish = Instant.now();
         long elapsed = Duration.between(start, finish).getSeconds();
         bianco.setTempo(elapsed);
-        // Se TurnoBianco = false, tocca al giocatore Nero
-        // Se TurnoBianco = true, tocca ancora al giocatore Bianco
-        // Se StatoPartita = false, partita terminata
-        // Se StatoPartita = true, partita in corso
+        // Se turnoBianco = false, tocca al giocatore Nero
+        // Se turnoBianco = true, tocca ancora al giocatore Bianco
+        // Se statoPartita = false, partita terminata
+        // Se statoPartita = true, partita in corso
     }
 
     // Da mostrare al giocatore che ha scelto la pedina nera
     // Damiera damiera = damiera in uso dalla partita (da Partita)
     // boolean Partita = flag (da Partita) che:
-    // 	Se Partita = true, la partita è in corso
-    // 	Se Partita = false, la partita non è in corso/è stata terminata
-    public void GiocatoreNero(Giocatore nero) {
+    // Se Partita = true, la partita è in corso
+    // Se Partita = false, la partita non è in corso/è stata terminata
+    public void giocatoreNero(final Giocatore nero) {
         Mossa mossa = new Mossa(0, 0);
 
-        // TurnoNero = true, se il turno è in corso
-        // TurnoNero = false, se il turno è finito
-        boolean TurnoNero = true; // Inizio turno giocatore nero
+        // turnoNero = true, se il turno è in corso
+        // turnoNero = false, se il turno è finito
+        boolean turnoNero = true; // Inizio turno giocatore nero
 
         Instant start = Instant.now();
 
         boolean chk = false;
 
         do {
-            msg.MsgMenuNero();
+            Messaggi.MsgMenuNero();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -330,35 +349,35 @@ public class Menu {
             Matcher m2 = p2.matcher(comando);
             Matcher m3 = p3.matcher(comando);
 
-            int PosizioneIniziale = 0;
-            int PosizioneFinale = 0;
-            int PosizioneFinale2 = 0;
-            int PosizioneFinale3 = 0;
+            int posIniziale = 0;
+            int posFinale = 0;
+            int posFinale2 = 0;
+            int posFinale3 = 0;
 
             String[] array = comando.split("-|x");
 
             try {
-                if ((array.length > 1)) {
+                if ((array.length > ONE)) {
 
-                    String PosizioneInizialeTemp = array[0];
-                    String PosizioneFinaleTemp = array[1];
+                    String posInizialeTemp = array[0];
+                    String posFinaleTemp = array[1];
 
-                    PosizioneIniziale = Integer.parseInt(PosizioneInizialeTemp);
-                    PosizioneFinale = Integer.parseInt(PosizioneFinaleTemp);
+                    posIniziale = Integer.parseInt(posInizialeTemp);
+                    posFinale = Integer.parseInt(posFinaleTemp);
 
-                    mossa.setPosizione1(PosizioneIniziale);
-                    mossa.setPosizione2(PosizioneFinale);
+                    mossa.setPosizione1(posIniziale);
+                    mossa.setPosizione2(posFinale);
 
-                    if (array.length > 2 && !array[2].equals("")) {
-                        String PosizioneFinale2Temp = array[2];
-                        PosizioneFinale2 = Integer.parseInt(PosizioneFinale2Temp);
-                        mossa.setPosizione3(PosizioneFinale2);
-                        if (array.length > 3 && !array[3].equals("")) {
-                            String PosizioneFinale3Temp = array[3];
-                            PosizioneFinale3 = Integer.parseInt(PosizioneFinale3Temp);
-                            mossa.setPosizione4(PosizioneFinale3);
+                    if (array.length > TWO && !array[TWO].equals("")) {
+                        String posFinale2Temp = array[2];
+                        posFinale2 = Integer.parseInt(posFinale2Temp);
+                        mossa.setPosizione3(posFinale2);
+                        if (array.length > THREE && !array[THREE].equals("")) {
+                            String posFinale3Temp = array[THREE];
+                            posFinale3 = Integer.parseInt(posFinale3Temp);
+                            mossa.setPosizione4(posFinale3);
 
-                            presaTripla = true;
+                            setPresaTripla(true);
 
                         }
                     }
@@ -377,135 +396,136 @@ public class Menu {
 
             switch (comando) {
                 case "--help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "-h":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "help":
-                    msg.Help();
+                    Messaggi.Help();
                     break;
 
                 case "numeri":
-                    partita.getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().StampaPosizioniPedine();
                     break;
 
                 case "damiera":
-                    partita.getDamiera().StampaDamieraPedine();
+                    getPartita().getDamiera().StampaDamieraPedine();
                     break;
 
                 case "gioca":
-                    msg.MsgInfoPartita();
+                    Messaggi.MsgErrorePartita();
                     break;
                 case "spostamento":
-                    System.out.println("Sto effettuando lo spostamento...");
+                    Messaggi.MsgSpostamento();
 
-                    mossa.SpostamentoSempliceNero(partita.getDamiera());
+                    mossa.SpostamentoSempliceNero(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setCronologiaMosse("Nero :" + presa);
-                        partita.setTurno(false);
-                        msg.MsgSpostamentoEffettuato();
+                        getPartita().setCronologiaMosse("Nero :" + presa);
+                        getPartita().setTurno(false);
+                        Messaggi.MsgSpostamentoEffettuato();
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
-                    TurnoNero = partita.getTurno();
+                    turnoNero = getPartita().getTurno();
                     break;
 
                 case "presa semplice":
-                    System.out.println("Sto effettuando la presa...");
+                    Messaggi.MsgPresa();
 
-                    mossa.PresaSempliceBlack(partita.getDamiera());
+                    mossa.PresaSempliceBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setTurno(false);
-                        partita.setCronologiaMosse("Nero :" + presa);
+                        getPartita().setTurno(false);
+                        getPartita().setCronologiaMosse("Nero :" + presa);
 
                         nero.setPedineMangiate(1);
-                        msg.MsgMossaEffettuata();
+                        Messaggi.MsgMossaEffettuata();
 
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
-                    TurnoNero = partita.getTurno();
+                    turnoNero = getPartita().getTurno();
                     break;
 
                 case "presa multipla":
-                    System.out.println("Sto effettuando la presa...");
+                    Messaggi.MsgPresa();
 
-                    mossa.PresaMultiplaBlack(partita.getDamiera());
+                    mossa.PresaMultiplaBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setTurno(false);
-                        partita.setCronologiaMosse("Nero :" + presa);
+                        getPartita().setTurno(false);
+                        getPartita().setCronologiaMosse("Nero :" + presa);
 
                         if (!presaTripla) {
-                            nero.setPedineMangiate(2);
+                            nero.setPedineMangiate(TWO);
                         } else {
-                            nero.setPedineMangiate(3);
+                            nero.setPedineMangiate(THREE);
                         }
-                        msg.MsgMossaEffettuata();
+                        Messaggi.MsgMossaEffettuata();
 
                     } else {
-                        partita.setTurno(true);
+                        getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
                     }
-                    TurnoNero = partita.getTurno();
+                    turnoNero = getPartita().getTurno();
                     break;
 
                 case "prese":
-                    partita.stampaPedineMangiate();
+                    getPartita().stampaPedineMangiate();
                     break;
 
                 case "mosse":
-                    partita.getCronologiaMosse();
+                    getPartita().getCronologiaMosse();
                     break;
 
                 case "abbandona":
-                    Abbandona(nero);
-                    TurnoNero = partita.getTurno();
+                    abbandona(nero);
+                    turnoNero = getPartita().getTurno();
                     break;
 
                 case "esci":
-                    Uscita();                     // System.exit(0);
+                    uscita();                     // System.exit(0);
                     break;
 
                 case "tempo":
                     Instant finish = Instant.now();
                     long elapsed = Duration.between(start, finish).getSeconds();
                     nero.setTempo(elapsed);
-                    partita.tempo(nero, start, finish);
+                    getPartita().tempo(nero, start, finish);
                     break;
 
                 default:
-                    msg.MsgErroreIns();
+                    Messaggi.MsgErroreIns();
                     break;
             }
-        } while (TurnoNero);
+        } while (turnoNero);
 
         Instant finish = Instant.now();
         long elapsed = Duration.between(start, finish).getSeconds();
         nero.setTempo(elapsed);
 
-        // Se TurnoNero = false, tocca al giocatore Nero
-        // Se TurnoNero = true, tocca ancora al giocatore Bianco
+        // Se turnoNero = false, tocca al giocatore Nero
+        // Se turnoNero = true, tocca ancora al giocatore Bianco
     }
 
-    // Metodo con il quale il giocatore può abbandonare la partita corrente ritornando al menù
-    public void Abbandona(Giocatore giocatore) {
+    // Metodo con il quale il giocatore può abbandonare
+    // la partita corrente ritornando al menù
+    public void abbandona(final Giocatore giocatore) {
         // partita = true, se partita in corso
         // partita = false, se abbandona partita (partita non in corso)
-        boolean StatoPartita = true;
-        boolean StatoTurno = true;
-        boolean Valido = false;
+        boolean statoPartita = true;
+        boolean statoTurno = true;
+        boolean valido = false;
 
 
-        System.out.print("\nVuoi abbandonare la partita?" +
-                "\n➤ [Si/No] ");
+        System.out.print("\nVuoi abbandonare la partita?"
+                + "\n➤ [Si/No] ");
         do {
             Scanner input1 = new Scanner(System.in, "UTF-8");
             String conferma = input1.nextLine();
@@ -513,158 +533,121 @@ public class Menu {
 
 
             if (conferma.equals("si")) {
-                String Colore = giocatore.getColore();
-                Valido = true;
+                String colore = giocatore.getColore();
+                valido = true;
 
-                if (Colore.equals("bianco")) {
-                    msg.MsgBiancoAbbandona();
-                    StatoPartita = false; // Abbandona partita bianco
-                    StatoTurno = false;
-                    partita.setStato(StatoPartita);
-                    partita.setTurno(StatoTurno);
-                    partita.setAbbandona(true);
+                if (colore.equals("bianco")) {
+                    Messaggi.MsgBiancoAbbandona();
+                    statoPartita = false; // Abbandona partita bianco
+                    statoTurno = false;
+                    getPartita().setStato(statoPartita);
+                    getPartita().setTurno(statoTurno);
+                    getPartita().setAbbandona(true);
                 } else {
-                    msg.MsgNeroAbbandona();
-                    StatoPartita = false;    // Abbandona partita nero
-                    StatoTurno = false;
-                    partita.setStato(StatoPartita);
-                    partita.setTurno(StatoTurno);
-                    partita.setAbbandona(true);
+                    Messaggi.MsgNeroAbbandona();
+                    statoPartita = false;    // Abbandona partita nero
+                    statoTurno = false;
+                    getPartita().setStato(statoPartita);
+                    getPartita().setTurno(statoTurno);
+                    getPartita().setAbbandona(true);
                 }
 
             } else if (conferma.equals("no")) {
-                StatoPartita = true;            // Continua partita in corso
-                StatoTurno = true;
-                partita.setStato(StatoPartita);
-                partita.setTurno(StatoTurno);
-                Valido = true;
+                statoPartita = true;            // Continua partita in corso
+                statoTurno = true;
+                getPartita().setStato(statoPartita);
+                getPartita().setTurno(statoTurno);
+                valido = true;
 
             } else {
-                msg.MsgErroreIns();
+                Messaggi.MsgErroreIns();
                 System.out.print("➤");
             }
-        } while (!Valido);
+        } while (!valido);
     }
 
     // Metodo con il quale si può terminare immediatamente il programma
-    public void Uscita() {
-        boolean Valido = false;
-        System.out.print("\n\nPer confermare l'uscita dal gioco inserire [Si/No]" + "\n➤ ");
+    public void uscita() {
+        boolean valido = false;
+        System.out.print("\n\nPer confermare l'uscita dal gioco inserire "
+                + "[Si/No]" + "\n➤ ");
         do {
             Scanner esci = new Scanner(System.in, "UTF-8");
             String uscita = esci.nextLine();
             uscita = uscita.toLowerCase();
 
             if (uscita.equals("si")) {
-                msg.MsgUscita();
+                Messaggi.MsgUscita();
                 Runtime.getRuntime().exit(0);
-                partita.setStato(false);
-                Valido = true;
+                getPartita().setStato(false);
+                valido = true;
 
             } else if (uscita.equals("no")) {
-                msg.MsgTornaMenu();
-                partita.setStato(true);
-                Valido = true;
+                Messaggi.MsgTornaMenu();
+                getPartita().setStato(true);
+                valido = true;
 
             } else {
-                msg.MsgErroreIns();
+                Messaggi.MsgErroreIns();
                 System.out.print("➤");
             }
-        } while (!Valido);
+        } while (!valido);
     }
 
     public void gioca() {
-        boolean StatoPartita = partita.getStato();
-        if (StatoPartita) {
-            msg.MsgErrorePartita(); // Stampa messaggio se la partita è già in corso (fix)
+        boolean statoPartita = getPartita().getStato();
+        if (statoPartita) {
+            Messaggi.MsgErrorePartita();
+            // Stampa messaggio se la partita è già in corso (fix)
         } else {
-            StatoPartita = true;                            // Inizia una nuova partita
-            partita.setStato(StatoPartita);        // Imposta la nuova partita
-            Giocatore giocatore1 = partita.getGiocatore1();
-            Giocatore giocatore2 = partita.getGiocatore2();
+            statoPartita = true;         // Inizia una nuova partita
+            getPartita().setStato(statoPartita); // Imposta la nuova partita
+            Giocatore giocatore1 = getPartita().getGiocatore1();
+            Giocatore giocatore2 = getPartita().getGiocatore2();
             giocatore1.setColore("bianco");
             giocatore2.setColore("nero");
             // Prende in input il colore del primo giocatore
 
             // Impostazione turno giocatore
-            int NumeroTurno = 1;
+            int numeroTurno = 1;
 
             // Turno = false, se il turno del giocatore non è in corso
             // Turno = true, se il turno del giocatore è in corso
             do {
                 System.out.printf("\n┌───────────────────┒"
-                        + "\n│     Turno " + NumeroTurno + "       │"
+                        + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
                 // Giocatore1 = bianco (muove per primo)
 
-                GiocatoreBianco(partita.getGiocatore1());
+                giocatoreBianco(getPartita().getGiocatore1());
                 // turno = true, se il turno è in corso
                 // turno = false, se il turno è terminato
 
-                System.out.println("Fine turno giocatore " + partita.getGiocatore1().getColore());
+                System.out.println("Fine turno giocatore "
+                        + getPartita().getGiocatore1().getColore());
 
                 // controllo se la partita è ancora in corso
                 // partita = true, se la partita è ancora in corso
                 // partita = false, la partita è stata terminata (abbandona)
-                if (partita.getAbbandona()) {
+                if (getPartita().getAbbandona()) {
                     System.out.println("Partita terminata!");
                 } else {
                     // Giocatore2 = nero (muove per ultimo)
-                    partita.setTurno(false); // Reimposta il turno per far giocare l'avversario
+                    getPartita().setTurno(false);
+                    // Reimposta il turno per far giocare l'avversario
 
-                    GiocatoreNero(partita.getGiocatore2());
+                    giocatoreNero(getPartita().getGiocatore2());
                     // turno = true, se il turno è in corso
                     // turno = false, se il turno è terminato
 
-                    System.out.println("Fine turno giocatore " + partita.getGiocatore2().getColore());
+                    System.out.println("Fine turno giocatore "
+                            + getPartita().getGiocatore2().getColore());
                 }
 
-                NumeroTurno++;
-            } while (partita.getStato());
+                numeroTurno++;
+            } while (getPartita().getStato());
         }
     }
-
-   /* public void ImpostaGiocatore() {
-
-            do {
-                Scanner input = new Scanner(System.in);
-                String colore = input.nextLine();
-                colore = colore.toLowerCase();
-                Giocatore giocatore1 = partita.getGiocatore1();
-                Giocatore giocatore2 = partita.getGiocatore2();
-
-                if (colore.equals("bianco")) {
-                    Bianco = true;                 // serve solo per il while
-                    giocatore1.setColore(colore);
-                    giocatore2.setColore("nero");
-                } else if (colore.equals("nero")) {
-                    Nero = true;                 // serve solo per il while
-                    giocatore1.setColore(colore);
-                    giocatore2.setColore("bianco");
-                } else {
-                    System.out.print("\n ⚠ Inserito comando sbagliato! Riprova." +
-                            "\n➤ ");
-                }
-            } while (!Bianco && !Nero); // Controllo sui flag, che permette di inserire correttamente
-            // il colore per il giocatore 1
-
-
-        System.out.print("\n\nIl [giocatore 1] ha scelto il colore: " + partita.getGiocatore1().getColore() + " ");
-        if (Bianco) {
-            System.out.println("⛂");  // Pedina bianca
-        } else {
-            System.out.println("⛀");  // Pedina nera
-        }
-        System.out.print("Il [giocatore 2] ha scelto il colore: " + partita.getGiocatore2().getColore() + " ");
-        if (Bianco) {
-            System.out.println("⛀");  // Pedina nera
-        } else {
-            System.out.println("⛂");  // Pedina bianca
-        }
-
-    }
-
-    */
 }
 
