@@ -1,8 +1,9 @@
 package it.uniba.main;
 
 
-/** Class Type: <<Entity>>
- *  Responsabilities: Classe che rappresenta genericamente le pedine di gioco
+/**
+ * Class Type: <<Entity>>
+ * Responsabilities: Classe che rappresenta genericamente le pedine di gioco
  */
 
 public class Pedina {
@@ -25,17 +26,51 @@ public class Pedina {
         this.posColonna = posColonna;
     }
 
-    public void setRiga(int posRiga) { this.posRiga = posRiga; }
-    public void setColonna(int posColonna) { this.posColonna = posColonna; }
-    public void setWhite(boolean isWhite) { this.isWhite = isWhite; }
-    public void setValid(boolean isValid) { this.isValid = isValid; }
-    public void setBlank(boolean isBlank) { this.isBlank = isBlank; }
-    public void setDama(boolean isDama) {this.isDama = isDama; }
+    public void setRiga(int posRiga) {
+        this.posRiga = posRiga;
+    }
 
-    public int getRiga() { return posRiga; }
-    public int getColonna() { return posColonna; }
-    public boolean getWhite() { return isWhite; }
-    public boolean getValid() { return isValid; }
-    public boolean getBlank() { return isBlank; }
-    public boolean getDama() {return  isDama; }
+    public void setColonna(int posColonna) {
+        this.posColonna = posColonna;
+    }
+
+    public void setWhite(boolean isWhite) {
+        this.isWhite = isWhite;
+    }
+
+    public void setValid(boolean isValid) {
+        this.isValid = isValid;
+    }
+
+    public void setBlank(boolean isBlank) {
+        this.isBlank = isBlank;
+    }
+
+    public void setDama(boolean isDama) {
+        this.isDama = isDama;
+    }
+
+    public int getRiga() {
+        return posRiga;
+    }
+
+    public int getColonna() {
+        return posColonna;
+    }
+
+    public boolean getWhite() {
+        return isWhite;
+    }
+
+    public boolean getValid() {
+        return isValid;
+    }
+
+    public boolean getBlank() {
+        return isBlank;
+    }
+
+    public boolean getDama() {
+        return isDama;
+    }
 }
