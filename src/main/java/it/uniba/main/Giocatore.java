@@ -17,7 +17,7 @@ public class Giocatore {
 
     public void setColore(String Colore) { this.Colore = Colore; }
     public void setTempo(long Tempo) {
-    this.Tempo += Tempo ;
+    this.Tempo = Tempo ;
     }
     public void setPedineMangiate(int valore) { PedineMangiate += valore; }
 

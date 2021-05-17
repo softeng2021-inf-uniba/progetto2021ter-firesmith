@@ -7,6 +7,7 @@ package it.uniba.main;
 
 import java.util.*;
 import java.time.*;
+import java.util.concurrent.TimeUnit;
 
 /** Class Type: <<entity>>
  *  Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
@@ -95,26 +96,16 @@ public class Partita {
         System.out.println("\n\nPEDINE MANGIATE\n" +
                 "───────────────"); //TODO \u2501
 
-        if (giocatore1.getColore().equals("bianco")) {
             System.out.print("Bianco: ");
             for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛀");
+                System.out.print("⛂");
             }
             System.out.print("\nNero: ");
             for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
-                System.out.print("⛂");
-            }
-            System.out.println();
-        } else if (giocatore1.getColore().equals("nero")) {
-            System.out.print("Nero: ");
-            for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛂");
-            }
-            System.out.print("\nBianco: ");
-            for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
                 System.out.print("⛀");
             }
-        }
+            System.out.println();
+
         System.out.println("\n───────────────");
     }
 
@@ -140,36 +131,24 @@ public class Partita {
         giocatore.setTempo(elapsed);
 
         System.out.println("\n\nTEMPO TRASCORSO\n" +
-                             "────────────────.─");
-
+                             "────────────────");
+        //calcola il tempo trascorso all inizio del turno bianco o all'inizio del turno nero , nel caso passi il minuto cambia la stampa .
         if (giocatore1.getColore().equals("bianco")) {
 
             if (giocatore1.getTempo() < 60) {
                 System.out.println("Bianco: " + giocatore1.getTempo() + " secondi");
             } else {
-                System.out.println("Bianco: " + giocatore1.getTempo() / 60 + " minuto/i");
+                System.out.println("Bianco: " + (giocatore1.getTempo() / 60) + " minuto/i " + ((giocatore1.getTempo() / 1) % 60) + " secondi");
             }
 
             if (giocatore2.getTempo() < 60) {
                 System.out.println("Nero: " + giocatore2.getTempo() + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i");
+                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + ((giocatore2.getTempo() / 1) % 60) + " secondi");
+
             }
             System.out.println();
 
-        } else if (giocatore1.getColore().equals("nero")) {
-
-            if (giocatore2.getTempo() < 60) {
-                System.out.println("Bianco: " + giocatore2.getTempo() + " secondi");
-            } else {
-                System.out.println("Bianco: " + giocatore2.getTempo() / 60 + " minuto/i");
-            }
-
-            if (giocatore1.getTempo() < 60) {
-                System.out.println("Nero: " + giocatore1.getTempo() + " secondi");
-            } else {
-                System.out.println("Nero: " + giocatore1.getTempo() / 60 + " minuto/i");
-            }
         }
         System.out.println("────────────────");
     }

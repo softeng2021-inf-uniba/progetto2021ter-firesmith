@@ -54,12 +54,12 @@ public class Messaggi {
         System.out.println("\n\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
     }
 
-    public void MsgInizioPartita() {
-        System.out.print("\n\n ⚔ Iniziando una nuova partita... ⚔ \n" +
-                "\nScegli il giocatore: " +
-                "\n ♦ Bianco" +
-                "\n ♢ Nero" +
-                "\n\n➤ ");
+    public void MsgMossaEffettuata() {
+        System.out.println("MOSSA EFFETTUATA");
+    }
+
+    public void MsgSpostamentoEffettuato() {
+        System.out.println("Spostamento Effettuato");
     }
 
     public void MsgMenuBianco() {
