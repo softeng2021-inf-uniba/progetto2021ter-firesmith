@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.uniba.main;
 
 /**
  * Class Type: <<Entity>>
- * Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco *
+ * Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco.
  */
 
 
 public class Damiera {
 
-    final static int RIGHE = 8;
-    final static int COLONNE = 8;
-    // Questa damiera viene usata per calcolare le coordinate delle pedine da spostare
-    final static int[][] PosizioniPedine = new int[][]{
+    static final int RIGHE = 8;
+    static final int COLONNE = 8;
+    // Questa damiera viene usata per calcol le coord delle pedine da spostare
+    static final int[][] PosizioniPedine = new int[][]{
             {1, 0, 2, 0, 3, 0, 4, 0},
             {0, 5, 0, 6, 0, 7, 0, 8},
             {9, 0, 10, 0, 11, 0, 12, 0},
