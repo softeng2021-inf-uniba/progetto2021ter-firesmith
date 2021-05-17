@@ -5,8 +5,9 @@
  */
 package it.uniba.main;
 
-/** Class Type: <<Entity>>
- *  Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco *
+/**
+ * Class Type: <<Entity>>
+ * Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco *
  */
 
 
@@ -15,7 +16,7 @@ public class Damiera {
     final static int RIGHE = 8;
     final static int COLONNE = 8;
     // Questa damiera viene usata per calcolare le coordinate delle pedine da spostare
-    final static int[][] PosizioniPedine = new int[][] {
+    final static int[][] PosizioniPedine = new int[][]{
             {1, 0, 2, 0, 3, 0, 4, 0},
             {0, 5, 0, 6, 0, 7, 0, 8},
             {9, 0, 10, 0, 11, 0, 12, 0},
@@ -27,38 +28,38 @@ public class Damiera {
     };
 
     // Alloca la memoria per una damiera fatta di oggetti Pedine
-    public Pedina[][] DamieraPedine = new Pedina[RIGHE][COLONNE];
+    public Pedina[][] damieraPedine = new Pedina[RIGHE][COLONNE];
 
     public Damiera() {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
 
-                DamieraPedine[i][j] = new Pedina(i, j);
+                damieraPedine[i][j] = new Pedina(i, j);
 
                 // isValid = true, se la pedina sta su un numero
                 // isValid = false, se la pedina sta su uno 0
                 if (PosizioniPedine[i][j] != 0) {
-                    DamieraPedine[i][j].setValid(true);
+                    damieraPedine[i][j].setValid(true);
                 } else {
-                    DamieraPedine[i][j].setValid(false);
+                    damieraPedine[i][j].setValid(false);
                 }
 
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
                 if (PosizioniPedine[i][j] > 0 && PosizioniPedine[i][j] <= 12) {
-                    DamieraPedine[i][j].setWhite(true);
-                    DamieraPedine[i][j].setBlank(false);
+                    damieraPedine[i][j].setWhite(true);
+                    damieraPedine[i][j].setBlank(false);
                 } else {
                     // Tra la posizione 13 e 21 non ci sono pedine
                     if (PosizioniPedine[i][j] >= 13 && PosizioniPedine[i][j] < 21) {
-                        DamieraPedine[i][j].setWhite(false);
-                        DamieraPedine[i][j].setBlank(true);
+                        damieraPedine[i][j].setWhite(false);
+                        damieraPedine[i][j].setBlank(true);
                     } else {
                         // Le pedine nere stanno dalla posizione 21 alla posizione 32
                         if (PosizioniPedine[i][j] >= 21 && PosizioniPedine[i][j] <= 32) {
-                            DamieraPedine[i][j].setWhite(false);
-                            DamieraPedine[i][j].setBlank(false);
+                            damieraPedine[i][j].setWhite(false);
+                            damieraPedine[i][j].setBlank(false);
                         }
                     }
                 }
@@ -71,32 +72,28 @@ public class Damiera {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
 
-                DamieraPedine[i][j] = new Pedina(i, j);
+                damieraPedine[i][j] = new Pedina(i, j);
 
                 // isValid = true, se la pedina sta su un numero
                 // isValid = false, se la pedina sta su uno 0
-                if (PosizioniPedine[i][j] != 0) {
-                    DamieraPedine[i][j].setValid(other.DamieraPedine[i][j].getValid());
-                } else {
-                    DamieraPedine[i][j].setValid(other.DamieraPedine[i][j].getValid());
-                }
+                damieraPedine[i][j].setValid(other.damieraPedine[i][j].getValid());
 
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
                 if (PosizioniPedine[i][j] > 0 && PosizioniPedine[i][j] <= 12) {
-                    DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
-                    DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                    damieraPedine[i][j].setWhite(other.damieraPedine[i][j].getWhite());
+                    damieraPedine[i][j].setBlank(other.damieraPedine[i][j].getBlank());
                 } else {
                     // Tra la posizione 13 e 21 non ci sono pedine
                     if (PosizioniPedine[i][j] >= 13 && PosizioniPedine[i][j] < 21) {
-                        DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
-                        DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                        damieraPedine[i][j].setWhite(other.damieraPedine[i][j].getWhite());
+                        damieraPedine[i][j].setBlank(other.damieraPedine[i][j].getBlank());
                     } else {
                         // Le pedine nere stanno dalla posizione 21 alla posizione 32
                         if (PosizioniPedine[i][j] >= 21 && PosizioniPedine[i][j] <= 32) {
-                            DamieraPedine[i][j].setWhite(other.DamieraPedine[i][j].getWhite());
-                            DamieraPedine[i][j].setBlank(other.DamieraPedine[i][j].getBlank());
+                            damieraPedine[i][j].setWhite(other.damieraPedine[i][j].getWhite());
+                            damieraPedine[i][j].setBlank(other.damieraPedine[i][j].getBlank());
                         }
                     }
                 }
@@ -137,10 +134,10 @@ public class Damiera {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
 
-                boolean PedinaBianca = DamieraPedine[i][j].getWhite();
-                boolean PedinaEsistente = DamieraPedine[i][j].getValid();
-                boolean PedinaVuota = DamieraPedine[i][j].getBlank();
-                boolean Dama = DamieraPedine[i][j].getDama();
+                boolean PedinaBianca = damieraPedine[i][j].getWhite();
+                boolean PedinaEsistente = damieraPedine[i][j].getValid();
+                boolean PedinaVuota = damieraPedine[i][j].getBlank();
+                boolean Dama = damieraPedine[i][j].getDama();
 
                 if (PedinaEsistente && !PedinaVuota) {
                     if (PedinaBianca) {
