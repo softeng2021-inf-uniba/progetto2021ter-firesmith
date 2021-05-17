@@ -7,9 +7,9 @@ import java.security.GeneralSecurityException;
 import java.util.Scanner;
 
 
-
-/** Class Type: <<Boundary>>
- *  Responsabilities: The main class for the project.
+/**
+ * Class Type: <<Boundary>>
+ * Responsabilities: The main class for the project.
  *
  * <b>DO NOT RENAME</b>
  */
@@ -24,11 +24,12 @@ public final class AppMain {
     }
 
     /**
-     * 	 * This is the main entry of the application.
+     * * This is the main entry of the application.
      *
      * @param args The command-line arguments.
      */
 
+    @SuppressWarnings("checkstyle:LineLength")
     public static void main(final String[] args) {
 
         System.out.println("Current working dir: " + System.getProperty("user.dir"));
