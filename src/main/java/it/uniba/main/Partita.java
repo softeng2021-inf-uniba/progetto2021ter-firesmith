@@ -9,8 +9,9 @@ import java.util.*;
 import java.time.*;
 import java.util.concurrent.TimeUnit;
 
-/** Class Type: <<entity>>
- *  Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
+/**
+ * Class Type: <<entity>>
+ * Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
  */
 
 public class Partita {
@@ -34,22 +35,8 @@ public class Partita {
         stato = false;
         turno = false;
         abbandona = false;
-        Giocatore giocatore1 = new Giocatore();
-        Giocatore giocatore2 = new Giocatore();
-        Damiera damiera = new Damiera();
     }
 
-    public void setGiocatore1(Giocatore giocatore1) {
-        this.giocatore1 = giocatore1;
-    }
-
-    public void setGiocatore2(Giocatore giocatore2) {
-        this.giocatore2 = giocatore2;
-    }
-
-    public void setDamiera(Damiera damiera) {
-        this.damiera = damiera;
-    }
 
     public void setStato(boolean stato) {
         this.stato = stato;
@@ -91,47 +78,46 @@ public class Partita {
         return abbandona;
     }
 
-    public void StampaPedineMangiate() {
+    public void stampaPedineMangiate() {
 
         System.out.println("\n\nPEDINE MANGIATE\n" +
                 "───────────────"); //TODO \u2501
 
-            System.out.print("Bianco: ");
-            for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
-                System.out.print("⛂");
-            }
-            System.out.print("\nNero: ");
-            for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
-                System.out.print("⛀");
-            }
-            System.out.println();
+        System.out.print("Bianco: ");
+        for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
+            System.out.print("⛂");
+        }
+        System.out.print("\nNero: ");
+        for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
+            System.out.print("⛀");
+        }
+        System.out.println();
 
         System.out.println("\n───────────────");
     }
 
     public void getCronologiaMosse() {
         ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
-        if(CronologiaMosse.size() != 0) {
+        if (CronologiaMosse.size() != 0) {
             System.out.println("\n\nMOSSE EFFETTUATE\n" +
                     "────────────────");
             while (CronoMosse.hasNext()) {
                 System.out.println(CronoMosse.next());
             }
             System.out.println("\n────────────────");
-        }
-        else {
+        } else {
             System.out.println("\n ⚠ Non ci sono ancora mosse\n");
         }
 
     }
 
-    public void Tempo(Giocatore giocatore, Instant start, Instant finish) {
+    public void tempo(Giocatore giocatore, Instant start, Instant finish) {
 
         long elapsed = Duration.between(start, finish).getSeconds();
         giocatore.setTempo(elapsed);
 
         System.out.println("\n\nTEMPO TRASCORSO\n" +
-                             "────────────────");
+                "────────────────");
         //calcola il tempo trascorso all inizio del turno bianco o all'inizio del turno nero , nel caso passi il minuto cambia la stampa .
         if (giocatore1.getColore().equals("bianco")) {
 
