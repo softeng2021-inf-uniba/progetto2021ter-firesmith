@@ -1,7 +1,8 @@
 package it.uniba.main;
 
-/** Class Type: <<boundary>> *
- *  Responsabilities: Classe che contiene tutti i vari messaggi rivolti all'utente
+/**
+ * Class Type: <<boundary>> *
+ * Responsabilities: Classe che contiene tutti i vari messaggi rivolti all'utente
  */
 
 
@@ -9,8 +10,8 @@ public class Messaggi {
 
     public void Help() {
         System.out.println("\n┌───────────────────────────┒"
-                +  "\n│     Dama Help Center      │"
-                +  "\n└───────────────────────────┘"
+                + "\n│     Dama Help Center      │"
+                + "\n└───────────────────────────┘"
                 + "\n ⓘ Benvenuto in Dama, il gioco tradizionale per 2 giocatori\n"
                 + "\nEcco un elenco dei comandi che puoi eseguire:"
                 + "\n ♢ Nuova Partita (gioca)"
@@ -64,8 +65,8 @@ public class Messaggi {
 
     public void MsgMenuBianco() {
         System.out.print("┌───────────────────────┒"
-                +"      \n│ Menù Giocatore Bianco │"
-                +      "\n└───────────────────────┘"
+                + "      \n│ Menù Giocatore Bianco │"
+                + "\n└───────────────────────┘"
                 + "\nScrivere un comando:"
                 + "\n\n ♢ --help | -h | help"
                 + "\n ♢ numeri"
@@ -83,8 +84,8 @@ public class Messaggi {
 
     public void MsgMenuNero() {
         System.out.print("┌──────────────────────┒"
-                +"      \n│ Menù Giocatore Nero  │"
-                +      "\n└──────────────────────┘"
+                + "      \n│ Menù Giocatore Nero  │"
+                + "\n└──────────────────────┘"
                 + "\nScrivere un comando:"
                 + "\n\n ♢ --help | -h | help"
                 + "\n ♢ numeri"
@@ -99,6 +100,7 @@ public class Messaggi {
                 + "\n ♢ esci"
                 + "\n\n➤ ");
     }
+
     public void MsgSpostamento() {
         System.out.println("Sto effettuando uno spostamento...");
     }

@@ -2,10 +2,10 @@ package it.uniba.main;
 
 import java.util.*;
 
-/** Class Type: <<Entity>> *
- *  Responsabilities: Classe che rappresenta il giocatore partecipante alla partita *
+/**
+ * Class Type: <<Entity>> *
+ * Responsabilities: Classe che rappresenta il giocatore partecipante alla partita *
  */
-
 
 
 public class Giocatore {
@@ -15,14 +15,27 @@ public class Giocatore {
     private long Tempo;
     private int PedineMangiate;
 
-    public void setColore(String Colore) { this.Colore = Colore; }
-    public void setTempo(long Tempo) {
-    this.Tempo = Tempo ;
+    public void setColore(String Colore) {
+        this.Colore = Colore;
     }
-    public void setPedineMangiate(int valore) { PedineMangiate += valore; }
 
-    public String getColore() { return Colore; }
+    public void setTempo(long Tempo) {
+        this.Tempo = Tempo;
+    }
 
-    public long getTempo() { return Tempo; }
-    public int getPedineMangiate() { return PedineMangiate; }
+    public void setPedineMangiate(int valore) {
+        PedineMangiate += valore;
+    }
+
+    public String getColore() {
+        return Colore;
+    }
+
+    public long getTempo() {
+        return Tempo;
+    }
+
+    public int getPedineMangiate() {
+        return PedineMangiate;
+    }
 }
