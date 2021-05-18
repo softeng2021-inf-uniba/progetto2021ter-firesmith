@@ -56,11 +56,11 @@ public class Messaggi {
     }
 
     public static void MsgMossaEffettuata() {
-        System.out.println("MOSSA EFFETTUATA");
+        System.out.println("Presa Effettuata\n");
     }
 
     public static void MsgSpostamentoEffettuato() {
-        System.out.println("Spostamento Effettuato");
+        System.out.println("Spostamento Effettuato\n");
     }
 
     public static void MsgMenuBianco() {
