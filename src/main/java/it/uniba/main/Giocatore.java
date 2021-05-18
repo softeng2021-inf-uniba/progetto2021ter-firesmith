@@ -1,41 +1,40 @@
 package it.uniba.main;
 
-import java.util.*;
-
 /**
  * Class Type: <<Entity>> *
- * Responsabilities: Classe che rappresenta il giocatore partecipante alla partita *
+ * Responsabilities: Classe che rappresenta il giocatore
+ * partecipante alla partita. *
  */
 
 
 public class Giocatore {
 
-    // Colore = "bianco" oppure "nero" #FIXME in ENUM
-    private String Colore;
-    private long Tempo;
-    private int PedineMangiate;
+    // colore = "bianco" oppure "nero" #FIXME in ENUM
+    private String colore;
+    private long tempo;
+    private int pedineMangiate;
 
-    public void setColore(String Colore) {
-        this.Colore = Colore;
+    public void setColore(final String col) {
+        colore = col;
     }
 
-    public void setTempo(long Tempo) {
-        this.Tempo = Tempo;
+    public void setTempo(final long t) {
+        tempo = t;
     }
 
-    public void setPedineMangiate(int valore) {
-        PedineMangiate += valore;
+    public void setPedineMangiate(final int valore) {
+        pedineMangiate += valore;
     }
 
     public String getColore() {
-        return Colore;
+        return colore;
     }
 
     public long getTempo() {
-        return Tempo;
+        return tempo;
     }
 
     public int getPedineMangiate() {
-        return PedineMangiate;
+        return pedineMangiate;
     }
 }
