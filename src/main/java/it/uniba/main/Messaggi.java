@@ -8,7 +8,7 @@ package it.uniba.main;
 
 public class Messaggi {
 
-    public void Help() {
+    public static void Help() {
         System.out.println("\n┌───────────────────────────┒"
                 + "\n│     Dama Help Center      │"
                 + "\n└───────────────────────────┘"
@@ -23,47 +23,47 @@ public class Messaggi {
                 + "\n");
     }
 
-    public void MsgUscita() {
+    public static void MsgUscita() {
         System.out.println("\n\n \uD83D\uDEAA Uscita dal gioco...");
     }
 
-    public void MsgTornaMenu() {
+    public static void MsgTornaMenu() {
         System.out.println("\n\n ↩ Ritorno al menù... \n");
     }
 
-    public void MsgErroreIns() {
+    public static void MsgErroreIns() {
         System.out.println("\n\n ⚠ Comando non valido \n");
     }
 
-    public void MsgInfoPartita() {
+    public static void MsgInfoPartita() {
         System.out.println("\n\n \uD83D\uDCA1 Nessuna partita in corso, inizia una nuova partita (gioca)\n");
     }
 
-    public void MsgInfoPartitaDamiera() {
+    public static void MsgInfoPartitaDamiera() {
         System.out.println("\n\n \uD83D\uDCA1 Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)\n");
     }
 
-    public void MsgErrorePartita() {
+    public static void MsgErrorePartita() {
         System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
     }
 
-    public void MsgBiancoAbbandona() {
+    public static void MsgBiancoAbbandona() {
         System.out.println("\n\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
     }
 
-    public void MsgNeroAbbandona() {
+    public static void MsgNeroAbbandona() {
         System.out.println("\n\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
     }
 
-    public void MsgMossaEffettuata() {
+    public static void MsgMossaEffettuata() {
         System.out.println("MOSSA EFFETTUATA");
     }
 
-    public void MsgSpostamentoEffettuato() {
+    public static void MsgSpostamentoEffettuato() {
         System.out.println("Spostamento Effettuato");
     }
 
-    public void MsgMenuBianco() {
+    public static void MsgMenuBianco() {
         System.out.print("┌───────────────────────┒"
                 + "      \n│ Menù Giocatore Bianco │"
                 + "\n└───────────────────────┘"
@@ -82,7 +82,7 @@ public class Messaggi {
                 + "\n\n➤ ");
     }
 
-    public void MsgMenuNero() {
+    public static void MsgMenuNero() {
         System.out.print("┌──────────────────────┒"
                 + "      \n│ Menù Giocatore Nero  │"
                 + "\n└──────────────────────┘"
@@ -101,11 +101,11 @@ public class Messaggi {
                 + "\n\n➤ ");
     }
 
-    public void MsgSpostamento() {
+    public static void MsgSpostamento() {
         System.out.println("Sto effettuando uno spostamento...");
     }
 
-    public void MsgPresa() {
+    public static void MsgPresa() {
         System.out.println("Sto effettuando una presa...");
     }
 }
