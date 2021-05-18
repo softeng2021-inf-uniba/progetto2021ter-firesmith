@@ -90,7 +90,7 @@ public class Menu {
                     break;
 
                 case "numeri":
-                    getPartita().getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().stampaPosizioniPedine();
                     break;
 
                 case "damiera":
@@ -204,11 +204,11 @@ public class Menu {
                     break;
 
                 case "numeri":
-                    getPartita().getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().stampaPosizioniPedine();
                     break;
 
                 case "damiera":
-                    getPartita().getDamiera().StampaDamieraPedine();
+                    getPartita().getDamiera().stampaDamieraPedine();
                     break;
 
                 case "gioca":
@@ -408,11 +408,11 @@ public class Menu {
                     break;
 
                 case "numeri":
-                    getPartita().getDamiera().StampaPosizioniPedine();
+                    getPartita().getDamiera().stampaPosizioniPedine();
                     break;
 
                 case "damiera":
-                    getPartita().getDamiera().StampaDamieraPedine();
+                    getPartita().getDamiera().stampaDamieraPedine();
                     break;
 
                 case "gioca":
