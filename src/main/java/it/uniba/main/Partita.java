@@ -5,13 +5,15 @@
  */
 package it.uniba.main;
 
-import java.util.*;
-import java.time.*;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ListIterator;
 
 /**
  * Class Type: <<entity>>
- * Responsabilities: Classe che rappresenta la partita in corso fra i due giocatori
+ * Responsabilities: Classe che rappresenta la partita in corso
+ * fra i due giocatori.
  */
 
 public class Partita {
@@ -22,36 +24,38 @@ public class Partita {
     // turno = true, se il turno è finito
     // abbandona = false, se non è stato usato il comando abbandona
     // abbandona = true, se è stato usato il comando abbandona
-    private boolean stato = false;
-    private boolean turno = false;
-    private boolean abbandona = false;
+    private boolean statoPartita = false;
+    private boolean turnoPartita = false;
+    private boolean abbandonaPartita = false;
     private Giocatore giocatore1 = new Giocatore();
     private Giocatore giocatore2 = new Giocatore();
     private Damiera damiera = new Damiera();
-    private ArrayList<String> CronologiaMosse = new ArrayList<String>();
+    private ArrayList<String> cronologiaMosse = new ArrayList<String>();
+
+    public static final int SIXTY = 60;
 
     // Creo la partita
     public Partita() {
-        stato = false;
-        turno = false;
-        abbandona = false;
+        statoPartita = false;
+        turnoPartita = false;
+        abbandonaPartita = false;
     }
 
 
-    public void setStato(boolean stato) {
-        this.stato = stato;
+    public void setStato(final boolean stato) {
+        this.statoPartita = stato;
     }
 
-    public void setTurno(boolean turno) {
-        this.turno = turno;
+    public void setTurno(final boolean turno) {
+        this.turnoPartita = turno;
     }
 
-    public void setAbbandona(boolean abbandona) {
-        this.abbandona = abbandona;
+    public void setAbbandona(final boolean abbandona) {
+        this.abbandonaPartita = abbandona;
     }
 
-    public void setCronologiaMosse(String mossa) {
-        CronologiaMosse.add(mossa);
+    public void setCronologiaMosse(final String mossa) {
+        cronologiaMosse.add(mossa);
     }
 
     public Giocatore getGiocatore1() {
@@ -67,21 +71,21 @@ public class Partita {
     }
 
     public boolean getStato() {
-        return stato;
+        return statoPartita;
     }
 
     public boolean getTurno() {
-        return turno;
+        return turnoPartita;
     }
 
     public boolean getAbbandona() {
-        return abbandona;
+        return abbandonaPartita;
     }
 
     public void stampaPedineMangiate() {
 
-        System.out.println("\n\nPEDINE MANGIATE\n" +
-                "───────────────"); //TODO \u2501
+        System.out.println("\n\nPEDINE MANGIATE\n"
+                + "───────────────"); //TODO \u2501
 
         System.out.print("Bianco: ");
         for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
@@ -97,12 +101,12 @@ public class Partita {
     }
 
     public void getCronologiaMosse() {
-        ListIterator<String> CronoMosse = CronologiaMosse.listIterator();
-        if (CronologiaMosse.size() != 0) {
-            System.out.println("\n\nMOSSE EFFETTUATE\n" +
-                    "────────────────");
-            while (CronoMosse.hasNext()) {
-                System.out.println(CronoMosse.next());
+        ListIterator<String> cronoMosse = cronologiaMosse.listIterator();
+        if (cronologiaMosse.size() != 0) {
+            System.out.println("\n\nMOSSE EFFETTUATE\n"
+                    + "────────────────");
+            while (cronoMosse.hasNext()) {
+                System.out.println(cronoMosse.next());
             }
             System.out.println("\n────────────────");
         } else {
@@ -111,26 +115,35 @@ public class Partita {
 
     }
 
-    public void tempo(Giocatore giocatore, Instant start, Instant finish) {
+    public void tempo(final Giocatore giocatore, final Instant start,
+                      final Instant finish) {
 
         long elapsed = Duration.between(start, finish).getSeconds();
         giocatore.setTempo(elapsed);
 
-        System.out.println("\n\nTEMPO TRASCORSO\n" +
-                "────────────────");
-        //calcola il tempo trascorso all inizio del turno bianco o all'inizio del turno nero , nel caso passi il minuto cambia la stampa .
+        System.out.println("\n\nTEMPO TRASCORSO\n"
+                + "────────────────");
+        // calcola il tempo trascorso all inizio del turno bianco
+        // o all'inizio del turno nero ,
+        // nel caso passi il minuto cambia la stampa
         if (giocatore1.getColore().equals("bianco")) {
 
-            if (giocatore1.getTempo() < 60) {
-                System.out.println("Bianco: " + giocatore1.getTempo() + " secondi");
+            if (giocatore1.getTempo() < SIXTY) {
+                System.out.println("Bianco: " + giocatore1.getTempo()
+                        + " secondi");
             } else {
-                System.out.println("Bianco: " + (giocatore1.getTempo() / 60) + " minuto/i " + ((giocatore1.getTempo() / 1) % 60) + " secondi");
+                System.out.println("Bianco: " + (giocatore1.getTempo() / SIXTY)
+                        + " minuto/i " + ((giocatore1.getTempo()) % SIXTY)
+                        + " secondi");
             }
 
-            if (giocatore2.getTempo() < 60) {
-                System.out.println("Nero: " + giocatore2.getTempo() + " secondi");
+            if (giocatore2.getTempo() < SIXTY) {
+                System.out.println("Nero: " + giocatore2.getTempo()
+                        + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / 60 + " minuto/i " + ((giocatore2.getTempo() / 1) % 60) + " secondi");
+                System.out.println("Nero: " + giocatore2.getTempo() / SIXTY
+                        + " minuto/i " + ((giocatore2.getTempo()) % SIXTY)
+                        + " secondi");
 
             }
             System.out.println();

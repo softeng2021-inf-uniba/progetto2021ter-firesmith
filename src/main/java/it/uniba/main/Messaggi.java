@@ -2,17 +2,22 @@ package it.uniba.main;
 
 /**
  * Class Type: <<boundary>> *
- * Responsabilities: Classe che contiene tutti i vari messaggi rivolti all'utente
+ * Responsabilities: Classe che contiene tutti i vari
+ * messaggi rivolti all'utente.
  */
 
 
-public class Messaggi {
+public final class Messaggi {
 
-    public void Help() {
+    private Messaggi() {
+    }
+
+    public static void help() {
         System.out.println("\n┌───────────────────────────┒"
                 + "\n│     Dama Help Center      │"
                 + "\n└───────────────────────────┘"
-                + "\n ⓘ Benvenuto in Dama, il gioco tradizionale per 2 giocatori\n"
+                + "\n ⓘ Benvenuto in Dama, il gioco tradizionale"
+                + " per 2 giocatori\n"
                 + "\nEcco un elenco dei comandi che puoi eseguire:"
                 + "\n ♢ Nuova Partita (gioca)"
                 + "\n ♢ Abbandona (abbandona)"
@@ -23,47 +28,51 @@ public class Messaggi {
                 + "\n");
     }
 
-    public void MsgUscita() {
+    public static void msgUscita() {
         System.out.println("\n\n \uD83D\uDEAA Uscita dal gioco...");
     }
 
-    public void MsgTornaMenu() {
+    public static void msgTornaMenu() {
         System.out.println("\n\n ↩ Ritorno al menù... \n");
     }
 
-    public void MsgErroreIns() {
+    public static void msgErroreIns() {
         System.out.println("\n\n ⚠ Comando non valido \n");
     }
 
-    public void MsgInfoPartita() {
-        System.out.println("\n\n \uD83D\uDCA1 Nessuna partita in corso, inizia una nuova partita (gioca)\n");
+    public static void msgInfoPartita() {
+        System.out.println("\n\n \uD83D\uDCA1 Nessuna partita in corso,"
+                + " inizia una nuova partita (gioca)\n");
     }
 
-    public void MsgInfoPartitaDamiera() {
-        System.out.println("\n\n \uD83D\uDCA1 Per mostrare la damiera con i pezzi, inizia una nuova partita (gioca)\n");
+    public static void msgInfoPartitaDamiera() {
+        System.out.println("\n\n \uD83D\uDCA1 Per mostrare la damiera con "
+                + "i pezzi, inizia una nuova partita (gioca)\n");
     }
 
-    public void MsgErrorePartita() {
+    public static void msgErrorePartita() {
         System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
     }
 
-    public void MsgBiancoAbbandona() {
-        System.out.println("\n\n ⚑ Il Bianco abbandona la partita, il Nero vince ✌\n");
+    public static void msgBiancoAbbandona() {
+        System.out.println("\n\n ⚑ Il Bianco abbandona la partita,"
+                + " il Nero vince ✌\n");
     }
 
-    public void MsgNeroAbbandona() {
-        System.out.println("\n\n ⚑ Il Nero abbandona la partita, il Bianco vince ✌\n");
+    public static void msgNeroAbbandona() {
+        System.out.println("\n\n ⚑ Il Nero abbandona la partita,"
+                + " il Bianco vince ✌\n");
     }
 
-    public void MsgMossaEffettuata() {
-        System.out.println("MOSSA EFFETTUATA");
+    public static void msgMossaEffettuata() {
+        System.out.println("Presa Effettuata\n");
     }
 
-    public void MsgSpostamentoEffettuato() {
-        System.out.println("Spostamento Effettuato");
+    public static void msgSpostamentoEffettuato() {
+        System.out.println("Spostamento Effettuato\n");
     }
 
-    public void MsgMenuBianco() {
+    public static void msgMenuBianco() {
         System.out.print("┌───────────────────────┒"
                 + "      \n│ Menù Giocatore Bianco │"
                 + "\n└───────────────────────┘"
@@ -82,7 +91,7 @@ public class Messaggi {
                 + "\n\n➤ ");
     }
 
-    public void MsgMenuNero() {
+    public static void msgMenuNero() {
         System.out.print("┌──────────────────────┒"
                 + "      \n│ Menù Giocatore Nero  │"
                 + "\n└──────────────────────┘"
@@ -101,11 +110,11 @@ public class Messaggi {
                 + "\n\n➤ ");
     }
 
-    public void MsgSpostamento() {
+    public static void msgSpostamento() {
         System.out.println("Sto effettuando uno spostamento...");
     }
 
-    public void MsgPresa() {
+    public static void msgPresa() {
         System.out.println("Sto effettuando una presa...");
     }
 }

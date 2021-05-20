@@ -1,11 +1,5 @@
 package it.uniba.main;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.security.GeneralSecurityException;
-import java.util.Scanner;
-
 
 /**
  * Class Type: <<Boundary>>
@@ -32,7 +26,8 @@ public final class AppMain {
     @SuppressWarnings("checkstyle:LineLength")
     public static void main(final String[] args) {
 
-        System.out.println("Current working dir: " + System.getProperty("user.dir"));
+        System.out.println("Current working dir: "
+                + System.getProperty("user.dir"));
 
         if (args.length > 0) {
             switch (args[0]) {
@@ -55,7 +50,7 @@ public final class AppMain {
         }
 
         Menu menu = new Menu();
-        menu.Generico();
+        menu.generico();
     }
 
 }

@@ -3,7 +3,7 @@ package it.uniba.main;
 
 /**
  * Class Type: <<Entity>>
- * Responsabilities: Classe che rappresenta genericamente le pedine di gioco
+ * Responsabilities: Classe che rappresenta genericamente le pedine di gioco.
  */
 
 public class Pedina {
@@ -21,33 +21,33 @@ public class Pedina {
     private boolean isBlank;
     private boolean isDama;
 
-    public Pedina(int posRiga, int posColonna) {
-        this.posRiga = posRiga;
-        this.posColonna = posColonna;
+    public Pedina(final int riga, final int colonna) {
+        this.posRiga = riga;
+        this.posColonna = colonna;
     }
 
-    public void setRiga(int posRiga) {
-        this.posRiga = posRiga;
+    public void setRiga(final int riga) {
+        this.posRiga = riga;
     }
 
-    public void setColonna(int posColonna) {
-        this.posColonna = posColonna;
+    public void setColonna(final int colonna) {
+        this.posColonna = colonna;
     }
 
-    public void setWhite(boolean isWhite) {
-        this.isWhite = isWhite;
+    public void setWhite(final boolean white) {
+        this.isWhite = white;
     }
 
-    public void setValid(boolean isValid) {
-        this.isValid = isValid;
+    public void setValid(final boolean valid) {
+        this.isValid = valid;
     }
 
-    public void setBlank(boolean isBlank) {
-        this.isBlank = isBlank;
+    public void setBlank(final boolean blank) {
+        this.isBlank = blank;
     }
 
-    public void setDama(boolean isDama) {
-        this.isDama = isDama;
+    public void setDama(final boolean dama) {
+        this.isDama = dama;
     }
 
     public int getRiga() {
