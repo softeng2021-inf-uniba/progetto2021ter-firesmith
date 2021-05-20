@@ -12,7 +12,6 @@ import java.time.Duration;
  * funge da interfaccia per l'utente.
  */
 
-
 public class Menu {
 
     private Partita partita = new Partita();
@@ -73,15 +72,15 @@ public class Menu {
             // Controlla cosa è stato inserito
             switch (comando) {
                 case "--help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "-h":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "gioca":
@@ -94,11 +93,11 @@ public class Menu {
                     break;
 
                 case "damiera":
-                    Messaggi.MsgInfoPartitaDamiera();
+                    Messaggi.msgInfoPartitaDamiera();
                     break;
 
                 case "tempo":
-                    Messaggi.MsgInfoPartita();
+                    Messaggi.msgInfoPartita();
                     break;
 
                 case "esci":
@@ -108,7 +107,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.MsgErroreIns();
+                    Messaggi.msgErroreIns();
                     break;
             }
         } while (!inizio); // Partita = false
@@ -127,7 +126,7 @@ public class Menu {
         boolean statoPartita = getPartita().getStato();
 
         do {
-            Messaggi.MsgMenuBianco();
+            Messaggi.msgMenuBianco();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -192,15 +191,15 @@ public class Menu {
             }
             switch (comando) {
                 case "--help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "-h":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "numeri":
@@ -212,18 +211,18 @@ public class Menu {
                     break;
 
                 case "gioca":
-                    Messaggi.MsgErrorePartita();
+                    Messaggi.msgErrorePartita();
                     break;
 
                 case "spostamento":
                     System.out.println("Sto effettuando lo spostamento...");
 
-                    mossa.SpostamentoSempliceBianco(getPartita().getDamiera());
+                    mossa.spostamentoSempliceBianco(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setCronologiaMosse("Bianco :" + presa);
                         getPartita().setTurno(false);
-                        Messaggi.MsgSpostamentoEffettuato();
+                        Messaggi.msgSpostamentoEffettuato();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -235,14 +234,14 @@ public class Menu {
                 case "presa semplice":
                     System.out.println("Sto effettuando la presa...");
 
-                    mossa.PresaSempliceWhite(getPartita().getDamiera());
+                    mossa.presaSempliceWhite(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setTurno(false);
                         getPartita().setCronologiaMosse("Bianco :" + presa);
 
                         bianco.setPedineMangiate(1);
-                        Messaggi.MsgMossaEffettuata();
+                        Messaggi.msgMossaEffettuata();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -252,7 +251,7 @@ public class Menu {
 
                 case "presa multipla":
                     System.out.println("Sto effettuando la presa...");
-                    mossa.PresaMultiplaWhite(getPartita().getDamiera());
+                    mossa.presaMultiplaWhite(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setTurno(false);
@@ -264,7 +263,7 @@ public class Menu {
                         } else {
                             bianco.setPedineMangiate(THREE);
                         }
-                        Messaggi.MsgMossaEffettuata();
+                        Messaggi.msgMossaEffettuata();
 
                     } else {
                         getPartita().setTurno(true);
@@ -300,7 +299,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.MsgErroreIns();
+                    Messaggi.msgErroreIns();
                     break;
             }
         } while (turnoBianco && statoPartita);
@@ -331,7 +330,7 @@ public class Menu {
         boolean chk = false;
 
         do {
-            Messaggi.MsgMenuNero();
+            Messaggi.msgMenuNero();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -396,15 +395,15 @@ public class Menu {
 
             switch (comando) {
                 case "--help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "-h":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "help":
-                    Messaggi.Help();
+                    Messaggi.help();
                     break;
 
                 case "numeri":
@@ -416,17 +415,17 @@ public class Menu {
                     break;
 
                 case "gioca":
-                    Messaggi.MsgErrorePartita();
+                    Messaggi.msgErrorePartita();
                     break;
                 case "spostamento":
-                    Messaggi.MsgSpostamento();
+                    Messaggi.msgSpostamento();
 
-                    mossa.SpostamentoSempliceNero(getPartita().getDamiera());
+                    mossa.spostamentoSempliceNero(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setCronologiaMosse("Nero :" + presa);
                         getPartita().setTurno(false);
-                        Messaggi.MsgSpostamentoEffettuato();
+                        Messaggi.msgSpostamentoEffettuato();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -435,16 +434,16 @@ public class Menu {
                     break;
 
                 case "presa semplice":
-                    Messaggi.MsgPresa();
+                    Messaggi.msgPresa();
 
-                    mossa.PresaSempliceBlack(getPartita().getDamiera());
+                    mossa.presaSempliceBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setTurno(false);
                         getPartita().setCronologiaMosse("Nero :" + presa);
 
                         nero.setPedineMangiate(1);
-                        Messaggi.MsgMossaEffettuata();
+                        Messaggi.msgMossaEffettuata();
 
                     } else {
                         getPartita().setTurno(true);
@@ -454,9 +453,9 @@ public class Menu {
                     break;
 
                 case "presa multipla":
-                    Messaggi.MsgPresa();
+                    Messaggi.msgPresa();
 
-                    mossa.PresaMultiplaBlack(getPartita().getDamiera());
+                    mossa.presaMultiplaBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setTurno(false);
@@ -467,7 +466,7 @@ public class Menu {
                         } else {
                             nero.setPedineMangiate(THREE);
                         }
-                        Messaggi.MsgMossaEffettuata();
+                        Messaggi.msgMossaEffettuata();
 
                     } else {
                         getPartita().setTurno(true);
@@ -501,7 +500,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.MsgErroreIns();
+                    Messaggi.msgErroreIns();
                     break;
             }
         } while (turnoNero);
@@ -537,14 +536,14 @@ public class Menu {
                 valido = true;
 
                 if (colore.equals("bianco")) {
-                    Messaggi.MsgBiancoAbbandona();
+                    Messaggi.msgBiancoAbbandona();
                     statoPartita = false; // Abbandona partita bianco
                     statoTurno = false;
                     getPartita().setStato(statoPartita);
                     getPartita().setTurno(statoTurno);
                     getPartita().setAbbandona(true);
                 } else {
-                    Messaggi.MsgNeroAbbandona();
+                    Messaggi.msgNeroAbbandona();
                     statoPartita = false;    // Abbandona partita nero
                     statoTurno = false;
                     getPartita().setStato(statoPartita);
@@ -560,7 +559,7 @@ public class Menu {
                 valido = true;
 
             } else {
-                Messaggi.MsgErroreIns();
+                Messaggi.msgErroreIns();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -577,18 +576,18 @@ public class Menu {
             uscita = uscita.toLowerCase();
 
             if (uscita.equals("si")) {
-                Messaggi.MsgUscita();
+                Messaggi.msgUscita();
                 Runtime.getRuntime().exit(0);
                 getPartita().setStato(false);
                 valido = true;
 
             } else if (uscita.equals("no")) {
-                Messaggi.MsgTornaMenu();
+                Messaggi.msgTornaMenu();
                 getPartita().setStato(true);
                 valido = true;
 
             } else {
-                Messaggi.MsgErroreIns();
+                Messaggi.msgErroreIns();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -597,7 +596,7 @@ public class Menu {
     public void gioca() {
         boolean statoPartita = getPartita().getStato();
         if (statoPartita) {
-            Messaggi.MsgErrorePartita();
+            Messaggi.msgErrorePartita();
             // Stampa messaggio se la partita è già in corso (fix)
         } else {
             statoPartita = true;         // Inizia una nuova partita
