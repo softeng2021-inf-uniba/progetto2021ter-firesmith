@@ -32,6 +32,7 @@ public class Damiera {
     // Alloca la memoria per una damiera fatta di oggetti Pedine
     private Pedina[][] damieraPedine = new Pedina[RIGHE][COLONNE];
 
+
     public Pedina getDamieraPedine(final int riga, final int colonna) {
         return damieraPedine[riga][colonna];
     }
@@ -77,7 +78,10 @@ public class Damiera {
         }
     }
 
-    // copy constructor
+    /**
+     * Crea un costruttore copia che simula la presa multipla in Mossa.java
+     * @param other la damiera originale
+     */
     public Damiera(final Damiera other) {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
@@ -122,7 +126,9 @@ public class Damiera {
         }
     }
 
-    // Stampa la matrice che contiene la posizione delle pedine
+    /**
+     * Stampa la matrice che contiene la posizione delle pedine
+     */
     public void stampaPosizioniPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
@@ -192,6 +198,11 @@ public class Damiera {
         }
     }
 
+    /**
+     * Cerca la riga corrispondente alla posizione alla posizione scelta dall'utente
+     * @param pos la posizione presa in input
+     * @return la coordinata x corrispondente alla posizione
+     */
     public int cercaRiga(final int pos) {
         int riga = 0;
         for (int i = 0; i < RIGHE; i++) {
@@ -203,7 +214,11 @@ public class Damiera {
         }
         return riga;
     }
-
+    /**
+     * Cerca la colonna corrispondente alla posizione alla posizione scelta dall'utente
+     * @param pos la posizione presa in input
+     * @return la coordinata y corrispondente alla posizione
+     */
     public int cercaColonna(final int pos) {
         int colonna = 0;
         for (int i = 0; i < RIGHE; i++) {
