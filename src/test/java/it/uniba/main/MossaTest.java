@@ -22,14 +22,14 @@ public class MossaTest {
     @DisplayName("Sto testando spostamento semplice nero \n")
     void spostamentoSempliceNeroTest() {
         Mossa mossa = new Mossa(9,13);
-        assertTrue(mossa.SpostamentoSempliceNero(test));
+        assertTrue(mossa.spostamentoSempliceNero(test));
     }
 
     @Test
     @DisplayName("Sto testando spostamento semplice bianco \n")
     void spostamentoSempliceBiancoTest() {
         Mossa mossa = new Mossa(21,18);
-        assertTrue(mossa.SpostamentoSempliceBianco(test));
+        assertTrue(mossa.spostamentoSempliceBianco(test));
     }
 
     @Test
@@ -37,10 +37,10 @@ public class MossaTest {
     void presaSempliceBiancoTest() {
         Mossa spostamentobianco = new Mossa(21,18);
         Mossa spostamentonero = new Mossa(9,13);
-        spostamentobianco.SpostamentoSempliceBianco(test);
-        spostamentonero.SpostamentoSempliceNero(test);
+        spostamentobianco.spostamentoSempliceBianco(test);
+        spostamentonero.spostamentoSempliceNero(test);
         Mossa mossa = new Mossa(18,9);
-        assertTrue(mossa.PresaSempliceWhite(test));
+        assertTrue(mossa.presaSempliceWhite(test));
     }
     @Test
     @DisplayName("Sto testando presa semplice nero \n ")
@@ -49,10 +49,10 @@ public class MossaTest {
         Mossa spostamentonero = new Mossa(10,14);
         Mossa spbianc1= new Mossa(18,13);
         Mossa mossa = new Mossa(9,18);
-        assertTrue(spostamentobianco.SpostamentoSempliceBianco(test));
-        assertTrue(spostamentonero.SpostamentoSempliceNero(test));
-        assertTrue(spbianc1.SpostamentoSempliceBianco(test));
-        assertTrue(mossa.PresaSempliceBlack(test));
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertTrue(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(spbianc1.spostamentoSempliceBianco(test));
+        assertTrue(mossa.presaSempliceBlack(test));
     }
     @Test
     @DisplayName("Sto testando presa multipla bianca \n")
@@ -69,16 +69,16 @@ public class MossaTest {
         mossaerrat.setPosizione3(7);
         Mossa mossa = new Mossa(23,14);
         mossa.setPosizione3(5);
-        assertTrue(spostamentobianco.SpostamentoSempliceBianco(test));
-        assertTrue(spostamentonero.SpostamentoSempliceNero(test));
-        assertTrue(prbianca.PresaSempliceWhite(test));
-        assertTrue(spostNer1.SpostamentoSempliceNero(test));
-        assertTrue(spostBian1.SpostamentoSempliceBianco(test));
-        assertTrue(spostNer2.SpostamentoSempliceNero(test));
-        assertTrue(spostBian2.SpostamentoSempliceBianco(test));
-        assertTrue(spostNer3.SpostamentoSempliceNero(test));
-        assertFalse(mossaerrat.PresaMultiplaWhite(test));
-        assertTrue(mossa.PresaMultiplaWhite(test));
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertTrue(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(prbianca.presaSempliceWhite(test));
+        assertTrue(spostNer1.spostamentoSempliceNero(test));
+        assertTrue(spostBian1.spostamentoSempliceBianco(test));
+        assertTrue(spostNer2.spostamentoSempliceNero(test));
+        assertTrue(spostBian2.spostamentoSempliceBianco(test));
+        assertTrue(spostNer3.spostamentoSempliceNero(test));
+        assertFalse(mossaerrat.presaMultiplaWhite(test));
+        assertTrue(mossa.presaMultiplaWhite(test));
     }
     @Test
     @DisplayName("Sto testando presa multipla nero \n")
@@ -97,15 +97,15 @@ public class MossaTest {
         mossa.setPosizione3(32);
 
         assertAll(() -> {
-            assertTrue(spostamentobianco.SpostamentoSempliceBianco(test));
-            assertTrue(spostamentonero.SpostamentoSempliceNero(test));
-            assertTrue(prbianca.SpostamentoSempliceBianco(test));
-            assertTrue(spostNer1.SpostamentoSempliceNero(test));
-            assertTrue(spostBian1.SpostamentoSempliceBianco(test));
-            assertTrue(spostNer2.SpostamentoSempliceNero(test));
-            assertTrue(spostBian2.SpostamentoSempliceBianco(test));
-            assertFalse(mossaerrat.PresaMultiplaBlack(test));
-            assertTrue(mossa.PresaMultiplaBlack(test));
+            assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+            assertTrue(spostamentonero.spostamentoSempliceNero(test));
+            assertTrue(prbianca.spostamentoSempliceBianco(test));
+            assertTrue(spostNer1.spostamentoSempliceNero(test));
+            assertTrue(spostBian1.spostamentoSempliceBianco(test));
+            assertTrue(spostNer2.spostamentoSempliceNero(test));
+            assertTrue(spostBian2.spostamentoSempliceBianco(test));
+            assertFalse(mossaerrat.presaMultiplaBlack(test));
+            assertTrue(mossa.presaMultiplaBlack(test));
         });
     }
 
