@@ -302,7 +302,7 @@ public class Mossa {
                         //2° caso, SINISTRA: la presa viene effettuatta a sx
                         //rispetto alla casella iniziale (y4 = y2 + 1)
                     } else if (y2 < y1 && !damiera.getDamieraPedine(x4, (y2 + ONE)).getBlank()
-                            && !damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()) {
+                            && damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);

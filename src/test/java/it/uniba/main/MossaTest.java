@@ -55,6 +55,46 @@ public class MossaTest {
         assertTrue(mossa.presaSempliceBlack(test));
     }
     @Test
+    @DisplayName("Sto testando presa semplice nero a sinistra \n ")
+    void presaSempliceNeroaSinistraTest() {
+        Mossa spostamentobianco = new Mossa(21,17);
+        Mossa spostamentonero = new Mossa(9,13);
+        Mossa spbianc1= new Mossa(24,20);
+        Mossa spner1= new Mossa(13,18);
+        Mossa spbianc2 = new Mossa(17,13);
+        Mossa mossa = new Mossa(10,17);
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertTrue(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(spbianc1.spostamentoSempliceBianco(test));
+        assertTrue(spner1.spostamentoSempliceNero(test));
+        assertTrue(spbianc2.spostamentoSempliceBianco(test));
+        assertTrue(mossa.presaSempliceBlack(test));
+    }
+    @Test
+    @DisplayName("Sto testando una presa semplice con spostamento nero non valido")
+    void presaSempliceNeroaSinistraFalseTest() {
+        Mossa spostamentobianco = new Mossa(21,18);
+        Mossa spostamentonero = new Mossa(13,14);
+        Mossa spbianc1= new Mossa(18,13);
+        Mossa mossa = new Mossa(9,18);
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertFalse(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(spbianc1.spostamentoSempliceBianco(test));
+        assertTrue(mossa.presaSempliceBlack(test));
+    }
+    @Test
+    @DisplayName("Sto testando presa semplice nero non valida\n ")
+    void presaSempliceNeroaSinistraFalsaTest() {
+        Mossa spostamentobianco = new Mossa(21,18);
+        Mossa spostamentonero = new Mossa(10,14);
+        Mossa spbianc1= new Mossa(18,13);
+        Mossa mossa = new Mossa(9,13);
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertTrue(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(spbianc1.spostamentoSempliceBianco(test));
+        assertFalse(mossa.presaSempliceBlack(test));
+    }
+    @Test
     @DisplayName("Sto testando presa multipla bianca \n")
     void presaMultiplaWhiteTest(){
         Mossa spostamentobianco = new Mossa(21,18);
@@ -107,6 +147,60 @@ public class MossaTest {
             assertFalse(mossaerrat.presaMultiplaBlack(test));
             assertTrue(mossa.presaMultiplaBlack(test));
         });
+    }
+    @Test
+    @DisplayName("Sto testando una presa multipla tripla con damatura")
+    void presaMultiplaTriplaTest(){
+        Mossa spostamentobianco = new Mossa(21, 17);
+        Mossa spostamentonero = new Mossa(9, 13);
+        Mossa prbianca = new Mossa(24, 20);
+        Mossa spostNer1 = new Mossa(10, 14);
+        Mossa spostBian1 = new Mossa(17, 10);
+        Mossa spostNer2 = new Mossa(11, 15);
+        Mossa spostBian2 = new Mossa(25, 21);
+        Mossa prNera = new Mossa(15, 24);
+        Mossa spostBian3 = new Mossa(23, 19);
+        Mossa spostNer3 = new Mossa(12, 16);
+        Mossa spostBian4 = new Mossa(22, 18);
+        Mossa spostNer4 = new Mossa(14, 23);
+        Mossa spostBian5 = new Mossa(18, 13);
+        Mossa spostNer5 = new Mossa(6, 11);
+        Mossa spostBian6 = new Mossa(21, 17);
+        Mossa spostNer6 = new Mossa(11, 14);
+        Mossa spostBian7 = new Mossa(10, 6);
+        Mossa spostNer7 = new Mossa(8, 12);
+        Mossa spostBian8 = new Mossa(29, 25);
+        Mossa spostNer8 = new Mossa(5, 9);
+        Mossa spostBian9 = new Mossa(25, 21);
+        Mossa spostNer9 = new Mossa(1, 5);
+        Mossa prmult = new Mossa(28,19);
+        prmult.setPosizione3(10);
+        prmult.setPosizione4(1);
+
+        assertTrue(spostamentobianco.spostamentoSempliceBianco(test));
+        assertTrue(spostamentonero.spostamentoSempliceNero(test));
+        assertTrue(prbianca.spostamentoSempliceBianco(test));
+        assertTrue(spostNer1.spostamentoSempliceNero(test));
+        assertTrue(spostBian1.presaSempliceWhite(test));
+        assertTrue(spostNer2.spostamentoSempliceNero(test));
+        assertTrue(spostBian2.spostamentoSempliceBianco(test));
+        assertTrue(prNera.presaSempliceBlack(test));
+        assertTrue(spostBian3.spostamentoSempliceBianco(test));
+        assertTrue(spostNer3.spostamentoSempliceNero(test));
+        assertTrue(spostBian4.spostamentoSempliceBianco(test));
+        assertTrue(spostNer4.presaSempliceBlack(test));
+        assertTrue(spostBian5.spostamentoSempliceBianco(test));
+        assertTrue(spostNer5.spostamentoSempliceNero(test));
+        assertTrue(spostBian6.spostamentoSempliceBianco(test));
+        assertTrue(spostNer6.spostamentoSempliceNero(test));
+        assertTrue(spostBian7.spostamentoSempliceBianco(test));
+        assertTrue(spostNer7.spostamentoSempliceNero(test));
+        assertTrue(spostBian8.spostamentoSempliceBianco(test));
+        assertTrue(spostNer8.spostamentoSempliceNero(test));
+        assertTrue(spostBian9.spostamentoSempliceBianco(test));
+        assertTrue(spostNer9.spostamentoSempliceNero(test));
+        assertTrue(prmult.presaMultiplaWhite(test));
+
     }
 
 }
