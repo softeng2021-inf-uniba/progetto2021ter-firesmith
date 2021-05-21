@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"it.uniba.main","l":"AppMain"},{"p":"it.uniba.main","l":"Damiera"},{"p":"it.uniba.main","l":"Giocatore"},{"p":"it.uniba.main","l":"Menu"},{"p":"it.uniba.main","l":"Messaggi"},{"p":"it.uniba.main","l":"Mossa"},{"p":"it.uniba.main","l":"Partita"},{"p":"it.uniba.main","l":"Pedina"}]

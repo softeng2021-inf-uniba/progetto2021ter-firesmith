@@ -1,29 +1,34 @@
 package it.uniba.main;
 
-
 /**
- * Class Type: <<Boundary>>
- * Responsabilities: The main class for the project.
+ * <h2>Classe principale del progetto.</h2>
+ * <b>Class Type:</b> &#60; Boundary &#62; <br><br>
+ * <b>Responsabilities:</b><br>
+ * <b>Knows:</b><br>
+ *      <b>Does:</b>
+ *          <ul>
+ *          <li> Permette all'utente di utilizzare il menu</li>
+ *          </ul>
  *
- * <b>DO NOT RENAME</b>
+ * @author Gruppo Firesmith
  */
 
 public final class AppMain {
 
     /**
-     * Private constructor. Change if needed.
+     * Costruttore privato.
      */
     private AppMain() {
 
     }
 
     /**
-     * * This is the main entry of the application.
+     * Punto di partenza dell'applicazione.
      *
-     * @param args The command-line arguments.
+     * @param args Argomenti ottenuti dalla riga di comando.
      */
 
-    @SuppressWarnings("checkstyle:LineLength")
+
     public static void main(final String[] args) {
 
         System.out.println("Current working dir: "
