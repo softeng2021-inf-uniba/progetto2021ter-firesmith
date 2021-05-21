@@ -11,9 +11,21 @@ import java.time.Instant;
 import java.util.ListIterator;
 
 /**
- * Class Type: <<entity>>
- * Responsabilities: Classe che rappresenta la partita in corso
- * fra i due giocatori.
+ * <h2>Classe che gestisce i dati della partita in corso.</h2>
+ * <b>Class Type:</b> &#60; entity &#62; <br><br>
+ * <b>Responsabilities:</b><br>
+ *      <b>Knows:</b>
+ *      <ul>
+ *          <li>Tempo di inizio e fine turno di ogni giocatore;</li>
+ *      </ul>
+ *      <b>Does:</b>
+ *      <ul>
+ *          <li>Imposta lo stato della partita;</li>
+ *          <li>Visualizza le pedine mangiate di ogni giocatore;</li>
+ *          <li>Visualizza la cronologia delle mosse di ogni giocatore;</li>
+ *          <li>Visualizza il tempo trascorso per ogni giocatore.</li>
+ *      </ul>
+ * @author Gruppo Firesmith
  */
 
 public class Partita {
@@ -24,64 +36,139 @@ public class Partita {
     // turno = true, se il turno è finito
     // abbandona = false, se non è stato usato il comando abbandona
     // abbandona = true, se è stato usato il comando abbandona
+    /** Definisce se la partita &#232; in corso. */
     private boolean statoPartita = false;
+    /** Definisce se il turno &#232; in corso. */
     private boolean turnoPartita = false;
+    /** Definisce se un giocatore ha abbandonato la partita. */
     private boolean abbandonaPartita = false;
+    /** Giocatore bianco. */
     private Giocatore giocatore1 = new Giocatore();
+    /** Giocatore nero. */
     private Giocatore giocatore2 = new Giocatore();
+    /** Damiera utilizzata durante la partita. */
     private Damiera damiera = new Damiera();
+    /** Lista delle mosse effettuate dai giocatori. */
     private ArrayList<String> cronologiaMosse = new ArrayList<String>();
 
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int SIXTY = 60;
 
     // Creo la partita
+
+    /**
+     * Imposta una nuova partita:
+     * <ul>
+     *     <li>La partita risulta non in corso;</li>
+     *     <li>Il turno della partita non &#232; impostato;</li>
+     *     <li>La partita non &#232; stata abbandonata da nessun giocatore.</li>
+     * </ul>
+     */
+    //TODO questo metodo deve essere private e non public
     public Partita() {
         statoPartita = false;
         turnoPartita = false;
         abbandonaPartita = false;
     }
 
-
+    /**
+     * Imposta il valore di {@link Partita#statoPartita}.
+     * @param stato Stato della partita
+     */
     public void setStato(final boolean stato) {
         this.statoPartita = stato;
     }
 
+    /**
+     * Imposta il valore di {@link Partita#turnoPartita}.
+     * @param turno Stato del turno del giocatore
+     */
     public void setTurno(final boolean turno) {
         this.turnoPartita = turno;
     }
 
+    /**
+     * Imposta il valore di {@link Partita#abbandonaPartita}.
+     * @param abbandona Indica se la partita &#232; stata abbandonata da un giocatore
+     */
     public void setAbbandona(final boolean abbandona) {
         this.abbandonaPartita = abbandona;
     }
 
+    /**
+     * Aggiunge alla lista delle mosse l'ultima mossa effettuata.
+     * @param mossa Ultima mossa inserita dal giocatore
+     */
     public void setCronologiaMosse(final String mossa) {
         cronologiaMosse.add(mossa);
     }
 
+    /**
+     * Fornisce le informazioni del primo giocatore.
+     * @return Primo giocatore
+     */
     public Giocatore getGiocatore1() {
         return giocatore1;
     }
 
+    /**
+     * Fornisce le informazioni del secondo giocatore.
+     * @return Secondo giocatore
+     */
     public Giocatore getGiocatore2() {
         return giocatore2;
     }
 
+    /**
+     * Fornisce le informazioni della damiera utilizzata durante la partita.
+     * @return Damiera utilizzata dai giocatori
+     */
     public Damiera getDamiera() {
         return damiera;
     }
 
+    /**
+     * Fornisce lo stato della partita:
+     * <ul>
+     *     <li><code>true</code> se la partita &#232; in corso;</li>
+     *     <li><code>false</code> se la partita non &#232; iniziata
+     *     o non &#232; in corso.</li>
+     * </ul>
+     * @return Stato della partita
+     */
     public boolean getStato() {
         return statoPartita;
     }
 
+    /**
+     * Fornisce lo stato del turno del giocatore:
+     * <ul>
+     *     <li><code>true</code>, il turno &#232; in corso;</li>
+     *     <li><code>false</code>, il turno &#232; terminato.</li>
+     * </ul>
+     * @return Stato del turno del giocatore
+     */
     public boolean getTurno() {
         return turnoPartita;
     }
 
+    /**
+     * Indica se la partita &#232; stata abbandonata da un giocatore:
+     * <ul>
+     *     <li><code>true</code>, la partita &#232; stata abbandonata
+     *     da un giocatore;</li>
+     *     <li><code>false</code>, la partita &#232; ancora in corso.</li>
+     * </ul>
+     * @return Stato della partita
+     */
     public boolean getAbbandona() {
         return abbandonaPartita;
     }
 
+    /**
+     * Visualizza graficamente il numero delle pedine mangiate
+     * da entrambi i giocatori.
+     */
     public void stampaPedineMangiate() {
 
         System.out.println("\n\nPEDINE MANGIATE\n"
@@ -100,6 +187,10 @@ public class Partita {
         System.out.println("\n───────────────");
     }
 
+    /**
+     * Visualizza graficamente le mosse effettuate da entrambi i giocatori.
+     */
+
     public void getCronologiaMosse() {
         ListIterator<String> cronoMosse = cronologiaMosse.listIterator();
         if (cronologiaMosse.size() != 0) {
@@ -114,6 +205,15 @@ public class Partita {
         }
 
     }
+
+    /**
+     * Stampa il tempo trascorso dall'inizio della partita per il giocatore
+     * passato in input.
+     *
+     * @param giocatore Giocatore di cui viene calcolato il tempo
+     * @param start Istante di tempo da cui inizia il conteggio
+     * @param finish Istante di tempo in cui finisce il conteggio
+     */
 
     public void tempo(final Giocatore giocatore, final Instant start,
                       final Instant finish) {
