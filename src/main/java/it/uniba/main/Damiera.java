@@ -86,7 +86,7 @@ public class Damiera {
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
                 if (POSIZIONI_PEDINE[i][j] > POS_ZERO
                         && POSIZIONI_PEDINE[i][j] <= POS_DODICI) {
-                    damieraPedine[i][j].setWhite(true);
+                    damieraPedine[i][j].setWhite(false);
                     damieraPedine[i][j].setBlank(false);
                 } else {
                     // Tra la posizione 13 e 21 non ci sono pedine
@@ -99,7 +99,7 @@ public class Damiera {
                         // alla posizione 32
                         if (POSIZIONI_PEDINE[i][j] >= POS_VENTUNO
                                 && POSIZIONI_PEDINE[i][j] <= POS_TRENTADUE) {
-                            damieraPedine[i][j].setWhite(false);
+                            damieraPedine[i][j].setWhite(true);
                             damieraPedine[i][j].setBlank(false);
                         }
                     }

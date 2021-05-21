@@ -147,7 +147,7 @@ public class Mossa {
      * Metodo che gestisce lo spostamento delle pedine del giocatore nero.
      * @param damiera Damiera utilizzata durante la partita in corso
      */
-    public void spostamentoSempliceNero(final Damiera damiera) {
+    public boolean spostamentoSempliceNero(final Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti
         //alle posizioni fornite dall'utente
@@ -169,13 +169,13 @@ public class Mossa {
                 //occupata da una pedina (bianca) e quella di arrivo sia vuota
                 if (damiera.getDamieraPedine(x2, y2).getBlank()
                         && !damiera.getDamieraPedine(x1, y1).getBlank()
-                        && damiera.getDamieraPedine(x1, y1).getWhite()) {
+                        && !damiera.getDamieraPedine(x1, y1).getWhite()) {
 
                     //vengono settati i vari flag in modo da ricostruire
                     //graficamente la situazione
                     damiera.getDamieraPedine(x1, y1).setBlank(true);
                     damiera.getDamieraPedine(x2, y2).setBlank(false);
-                    damiera.getDamieraPedine(x2, y2).setWhite(true);
+                    damiera.getDamieraPedine(x2, y2).setWhite(false);
 
                     setValid(true);
 
@@ -193,13 +193,14 @@ public class Mossa {
         } else {
             setValid(false);
         }
+        return getValid();
     }
 
     /**
      * Metodo che gestisce lo spostamento delle pedine del giocatore bianco.
      * @param damiera Damiera utilizzata durante la partita in corso
      */
-    public void spostamentoSempliceBianco(final Damiera damiera) {
+    public boolean spostamentoSempliceBianco(final Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle
         //posizioni fornite dall'utente
@@ -222,13 +223,13 @@ public class Mossa {
                 // da una pedina (nera) e quella di arrivo sia vuota
                 if (damiera.getDamieraPedine(x2, y2).getBlank()
                         && !damiera.getDamieraPedine(x1, y1).getBlank()
-                        && !damiera.getDamieraPedine(x1, y1).getWhite()) {
+                        && damiera.getDamieraPedine(x1, y1).getWhite()) {
 
                     //vengono settati i vari flag in modo da ricostruire
                     //graficamente la situazione
                     damiera.getDamieraPedine(x1, y1).setBlank(true);
                     damiera.getDamieraPedine(x2, y2).setBlank(false);
-                    damiera.getDamieraPedine(x2, y2).setWhite(false);
+                    damiera.getDamieraPedine(x2, y2).setWhite(true);
                     setValid(true);
 
                     if (getPosizione2() >= ONE && getPosizione2() <= FOUR) {
@@ -244,6 +245,7 @@ public class Mossa {
         } else {
             setValid(false);
         }
+        return getValid();
     }
 
     /**
@@ -280,15 +282,15 @@ public class Mossa {
                     //1° caso, DESTRA: la presa viene effettuatta a DESTRA
                     //rispetto alla casella iniziale (y4 = y2 - 1)
                     if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - ONE)).getBlank()
-                            && !damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
+                            && damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
                             && !damiera.getDamieraPedine(x4, (y2 - ONE)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
-                        damiera.getDamieraPedine(x2, y2).setWhite(true);
+                        damiera.getDamieraPedine(x2, y2).setWhite(false);
 
                         damiera.getDamieraPedine(x4, (y2 - ONE)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 - ONE)).setWhite(true);
+                        damiera.getDamieraPedine(x4, (y2 - ONE)).setWhite(false);
 
                         setValid(true);
 
@@ -366,15 +368,15 @@ public class Mossa {
                     //1° caso, DESTRA: la presa viene effettuatta a dx
                     //rispetto alla casella iniziale (y4 = y2 - 1)
                     if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - ONE)).getBlank()
-                            && damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
+                            && !damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
                             && !damiera.getDamieraPedine(x4, (y2 - ONE)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
-                        damiera.getDamieraPedine(x2, y2).setWhite(false);
+                        damiera.getDamieraPedine(x2, y2).setWhite(true);
 
                         damiera.getDamieraPedine(x4, (y2 - 1)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 - 1)).setWhite(false);
+                        damiera.getDamieraPedine(x4, (y2 - 1)).setWhite(true);
 
                         setValid(true);
 
@@ -386,15 +388,15 @@ public class Mossa {
                         //rispetto alla casella iniziale (y4 = y2 + 1)
                     } else if (y2 < y1
                             && !damiera.getDamieraPedine(x4, (y2 + ONE)).getBlank()
-                            && damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()
+                            && !damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()
                             && !damiera.getDamieraPedine(x4, (y2 + ONE)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
-                        damiera.getDamieraPedine(x2, y2).setWhite(false);
+                        damiera.getDamieraPedine(x2, y2).setWhite(true);
 
                         damiera.getDamieraPedine(x4, (y2 + ONE)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 + ONE)).setWhite(false);
+                        damiera.getDamieraPedine(x4, (y2 + ONE)).setWhite(true);
 
                         setValid(true);
 
@@ -427,7 +429,7 @@ public class Mossa {
      *
      * @param damiera Damiera utilizzata durante la partita in corso
      */
-    public void presaMultiplaBlack(final Damiera damiera) {
+    public boolean presaMultiplaBlack(final Damiera damiera) {
 
         Damiera damieraCopia = new Damiera(damiera);
 
@@ -463,6 +465,7 @@ public class Mossa {
                 presaSempliceBlack(damiera);
             }
         }
+        return isValid;
     }
 
     /**
@@ -478,7 +481,7 @@ public class Mossa {
      *
      * @param damiera Damiera utilizzata durante la partita in corso
      */
-    public void presaMultiplaWhite(final Damiera damiera) {
+    public boolean presaMultiplaWhite(final Damiera damiera) {
 
         Damiera damieraCopia = new Damiera(damiera);
 
@@ -514,6 +517,7 @@ public class Mossa {
             }
 
         }
+        return getValid();
     }
 
     /**
