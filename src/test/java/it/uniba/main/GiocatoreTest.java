@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GiocatoreTest {
     @Test
-    void PedineMangiateTest() {
+    void pedineMangiateTest() {
         Giocatore bianco = new Giocatore();
         Giocatore nero = new Giocatore();
         bianco.setPedineMangiate(3);
@@ -22,5 +22,10 @@ class GiocatoreTest {
         bianco.setTempo(4);
         assertEquals(4,bianco.getTempo());
     }
-
+     @Test
+    void coloreTest(){
+        Giocatore test = new Giocatore();
+        test.setColore("bianco");
+        assertEquals("bianco",test.getColore());
+     }
 }
