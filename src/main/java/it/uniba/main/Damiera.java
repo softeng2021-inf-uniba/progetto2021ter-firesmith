@@ -1,23 +1,46 @@
 package it.uniba.main;
 
 /**
- * Class Type: <<Entity>>
- * Responsabilities: Classe che rappresenta la damiera su cui si basa il gioco.
+ * <h2>Classe che rappresenta la damiera su cui si basa il gioco.</h2>
+ * <b>Class Type:</b> &#60; Entity  &#62; <br><br>
+ * <b>Responsabilities:</b><br>
+ * <b>Knows:</b>
+ * <ul>
+ *     <li> Riga e colonna della posizione di una pedina</li>
+ * </ul>
+ * <b>Does:</b>
+ * <ul>
+ *     <li> Possiede la damiera numerata</li>
+ *     <li> Dispone i pezzi sulla damiera per iniziare la partita</li>
+ *     <li> Permette all'utente di visualizzare la damiera con i pezzi</li>
+ *     <li> Permette all'utente di visualizzare la damiera numerata</li>
+ *     <li> Permette di ricavare la riga e la colonna di una pedina
+ *     in una determinata posizione</li>
+ * </ul>
+ *
+ * @author Gruppo Firesmith
  */
 
-
 public class Damiera {
-
+    /** Numero massimo delle caselle disposte sulla riga. */
     static final int RIGHE = 8;
+    /** Numero massimo delle caselle disposte sulla colonna. */
     static final int COLONNE = 8;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_ZERO = 0;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_DIECI = 10;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_DODICI = 12;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_TREDICI = 13;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_VENTUNO = 21;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     static final int POS_TRENTADUE = 32;
 
-    // Questa damiera viene usata per calcol le coord delle pedine da spostare
+    /** Damiera che viene usata per calcolare le coordinate
+     * delle pedine da spostare. */
     static final int[][] POSIZIONI_PEDINE = new int[][]{
             {1, 0, 2, 0, 3, 0, 4, 0},
             {0, 5, 0, 6, 0, 7, 0, 8},
@@ -29,14 +52,21 @@ public class Damiera {
             {0, 29, 0, 30, 0, 31, 0, 32}
     };
 
-    // Alloca la memoria per una damiera fatta di oggetti Pedine
+    /** Alloca la memoria per una damiera fatta di oggetti Pedine. */
     private Pedina[][] damieraPedine = new Pedina[RIGHE][COLONNE];
 
-
+    /**
+     * Permette di ricavare la pedina attraverso le coordinate fornite.
+     * @param riga Valore della coordinata x
+     * @param colonna Valore della coordinata y
+     * @return Pedina presente nella posizione fornita
+     */
     public Pedina getDamieraPedine(final int riga, final int colonna) {
         return damieraPedine[riga][colonna];
     }
 
+    /** Costruttore della damiera con le pedine bianche e nere
+     * in posizione iniziale. */
     public Damiera() {
         for (int i = 0; i < RIGHE; i++) {
             for (int j = 0; j < COLONNE; j++) {
@@ -79,8 +109,8 @@ public class Damiera {
     }
 
     /**
-     * Crea un costruttore copia che simula la presa multipla in Mossa.java
-     * @param other la damiera originale
+     * Crea un costruttore copia che simula la presa multipla in {@link Mossa}.
+     * @param other Damiera della partita in corso
      */
     public Damiera(final Damiera other) {
         for (int i = 0; i < RIGHE; i++) {
@@ -90,8 +120,7 @@ public class Damiera {
 
                 // isValid = true, se la pedina sta su un numero
                 // isValid = false, se la pedina sta su uno 0
-                damieraPedine[i][j].setValid(
-                        other.damieraPedine[i][j].getValid());
+                damieraPedine[i][j].getValid();
 
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
@@ -126,9 +155,7 @@ public class Damiera {
         }
     }
 
-    /**
-     * Stampa la matrice che contiene la posizione delle pedine
-     */
+    /** Stampa la damiera con i numeri delle posizioni delle pedine. */
     public void stampaPosizioniPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
@@ -155,7 +182,8 @@ public class Damiera {
         }
     }
 
-    // Stampa la damiera con le pedine del colore bianco o nero
+    /** Stampa la damiera con le pedine di colore bianco e nero
+     * in formato Unicode. */
     public void stampaDamieraPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
@@ -199,9 +227,9 @@ public class Damiera {
     }
 
     /**
-     * Cerca la riga corrispondente alla posizione alla posizione scelta dall'utente
-     * @param pos la posizione presa in input
-     * @return la coordinata x corrispondente alla posizione
+     * Cerca la riga corrispondente alla posizione scelta dall'utente.
+     * @param pos Posizione della pedina presa in input
+     * @return Coordinata x corrispondente alla posizione della pedina
      */
     public int cercaRiga(final int pos) {
         int riga = 0;
@@ -215,9 +243,9 @@ public class Damiera {
         return riga;
     }
     /**
-     * Cerca la colonna corrispondente alla posizione alla posizione scelta dall'utente
-     * @param pos la posizione presa in input
-     * @return la coordinata y corrispondente alla posizione
+     * Cerca la colonna corrispondente alla posizione scelta dall'utente.
+     * @param pos Posizione della pedina presa in input
+     * @return Coordinata y corrispondente alla posizione della pedina
      */
     public int cercaColonna(final int pos) {
         int colonna = 0;
