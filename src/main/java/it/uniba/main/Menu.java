@@ -7,18 +7,34 @@ import java.time.Instant;
 import java.time.Duration;
 
 /**
- * Class Type: <<Control>> *
- * Responsabilities: Classe che gestisce le interazioni tra le varie classi;
- * funge da interfaccia per l'utente.
+ * <h2>Classe che gestisce l'input dell'utente durante l'esecuzione
+ * del programma e le interazioni tra le varie classi.</h2>
+ * <b>Class Type:</b> &#60; Control &#62; <br>
+ * <b>Responsabilities:</b> <br>
+ *      <b>Knows:</b>
+ *      <ul>
+ *          <li> Giocatore che sta giocando durante il suo turno. </li>
+ *      </ul>
+ *      <b>Does:</b> <br>
+ *              <ul>
+ *                  <li> Richiedere informazioni sul funzionamento
+ *                  del programma; </li>
+ *                  <li> Iniziare una nuova partita a dama; </li>
+ *                  <li> Visualizzare la damiera numerata; </li>
+ *                  <li> Uscire dal programma; </li>
+ *                  <li> Mostrare messaggi di avviso/errore. </li>
+ *              </ul>
+ *
  */
 
 public class Menu {
-
+    /** Crea una nuova partita. */
     private Partita partita = new Partita();
-
+    /** Definisce se il giocatore ha effettuato una presa tripla. */
     private boolean presaTripla = false;
 
     //getter e setter
+    //TODO questi metodi vanno messi in partita e ricostruiti
     public Partita getPartita() {
         return partita;
     }
@@ -27,26 +43,66 @@ public class Menu {
         partita = p;
     }
 
+    /**
+     * Fornisce informazioni sulla presa tripla:
+     * <ul>
+     *     <li><code>true</code>, il giocatore ha effettuato
+     *     una presa tripla;</li>
+     *     <li><code>false</code>, il giocatore non ha effettuato
+     *     una presa tripla.</li>
+     * </ul>
+     * @return Tipo di mossa inserita
+     */
     public boolean isPresaTripla() {
         return presaTripla;
     }
 
+    /**
+     * Imposta il valore della presa tripla inserita dal giocatore.
+     * @param prTripla Mossa effettuata dal giocatore
+     */
     public void setPresaTripla(final boolean prTripla) {
         presaTripla = prTripla;
     }
 
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int ONE = 1;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int TWO = 2;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int THREE = 3;
 
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; uno spostamento. */
     public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; una presa semplice. */
     public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; una presa multipla. */
     public static final String PRESA_M =
             "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
 
     // All'avvio del programma, non c'è nessuna partita in corso
 
     // Menu da mostrare ad avvio programma
+
+    /**
+     * Costruttore di {@link Menu}.
+     */
+    public Menu() {
+    }
+
+    /**
+     * Mostra il menu iniziale del programma e accetta
+     * dall'utente i comandi per:
+     * <ul>
+     *     <li>Visualizzare le istruzioni del programma;</li>
+     *     <li>Iniziare una nuova partita;</li>
+     *     <li>Visualizzare la damiera numerata;</li>
+     *     <li>Uscire dal programma.</li>
+     * </ul>
+     */
     public void generico() {
         // Serve per controllare se la partita è in corso
         boolean inizio = getPartita().getStato();
@@ -113,6 +169,20 @@ public class Menu {
         } while (!inizio); // Partita = false
     }
 
+    /**
+     * Gestisce i comandi inseriti dal giocatore che controlla
+     * le pedine bianche.<br>
+     * Permette al giocatore di:
+     * <ul>
+     *     <li>Invocare tutti i comandi di {@link Menu#generico()};</li>
+     *     <li>Visualizzare la damiera con le pedine disposte;</li>
+     *     <li>Effettuare 3 tipi di mosse: spostamento,
+     *     presa semplice e presa multipla;</li>
+     *     <li>Visualizzare il tempo trascorso dall'inizio della
+     *     partita di entrambi i giocatori.</li>
+     * </ul>
+     * @param bianco Giocatore che possiede le pedine bianche
+     */
     public void giocatoreBianco(final Giocatore bianco) {
 
         Instant start = Instant.now();
@@ -288,7 +358,7 @@ public class Menu {
                     break;
 
                 case "esci":
-                    uscita();                         // System.exit(0);
+                    uscita(); // System.exit(0);
                     break;
 
                 case "tempo":
@@ -318,11 +388,31 @@ public class Menu {
     // boolean Partita = flag (da Partita) che:
     // Se Partita = true, la partita è in corso
     // Se Partita = false, la partita non è in corso/è stata terminata
+
+    /**
+     * Gestisce i comandi inseriti dal giocatore che controlla
+     * le pedine nere.<br>
+     * Permette al giocatore di:
+     * <ul>
+     *      <li>Invocare tutti i comandi di {@link Menu#generico()};</li>
+     *      <li>Visualizzare la damiera con le pedine disposte;</li>
+     *      <li>Effettuare 3 tipi di mosse: spostamento,
+     *      presa semplice e presa multipla;</li>
+     *      <li>Visualizzare il tempo trascorso dall'inizio
+     *      della partita di entrambi i giocatori.</li>
+     * </ul>
+     * @param nero Giocatore che possiede le pedine nere
+     */
     public void giocatoreNero(final Giocatore nero) {
         Mossa mossa = new Mossa(0, 0);
 
-        // turnoNero = true, se il turno è in corso
-        // turnoNero = false, se il turno è finito
+        /**
+         * Assume valore:
+         * <ul>
+         *     <li><code>true</code>, se il turno &#232; in corso;</li>
+         *     <li><code>false</code>, se il turno &#232; terminato.</li>
+         * </ul>
+         */
         boolean turnoNero = true; // Inizio turno giocatore nero
 
         Instant start = Instant.now();
@@ -515,6 +605,12 @@ public class Menu {
 
     // Metodo con il quale il giocatore può abbandonare
     // la partita corrente ritornando al menù
+
+    /**
+     * Quando viene invocato dal menu, permette al giocatore
+     * di arrendersi e concludere la partita.
+     * @param giocatore Giocatore che ha richiesto di abbandonare la partita
+     */
     public void abbandona(final Giocatore giocatore) {
         // partita = true, se partita in corso
         // partita = false, se abbandona partita (partita non in corso)
@@ -566,6 +662,11 @@ public class Menu {
     }
 
     // Metodo con il quale si può terminare immediatamente il programma
+
+    /**
+     * Quando viene invocato dal menu, permette al giocatore
+     * di uscire dal programma.
+     */
     public void uscita() {
         boolean valido = false;
         System.out.print("\n\nPer confermare l'uscita dal gioco inserire "
@@ -593,6 +694,9 @@ public class Menu {
         } while (!valido);
     }
 
+    /**
+     * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
+     */
     public void gioca() {
         boolean statoPartita = getPartita().getStato();
         if (statoPartita) {
