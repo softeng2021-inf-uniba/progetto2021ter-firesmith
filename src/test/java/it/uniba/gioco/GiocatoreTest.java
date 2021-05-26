@@ -1,4 +1,4 @@
-package it.uniba.main;
+package it.uniba.gioco;
 
 import it.uniba.gioco.Giocatore;
 import org.junit.jupiter.api.Test;

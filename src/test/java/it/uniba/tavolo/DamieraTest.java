@@ -1,4 +1,4 @@
-package it.uniba.main;
+package it.uniba.tavolo;
 
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
