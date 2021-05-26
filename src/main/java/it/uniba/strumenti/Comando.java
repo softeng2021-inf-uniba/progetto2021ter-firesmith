@@ -4,12 +4,12 @@ import it.uniba.gioco.Giocatore;
 import java.util.Scanner;
 import it.uniba.gioco.Partita;
 
-
-/**
- *
- * @author ester
- */
 public final class Comando {
+
+    /**
+     * Quando viene invocato dal menu, permette al giocatore
+     * di arrendersi e concludere la partita.
+     */
     public void esci(Partita partita) {
         boolean valido = false;
         System.out.print("\n\nPer confermare l'uscita dal gioco inserire "
@@ -37,6 +37,11 @@ public final class Comando {
         } while (!valido);
     }
 
+    /**
+     * Quando viene invocato dal menu, permette al giocatore
+     * di arrendersi e concludere la partita.
+     * @param g Giocatore che ha richiesto di abbandonare la partita
+     */
     public void abbandona(Partita p, Giocatore g) {
         // partita = true, se partita in corso
         // partita = false, se abbandona partita (partita non in corso)
@@ -74,8 +79,7 @@ public final class Comando {
                 }
 
             } else if (conferma.equals("no")) {
-                statoPartita = true;            // Continua partita in corso
-                statoTurno = true;
+                // Continua partita in corso
                 p.setStato(statoPartita);
                 p.setTurno(statoTurno);
                 valido = true;
