@@ -34,12 +34,24 @@ public class Menu {
     /**
      * Crea una nuova partita.
      */
+    private Partita partita;
+    private Comando cmd;
 
-    //TODO GETTER E SETTER
-    private Partita partita = new Partita();
-    private Comando cmd = new Comando();
+    public Partita getPartita() {
+        return partita;
+    }
+
+    public void setPartita(Partita partita) {
+        this.partita = partita;
+    }
+
+    public Comando getCmd() {
+        return cmd;
+    }
 
     public Menu() {
+        partita = new Partita();
+        cmd = new Comando();
     }
 
     /**
@@ -64,6 +76,7 @@ public class Menu {
 
             comando = comando.toLowerCase();
 
+            //TODO IF-ELSE IF
             switch (comando) {
                 case "--help":
                     Messaggi.aiuto();
@@ -75,11 +88,11 @@ public class Menu {
                     Messaggi.aiuto();
                     break;
                 case "gioca":
-                    partita = new Partita();
+                    setPartita(new Partita());
                     gioca();
                     break;
                 case "numeri":
-                    partita.getDamiera().stampaDamieraPedine();
+                    getPartita().getDamiera().stampaDamieraPedine();
                     break;
                 case "damiera":
                     Messaggi.damiera();
@@ -88,9 +101,9 @@ public class Menu {
                     Messaggi.partita();
                     break;
                 case "esci":
-                    cmd.esci(partita);
-                    partita.setStato(false);
-                    inizio = partita.getStato();
+                    getCmd().esci(getPartita());
+                    getPartita().setStato(false);
+                    inizio = getPartita().getStato();
                     break;
                 default:
                     Messaggi.inserimento();
@@ -98,61 +111,6 @@ public class Menu {
             }
         } while (!inizio);
     }
-
-    /**
-     * Gestisce i comandi inseriti dal giocatore che controlla
-     * le pedine bianche.<br>
-     * Permette al giocatore di:
-     * <ul>
-     *     <li>Invocare tutti i comandi di {@link Menu#generico()};</li>
-     *     <li>Visualizzare la damiera con le pedine disposte;</li>
-     *     <li>Effettuare 3 tipi di mosse: spostamento,
-     *     presa semplice e presa multipla;</li>
-     *     <li>Visualizzare il tempo trascorso dall'inizio della
-     *     partita di entrambi i giocatori.</li>
-     * </ul>
-     * @param bianco Giocatore che possiede le pedine bianche
-     */
-
-
-    // Da mostrare al giocatore che ha scelto la pedina nera
-    // Damiera damiera = damiera in uso dalla partita (da Partita)
-    // boolean Partita = flag (da Partita) che:
-    // Se Partita = true, la partita è in corso
-    // Se Partita = false, la partita non è in corso/è stata terminata
-
-    /**
-     * Gestisce i comandi inseriti dal giocatore che controlla
-     * le pedine nere.<br>
-     * Permette al giocatore di:
-     * <ul>
-     *      <li>Invocare tutti i comandi di {@link Menu#generico()};</li>
-     *      <li>Visualizzare la damiera con le pedine disposte;</li>
-     *      <li>Effettuare 3 tipi di mosse: spostamento,
-     *      presa semplice e presa multipla;</li>
-     *      <li>Visualizzare il tempo trascorso dall'inizio
-     *      della partita di entrambi i giocatori.</li>
-     * </ul>
-     * @param nero Giocatore che possiede le pedine nere
-     */
-
-
-    // Metodo con il quale il giocatore può abbandonare
-    // la partita corrente ritornando al menù
-
-    /**
-     * Quando viene invocato dal menu, permette al giocatore
-     * di arrendersi e concludere la partita.
-     * @param giocatore Giocatore che ha richiesto di abbandonare la partita
-     */
-
-
-    // Metodo con il quale si può terminare immediatamente il programma
-
-    /**
-     * Quando viene invocato dal menu, permette al giocatore
-     * di uscire dal programma.
-     */
 
 
     /**
@@ -162,12 +120,12 @@ public class Menu {
         Turno bianco = new TurnoBianco();
         Turno nero = new TurnoNero();
 
-        if (partita.getStato()) {
+        if (getPartita().getStato()) {
             Messaggi.partita();
         } else {
-            partita.setStato(true);
-            partita.setBianco();
-            partita.setNero();
+            getPartita().setStato(true);
+            getPartita().setBianco();
+            getPartita().setNero();
 
             int numeroTurno = 1;
 
@@ -176,25 +134,24 @@ public class Menu {
                         + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
-                bianco.turnoGiocatore(partita);
+                bianco.turnoGiocatore(getPartita());
 
                 System.out.println("Fine turno giocatore "
-                        + partita.getBianco().getColore());
+                        + getPartita().getBianco().getColore());
 
-                if (partita.getAbbandona()) {
+                if (getPartita().getAbbandona()) {
                     System.out.println("Partita terminata!");
                 } else {
-                    partita.setTurno(false);
+                    getPartita().setTurno(false);
 
-                    nero.turnoGiocatore(partita);
-
+                    nero.turnoGiocatore(getPartita());
 
                     System.out.println("Fine turno giocatore "
-                            + partita.getNero().getColore());
+                            + getPartita().getNero().getColore());
 
                 }
                 numeroTurno++;
-            } while (partita.getStato());
+            } while (getPartita().getStato());
         }
     }
 }
