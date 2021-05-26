@@ -1,21 +1,37 @@
 package it.uniba.interfaccia;
 
-import it.uniba.gioco.Giocatore;
 import it.uniba.gioco.Mossa;
 import it.uniba.gioco.MossaNero;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
-import it.uniba.tavolo.Damiera;
 import it.uniba.strumenti.Costanti;
 import it.uniba.strumenti.Messaggi;
-import java.time.Instant;
-import java.time.Duration;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Gestisce i comandi inseriti dal giocatore che controlla
+ * le pedine nere.<br>
+ * Permette al giocatore di:
+ * <ul>
+ *      <li>Invocare tutti i comandi di {@link Menu#gioca()} };</li>
+ *      <li>Visualizzare la damiera con le pedine disposte;</li>
+ *      <li>Effettuare 3 tipi di mosse: spostamento,
+ *      presa semplice e presa multipla;</li>
+ *      <li>Visualizzare il tempo trascorso dall'inizio
+ *      della partita di entrambi i giocatori.</li>
+ * </ul>
+ */
+
 public class TurnoNero implements Turno {
-    Comando cmd = new Comando();
+
+    private Comando cmd = new Comando();
+
+    public Comando getCmd() {
+        return cmd;
+    }
 
     @Override
     public void turnoGiocatore(Partita partita){
@@ -31,6 +47,7 @@ public class TurnoNero implements Turno {
         do {
             Messaggi.menuNero();
 
+            //TODO FUNZIONE PER REGEX
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
@@ -160,7 +177,7 @@ public class TurnoNero implements Turno {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Nero :" + presa);
 
-                        if (!mossa.getPresaTripla()) {
+                        if (mossa.getPresaTripla()) {
                             partita.getNero().setPedineMangiate(Costanti.DUE);
                         } else {
                             partita.getNero().setPedineMangiate(Costanti.TRE);
@@ -183,14 +200,14 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "abbandona":
-                    cmd.abbandona(partita, partita.getNero());
+                    getCmd().abbandona(partita, partita.getNero());
                     turnoNero = partita.getTurno();
                     statoPartita = partita.getStato();
 
                     break;
 
                 case "esci":
-                    cmd.esci(partita); // System.exit(0);
+                    getCmd().esci(partita); // System.exit(0);
                     break;
 
                 case "tempo":
