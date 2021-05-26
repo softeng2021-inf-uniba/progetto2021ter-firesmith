@@ -1,6 +1,7 @@
 package it.uniba.gioco;
 
 import it.uniba.tavolo.Damiera;
+import it.uniba.strumenti.Costanti;
 
 /**
  * <h1>Classe che effettua le mosse delle pedine.</h1><br>
@@ -19,7 +20,7 @@ import it.uniba.tavolo.Damiera;
  */
 
 
-public class Mossa {
+public abstract class Mossa {
     /** Posizione della pedina da spostare per effettuare una mossa. */
     private int posizione1;
     /** Posizione in cui deve essere spostata la pedina iniziale. */
@@ -33,20 +34,7 @@ public class Mossa {
     /** Definisce se la mossa effettuata (spostamento, presa semplice,
      * presa multipla) &#232; consentita dalle regole.*/
     private boolean isValid;
-
-    //Costanti numeriche
-    // posizioni
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_VENTOTTO = 28;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_TRENTADUE = 32;
-    // valori numerici
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int ONE = 1;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int TWO = 2;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int FOUR = 4;
+    private boolean isPresaTripla;
 
     /**
      * Imposta la posizione iniziale della pedina
@@ -85,6 +73,9 @@ public class Mossa {
         this.posizione4 = pos4;
     }
 
+    public void setPresaTripla(final boolean isPresaTripla) {
+        this.isPresaTripla = isPresaTripla;
+    }
     /**
      * Fornisce la posizione della pedina che inizia la mossa.
      * @return Posizione iniziale della pedina
@@ -110,6 +101,14 @@ public class Mossa {
      */
     public int getPosizione3() {
         return posizione3;
+    }
+
+    public int getPosizione4() {
+        return posizione4;
+    }
+
+    public boolean getPresaTripla() {
+        return isPresaTripla;
     }
 
     /**
@@ -181,8 +180,8 @@ public class Mossa {
 
                     setValid(true);
 
-                    if (getPosizione2() > POS_VENTOTTO
-                            && getPosizione2() <= POS_TRENTADUE) {
+                    if (getPosizione2() > Costanti.POS_VENTOTTO
+                            && getPosizione2() <= Costanti.POS_TRENTADUE) {
                         damiera.getDamieraPedine(x2, y2).setDama(true);
                     }
 
@@ -217,9 +216,9 @@ public class Mossa {
         // le pedine vengano spostate solo "dall'alto verso il basso" (bianco)
         // e che la (casella in) pos2 disti dalla (casella in) pos1 esatt 1
         if (x2 < x1) {
-            if ((x2 == x1 - ONE)
-                    && (y2 == y1 + ONE
-                    || y2 == y1 - ONE)) {
+            if ((x2 == x1 - Costanti.UNO)
+                    && (y2 == y1 + Costanti.UNO
+                    || y2 == y1 - Costanti.UNO)) {
 
                 //qui viene controllata che la casella iniz sia effett. occupata
                 // da una pedina (nera) e quella di arrivo sia vuota
@@ -234,7 +233,7 @@ public class Mossa {
                     damiera.getDamieraPedine(x2, y2).setWhite(true);
                     setValid(true);
 
-                    if (getPosizione2() >= ONE && getPosizione2() <= FOUR) {
+                    if (getPosizione2() >= Costanti.UNO && getPosizione2() <= Costanti.QUATTRO) {
                         damiera.getDamieraPedine(x2, y2).setDama(true);
                     }
 
@@ -277,46 +276,46 @@ public class Mossa {
         // (bianco) e che la (casella in) pos2 disti dalla (casella in)
         // pos1 esattemente 2
         if (x2 > x1) {
-            if ((x2 == x1 + TWO)
-                    && (y2 == y1 + TWO || y2 == y1 - TWO)) {
+            if ((x2 == x1 + Costanti.DUE)
+                    && (y2 == y1 + Costanti.DUE || y2 == y1 - Costanti.DUE)) {
                 if (damiera.getDamieraPedine(x2, y2).getBlank() && !damiera.getDamieraPedine(x1, y1).getBlank()) {
 
                     //1° caso, DESTRA: la presa viene effettuatta a DESTRA
                     //rispetto alla casella iniziale (y4 = y2 - 1)
-                    if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - ONE)).getBlank()
-                            && damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
-                            && !damiera.getDamieraPedine(x4, (y2 - ONE)).getDama()) {
+                    if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getBlank()
+                            && damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getWhite()
+                            && !damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
                         damiera.getDamieraPedine(x2, y2).setWhite(false);
 
-                        damiera.getDamieraPedine(x4, (y2 - ONE)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 - ONE)).setWhite(false);
+                        damiera.getDamieraPedine(x4, (y2 - Costanti.DUE)).setBlank(true);
+                        damiera.getDamieraPedine(x4, (y2 - Costanti.DUE)).setWhite(false);
 
                         setValid(true);
 
-                        if (getPosizione2() > POS_VENTOTTO
-                                && getPosizione2() <= POS_TRENTADUE) {
+                        if (getPosizione2() > Costanti.POS_VENTOTTO
+                                && getPosizione2() <= Costanti.POS_TRENTADUE) {
                             damiera.getDamieraPedine(x2, y2).setDama(true);
                         }
 
                         //2° caso, SINISTRA: la presa viene effettuatta a sx
                         //rispetto alla casella iniziale (y4 = y2 + 1)
-                    } else if (y2 < y1 && !damiera.getDamieraPedine(x4, (y2 + ONE)).getBlank()
-                            && damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()) {
+                    } else if (y2 < y1 && !damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).getBlank()
+                            && damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).getWhite()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
                         damiera.getDamieraPedine(x2, y2).setWhite(true);
 
-                        damiera.getDamieraPedine(x4, (y2 + ONE)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 + ONE)).setWhite(true);
+                        damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).setBlank(true);
+                        damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).setWhite(true);
 
                         setValid(true);
 
-                        if (getPosizione2() > POS_VENTOTTO
-                                && getPosizione2() <= POS_TRENTADUE) {
+                        if (getPosizione2() > Costanti.POS_VENTOTTO
+                                && getPosizione2() <= Costanti.POS_TRENTADUE) {
                             damiera.getDamieraPedine(x2, y2).setDama(true);
                         }
 
@@ -363,15 +362,15 @@ public class Mossa {
         //le pedine vengano spostate solo "dall'alto verso il basso" (bianco)
         //e che la (casella in) pos2 disti dalla (casella in) pos1 esattemente 2
         if (x2 < x1) {
-            if ((x2 == x1 - TWO) && (y2 == y1 - TWO || y2 == y1 + TWO)) {
+            if ((x2 == x1 - Costanti.DUE) && (y2 == y1 - Costanti.DUE || y2 == y1 + Costanti.DUE)) {
                 if (damiera.getDamieraPedine(x2, y2).getBlank()
                         && !damiera.getDamieraPedine(x1, y1).getBlank()) {
 
                     //1° caso, DESTRA: la presa viene effettuatta a dx
                     //rispetto alla casella iniziale (y4 = y2 - 1)
-                    if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - ONE)).getBlank()
-                            && !damiera.getDamieraPedine(x4, (y2 - ONE)).getWhite()
-                            && !damiera.getDamieraPedine(x4, (y2 - ONE)).getDama()) {
+                    if (y2 > y1 && !damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getBlank()
+                            && !damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getWhite()
+                            && !damiera.getDamieraPedine(x4, (y2 - Costanti.UNO)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
@@ -382,27 +381,27 @@ public class Mossa {
 
                         setValid(true);
 
-                        if (getPosizione2() >= ONE && getPosizione2() <= FOUR) {
+                        if (getPosizione2() >= Costanti.UNO && getPosizione2() <= Costanti.QUATTRO) {
                             damiera.getDamieraPedine(x2, y2).setDama(true);
                         }
 
                         //2° caso, SINISTRA: la presa viene effettuatta a sx
                         //rispetto alla casella iniziale (y4 = y2 + 1)
                     } else if (y2 < y1
-                            && !damiera.getDamieraPedine(x4, (y2 + ONE)).getBlank()
-                            && !damiera.getDamieraPedine(x4, (y2 + ONE)).getWhite()
-                            && !damiera.getDamieraPedine(x4, (y2 + ONE)).getDama()) {
+                            && !damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).getBlank()
+                            && !damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).getWhite()
+                            && !damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).getDama()) {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
                         damiera.getDamieraPedine(x2, y2).setWhite(true);
 
-                        damiera.getDamieraPedine(x4, (y2 + ONE)).setBlank(true);
-                        damiera.getDamieraPedine(x4, (y2 + ONE)).setWhite(true);
+                        damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).setBlank(true);
+                        damiera.getDamieraPedine(x4, (y2 + Costanti.UNO)).setWhite(true);
 
                         setValid(true);
 
-                        if (getPosizione2() >= ONE && getPosizione2() <= FOUR) {
+                        if (getPosizione2() >= Costanti.UNO && getPosizione2() <= Costanti.QUATTRO) {
                             damiera.getDamieraPedine(x2, y2).setDama(true);
                         }
                     }
