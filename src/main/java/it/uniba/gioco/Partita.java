@@ -6,11 +6,9 @@
 package it.uniba.gioco;
 
 import it.uniba.tavolo.Damiera;
-
 import java.util.ArrayList;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ListIterator;
+import it.uniba.strumenti.Costanti;
 
 /**
  * <h2>Classe che gestisce i dati della partita in corso.</h2>
@@ -219,17 +217,8 @@ public class Partita {
     /**
      * Stampa il tempo trascorso dall'inizio della partita per il giocatore
      * passato in input.
-     *
-     * @param giocatore Giocatore di cui viene calcolato il tempo
-     * @param start Istante di tempo da cui inizia il conteggio
-     * @param finish Istante di tempo in cui finisce il conteggio
      */
-
-    public void tempo(final Giocatore giocatore, final Instant start,
-                      final Instant finish) {
-
-        long elapsed = Duration.between(start, finish).getSeconds();
-        giocatore.setTempo(elapsed);
+    public void tempo() {
 
         System.out.println("\n\nTEMPO TRASCORSO\n"
                 + "────────────────");
@@ -238,22 +227,22 @@ public class Partita {
         // nel caso passi il minuto cambia la stampa
         if (bianco.getColore().equals("bianco")) {
 
-            if (bianco.getTempo() < SIXTY) {
-                System.out.println("Bianco: " + bianco.getTempo()
-                        + " secondi");
+            if ((bianco.getTempo()/ Costanti.INSECOND) < Costanti.MINUTO) {
+                System.out.println("Bianco: " + (bianco.getTempo()/1000)
+                        + " s");
             } else {
-                System.out.println("Bianco: " + (bianco.getTempo() / SIXTY)
-                        + " minuto/i " + ((bianco.getTempo()) % SIXTY)
-                        + " secondi");
+                System.out.println("Bianco: " + ((bianco.getTempo()/ Costanti.INSECOND) / Costanti.MINUTO)
+                        + " m " + ((bianco.getTempo()/ Costanti.INSECOND) % Costanti.MINUTO)
+                        + " s");
             }
 
-            if (nero.getTempo() < SIXTY) {
-                System.out.println("Nero: " + nero.getTempo()
-                        + " secondi");
+            if ((nero.getTempo()/ Costanti.INSECOND) < Costanti.MINUTO) {
+                System.out.println("Nero: " + (nero.getTempo()/ Costanti.INSECOND)
+                        + " s");
             } else {
-                System.out.println("Nero: " + nero.getTempo() / SIXTY
-                        + " minuto/i " + ((nero.getTempo()) % SIXTY)
-                        + " secondi");
+                System.out.println("Nero: " + (nero.getTempo()/ Costanti.INSECOND) / Costanti.MINUTO
+                        + " m " + ((nero.getTempo()/ Costanti.INSECOND) % Costanti.MINUTO)
+                        + " s");
 
             }
             System.out.println();
