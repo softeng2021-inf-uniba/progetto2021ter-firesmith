@@ -44,68 +44,13 @@ public class TurnoBianco implements Turno {
         do {
             Messaggi.menuBianco();
 
-            //TODO FUNZIONE PER REGEX
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
-            comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
             String presa = comando;
-
-            // Gestione regex (bianco)
-            Pattern p1 = Pattern.compile(Costanti.SPOSTAMENTO);
-            Pattern p2 = Pattern.compile(Costanti.PRESA_S);
-            Pattern p3 = Pattern.compile(Costanti.PRESA_M);
-
-            Matcher m1 = p1.matcher(comando);
-            Matcher m2 = p2.matcher(comando);
-            Matcher m3 = p3.matcher(comando);
-
-            int posIniziale = 0;
-            int posFinale = 0;
-            int posFinale2 = 0;
-            int posFinale3 = 0;
-
-            String[] array = comando.split("-|x");
-
-            try {
-                if ((array.length > 1)) {
-
-                    String posInizialeTemp = array[0];
-                    String posFinaleTemp = array[1];
+            comando = getCmd().gestisciRegex(mossa, comando);
+            comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
 
 
-                    posIniziale = Integer.parseInt(posInizialeTemp);
-                    posFinale = Integer.parseInt(posFinaleTemp);
-
-
-                    mossa.setPosizione1(posIniziale);
-                    mossa.setPosizione2(posFinale);
-
-                    if (array.length > Costanti.DUE) {
-                        String posFinale2Temp = array[Costanti.DUE];
-                        posFinale2 = Integer.parseInt(posFinale2Temp);
-                        mossa.setPosizione3(posFinale2);
-
-                        if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
-                            String posFinale3Temp = array[Costanti.TRE];
-                            posFinale3 = Integer.parseInt(posFinale3Temp);
-                            mossa.setPosizione4(posFinale3);
-
-                            mossa.setPresaTripla(true);
-
-                        }
-                    }
-
-                    if (m1.matches()) {
-                        comando = "spostamento";
-                    } else if (m2.matches()) {
-                        comando = "presa semplice";
-                    } else if (m3.matches()) {
-                        comando = "presa multipla";
-                    }
-                }
-            } catch (NumberFormatException ex) {
-                System.err.println("\nIllegal string (exception)");
-            }
             switch (comando) {
                 case "--help":
                     Messaggi.aiuto();
@@ -137,7 +82,7 @@ public class TurnoBianco implements Turno {
                     mossa.spostamentoSemplice(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco: " + presa);
                         partita.setTurno(false);
                         Messaggi.spostamentoOk();
                     } else {
@@ -155,7 +100,7 @@ public class TurnoBianco implements Turno {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        partita.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco: " + presa);
 
                         partita.getBianco().setPedineMangiate(1);
                         Messaggi.presaOk();
@@ -172,7 +117,7 @@ public class TurnoBianco implements Turno {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        partita.setCronologiaMosse("Bianco :" + presa);
+                        partita.setCronologiaMosse("Bianco: " + presa);
 
                         if (mossa.getPresaTripla()) {
                             partita.getBianco().setPedineMangiate(Costanti.DUE);
