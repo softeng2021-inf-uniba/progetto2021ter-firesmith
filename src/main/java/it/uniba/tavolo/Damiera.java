@@ -71,7 +71,7 @@ public class Damiera {
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
-                if (POSIZIONI_PEDINE[i][j] > Costanti.POS_ZERO
+                if (POSIZIONI_PEDINE[i][j] > Costanti.ZERO
                         && POSIZIONI_PEDINE[i][j] <= Costanti.POS_DODICI) {
                     damieraPedine[i][j].setWhite(false);
                     damieraPedine[i][j].setBlank(false);
@@ -108,7 +108,7 @@ public class Damiera {
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
-                if (POSIZIONI_PEDINE[i][j] > Costanti.POS_ZERO
+                if (POSIZIONI_PEDINE[i][j] > Costanti.ZERO
                         && POSIZIONI_PEDINE[i][j] <= Costanti.POS_DODICI) {
                     damieraPedine[i][j].setWhite(
                             other.damieraPedine[i][j].getWhite());

@@ -11,7 +11,7 @@ public class Costanti {
     public static final int COLONNE = 8;
 
     /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_ZERO = 0;
+    public static final int ZERO = 0;
     /** Costante anche utilizzata per il controllo della posizione delle pedine. */
     public static final int UNO = 1;
     /** Costante anche utilizzata per il controllo della posizione delle pedine. */
