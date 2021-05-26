@@ -1,12 +1,9 @@
 package it.uniba.main;
 
+import it.uniba.gioco.Partita;
 import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import it.uniba.main.*;
-
-import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 

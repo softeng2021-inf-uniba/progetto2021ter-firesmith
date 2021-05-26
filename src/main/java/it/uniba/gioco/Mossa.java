@@ -1,4 +1,6 @@
-package it.uniba.main;
+package it.uniba.gioco;
+
+import it.uniba.tavolo.Damiera;
 
 /**
  * <h1>Classe che effettua le mosse delle pedine.</h1><br>

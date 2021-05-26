@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.uniba.main;
+package it.uniba.gioco;
+
+import it.uniba.tavolo.Damiera;
 
 import java.util.ArrayList;
 import java.time.Duration;

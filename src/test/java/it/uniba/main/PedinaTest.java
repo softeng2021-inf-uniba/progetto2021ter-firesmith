@@ -1,5 +1,6 @@
 package it.uniba.main;
 
+import it.uniba.tavolo.Pedina;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

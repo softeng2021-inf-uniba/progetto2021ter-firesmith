@@ -1,6 +1,7 @@
 package it.uniba.main;
 
-import org.junit.Ignore;
+import it.uniba.gioco.Partita;
+import it.uniba.interfaccia.Menu;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,6 @@
-package it.uniba.main;
+package it.uniba.tavolo;
+
+import it.uniba.gioco.Mossa;
 
 /**
  * <h2>Classe che rappresenta la damiera su cui si basa il gioco.</h2>

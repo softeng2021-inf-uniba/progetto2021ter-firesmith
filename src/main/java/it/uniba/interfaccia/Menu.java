@@ -1,4 +1,9 @@
-package it.uniba.main;
+package it.uniba.interfaccia;
+
+import it.uniba.gioco.Giocatore;
+import it.uniba.gioco.Mossa;
+import it.uniba.gioco.Partita;
+import it.uniba.strumenti.Messaggi;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;

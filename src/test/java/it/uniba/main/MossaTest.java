@@ -1,9 +1,8 @@
 package it.uniba.main;
 
-import com.google.api.client.util.NullValue;
+import it.uniba.gioco.Mossa;
 import org.junit.jupiter.api.*;
-import it.uniba.main.Mossa;
-import it.uniba.main.Damiera;
+import it.uniba.tavolo.Damiera;
 
 import static org.junit.jupiter.api.Assertions.*;
 
