@@ -1,4 +1,7 @@
-package it.uniba.main;
+package it.uniba.tavolo;
+
+import it.uniba.gioco.Mossa;
+import it.uniba.strumenti.Costanti;
 
 /**
  * <h2>Classe che rappresenta la damiera su cui si basa il gioco.</h2>
@@ -22,22 +25,6 @@ package it.uniba.main;
  */
 
 public class Damiera {
-    /** Numero massimo delle caselle disposte sulla riga. */
-    static final int RIGHE = 8;
-    /** Numero massimo delle caselle disposte sulla colonna. */
-    static final int COLONNE = 8;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_ZERO = 0;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_DIECI = 10;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_DODICI = 12;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_TREDICI = 13;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_VENTUNO = 21;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    static final int POS_TRENTADUE = 32;
 
     /** Damiera che viene usata per calcolare le coordinate
      * delle pedine da spostare. */
@@ -53,7 +40,7 @@ public class Damiera {
     };
 
     /** Alloca la memoria per una damiera fatta di oggetti Pedine. */
-    private Pedina[][] damieraPedine = new Pedina[RIGHE][COLONNE];
+    private Pedina[][] damieraPedine = new Pedina[Costanti.RIGHE][Costanti.COLONNE];
 
     /**
      * Permette di ricavare la pedina attraverso le coordinate fornite.
@@ -68,8 +55,8 @@ public class Damiera {
     /** Costruttore della damiera con le pedine bianche e nere
      * in posizione iniziale. */
     public Damiera() {
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
 
                 damieraPedine[i][j] = new Pedina(i, j);
 
@@ -84,21 +71,21 @@ public class Damiera {
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
-                if (POSIZIONI_PEDINE[i][j] > POS_ZERO
-                        && POSIZIONI_PEDINE[i][j] <= POS_DODICI) {
+                if (POSIZIONI_PEDINE[i][j] > Costanti.ZERO
+                        && POSIZIONI_PEDINE[i][j] <= Costanti.POS_DODICI) {
                     damieraPedine[i][j].setWhite(false);
                     damieraPedine[i][j].setBlank(false);
                 } else {
                     // Tra la posizione 13 e 21 non ci sono pedine
-                    if (POSIZIONI_PEDINE[i][j] >= POS_TREDICI
-                            && POSIZIONI_PEDINE[i][j] < POS_VENTUNO) {
+                    if (POSIZIONI_PEDINE[i][j] >= Costanti.POS_TREDICI
+                            && POSIZIONI_PEDINE[i][j] < Costanti.POS_VENTUNO) {
                         damieraPedine[i][j].setWhite(false);
                         damieraPedine[i][j].setBlank(true);
                     } else {
                         // Le pedine nere stanno dalla posizione 21
                         // alla posizione 32
-                        if (POSIZIONI_PEDINE[i][j] >= POS_VENTUNO
-                                && POSIZIONI_PEDINE[i][j] <= POS_TRENTADUE) {
+                        if (POSIZIONI_PEDINE[i][j] >= Costanti.POS_VENTUNO
+                                && POSIZIONI_PEDINE[i][j] <= Costanti.POS_TRENTADUE) {
                             damieraPedine[i][j].setWhite(true);
                             damieraPedine[i][j].setBlank(false);
                         }
@@ -113,28 +100,24 @@ public class Damiera {
      * @param other Damiera della partita in corso
      */
     public Damiera(final Damiera other) {
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
 
                 damieraPedine[i][j] = new Pedina(i, j);
-
-                // isValid = true, se la pedina sta su un numero
-                // isValid = false, se la pedina sta su uno 0
-                damieraPedine[i][j].getValid();
 
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12
-                if (POSIZIONI_PEDINE[i][j] > POS_ZERO
-                        && POSIZIONI_PEDINE[i][j] <= POS_DODICI) {
+                if (POSIZIONI_PEDINE[i][j] > Costanti.ZERO
+                        && POSIZIONI_PEDINE[i][j] <= Costanti.POS_DODICI) {
                     damieraPedine[i][j].setWhite(
                             other.damieraPedine[i][j].getWhite());
                     damieraPedine[i][j].setBlank(
                             other.damieraPedine[i][j].getBlank());
                 } else {
                     // Tra la posizione 13 e 21 non ci sono pedine
-                    if (POSIZIONI_PEDINE[i][j] >= POS_TREDICI
-                            && POSIZIONI_PEDINE[i][j] < POS_VENTUNO) {
+                    if (POSIZIONI_PEDINE[i][j] >= Costanti.POS_TREDICI
+                            && POSIZIONI_PEDINE[i][j] < Costanti.POS_VENTUNO) {
                         damieraPedine[i][j].setWhite(
                                 other.damieraPedine[i][j].getWhite());
                         damieraPedine[i][j].setBlank(
@@ -142,8 +125,8 @@ public class Damiera {
                     } else {
                         // Le pedine nere stanno dalla posizione 21
                         // alla posizione 32
-                        if (POSIZIONI_PEDINE[i][j] >= POS_VENTUNO
-                                && POSIZIONI_PEDINE[i][j] <= POS_TRENTADUE) {
+                        if (POSIZIONI_PEDINE[i][j] >= Costanti.POS_VENTUNO
+                                && POSIZIONI_PEDINE[i][j] <= Costanti.POS_TRENTADUE) {
                             damieraPedine[i][j].setWhite(
                                     other.damieraPedine[i][j].getWhite());
                             damieraPedine[i][j].setBlank(
@@ -159,11 +142,11 @@ public class Damiera {
     public void stampaPosizioniPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
                 if (POSIZIONI_PEDINE[i][j] != 0) {
                     if (POSIZIONI_PEDINE[i][j] > 0
-                            && POSIZIONI_PEDINE[i][j] < POS_DIECI) {
+                            && POSIZIONI_PEDINE[i][j] < Costanti.POS_DIECI) {
                         System.out.print("│ " + POSIZIONI_PEDINE[i][j] + "  ");
                     } else {
                         System.out.print("│ " + POSIZIONI_PEDINE[i][j] + " ");
@@ -174,7 +157,7 @@ public class Damiera {
             }
             System.out.print("│");
             System.out.println();
-            if (i != RIGHE - 1) {
+            if (i != Costanti.RIGHE - 1) {
                 System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
             } else {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
@@ -187,8 +170,8 @@ public class Damiera {
     public void stampaDamieraPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
 
                 boolean pedinaBianca = damieraPedine[i][j].getWhite();
                 boolean pedinaEsistente = damieraPedine[i][j].getValid();
@@ -218,7 +201,7 @@ public class Damiera {
             System.out.print("│");
             System.out.println();
 
-            if (i != RIGHE - 1) {
+            if (i != Costanti.RIGHE - 1) {
                 System.out.println("├────┼────┼────┼────┼────┼────┼────┼────┤");
             } else {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
@@ -233,8 +216,8 @@ public class Damiera {
      */
     public int cercaRiga(final int pos) {
         int riga = 0;
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
                 if (POSIZIONI_PEDINE[i][j] == pos) {
                     riga = i;
                 }
@@ -249,8 +232,8 @@ public class Damiera {
      */
     public int cercaColonna(final int pos) {
         int colonna = 0;
-        for (int i = 0; i < RIGHE; i++) {
-            for (int j = 0; j < COLONNE; j++) {
+        for (int i = 0; i < Costanti.RIGHE; i++) {
+            for (int j = 0; j < Costanti.COLONNE; j++) {
                 if (POSIZIONI_PEDINE[i][j] == pos) {
                     colonna = j;
                 }

@@ -1,0 +1,147 @@
+package it.uniba.gioco;
+
+import it.uniba.tavolo.Damiera;
+
+/**
+ * <h1>Classe che effettua le mosse delle pedine.</h1><br>
+ * <b>Class Type:</b> &#60; Control &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ *      <p><b>Knows:</b></p> <br>
+ *      <b>Does:</b>
+ *          <ul>
+ *          <li> Permette all'utente di inserire la mossa
+ *          ed effettuare lo spostamento,
+ *          le prese semplici o le prese multiple;</li>
+ *          <li>Controlla la validit&#224; delle mosse inserite.</li>
+ *          </ul>
+ *
+ * @author Gruppo Firesmith
+ */
+
+public abstract class Mossa {
+    /** Posizione della pedina da spostare per effettuare una mossa. */
+    private int posizione1;
+    /** Posizione in cui deve essere spostata la pedina iniziale. */
+    private int posizione2;
+    /** Posizione in cui deve essere spostata la pedina iniziale
+     * in seguito ad una presa doppia. */
+    private int posizione3;
+    /** Posizione in cui deve essere spostata la pedina iniziale
+     * in seguito ad una presa tripla.*/
+    private int posizione4;
+    /** Definisce se la mossa effettuata (spostamento, presa semplice,
+     * presa multipla) &#232; consentita dalle regole.*/
+    private boolean isValid;
+    private boolean isPresaTripla;
+
+    /**
+     * Imposta la posizione iniziale della pedina
+     * in {@link Mossa#posizione1}.
+     * @param pos1 Posizione iniziale della pedina
+     */
+    public void setPosizione1(final int pos1) {
+        this.posizione1 = pos1;
+    }
+
+    /**
+     * Imposta la posizione finale della pedina in
+     * {@link Mossa#posizione2} in seguito ad uno spostamento
+     * o ad una presa semplice.
+     * @param pos2 Posizione finale della pedina spostata
+     */
+    public void setPosizione2(final int pos2) {
+        this.posizione2 = pos2;
+    }
+
+    /**
+     * Imposta la posizione finale della pedina in
+     * {@link Mossa#posizione3} in seguito ad una presa multipla doppia.
+     * @param pos3 Posizione finale della pedina spostata
+     */
+    public void setPosizione3(final int pos3) {
+        this.posizione3 = pos3;
+    }
+
+    /**
+     * Imposta la posizione iniziale della pedina in
+     * {@link Mossa#posizione4} in seguito ad una presa multipla tripla.
+     * @param pos4 Posizione finale della pedina spostata
+     */
+    public void setPosizione4(final int pos4) {
+        this.posizione4 = pos4;
+    }
+
+    public void setPresaTripla(final boolean isPresaTripla) {
+        this.isPresaTripla = isPresaTripla;
+    }
+    /**
+     * Fornisce la posizione della pedina che inizia la mossa.
+     * @return Posizione iniziale della pedina
+     */
+    public int getPosizione1() {
+        return posizione1;
+    }
+
+    /**
+     * Fornisce la posizione di destinazione della pedina
+     * dopo la mossa.
+     * @return Posizione finale della pedina
+     */
+    public int getPosizione2() {
+        return posizione2;
+    }
+
+    /**
+     * Fornisce la posizione di destinazione (o transitoria)
+     * della pedina dopo una presa multipla.
+     * @return Posizione della 3a casella nella mossa
+     * dell'utente in caso di presa semplice
+     */
+    public int getPosizione3() {
+        return posizione3;
+    }
+
+    public int getPosizione4() {
+        return posizione4;
+    }
+
+    public boolean getPresaTripla() {
+        return isPresaTripla;
+    }
+
+    /**
+     * Imposta il flag {@link Mossa#isValid}.
+     * @param valid Validit&#224; della mossa
+     */
+    public void setValid(final boolean valid) {
+        this.isValid = valid;
+    }
+
+    /**
+     * Controlla se una mossa inserita &#232; valida oppure no.
+     * <ul>
+     *     <li><code>true</code>, se la mossa &#232; valida;</li>
+     *     <li><code>false</code>, se la mossa non &#232; valida.</li>
+     * </ul>
+     * @return Validit&#224; della mossa inserita
+     */
+    public boolean getValid() {
+        return isValid;
+    }
+
+    /**
+     * Assegna il valore di {@link Mossa#posizione1} e {@link Mossa#posizione2}.
+     * @param pos1 Posizione iniziale della pedina da muovere
+     * @param pos2 Posizione finale in cui deve andare la pedina
+     */
+    public Mossa(final int pos1, final int pos2) {
+        this.posizione1 = pos1;
+        this.posizione2 = pos2;
+        this.isValid = false;
+    }
+
+    public abstract boolean spostamentoSemplice(final Damiera damiera);
+    public abstract boolean presaSemplice(final Damiera damiera);
+    public abstract boolean presaMultipla(final Damiera damiera);
+    public abstract boolean presaMultiplaProva(final Damiera damiera);
+}

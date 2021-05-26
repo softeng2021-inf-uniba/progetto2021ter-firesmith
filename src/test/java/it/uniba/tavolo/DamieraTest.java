@@ -1,10 +1,10 @@
-package it.uniba.main;
+package it.uniba.tavolo;
 
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import it.uniba.main.Damiera;
+import it.uniba.tavolo.Damiera;
 
 
 public class DamieraTest {

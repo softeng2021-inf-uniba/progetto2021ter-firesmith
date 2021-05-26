@@ -1,12 +1,9 @@
-package it.uniba.main;
+package it.uniba.gioco;
 
+import it.uniba.gioco.Partita;
 import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import it.uniba.main.*;
-
-import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,7 +30,7 @@ class PartitaTest {
     void setTest() {
         test.stampaPedineMangiate();
         test.getCronologiaMosse();
-        test.getGiocatore1();
+        test.getBianco();
     }
     @Ignore
     @Test
@@ -41,6 +38,16 @@ class PartitaTest {
     void setCronologiaMosseTest(){
         test.setCronologiaMosse("12-13");
         test.getCronologiaMosse();
+    }
+    @Test
+    void getBiancoTest() {
+        test.setBianco();
+        assertEquals("bianco",test.getBianco().getColore());
+    }
+    @Test
+    void getNeroTest() {
+        test.setNero();
+        assertEquals("nero",test.getNero().getColore());
     }
 
 

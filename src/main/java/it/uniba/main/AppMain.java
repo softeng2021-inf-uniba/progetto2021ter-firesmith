@@ -1,5 +1,7 @@
 package it.uniba.main;
 
+import it.uniba.interfaccia.Menu;
+
 /**
  * <h2>Classe principale del progetto.</h2>
  * <b>Class Type:</b> &#60; Boundary &#62; <br><br>
@@ -55,7 +57,7 @@ public final class AppMain {
         }
 
         Menu menu = new Menu();
-        menu.generico();
+        menu.benvenuto();
     }
 
 }
