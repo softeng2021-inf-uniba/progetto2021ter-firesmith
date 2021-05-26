@@ -12,12 +12,14 @@ public class Costanti {
 
     /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_ZERO = 0;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_UNO = 1;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_DUE = 2;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int POS_TRE = 3;
+    /** Costante anche utilizzata per il controllo della posizione delle pedine. */
+    public static final int UNO = 1;
+    /** Costante anche utilizzata per il controllo della posizione delle pedine. */
+    public static final int DUE = 2;
+    /** Costante anche utilizzata per il controllo della posizione delle pedine. */
+    public static final int TRE = 3;
+    /** Costante anche utilizzata per il controllo della posizione delle pedine. */
+    public static final int QUATTRO = 4;
     /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_DIECI = 10;
     /** Costante utilizzata per il controllo della posizione delle pedine. */
@@ -26,6 +28,8 @@ public class Costanti {
     public static final int POS_TREDICI = 13;
     /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_VENTUNO = 21;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
+    public static final int POS_VENTOTTO = 28;
     /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_TRENTADUE = 32;
 

@@ -45,9 +45,9 @@ public class Partita {
     /** Definisce se un giocatore ha abbandonato la partita. */
     private boolean abbandonaPartita = false;
     /** Giocatore bianco. */
-    private Giocatore giocatore1 = new Giocatore();
+    private Giocatore bianco = new Giocatore();
     /** Giocatore nero. */
-    private Giocatore giocatore2 = new Giocatore();
+    private Giocatore nero = new Giocatore();
     /** Damiera utilizzata durante la partita. */
     private Damiera damiera = new Damiera();
     /** Lista delle mosse effettuate dai giocatori. */
@@ -109,16 +109,16 @@ public class Partita {
      * Fornisce le informazioni del primo giocatore.
      * @return Primo giocatore
      */
-    public Giocatore getGiocatore1() {
-        return giocatore1;
+    public Giocatore getBianco() {
+        return bianco;
     }
 
     /**
      * Fornisce le informazioni del secondo giocatore.
      * @return Secondo giocatore
      */
-    public Giocatore getGiocatore2() {
-        return giocatore2;
+    public Giocatore getNero() {
+        return nero;
     }
 
     /**
@@ -177,11 +177,11 @@ public class Partita {
                 + "───────────────"); //TODO \u2501
 
         System.out.print("Bianco: ");
-        for (int i = 0; i < giocatore1.getPedineMangiate(); i++) {
+        for (int i = 0; i < bianco.getPedineMangiate(); i++) {
             System.out.print("⛂");
         }
         System.out.print("\nNero: ");
-        for (int i = 0; i < giocatore2.getPedineMangiate(); i++) {
+        for (int i = 0; i < nero.getPedineMangiate(); i++) {
             System.out.print("⛀");
         }
         System.out.println();
@@ -228,23 +228,23 @@ public class Partita {
         // calcola il tempo trascorso all inizio del turno bianco
         // o all'inizio del turno nero ,
         // nel caso passi il minuto cambia la stampa
-        if (giocatore1.getColore().equals("bianco")) {
+        if (bianco.getColore().equals("bianco")) {
 
-            if (giocatore1.getTempo() < SIXTY) {
-                System.out.println("Bianco: " + giocatore1.getTempo()
+            if (bianco.getTempo() < SIXTY) {
+                System.out.println("Bianco: " + bianco.getTempo()
                         + " secondi");
             } else {
-                System.out.println("Bianco: " + (giocatore1.getTempo() / SIXTY)
-                        + " minuto/i " + ((giocatore1.getTempo()) % SIXTY)
+                System.out.println("Bianco: " + (bianco.getTempo() / SIXTY)
+                        + " minuto/i " + ((bianco.getTempo()) % SIXTY)
                         + " secondi");
             }
 
-            if (giocatore2.getTempo() < SIXTY) {
-                System.out.println("Nero: " + giocatore2.getTempo()
+            if (nero.getTempo() < SIXTY) {
+                System.out.println("Nero: " + nero.getTempo()
                         + " secondi");
             } else {
-                System.out.println("Nero: " + giocatore2.getTempo() / SIXTY
-                        + " minuto/i " + ((giocatore2.getTempo()) % SIXTY)
+                System.out.println("Nero: " + nero.getTempo() / SIXTY
+                        + " minuto/i " + ((nero.getTempo()) % SIXTY)
                         + " secondi");
 
             }

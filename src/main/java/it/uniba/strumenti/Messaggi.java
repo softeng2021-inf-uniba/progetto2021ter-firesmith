@@ -63,7 +63,7 @@ public final class Messaggi {
     }
 
     /** Messaggio di errore inserimento comando. */
-    public static void erroreInser() {
+    public static void inserimento() {
         System.out.println("\n\n ⚠ Comando non valido \n");
     }
 
@@ -149,12 +149,17 @@ public final class Messaggi {
     }
 
     /** Messaggio di informazione di riconoscimento dello spostamento. */
-    public static void sppostamento() {
+    public static void spostamento() {
         System.out.println("Sto effettuando uno spostamento...");
     }
 
     /** Messaggio di informazione di riconoscimento della presa. */
     public static void presa() {
         System.out.println("Sto effettuando una presa...");
+    }
+
+    /** Messaggio di informazione di validità della mossa. */
+    public static void nonValida() {
+        System.out.println(" ⚠ Mossa non valida");
     }
 }

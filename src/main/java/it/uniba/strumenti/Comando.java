@@ -3,7 +3,6 @@ package it.uniba.strumenti;
 import it.uniba.gioco.Giocatore;
 import java.util.Scanner;
 import it.uniba.gioco.Partita;
-import it.uniba.strumenti.Messaggi;
 
 
 /**
@@ -32,7 +31,7 @@ public final class Comando {
                 valido = true;
 
             } else {
-                Messaggi.erroreInser();
+                Messaggi.inserimento();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -82,7 +81,7 @@ public final class Comando {
                 valido = true;
 
             } else {
-                Messaggi.erroreInser();
+                Messaggi.inserimento();
                 System.out.print("➤");
             }
         } while (!valido);
