@@ -105,10 +105,6 @@ public class Damiera {
 
                 damieraPedine[i][j] = new Pedina(i, j);
 
-                // isValid = true, se la pedina sta su un numero
-                // isValid = false, se la pedina sta su uno 0
-                damieraPedine[i][j].getValid();
-
                 // isBlank = true, se la pedine non esiste (non ha valore)
                 // isBlank = false, se la pedina esiste (ha valore)
                 // Le pedine bianche stanno dalla posizione 1 alla posizione 12

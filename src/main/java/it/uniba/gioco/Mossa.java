@@ -1,7 +1,6 @@
 package it.uniba.gioco;
 
 import it.uniba.tavolo.Damiera;
-import it.uniba.strumenti.Costanti;
 
 /**
  * <h1>Classe che effettua le mosse delle pedine.</h1><br>
@@ -18,7 +17,6 @@ import it.uniba.strumenti.Costanti;
  *
  * @author Gruppo Firesmith
  */
-
 
 public abstract class Mossa {
     /** Posizione della pedina da spostare per effettuare una mossa. */
@@ -130,8 +128,6 @@ public abstract class Mossa {
     public boolean getValid() {
         return isValid;
     }
-
-    //TODO Costruttore PARAMETRIZZATO mai utilizzato
 
     /**
      * Assegna il valore di {@link Mossa#posizione1} e {@link Mossa#posizione2}.
