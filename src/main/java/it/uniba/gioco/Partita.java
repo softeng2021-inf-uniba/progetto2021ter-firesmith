@@ -89,6 +89,14 @@ public class Partita {
         this.turnoPartita = turno;
     }
 
+    public void setBianco() {
+        bianco.setColore("bianco");
+    }
+
+    public void setNero() {
+        nero.setColore("nero");
+    }
+
     /**
      * Imposta il valore di {@link Partita#abbandonaPartita}.
      * @param abbandona Indica se la partita &#232; stata abbandonata da un giocatore
@@ -178,11 +186,11 @@ public class Partita {
 
         System.out.print("Bianco: ");
         for (int i = 0; i < bianco.getPedineMangiate(); i++) {
-            System.out.print("⛂");
+            System.out.print("⛀");
         }
         System.out.print("\nNero: ");
         for (int i = 0; i < nero.getPedineMangiate(); i++) {
-            System.out.print("⛀");
+            System.out.print("⛂");
         }
         System.out.println();
 
