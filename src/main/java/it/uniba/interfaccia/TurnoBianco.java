@@ -11,8 +11,26 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Gestisce i comandi inseriti dal giocatore che controlla
+ * le pedine bianche.<br>
+ * Permette al giocatore di:
+ * <ul>
+ *     <li>Invocare tutti i comandi di {@link Menu#gioca()}};</li>
+ *     <li>Visualizzare la damiera con le pedine disposte;</li>
+ *     <li>Effettuare 3 tipi di mosse: spostamento,
+ *     presa semplice e presa multipla;</li>
+ *     <li>Visualizzare il tempo trascorso dall'inizio della
+ *     partita di entrambi i giocatori.</li>
+ * </ul>
+ */
+
 public class TurnoBianco implements Turno {
-    Comando cmd = new Comando();
+    private Comando cmd = new Comando();
+
+    public Comando getCmd() {
+        return cmd;
+    }
 
     @Override
     public void turnoGiocatore(Partita partita) {
@@ -26,6 +44,7 @@ public class TurnoBianco implements Turno {
         do {
             Messaggi.menuBianco();
 
+            //TODO FUNZIONE PER REGEX
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
@@ -155,7 +174,7 @@ public class TurnoBianco implements Turno {
                         partita.setTurno(false);
                         partita.setCronologiaMosse("Bianco :" + presa);
 
-                        if (!mossa.getPresaTripla()) {
+                        if (mossa.getPresaTripla()) {
                             partita.getBianco().setPedineMangiate(Costanti.DUE);
                         } else {
                             partita.getBianco().setPedineMangiate(Costanti.TRE);
@@ -178,13 +197,13 @@ public class TurnoBianco implements Turno {
                     break;
 
                 case "abbandona":
-                    cmd.abbandona(partita, partita.getBianco());
+                    getCmd().abbandona(partita, partita.getBianco());
                     turnoBianco = partita.getTurno();
 
                     break;
 
                 case "esci":
-                    cmd.esci(partita); // System.exit(0);
+                    getCmd().esci(partita); // System.exit(0);
                     break;
 
                 case "tempo":
