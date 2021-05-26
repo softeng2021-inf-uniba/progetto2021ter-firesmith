@@ -26,9 +26,14 @@ public class Constanti {
     public static final int MINUTO = 60;
     public static final long INSECOND = 1000;
 
-    // regex
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; uno spostamento. */
     public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; una presa semplice. */
     public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
+    /** Espressione regex che controlla se la mossa
+     * effettuata &#232; una presa multipla. */
     public static final String PRESA_M =
             "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
 }

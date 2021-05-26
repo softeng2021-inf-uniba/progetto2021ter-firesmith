@@ -4,6 +4,7 @@ import it.uniba.gioco.Giocatore;
 import it.uniba.gioco.Mossa;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Messaggi;
+import it.uniba.strumenti.Costanti;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -70,24 +71,6 @@ public class Menu {
         presaTripla = prTripla;
     }
 
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int ONE = 1;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int TWO = 2;
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int THREE = 3;
-
-    /** Espressione regex che controlla se la mossa
-     * effettuata &#232; uno spostamento. */
-    public static final String SPOSTAMENTO = "\\d{1,2}[-]{1}\\d{1,2}";
-    /** Espressione regex che controlla se la mossa
-     * effettuata &#232; una presa semplice. */
-    public static final String PRESA_S = "\\d{1,2}[x]{1}\\d{1,2}";
-    /** Espressione regex che controlla se la mossa
-     * effettuata &#232; una presa multipla. */
-    public static final String PRESA_M =
-            "\\d{1,2}[x]{1}\\d{1,2}([x]{1}\\d{1,2}){1,2}";
-
     // All'avvio del programma, non c'è nessuna partita in corso
 
     // Menu da mostrare ad avvio programma
@@ -133,15 +116,15 @@ public class Menu {
             // Controlla cosa è stato inserito
             switch (comando) {
                 case "--help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "-h":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "gioca":
@@ -154,11 +137,11 @@ public class Menu {
                     break;
 
                 case "damiera":
-                    Messaggi.msgInfoPartitaDamiera();
+                    Messaggi.damiera();
                     break;
 
                 case "tempo":
-                    Messaggi.msgInfoPartita();
+                    Messaggi.partita();
                     break;
 
                 case "esci":
@@ -168,7 +151,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.msgErroreIns();
+                    Messaggi.erroreInser();
                     break;
             }
         } while (!inizio); // Partita = false
@@ -201,7 +184,7 @@ public class Menu {
         boolean statoPartita = getPartita().getStato();
 
         do {
-            Messaggi.msgMenuBianco();
+            Messaggi.menuBianco();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -209,9 +192,9 @@ public class Menu {
             String presa = comando;
 
             // Gestione regex (bianco)
-            Pattern p1 = Pattern.compile(SPOSTAMENTO);
-            Pattern p2 = Pattern.compile(PRESA_S);
-            Pattern p3 = Pattern.compile(PRESA_M);
+            Pattern p1 = Pattern.compile(Costanti.SPOSTAMENTO);
+            Pattern p2 = Pattern.compile(Costanti.PRESA_S);
+            Pattern p3 = Pattern.compile(Costanti.PRESA_M);
 
             Matcher m1 = p1.matcher(comando);
             Matcher m2 = p2.matcher(comando);
@@ -225,7 +208,7 @@ public class Menu {
             String[] array = comando.split("-|x");
 
             try {
-                if ((array.length > 1)) {
+                if ((array.length > Costanti.POS_UNO)) {
 
                     String posInizialeTemp = array[0];
                     String posFinaleTemp = array[1];
@@ -238,13 +221,13 @@ public class Menu {
                     mossa.setPosizione1(posIniziale);
                     mossa.setPosizione2(posFinale);
 
-                    if (array.length > TWO) {
-                        String posFinale2Temp = array[TWO];
+                    if (array.length > Costanti.POS_DUE && !array[Costanti.POS_DUE].equals("")) {
+                        String posFinale2Temp = array[Costanti.POS_DUE];
                         posFinale2 = Integer.parseInt(posFinale2Temp);
                         mossa.setPosizione3(posFinale2);
 
-                        if (array.length > THREE && !array[THREE].equals("")) {
-                            String posFinale3Temp = array[THREE];
+                        if (array.length > Costanti.POS_TRE && !array[Costanti.POS_TRE].equals("")) {
+                            String posFinale3Temp = array[Costanti.POS_TRE];
                             posFinale3 = Integer.parseInt(posFinale3Temp);
                             mossa.setPosizione4(posFinale3);
 
@@ -266,15 +249,15 @@ public class Menu {
             }
             switch (comando) {
                 case "--help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "-h":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "numeri":
@@ -286,7 +269,7 @@ public class Menu {
                     break;
 
                 case "gioca":
-                    Messaggi.msgErrorePartita();
+                    Messaggi.errorePartita();
                     break;
 
                 case "spostamento":
@@ -297,7 +280,7 @@ public class Menu {
                     if (chk) {
                         getPartita().setCronologiaMosse("Bianco :" + presa);
                         getPartita().setTurno(false);
-                        Messaggi.msgSpostamentoEffettuato();
+                        Messaggi.spostamentoOk();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -316,7 +299,7 @@ public class Menu {
                         getPartita().setCronologiaMosse("Bianco :" + presa);
 
                         bianco.setPedineMangiate(1);
-                        Messaggi.msgMossaEffettuata();
+                        Messaggi.presaOk();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -334,11 +317,11 @@ public class Menu {
 
 
                         if (!isPresaTripla()) {
-                            bianco.setPedineMangiate(TWO);
+                            bianco.setPedineMangiate(Costanti.POS_DUE);
                         } else {
-                            bianco.setPedineMangiate(THREE);
+                            bianco.setPedineMangiate(Costanti.POS_TRE);
                         }
-                        Messaggi.msgMossaEffettuata();
+                        Messaggi.presaOk();
 
                     } else {
                         getPartita().setTurno(true);
@@ -374,7 +357,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.msgErroreIns();
+                    Messaggi.erroreInser();
                     break;
             }
         } while (turnoBianco && statoPartita);
@@ -425,7 +408,7 @@ public class Menu {
         boolean chk = false;
 
         do {
-            Messaggi.msgMenuNero();
+            Messaggi.menuNero();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -435,9 +418,9 @@ public class Menu {
 
             // Gestione regex (nero)
 
-            Pattern p1 = Pattern.compile(SPOSTAMENTO);
-            Pattern p2 = Pattern.compile(PRESA_S);
-            Pattern p3 = Pattern.compile(PRESA_M);
+            Pattern p1 = Pattern.compile(Costanti.SPOSTAMENTO);
+            Pattern p2 = Pattern.compile(Costanti.PRESA_S);
+            Pattern p3 = Pattern.compile(Costanti.PRESA_M);
 
             Matcher m1 = p1.matcher(comando);
             Matcher m2 = p2.matcher(comando);
@@ -451,7 +434,7 @@ public class Menu {
             String[] array = comando.split("-|x");
 
             try {
-                if ((array.length > ONE)) {
+                if ((array.length > Costanti.POS_UNO)) {
 
                     String posInizialeTemp = array[0];
                     String posFinaleTemp = array[1];
@@ -462,12 +445,12 @@ public class Menu {
                     mossa.setPosizione1(posIniziale);
                     mossa.setPosizione2(posFinale);
 
-                    if (array.length > TWO && !array[TWO].equals("")) {
+                    if (array.length > Costanti.POS_DUE && !array[Costanti.POS_DUE].equals("")) {
                         String posFinale2Temp = array[2];
                         posFinale2 = Integer.parseInt(posFinale2Temp);
                         mossa.setPosizione3(posFinale2);
-                        if (array.length > THREE && !array[THREE].equals("")) {
-                            String posFinale3Temp = array[THREE];
+                        if (array.length > Costanti.POS_TRE && !array[Costanti.POS_TRE].equals("")) {
+                            String posFinale3Temp = array[Costanti.POS_TRE];
                             posFinale3 = Integer.parseInt(posFinale3Temp);
                             mossa.setPosizione4(posFinale3);
 
@@ -490,15 +473,15 @@ public class Menu {
 
             switch (comando) {
                 case "--help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "-h":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "help":
-                    Messaggi.help();
+                    Messaggi.aiuto();
                     break;
 
                 case "numeri":
@@ -510,17 +493,17 @@ public class Menu {
                     break;
 
                 case "gioca":
-                    Messaggi.msgErrorePartita();
+                    Messaggi.errorePartita();
                     break;
                 case "spostamento":
-                    Messaggi.msgSpostamento();
+                    Messaggi.sppostamento();
 
                     mossa.spostamentoSempliceNero(getPartita().getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         getPartita().setCronologiaMosse("Nero :" + presa);
                         getPartita().setTurno(false);
-                        Messaggi.msgSpostamentoEffettuato();
+                        Messaggi.spostamentoOk();
                     } else {
                         getPartita().setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -529,7 +512,7 @@ public class Menu {
                     break;
 
                 case "presa semplice":
-                    Messaggi.msgPresa();
+                    Messaggi.presa();
 
                     mossa.presaSempliceBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
@@ -538,7 +521,7 @@ public class Menu {
                         getPartita().setCronologiaMosse("Nero :" + presa);
 
                         nero.setPedineMangiate(1);
-                        Messaggi.msgMossaEffettuata();
+                        Messaggi.presaOk();
 
                     } else {
                         getPartita().setTurno(true);
@@ -548,7 +531,7 @@ public class Menu {
                     break;
 
                 case "presa multipla":
-                    Messaggi.msgPresa();
+                    Messaggi.presa();
 
                     mossa.presaMultiplaBlack(getPartita().getDamiera());
                     chk = mossa.getValid();
@@ -557,11 +540,11 @@ public class Menu {
                         getPartita().setCronologiaMosse("Nero :" + presa);
 
                         if (!presaTripla) {
-                            nero.setPedineMangiate(TWO);
+                            nero.setPedineMangiate(Costanti.POS_DUE);
                         } else {
-                            nero.setPedineMangiate(THREE);
+                            nero.setPedineMangiate(Costanti.POS_TRE);
                         }
-                        Messaggi.msgMossaEffettuata();
+                        Messaggi.presaOk();
 
                     } else {
                         getPartita().setTurno(true);
@@ -595,7 +578,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.msgErroreIns();
+                    Messaggi.erroreInser();
                     break;
             }
         } while (turnoNero);
@@ -637,14 +620,14 @@ public class Menu {
                 valido = true;
 
                 if (colore.equals("bianco")) {
-                    Messaggi.msgBiancoAbbandona();
+                    Messaggi.biancoAbbandona();
                     statoPartita = false; // Abbandona partita bianco
                     statoTurno = false;
                     getPartita().setStato(statoPartita);
                     getPartita().setTurno(statoTurno);
                     getPartita().setAbbandona(true);
                 } else {
-                    Messaggi.msgNeroAbbandona();
+                    Messaggi.neroAbbandona();
                     statoPartita = false;    // Abbandona partita nero
                     statoTurno = false;
                     getPartita().setStato(statoPartita);
@@ -660,7 +643,7 @@ public class Menu {
                 valido = true;
 
             } else {
-                Messaggi.msgErroreIns();
+                Messaggi.erroreInser();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -682,18 +665,18 @@ public class Menu {
             uscita = uscita.toLowerCase();
 
             if (uscita.equals("si")) {
-                Messaggi.msgUscita();
+                Messaggi.uscita();
                 Runtime.getRuntime().exit(0);
                 getPartita().setStato(false);
                 valido = true;
 
             } else if (uscita.equals("no")) {
-                Messaggi.msgTornaMenu();
+                Messaggi.menu();
                 getPartita().setStato(true);
                 valido = true;
 
             } else {
-                Messaggi.msgErroreIns();
+                Messaggi.erroreInser();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -705,7 +688,7 @@ public class Menu {
     public void gioca() {
         boolean statoPartita = getPartita().getStato();
         if (statoPartita) {
-            Messaggi.msgErrorePartita();
+            Messaggi.errorePartita();
             // Stampa messaggio se la partita è già in corso (fix)
         } else {
             statoPartita = true;         // Inizia una nuova partita
