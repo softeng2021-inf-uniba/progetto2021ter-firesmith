@@ -29,7 +29,7 @@ public class TurnoNero implements Turno {
         boolean statoPartita = partita.getStato();
 
         do {
-            Nero.menu();
+            Messaggi.menuNero();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -66,13 +66,13 @@ public class TurnoNero implements Turno {
                     mossa.setPosizione1(posIniziale);
                     mossa.setPosizione2(posFinale);
 
-                    if (array.length > Costanti.POS_DUE) {
-                        String posFinale2Temp = array[Costanti.POS_DUE];
+                    if (array.length > Costanti.DUE) {
+                        String posFinale2Temp = array[Costanti.DUE];
                         posFinale2 = Integer.parseInt(posFinale2Temp);
                         mossa.setPosizione3(posFinale2);
 
-                        if (array.length > Costanti.POS_TRE && !array[Costanti.POS_TRE].equals("")) {
-                            String posFinale3Temp = array[Costanti.POS_TRE];
+                        if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
+                            String posFinale3Temp = array[Costanti.TRE];
                             posFinale3 = Integer.parseInt(posFinale3Temp);
                             mossa.setPosizione4(posFinale3);
 
@@ -94,15 +94,15 @@ public class TurnoNero implements Turno {
             }
             switch (comando) {
                 case "--help":
-                    Info.aiuto();
+                    Messaggi.aiuto();
                     break;
 
                 case "-h":
-                    Info.aiuto();
+                    Messaggi.aiuto();
                     break;
 
                 case "help":
-                    Info.aiuto();
+                    Messaggi.aiuto();
                     break;
 
                 case "numeri":
@@ -114,21 +114,21 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "gioca":
-                    Errore.partita();
+                    Messaggi.partita();
                     break;
 
                 case "spostamento":
-                    Gioco.spostamento();
+                    Messaggi.spostamento();
 
                     mossa.spostamentoSemplice(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setCronologiaMosse("Nero :" + presa);
                         partita.setTurno(false);
-                        Gioco.spostamentoOk();
+                        Messaggi.spostamentoOk();
                     } else {
                         partita.setTurno(true);
-                        Gioco.nonValida();
+                        Messaggi.nonValida();
                     }
 
                     turnoNero = partita.getTurno();
@@ -144,10 +144,10 @@ public class TurnoNero implements Turno {
                         partita.setCronologiaMosse("Nero :" + presa);
 
                         partita.getNero().setPedineMangiate(1);
-                        Gioco.presaOk();
+                        Messaggi.presaOk();
                     } else {
                         partita.setTurno(true);
-                        Gioco.nonValida();
+                        Messaggi.nonValida();
                     }
                     turnoNero = partita.getTurno();
                     break;
@@ -161,15 +161,15 @@ public class TurnoNero implements Turno {
                         partita.setCronologiaMosse("Nero :" + presa);
 
                         if (!mossa.getPresaTripla()) {
-                            partita.getNero().setPedineMangiate(Costanti.POS_DUE);
+                            partita.getNero().setPedineMangiate(Costanti.DUE);
                         } else {
-                            partita.getNero().setPedineMangiate(Costanti.POS_TRE);
+                            partita.getNero().setPedineMangiate(Costanti.TRE);
                         }
-                        Gioco.presaOk();
+                        Messaggi.presaOk();
 
                     } else {
                         partita.setTurno(true);
-                        Gioco.nonValida();
+                        Messaggi.nonValida();
                     }
                     turnoNero = partita.getTurno();
                     break;
@@ -194,14 +194,10 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "tempo":
-                    Instant finish = Instant.now();
-                    long elapsed = Duration.between(start, finish).getSeconds();
-                    partita.getNero().setTempo(elapsed);
-                    partita.tempo(partita.getNero(), start, finish);
                     break;
 
                 default:
-                    Errore.inserimento();
+                    Messaggi.inserimento();
                     break;
             }
         } while (turnoNero);

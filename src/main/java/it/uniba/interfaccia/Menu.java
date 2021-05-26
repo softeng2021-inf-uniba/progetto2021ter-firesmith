@@ -34,6 +34,8 @@ public class Menu {
     /**
      * Crea una nuova partita.
      */
+
+    //TODO GETTER E SETTER
     private Partita partita = new Partita();
     private Comando cmd = new Comando();
 
@@ -175,7 +177,6 @@ public class Menu {
                         + "\n└───────────────────┘\n");
 
                 bianco.turnoGiocatore(partita);
-
 
                 System.out.println("Fine turno giocatore "
                         + partita.getBianco().getColore());

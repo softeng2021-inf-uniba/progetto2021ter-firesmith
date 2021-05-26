@@ -57,7 +57,7 @@ public final class AppMain {
         }
 
         Menu menu = new Menu();
-        menu.generico();
+        menu.benvenuto();
     }
 
 }

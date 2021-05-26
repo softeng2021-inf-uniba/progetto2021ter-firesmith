@@ -1,6 +1,7 @@
 package it.uniba.interfaccia;
 
 import it.uniba.gioco.Mossa;
+import it.uniba.gioco.MossaBianco;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
 import it.uniba.strumenti.Costanti;
@@ -18,12 +19,12 @@ public class TurnoBianco implements Turno {
 
         boolean turnoBianco = true; // Inizio turno giocatore bianco
 
-        Mossa mossa = new Mossa(0, 0);
+        Mossa mossa = new MossaBianco(0, 0);
 
         boolean chk = false;
 
         do {
-            Messaggi.menu();
+            Messaggi.menuBianco();
 
             Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
@@ -65,8 +66,8 @@ public class TurnoBianco implements Turno {
                         posFinale2 = Integer.parseInt(posFinale2Temp);
                         mossa.setPosizione3(posFinale2);
 
-                        if (array.length > Costanti.POS_TRE && !array[Costanti.POS_TRE].equals("")) {
-                            String posFinale3Temp = array[Costanti.POS_TRE];
+                        if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
+                            String posFinale3Temp = array[Costanti.TRE];
                             posFinale3 = Integer.parseInt(posFinale3Temp);
                             mossa.setPosizione4(posFinale3);
 
@@ -157,7 +158,7 @@ public class TurnoBianco implements Turno {
                         if (!mossa.getPresaTripla()) {
                             partita.getBianco().setPedineMangiate(Costanti.DUE);
                         } else {
-                            partita.getBianco().setPedineMangiate(Costanti.POS_TRE);
+                            partita.getBianco().setPedineMangiate(Costanti.TRE);
                         }
                         Messaggi.presaOk();
 
