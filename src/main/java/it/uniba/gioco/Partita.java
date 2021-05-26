@@ -228,7 +228,7 @@ public class Partita {
         if (bianco.getColore().equals("bianco")) {
 
             if ((bianco.getTempo()/ Costanti.INSECOND) < Costanti.MINUTO) {
-                System.out.println("Bianco: " + (bianco.getTempo()/1000)
+                System.out.println("Bianco: " + (bianco.getTempo()/Costanti.INSECOND)
                         + " s");
             } else {
                 System.out.println("Bianco: " + ((bianco.getTempo()/ Costanti.INSECOND) / Costanti.MINUTO)
