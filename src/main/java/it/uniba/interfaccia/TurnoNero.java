@@ -33,8 +33,38 @@ public class TurnoNero implements Turno {
         return cmd;
     }
 
+    private long start;
+    private long finish;
+    private long elapsed;
+
+    public void setStart() {
+        this.start = System.currentTimeMillis();
+    }
+
+    public long getStart() {
+        return start;
+    }
+
+    public long getFinish() {
+        return finish;
+    }
+
+    public void setFinish() {
+        this.finish = System.currentTimeMillis();
+    }
+
+    public void setElapsed(long start, long finish) {
+        this.elapsed = start - finish;
+    }
+
+    public long getElapsed() {
+        return elapsed;
+    }
+
     @Override
-    public void turnoGiocatore(Partita partita){
+    public long turnoGiocatore(Partita partita, long tempoG) {
+
+        setStart();
 
         boolean turnoNero = true; // Inizio turno giocatore bianco
 
@@ -152,6 +182,14 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "tempo":
+                    setFinish();
+                    setElapsed(getFinish(), getStart());
+
+                    long tempoTurno = getElapsed() + tempoG;
+
+                    partita.getNero().setTempo(tempoTurno);
+
+                    partita.tempo();
                     break;
 
                 default:
@@ -160,6 +198,15 @@ public class TurnoNero implements Turno {
             }
         } while (turnoNero);
 
+        //questo per far scorrere il tempo anche se non viene richiesto il comando tempo
+        setFinish();
+        setElapsed(getFinish(), getStart());
+
+        long tempoTurno = getElapsed() + tempoG;
+
+        partita.getNero().setTempo(tempoTurno);
+
+        return partita.getNero().getTempo();
 
         // Se turnoBianco = false, tocca al giocatore Nero
         // Se turnoBianco = true, tocca ancora al giocatore Bianco

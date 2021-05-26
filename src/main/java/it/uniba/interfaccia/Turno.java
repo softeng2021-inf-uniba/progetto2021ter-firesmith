@@ -5,6 +5,6 @@ import it.uniba.gioco.Partita;
 
 public interface Turno {
 
-        public void turnoGiocatore(Partita p);
+        public long turnoGiocatore(Partita p, long tempoG);
 
 }

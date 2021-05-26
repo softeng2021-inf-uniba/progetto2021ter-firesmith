@@ -26,14 +26,45 @@ import java.util.regex.Pattern;
  */
 
 public class TurnoBianco implements Turno {
+
     private Comando cmd = new Comando();
+
+    private long start;
+    private long finish;
+    private long elapsed;
+
+    public void setStart() {
+        this.start = System.currentTimeMillis();
+    }
+
+    public long getStart() {
+        return start;
+    }
+
+    public long getFinish() {
+        return finish;
+    }
+
+    public void setFinish() {
+        this.finish = System.currentTimeMillis();
+    }
+
+    public void setElapsed(long start, long finish) {
+        this.elapsed = start - finish;
+    }
+
+    public long getElapsed() {
+        return elapsed;
+    }
 
     public Comando getCmd() {
         return cmd;
     }
 
     @Override
-    public void turnoGiocatore(Partita partita) {
+    public long turnoGiocatore(Partita partita, long tempoG) {
+
+        setStart();
 
         boolean turnoBianco = true; // Inizio turno giocatore bianco
 
@@ -152,7 +183,14 @@ public class TurnoBianco implements Turno {
                     break;
 
                 case "tempo":
-                    ;
+                    setFinish();
+                    setElapsed(getFinish(), getStart());
+
+                    long tempoTurno = getElapsed() + tempoG;
+
+                    partita.getBianco().setTempo(tempoTurno);
+
+                    partita.tempo();
                     break;
 
                 default:
@@ -160,6 +198,16 @@ public class TurnoBianco implements Turno {
                     break;
             }
         } while (turnoBianco);
+
+        //questo per far scorrere il tempo anche se non viene richiesto il comando tempo
+        setFinish();
+        setElapsed(getFinish(), getStart());
+
+        long tempoTurno = getElapsed() + tempoG;
+
+        partita.getBianco().setTempo(tempoTurno);
+
+        return partita.getBianco().getTempo();
 
 
         // Se turnoBianco = false, tocca al giocatore Nero

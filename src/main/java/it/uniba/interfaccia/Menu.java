@@ -81,30 +81,38 @@ public class Menu {
                 case "--help":
                     Messaggi.aiuto();
                     break;
+
                 case "-h":
                     Messaggi.aiuto();
                     break;
+
                 case "help":
                     Messaggi.aiuto();
                     break;
+
                 case "gioca":
                     setPartita(new Partita());
                     gioca();
                     break;
+
                 case "numeri":
                     getPartita().getDamiera().stampaDamieraPedine();
                     break;
+
                 case "damiera":
                     Messaggi.damiera();
                     break;
+
                 case "tempo":
                     Messaggi.partita();
                     break;
+
                 case "esci":
                     getCmd().esci(getPartita());
                     getPartita().setStato(false);
                     inizio = getPartita().getStato();
                     break;
+
                 default:
                     Messaggi.inserimento();
                     break;
@@ -120,6 +128,9 @@ public class Menu {
         Turno bianco = new TurnoBianco();
         Turno nero = new TurnoNero();
 
+        long tempoB = 0;
+        long tempoN = 0;
+
         if (getPartita().getStato()) {
             Messaggi.partita();
         } else {
@@ -134,7 +145,7 @@ public class Menu {
                         + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
-                bianco.turnoGiocatore(getPartita());
+                tempoB += bianco.turnoGiocatore(getPartita(), tempoB);
 
                 System.out.println("Fine turno giocatore "
                         + getPartita().getBianco().getColore());
@@ -144,7 +155,7 @@ public class Menu {
                 } else {
                     getPartita().setTurno(false);
 
-                    nero.turnoGiocatore(getPartita());
+                    tempoN += nero.turnoGiocatore(partita, tempoN);
 
                     System.out.println("Fine turno giocatore "
                             + getPartita().getNero().getColore());
