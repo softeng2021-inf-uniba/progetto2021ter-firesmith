@@ -1,25 +1,32 @@
 package it.uniba.strumenti;
 
-public class Constanti {
-    private Constanti() {
+public class Costanti {
+    private Costanti() {
 
     }
 
-    // damiera
+    /** Numero massimo delle caselle disposte sulla riga. */
     public static final int RIGHE = 8;
+    /** Numero massimo delle caselle disposte sulla colonna. */
     public static final int COLONNE = 8;
 
-    // posizioni
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_ZERO = 0;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_UNO = 1;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_DUE = 2;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_TRE = 3;
-    public static final int POS_QUATTRO = 4;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_DIECI = 10;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_DODICI = 12;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_TREDICI = 13;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_VENTUNO = 21;
-    public static final int POS_VENTOTTO = 28;
+    /** Costante utilizzata per il controllo della posizione delle pedine. */
     public static final int POS_TRENTADUE = 32;
 
     // tempo

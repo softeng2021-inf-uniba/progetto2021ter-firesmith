@@ -22,9 +22,21 @@ public final class Messaggi {
     /** Costruttore della classe.*/
     private Messaggi() {
     }
-
+    public static void benvenuto() {
+        System.out.print("┌─────────────────────────────────┒"
+                + "\n│ Dama Italiana by Team Firesmith │"
+                + "\n└─────────────────────────────────┘"
+                + "\nScrivere un comando:"
+                + "\n\n ♢ --help | -h"
+                + "\n ♢ gioca"
+                + "\n ♢ numeri"
+                + "\n ♢ damiera"
+                + "\n ♢ tempo"
+                + "\n ♢ esci"
+                + "\n\n➤ ");
+    }
     /** Mostra all'utente le informazioni sul programma. */
-    public static void help() {
+    public static void aiuto() {
         System.out.println("\n┌───────────────────────────┒"
                 + "\n│     Dama Help Center      │"
                 + "\n└───────────────────────────┘"
@@ -41,63 +53,63 @@ public final class Messaggi {
     }
 
     /** Messaggio di uscita dal programma. */
-    public static void msgUscita() {
+    public static void uscita() {
         System.out.println("\n\n \uD83D\uDEAA Uscita dal gioco...");
     }
 
     /** Messaggio di informazione di ritorno al menu. */
-    public static void msgTornaMenu() {
+    public static void menu() {
         System.out.println("\n\n ↩ Ritorno al menù... \n");
     }
 
     /** Messaggio di errore inserimento comando. */
-    public static void msgErroreIns() {
+    public static void erroreInser() {
         System.out.println("\n\n ⚠ Comando non valido \n");
     }
 
     /** Messaggio di avviso di partita non in corso. */
-    public static void msgInfoPartita() {
+    public static void partita() {
         System.out.println("\n\n \uD83D\uDCA1 Nessuna partita in corso,"
                 + " inizia una nuova partita (gioca)\n");
     }
 
     /** Messaggio di avviso di stampa damiera con partita non in corso. */
-    public static void msgInfoPartitaDamiera() {
+    public static void damiera() {
         System.out.println("\n\n \uD83D\uDCA1 Per mostrare la damiera con "
                 + "i pezzi, inizia una nuova partita (gioca)\n");
     }
 
     /** Messaggio di errore di partita gi&#224; in corso. */
-    public static void msgErrorePartita() {
+    public static void errorePartita() {
         System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
     }
 
     /** Messaggio di informazione di abbandono partita
      * da parte del giocatore bianco. */
-    public static void msgBiancoAbbandona() {
+    public static void biancoAbbandona() {
         System.out.println("\n\n ⚑ Il Bianco abbandona la partita,"
                 + " il Nero vince ✌\n");
     }
 
     /** Messaggio di informazione di abbandono partita
      * da parte del giocatore bianco. */
-    public static void msgNeroAbbandona() {
+    public static void neroAbbandona() {
         System.out.println("\n\n ⚑ Il Nero abbandona la partita,"
                 + " il Bianco vince ✌\n");
     }
 
     /** Messaggio di informazione di presa effettuata. */
-    public static void msgMossaEffettuata() {
+    public static void presaOk() {
         System.out.println("Presa Effettuata\n");
     }
 
     /** Messaggio di informazione di spostamento effettuato. */
-    public static void msgSpostamentoEffettuato() {
+    public static void spostamentoOk() {
         System.out.println("Spostamento Effettuato\n");
     }
 
     /** Menu del turno del giocatore bianco. */
-    public static void msgMenuBianco() {
+    public static void menuBianco() {
         System.out.print("┌───────────────────────┒"
                 + "      \n│ Menù Giocatore Bianco │"
                 + "\n└───────────────────────┘"
@@ -117,7 +129,7 @@ public final class Messaggi {
     }
 
     /** Menu del giocatore nero. */
-    public static void msgMenuNero() {
+    public static void menuNero() {
         System.out.print("┌──────────────────────┒"
                 + "      \n│ Menù Giocatore Nero  │"
                 + "\n└──────────────────────┘"
@@ -137,12 +149,12 @@ public final class Messaggi {
     }
 
     /** Messaggio di informazione di riconoscimento dello spostamento. */
-    public static void msgSpostamento() {
+    public static void sppostamento() {
         System.out.println("Sto effettuando uno spostamento...");
     }
 
     /** Messaggio di informazione di riconoscimento della presa. */
-    public static void msgPresa() {
+    public static void presa() {
         System.out.println("Sto effettuando una presa...");
     }
 }

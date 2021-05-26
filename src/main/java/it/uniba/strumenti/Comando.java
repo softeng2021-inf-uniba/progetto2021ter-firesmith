@@ -1,12 +1,10 @@
 package it.uniba.strumenti;
 
-import it.dama.gioco.Giocatore;
-import it.dama.strumenti.messaggi.Info;
+import it.uniba.gioco.Giocatore;
 import java.util.Scanner;
-import it.dama.gioco.Partita;
-import it.dama.strumenti.messaggi.Bianco;
-import it.dama.strumenti.messaggi.Errore;
-import it.dama.strumenti.messaggi.Nero;
+import it.uniba.gioco.Partita;
+import it.uniba.strumenti.Messaggi;
+
 
 /**
  *
@@ -23,18 +21,18 @@ public final class Comando {
             uscita = uscita.toLowerCase();
 
             if (uscita.equals("si")) {
-                Info.uscita();
+                Messaggi.uscita();
                 Runtime.getRuntime().exit(0);
                 partita.setStato(false);
                 valido = true;
 
             } else if (uscita.equals("no")) {
-                Info.menu();
+                Messaggi.menu();
                 partita.setStato(true);
                 valido = true;
 
             } else {
-                Errore.inserimento();
+                Messaggi.erroreInser();
                 System.out.print("➤");
             }
         } while (!valido);
@@ -61,14 +59,14 @@ public final class Comando {
                 valido = true;
 
                 if (colore.equals("bianco")) {
-                    Bianco.abbandona();
+                    Messaggi.biancoAbbandona();
                     statoPartita = false; // Abbandona partita bianco
                     statoTurno = false;
                     p.setStato(statoPartita);
                     p.setTurno(statoTurno);
                     p.setAbbandona(true);
                 } else {
-                    Nero.abbandona();
+                    Messaggi.neroAbbandona();
                     statoPartita = false;    // Abbandona partita nero
                     statoTurno = false;
                     p.setStato(statoPartita);
@@ -84,7 +82,7 @@ public final class Comando {
                 valido = true;
 
             } else {
-                Errore.inserimento();
+                Messaggi.erroreInser();
                 System.out.print("➤");
             }
         } while (!valido);
