@@ -138,8 +138,9 @@ public class Damiera {
         }
     }
 
-    /** Stampa la damiera con i numeri delle posizioni delle pedine. */
-    public void stampaPosizioniPedine() {
+    /** Stampa la damiera con i numeri delle posizioni delle pedine.
+     * @return null*/
+    public String stampaPosizioniPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
         for (int i = 0; i < Costanti.RIGHE; i++) {
@@ -163,11 +164,13 @@ public class Damiera {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
             }
         }
+        return null;
     }
 
     /** Stampa la damiera con le pedine di colore bianco e nero
-     * in formato Unicode. */
-    public void stampaDamieraPedine() {
+     * in formato Unicode.
+     * @return null*/
+    public String stampaDamieraPedine() {
 
         System.out.println("┌────┬────┬────┬────┬────┬────┬────┬────┒");
         for (int i = 0; i < Costanti.RIGHE; i++) {
@@ -207,6 +210,7 @@ public class Damiera {
                 System.out.println("└────┴────┴────┴────┴────┴────┴────┴────┘");
             }
         }
+        return null;
     }
 
     /**

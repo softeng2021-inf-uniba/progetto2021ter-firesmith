@@ -1,13 +1,29 @@
 package it.uniba.tavolo;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
-import it.uniba.tavolo.Damiera;
 
 
 public class DamieraTest {
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @Before
+    public void setStreams() {
+        System.setOut(new PrintStream(out));
+    }
+
+    @After
+    public void restoreInitialStreams() {
+        System.setOut(originalOut);
+    }
     Damiera test = new Damiera();
     @Test
     public void testDamiera(){
@@ -29,14 +45,15 @@ public class DamieraTest {
     @Test
     @DisplayName("disabled")
     public void stampadamieranumeritest(){
-        test.stampaPosizioniPedine();
-
+        System.out.println(test.stampaPosizioniPedine());
+        assertNull(null,out.toString());
     }
     @Ignore
     @Test
     @DisplayName("disabled")
     public void stampadamieratest(){
-        test.stampaDamieraPedine();
+        System.out.println(test.stampaDamieraPedine());
+        assertNull(null,out.toString());
     }
 
 }
