@@ -1,14 +1,32 @@
 package it.uniba.gioco;
 
 import it.uniba.gioco.Partita;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PartitaTest {
     Partita test = new Partita();
+    private final OutputStream out = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @Before
+    public void setStreams() {
+        System.setOut(new PrintStream(out));
+    }
+
+    @After
+    public void restoreInitialStreams() {
+        System.setOut(originalOut);
+    }
     @Test
     void statoPartitaTest() {
         test.setStato(true);
@@ -28,16 +46,16 @@ class PartitaTest {
     @Test
     @DisplayName("disabled")
     void setTest() {
-        test.stampaPedineMangiate();
-        test.getCronologiaMosse();
-        test.getBianco();
+        System.out.println(test.stampaPedineMangiate());
+        assertNull(null,out.toString());
     }
     @Ignore
     @Test
     @DisplayName("disabled")
     void setCronologiaMosseTest(){
         test.setCronologiaMosse("12-13");
-        test.getCronologiaMosse();
+        System.out.println(test.getCronologiaMosse());
+        assertNull(null,out.toString());
     }
     @Test
     void getBiancoTest() {
@@ -48,6 +66,16 @@ class PartitaTest {
     void getNeroTest() {
         test.setNero();
         assertEquals("nero",test.getNero().getColore());
+    }
+    @Test
+    void tempoTest(){
+        test.setNero();
+        test.setBianco();
+        test.getBianco().setColore("bianco");
+        test.getBianco().setTempo(13000);
+        test.getNero().setColore("nero");
+        test.getNero().setTempo(133333);
+        test.tempo();
     }
 
 

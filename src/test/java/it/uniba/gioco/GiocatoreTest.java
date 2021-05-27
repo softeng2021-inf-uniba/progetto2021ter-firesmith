@@ -1,6 +1,6 @@
 package it.uniba.gioco;
 
-import it.uniba.gioco.Giocatore;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -203,5 +203,13 @@ public class MossaTest {
         assertTrue(prmult.presaMultipla(test));
 
     }
+    @Test
+    public void getPresaMultiplaTest(){
+        Mossa prmult = new MossaBianco(28,19);
+        prmult.setPosizione3(10);
+        prmult.setPosizione4(1);
+        prmult.setPresaTripla(true);
+        assertTrue(prmult.getPresaTripla());
+    }
 
 }
