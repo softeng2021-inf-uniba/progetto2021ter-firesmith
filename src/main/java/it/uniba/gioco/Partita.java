@@ -176,8 +176,9 @@ public class Partita {
     /**
      * Visualizza graficamente il numero delle pedine mangiate
      * da entrambi i giocatori.
+     * @return
      */
-    public void stampaPedineMangiate() {
+    public String stampaPedineMangiate() {
 
         System.out.println("\n\nPEDINE MANGIATE\n"
                 + "───────────────"); //TODO \u2501
@@ -193,13 +194,15 @@ public class Partita {
         System.out.println();
 
         System.out.println("\n───────────────");
+        return null;
     }
 
     /**
      * Visualizza graficamente le mosse effettuate da entrambi i giocatori.
+     * @return
      */
 
-    public void getCronologiaMosse() {
+    public String getCronologiaMosse() {
         ListIterator<String> cronoMosse = cronologiaMosse.listIterator();
         if (cronologiaMosse.size() != 0) {
             System.out.println("\n\nMOSSE EFFETTUATE\n"
@@ -212,6 +215,7 @@ public class Partita {
             System.out.println("\n ⚠ Non ci sono ancora mosse\n");
         }
 
+        return null;
     }
 
     /**

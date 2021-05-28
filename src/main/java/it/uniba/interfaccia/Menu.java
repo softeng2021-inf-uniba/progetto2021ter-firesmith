@@ -1,12 +1,9 @@
 package it.uniba.interfaccia;
 
-import it.uniba.gioco.Giocatore;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
 import it.uniba.strumenti.Messaggi;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Scanner;
 
 /**
@@ -123,8 +120,9 @@ public class Menu {
 
     /**
      * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
+     * @return
      */
-    public void gioca() {
+    public String gioca() {
         Turno bianco = new TurnoBianco();
         Turno nero = new TurnoNero();
 
@@ -164,6 +162,7 @@ public class Menu {
                 numeroTurno++;
             } while (getPartita().getStato());
         }
+        return null;
     }
 }
 

@@ -103,7 +103,7 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "gioca":
-                    Messaggi.partita();
+                    Messaggi.errorePartita();
                     break;
 
                 case "spostamento":
@@ -124,7 +124,7 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "presa semplice":
-                    System.out.println("Sto effettuando la presa...");
+                    Messaggi.presa();
 
                     mossa.presaSemplice(partita.getDamiera());
                     chk = mossa.getValid();
@@ -142,7 +142,7 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "presa multipla":
-                    System.out.println("Sto effettuando la presa...");
+                    Messaggi.presa();
                     mossa.presaMultipla(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
