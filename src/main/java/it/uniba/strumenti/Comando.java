@@ -116,47 +116,54 @@ public final class Comando {
         int posFinale2 = 0;
         int posFinale3 = 0;
 
-        String[] array = comando.split("-|x");
+        String[] array = comando.split("[-|x]");
 
-        try {
-            if ((array.length > 1)) {
+        if(!comando.equals("-h") && !comando.equals("--help")) {
+            try {
+                if ((array.length > 1)) {
 
-                String posInizialeTemp = array[Costanti.ZERO];
-                String posFinaleTemp = array[Costanti.UNO];
+                    String posInizialeTemp = array[Costanti.ZERO];
+                    String posFinaleTemp = array[Costanti.UNO];
 
-                posIniziale = Integer.parseInt(posInizialeTemp);
-                posFinale = Integer.parseInt(posFinaleTemp);
+                    posIniziale = Integer.parseInt(posInizialeTemp);
+                    posFinale = Integer.parseInt(posFinaleTemp);
 
-                mossa.setPosizione1(posIniziale);
-                mossa.setPosizione2(posFinale);
+                    mossa.setPosizione1(posIniziale);
+                    mossa.setPosizione2(posFinale);
 
-                if (array.length > Costanti.DUE) {
-                    String posFinale2Temp = array[Costanti.DUE];
-                    posFinale2 = Integer.parseInt(posFinale2Temp);
-                    mossa.setPosizione3(posFinale2);
+                    if (array.length > Costanti.DUE) {
+                        String posFinale2Temp = array[Costanti.DUE];
+                        posFinale2 = Integer.parseInt(posFinale2Temp);
+                        mossa.setPosizione3(posFinale2);
 
-                    if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
-                        String posFinale3Temp = array[Costanti.TRE];
-                        posFinale3 = Integer.parseInt(posFinale3Temp);
-                        mossa.setPosizione4(posFinale3);
+                        if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
+                            String posFinale3Temp = array[Costanti.TRE];
+                            posFinale3 = Integer.parseInt(posFinale3Temp);
+                            mossa.setPosizione4(posFinale3);
 
-                        mossa.setPresaTripla(true);
+                            mossa.setPresaTripla(true);
+                        }
+                    }
 
+                    if (m1.matches()) {
+                        comando = "spostamento";
+                    } else if (m2.matches()) {
+                        comando = "presa semplice";
+                    } else if (m3.matches()) {
+                        comando = "presa multipla";
                     }
                 }
-
-                if (m1.matches()) {
-                    comando = "spostamento";
-                } else if (m2.matches()) {
-                    comando = "presa semplice";
-                } else if (m3.matches()) {
-                    comando = "presa multipla";
-                }
+            } catch (NumberFormatException ex) {
+                System.err.println("\nIllegal string (exception)");
             }
-        } catch (NumberFormatException ex) {
-            System.err.println("\nIllegal string (exception)");
         }
 
+        return trasformaComando(comando);
+    }
+
+    public String trasformaComando(String comando) {
+        comando = comando.toLowerCase();
+        comando = comando.replaceAll("\\s+","");
         return comando;
     }
 }

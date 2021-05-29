@@ -58,28 +58,28 @@ public final class Messaggi {
     /** Messaggio di uscita dal programma.
      * @return null*/
     public static String uscita() {
-        System.out.println("\n\n \uD83D\uDEAA Uscita dal gioco...");
+        System.out.println("\n \uD83D\uDEAA Uscita dal gioco...");
         return null;
     }
 
     /** Messaggio di informazione di ritorno al menu.
      * @return null*/
     public static String menu() {
-        System.out.println("\n\n ↩ Ritorno al menù... \n");
+        System.out.println("\n ↩ Ritorno al menù... \n");
         return null;
     }
 
     /** Messaggio di errore inserimento comando.
      * @return null*/
     public static String inserimento() {
-        System.out.println("\n\n ⚠ Comando non valido \n");
+        System.out.println("\n ⚠ Comando non valido \n");
         return null;
     }
 
     /** Messaggio di avviso di partita non in corso.
      * @return null*/
     public static String partita() {
-        System.out.println("\n\n \uD83D\uDCA1 Nessuna partita in corso,"
+        System.out.println("\n \uD83D\uDCA1 Nessuna partita in corso,"
                 + " inizia una nuova partita (gioca)\n");
         return null;
     }
@@ -87,7 +87,7 @@ public final class Messaggi {
     /** Messaggio di avviso di stampa damiera con partita non in corso.
      * @return null*/
     public static String damiera() {
-        System.out.println("\n\n \uD83D\uDCA1 Per mostrare la damiera con "
+        System.out.println("\n \uD83D\uDCA1 Per mostrare la damiera con "
                 + "i pezzi, inizia una nuova partita (gioca)\n");
         return null;
     }
@@ -103,7 +103,7 @@ public final class Messaggi {
      * da parte del giocatore bianco.
      * @return null*/
     public static String biancoAbbandona() {
-        System.out.println("\n\n ⚑ Il Bianco abbandona la partita,"
+        System.out.println("\n ⚑ Il Bianco abbandona la partita,"
                 + " il Nero vince ✌\n");
         return null;
     }
@@ -112,7 +112,7 @@ public final class Messaggi {
      * da parte del giocatore bianco.
      * @return null*/
     public static String neroAbbandona() {
-        System.out.println("\n\n ⚑ Il Nero abbandona la partita,"
+        System.out.println("\n ⚑ Il Nero abbandona la partita,"
                 + " il Bianco vince ✌\n");
         return null;
     }
@@ -178,21 +178,21 @@ public final class Messaggi {
     /** Messaggio di informazione di riconoscimento dello spostamento.
      * @return*/
     public static String spostamento() {
-        System.out.println("Sto effettuando uno spostamento...");
+        System.out.println("\nSto effettuando uno spostamento...");
         return null;
     }
 
     /** Messaggio di informazione di riconoscimento della presa.
      * @return*/
     public static String presa() {
-        System.out.println("Sto effettuando una presa...");
+        System.out.println("\nSto effettuando una presa...");
         return null;
     }
 
     /** Messaggio di informazione di validità della mossa.
      * @return null*/
     public static String nonValida() {
-        System.out.println(" ⚠ Mossa non valida");
+        System.out.println("⚠ Mossa non valida");
         return null;
     }
 }
