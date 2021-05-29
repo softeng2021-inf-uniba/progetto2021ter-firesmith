@@ -41,7 +41,7 @@ class TurnoNeroTest {
         //Mossa mossa = new MossaNero(0, 0);
 
         g.setColore("nero");
-        String input = "-h";
+        String input = "9-13";
         //String command = cmd.gestisciRegex(mossa,input);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
