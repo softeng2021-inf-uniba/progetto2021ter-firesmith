@@ -2,8 +2,11 @@ package it.uniba.interfaccia;
 
 
 import it.uniba.gioco.Giocatore;
+import it.uniba.gioco.Mossa;
+import it.uniba.gioco.MossaNero;
 import it.uniba.gioco.Partita;
 import it.uniba.interfaccia.Menu;
+import it.uniba.strumenti.Comando;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
@@ -31,14 +34,19 @@ class TurnoNeroTest {
     }
 
     @Test()
-    public void turnoGiocBiancoSpostamentoTest() {
+    public void turnoGiocNeroSpostamentoTest() {
         Partita partita = new Partita();
         Giocatore g = new Giocatore();
+        Comando cmd = new Comando();
+        //Mossa mossa = new MossaNero(0, 0);
+
         g.setColore("nero");
-        String input = "gioca";
+        String input = "-h";
+        //String command = cmd.gestisciRegex(mossa,input);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.turnoGiocatore(partita,53);
+
     }
 
 }

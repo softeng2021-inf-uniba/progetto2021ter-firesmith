@@ -26,9 +26,9 @@ public final class Comando {
 
             if (uscita.equals("si")) {
                 Messaggi.uscita();
-                Runtime.getRuntime().exit(0);
                 partita.setStato(false);
                 valido = true;
+                Runtime.getRuntime().exit(0);
 
             } else if (uscita.equals("no")) {
                 Messaggi.menu();
