@@ -176,7 +176,7 @@ public class Partita {
     /**
      * Visualizza graficamente il numero delle pedine mangiate
      * da entrambi i giocatori.
-     * @return
+     * @return nullstring
      */
     public String stampaPedineMangiate() {
 
@@ -199,7 +199,7 @@ public class Partita {
 
     /**
      * Visualizza graficamente le mosse effettuate da entrambi i giocatori.
-     * @return
+     * @return nullstring
      */
 
     public String getCronologiaMosse() {
