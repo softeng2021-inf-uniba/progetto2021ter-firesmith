@@ -3,10 +3,13 @@ package it.uniba.gioco;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe che effettua le mosse delle pedine.</h1><br>
+ * <h1>Classe astratta che rappresenta la possibilità di effettuare mosse</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
- *      <p><b>Knows:</b></p> <br>
+ *      <p><b>Knows:</b>
+ *          <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
+ *          <li> L'effettiva validità di una mossa </li>
+ *      </p> <br>
  *      <b>Does:</b>
  *          <ul>
  *          <li> Permette all'utente di inserire la mossa
@@ -17,7 +20,6 @@ import it.uniba.tavolo.Damiera;
  *
  * @author Gruppo Firesmith
  */
-
 public abstract class Mossa {
     /** Posizione della pedina da spostare per effettuare una mossa. */
     private int posizione1;
