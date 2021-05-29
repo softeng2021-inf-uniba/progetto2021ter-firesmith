@@ -120,7 +120,7 @@ public class TurnoBianco implements Turno {
                     turnoBianco = partita.getTurno();
                     break;
 
-                case "presa semplice":
+                case "presasemplice":
                     Messaggi.presa();
 
                     mossa.presaSemplice(partita.getDamiera());
@@ -138,7 +138,7 @@ public class TurnoBianco implements Turno {
                     turnoBianco = partita.getTurno();
                     break;
 
-                case "presa multipla":
+                case "presamultipla":
                     Messaggi.presa();
                     mossa.presaMultipla(partita.getDamiera());
                     chk = mossa.getValid();
