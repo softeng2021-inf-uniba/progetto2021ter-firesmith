@@ -84,12 +84,8 @@ public class TurnoBianco implements Turno {
 
             switch (comando) {
                 case "--help":
-                    Messaggi.aiuto();
-                    break;
 
                 case "-h":
-                    Messaggi.aiuto();
-                    break;
 
                 case "help":
                     Messaggi.aiuto();
