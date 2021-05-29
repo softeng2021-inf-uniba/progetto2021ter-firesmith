@@ -1,6 +1,7 @@
 package it.uniba.interfaccia;
 
 
+import it.uniba.gioco.Giocatore;
 import it.uniba.gioco.Partita;
 import it.uniba.interfaccia.Menu;
 import org.junit.After;
@@ -29,10 +30,12 @@ class TurnoNeroTest {
         System.setOut(originalOut);
     }
 
-    @Test
+    @Test()
     public void turnoGiocBiancoSpostamentoTest() {
         Partita partita = new Partita();
-        String input = "9-13";
+        Giocatore g = new Giocatore();
+        g.setColore("nero");
+        String input = "gioca";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.turnoGiocatore(partita,53);
