@@ -112,7 +112,7 @@ public class TurnoNero implements Turno {
                     mossa.spostamentoSemplice(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
-                        partita.setCronologiaMosse("Nero :" + presa);
+                        partita.setCronologiaMosse("Nero: " + presa);
                         partita.setTurno(false);
                         Messaggi.spostamentoOk();
                     } else {
@@ -130,7 +130,7 @@ public class TurnoNero implements Turno {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        partita.setCronologiaMosse("Nero :" + presa);
+                        partita.setCronologiaMosse("Nero: " + presa);
 
                         partita.getNero().setPedineMangiate(1);
                         Messaggi.presaOk();
@@ -147,7 +147,7 @@ public class TurnoNero implements Turno {
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setTurno(false);
-                        partita.setCronologiaMosse("Nero :" + presa);
+                        partita.setCronologiaMosse("Nero: " + presa);
 
                         if (mossa.getPresaTripla()) {
                             partita.getNero().setPedineMangiate(Costanti.DUE);
