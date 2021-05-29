@@ -7,23 +7,25 @@ import it.uniba.tavolo.Damiera;
  * <h1>Classe che effettua le mosse per il giocatore bianco</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
- *      <p><b>Knows:</b>
- *          <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
- *          <li> L'effettiva validità di una mossa </li>
- *      </p> <br>
- *      <b>Does:</b>
- *          <ul>
- *          <li> Permette all'utente di inserire la mossa
- *          ed effettuare lo spostamento,
- *          le prese semplici o le prese multiple;</li>
- *          <li>Controlla la validit&#224; delle mosse inserite.</li>
- *          </ul>
+ * <p><b>Knows:</b>
+ *     <ul>
+ *     <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
+ *     <li> L'effettiva validit&#224; di una mossa </li>
+ *     </ul> <br>
+ *     <b>Does:</b>
+ *         <ul>
+ *         <li> Permette all'utente di inserire la mossa
+ *         ed effettuare lo spostamento,
+ *         le prese semplici o le prese multiple;</li>
+ *         <li>Controlla la validit&#224; delle mosse inserite.</li>
+ *         </ul>
  *
  * @author Gruppo Firesmith
  */
 public class MossaBianco extends Mossa {
     /**
      * Costruttore che richiama quello della sua superclasse.
+     *
      * @param pos1 casella d'inizio
      * @param pos2 casella d'arrivo
      */
@@ -33,6 +35,7 @@ public class MossaBianco extends Mossa {
 
     /**
      * Metodo che gestisce lo spostamento delle pedine del giocatore bianco.
+     *
      * @param damiera Damiera utilizzata durante la partita in corso
      */
     public boolean spostamentoSemplice(final Damiera damiera) {
@@ -88,6 +91,7 @@ public class MossaBianco extends Mossa {
      *     <li><code>true</code>, la presa &#232; valida;</li>
      *     <li><code>false</code>, la presa non &#232; valida.</li>
      * </ul>
+     *
      * @param damiera Damiera utilizzata durante la partita in corso
      * @return Validit&#224; della presa semplice
      */
@@ -165,7 +169,6 @@ public class MossaBianco extends Mossa {
         }
         return getValid();
     }
-
 
 
 }
