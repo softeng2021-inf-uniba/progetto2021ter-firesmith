@@ -4,7 +4,7 @@ import it.uniba.strumenti.Costanti;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe che effettua le mosse per il giocatore Nero</h1><br>
+ * <h1>Classe che effettua le mosse per il giocatore Nero.</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <p><b>Knows:</b>
@@ -28,7 +28,7 @@ public class MossaNero extends Mossa {
      * Costruttore della classe MossaNero che richiama quello della superclasse.
      *
      * @param pos1 casella d'inizio
-     * @param pos2 caseòòa d'arrivo
+     * @param pos2 casella d'arrivo
      */
     public MossaNero(int pos1, int pos2) {
         super(pos1, pos2);
