@@ -3,42 +3,55 @@ package it.uniba.gioco;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe astratta che rappresenta la possibilità di effettuare mosse</h1><br>
+ * <h1>Classe astratta che rappresenta la possibilit&#224; di effettuare mosse</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
- *      <p><b>Knows:</b>
- *          <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
- *          <li> L'effettiva validità di una mossa </li>
- *      </p> <br>
- *      <b>Does:</b>
- *          <ul>
- *          <li> Permette all'utente di inserire la mossa
- *          ed effettuare lo spostamento,
- *          le prese semplici o le prese multiple;</li>
- *          <li>Controlla la validit&#224; delle mosse inserite.</li>
- *          </ul>
+ * <b>Knows:</b>
+ *     <ul>
+ *     <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
+ *     <li> L'effettiva validit&#224; di una mossa </li>
+ *     </ul> <br>
+ *
+ * <b>Does:</b>
+ *     <ul>
+ *     <li> Permette all'utente di inserire la mossa
+ *     ed effettuare lo spostamento,
+ *     le prese semplici o le prese multiple;</li>
+ *     <li>Controlla la validit&#224; delle mosse inserite.</li>
+ *     </ul>
  *
  * @author Gruppo Firesmith
  */
 public abstract class Mossa {
-    /** Posizione della pedina da spostare per effettuare una mossa. */
+    /**
+     * Posizione della pedina da spostare per effettuare una mossa.
+     */
     private int posizione1;
-    /** Posizione in cui deve essere spostata la pedina iniziale. */
+    /**
+     * Posizione in cui deve essere spostata la pedina iniziale.
+     */
     private int posizione2;
-    /** Posizione in cui deve essere spostata la pedina iniziale
-     * in seguito ad una presa doppia. */
+    /**
+     * Posizione in cui deve essere spostata la pedina iniziale
+     * in seguito ad una presa doppia.
+     */
     private int posizione3;
-    /** Posizione in cui deve essere spostata la pedina iniziale
-     * in seguito ad una presa tripla.*/
+    /**
+     * Posizione in cui deve essere spostata la pedina iniziale
+     * in seguito ad una presa tripla.
+     */
     private int posizione4;
-    /** Definisce se la mossa effettuata (spostamento, presa semplice,
-     * presa multipla) &#232; consentita dalle regole.*/
+    /**
+     * Definisce se la mossa effettuata (spostamento, presa semplice,
+     * presa multipla) &#232; consentita dalle regole.
+     */
     private boolean isValid;
     private boolean isPresaTripla;
 
     /**
      * Imposta la posizione iniziale della pedina
      * in {@link Mossa#posizione1}.
+     *
      * @param pos1 Posizione iniziale della pedina
      */
     public void setPosizione1(final int pos1) {
@@ -49,6 +62,7 @@ public abstract class Mossa {
      * Imposta la posizione finale della pedina in
      * {@link Mossa#posizione2} in seguito ad uno spostamento
      * o ad una presa semplice.
+     *
      * @param pos2 Posizione finale della pedina spostata
      */
     public void setPosizione2(final int pos2) {
@@ -58,6 +72,7 @@ public abstract class Mossa {
     /**
      * Imposta la posizione finale della pedina in
      * {@link Mossa#posizione3} in seguito ad una presa multipla doppia.
+     *
      * @param pos3 Posizione finale della pedina spostata
      */
     public void setPosizione3(final int pos3) {
@@ -67,6 +82,7 @@ public abstract class Mossa {
     /**
      * Imposta la posizione iniziale della pedina in
      * {@link Mossa#posizione4} in seguito ad una presa multipla tripla.
+     *
      * @param pos4 Posizione finale della pedina spostata
      */
     public void setPosizione4(final int pos4) {
@@ -76,8 +92,10 @@ public abstract class Mossa {
     public void setPresaTripla(final boolean isPresaTripla) {
         this.isPresaTripla = isPresaTripla;
     }
+
     /**
      * Fornisce la posizione della pedina che inizia la mossa.
+     *
      * @return Posizione iniziale della pedina
      */
     public int getPosizione1() {
@@ -87,6 +105,7 @@ public abstract class Mossa {
     /**
      * Fornisce la posizione di destinazione della pedina
      * dopo la mossa.
+     *
      * @return Posizione finale della pedina
      */
     public int getPosizione2() {
@@ -96,15 +115,18 @@ public abstract class Mossa {
     /**
      * Fornisce la posizione di destinazione (o transitoria)
      * della pedina dopo una presa multipla.
+     *
      * @return Posizione della 3a casella nella mossa
      * dell'utente in caso di presa multipla
      */
     public int getPosizione3() {
         return posizione3;
     }
+
     /**
      * Fornisce la posizione di destinazione (o transitoria)
      * della pedina dopo una presa multipla.
+     *
      * @return Posizione della 4a casella nella mossa
      * dell'utente in caso di presa multipla
      */
@@ -114,6 +136,7 @@ public abstract class Mossa {
 
     /**
      * Imposta il flag {@link Mossa#isPresaTripla}.
+     *
      * @return isPresaTripla della mossa.
      */
     public boolean getPresaTripla() {
@@ -122,6 +145,7 @@ public abstract class Mossa {
 
     /**
      * Imposta il flag {@link Mossa#isValid}.
+     *
      * @param valid Validit&#224; della mossa
      */
     public void setValid(final boolean valid) {
@@ -134,6 +158,7 @@ public abstract class Mossa {
      *     <li><code>true</code>, se la mossa &#232; valida;</li>
      *     <li><code>false</code>, se la mossa non &#232; valida.</li>
      * </ul>
+     *
      * @return Validit&#224; della mossa inserita
      */
     public boolean getValid() {
@@ -142,6 +167,7 @@ public abstract class Mossa {
 
     /**
      * Assegna il valore di {@link Mossa#posizione1} e {@link Mossa#posizione2}.
+     *
      * @param pos1 Posizione iniziale della pedina da muovere
      * @param pos2 Posizione finale in cui deve andare la pedina
      */
@@ -153,13 +179,15 @@ public abstract class Mossa {
 
     /**
      * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
-     * @param damiera la quale viene modificata
-     * @return getValid() che indica se la mossa e' valida
+     *
+     * @param damiera la damiera che viene modificata
+     * @return getValid() indica se la mossa e' valida
      */
     public abstract boolean spostamentoSemplice(final Damiera damiera);
 
     /**
      * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
+     *
      * @param damiera la quale viene modificata
      * @return getValid() che indica se la mossa e' valida
      */
@@ -177,6 +205,7 @@ public abstract class Mossa {
      * Si tratta di una concatenazione di due prese semplici.
      *
      * @param damiera Damiera utilizzata durante la partita in corso
+     * @return getValid() che indica se la mossa e' valida
      */
     public boolean presaMultipla(final Damiera damiera) {
 
@@ -225,6 +254,7 @@ public abstract class Mossa {
      *     <li><code>true</code>, la simulazione della presa &#232; valida;</li>
      *     <li><code>false</code>, la simulazione della presa non &#232; valida.</li>
      * </ul>
+     *
      * @param damieraCopia Copia della damiera utilizzata durante la partita
      * @return Validit&#224; della presa multipla
      */
