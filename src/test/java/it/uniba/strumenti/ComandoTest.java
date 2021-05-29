@@ -35,32 +35,35 @@ class ComandoTest {
     }
 
     @Test
-    public void gestioneRegexSpostamentoTest(){
+    public void gestioneRegexSpostamentoTest() {
         Mossa mossa = new MossaBianco(9,13);
         assertEquals("spostamento",(test.gestisciRegex(mossa,"9-13")));
     }
+
     @Test
     public void gestioneRegexPresaTest(){
         Mossa mossa = new MossaBianco(9,13);
         assertEquals("presa semplice",(test.gestisciRegex(mossa,"9x13")));
     }
+
     @Test
     public void gestioneRegexPresaMultiplaTest(){
         Mossa mossa = new MossaBianco(9,13);
         assertEquals("presa multipla",(test.gestisciRegex(mossa,"9x13x21")));
     }
 
-
     @Test
-    public void esciTest() {
+    public void esciTestNo() {
         Partita partita = new Partita();
-        String input = "si";
+        String input = "no";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.esci(partita);
     }
+
+
     @Test
-    public void AbbandonaBiancoTest(){
+    public void AbbandonaBiancoTestSi(){
         Partita partita = new Partita();
         Giocatore g = new Giocatore();
         g.setColore("bianco");
@@ -68,13 +71,36 @@ class ComandoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.abbandona(partita,g);
+
     }
     @Test
-    public void AbbandonaNeroTest(){
+    public void AbbandonaNeroTestSi(){
         Partita partita = new Partita();
         Giocatore g = new Giocatore();
         g.setColore("nero");
         String input = "si";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        test.abbandona(partita,g);
+    }
+
+    @Test
+    public void AbbandonaBiancoTestNo(){
+        Partita partita = new Partita();
+        Giocatore g = new Giocatore();
+        g.setColore("bianco");
+        String input = "no";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        test.abbandona(partita,g);
+
+    }
+    @Test
+    public void AbbandonaNeroTestNo(){
+        Partita partita = new Partita();
+        Giocatore g = new Giocatore();
+        g.setColore("nero");
+        String input = "no";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.abbandona(partita,g);
