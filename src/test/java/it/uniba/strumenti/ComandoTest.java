@@ -43,13 +43,13 @@ class ComandoTest {
     @Test
     public void gestioneRegexPresaTest(){
         Mossa mossa = new MossaBianco(9,13);
-        assertEquals("presa semplice",(test.gestisciRegex(mossa,"9x13")));
+        assertEquals("presasemplice",(test.gestisciRegex(mossa,"9x13")));
     }
 
     @Test
     public void gestioneRegexPresaMultiplaTest(){
         Mossa mossa = new MossaBianco(9,13);
-        assertEquals("presa multipla",(test.gestisciRegex(mossa,"9x13x21")));
+        assertEquals("presamultipla",(test.gestisciRegex(mossa,"9x13x21")));
     }
 
     @Test
