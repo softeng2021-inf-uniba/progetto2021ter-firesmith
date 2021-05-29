@@ -9,7 +9,27 @@ import java.util.regex.Pattern;
 import it.uniba.gioco.Mossa;
 import it.uniba.gioco.Partita;
 
+/**
+ * <h1>Classe che contiene alcuni metodi di supporto. </h1><br>
+ * <b>Class Type:</b> &#60; NOECB &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ * <b>Knows:</b> <br>
+ *
+ * <b>Does:</b>
+ * <ul>
+ *     <li> Permette di terminare il programma. </li>
+ *     <li> Permette di abbandonare la partita in corso. </li>
+ *     <li> Gestisce l'input dell'utente. </li>
+ * </ul>
+ *
+ * @author Gruppo Firesmith
+ */
 public final class Comando {
+
+    /**
+     * Costruttore vuoto
+     */
+    public Comando() {}
 
     /**
      * Quando viene invocato dal menu, permette al giocatore
@@ -165,6 +185,13 @@ public final class Comando {
         return trasformaComando(comando);
     }
 
+    /**
+     * Metodo che permette di trasformare in lower case
+     * l'input ed elimina ogni whitespace.
+     *
+     * @param comando l'input dell'utente da gestire
+     * @return il comando dopo le trasformazioni
+     */
     public String trasformaComando(String comando) {
         comando = comando.toLowerCase();
         comando = comando.replaceAll("\\s+","");
