@@ -3,7 +3,7 @@ package it.uniba.gioco;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe astratta che rappresenta la possibilit&#224; di effettuare mosse</h1><br>
+ * <h1>Classe astratta che rappresenta la possibilit&#224; di effettuare mosse.</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <b>Knows:</b>
@@ -186,7 +186,7 @@ public abstract class Mossa {
     }
 
     /**
-     * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
+     * Metodo astratto che viene implementato dalle sottoclassi {@link MossaBianco} e {@link MossaNero}
      *
      * @param damiera la damiera che viene modificata
      * @return getValid() indica se la mossa e' valida

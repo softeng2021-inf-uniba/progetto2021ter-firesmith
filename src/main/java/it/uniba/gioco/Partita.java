@@ -84,14 +84,14 @@ public class Partita {
     }
 
     /**
-     * Imposta il valore di {@link Giocatore#getColore()}.
+     * Imposta il valore di {@link Partita#bianco}.
      */
     public void setBianco() {
         bianco.setColore("bianco");
     }
 
     /**
-     * Imposta il valore di {@link Giocatore#getColore()}.
+     * Imposta il valore di {@link Partita#nero}.
      */
     public void setNero() {
         nero.setColore("nero");

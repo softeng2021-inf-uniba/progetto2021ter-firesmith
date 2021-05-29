@@ -45,34 +45,74 @@ public class TurnoBianco implements Turno {
      */
     public TurnoBianco() {}
 
+    /**
+     * Metodo getter che ritorna un istanza della classe Comando
+     *
+     * @return istanza di comando
+     */
+    public Comando getCmd() {
+        return cmd;
+    }
+    /**
+     * Metodo setter che imposta {@link TurnoBianco#start} sfruttando il tempo
+     * del sistema
+     */
     public void setStart() {
         this.start = System.currentTimeMillis();
     }
 
+    /**
+     * Metodo getter
+     * @return l'istante di tempo in cui è iniziato il conteggio
+     */
     public long getStart() {
         return start;
     }
 
+    /**
+     * Metodo getter
+     * @return l'istante di tempo in cui è terminato il conteggio
+     */
     public long getFinish() {
         return finish;
     }
 
+    /**
+     * Metodo setter che imposta {@link TurnoBianco#finish} sfruttando il tempo
+     * del sistema
+     */
     public void setFinish() {
         this.finish = System.currentTimeMillis();
     }
 
+    /**
+     * Metodo setter che calcola 'elapsed' come una semplice
+     * differenza fra l'istante finale e quello iniziale
+     * @param start l'istante di tempo iniziale
+     * @param finish l'istante di tempo finale
+     */
     public void setElapsed(long start, long finish) {
         this.elapsed = start - finish;
     }
 
+    /**
+     * Metodo getter
+     * @return il tempo trascorso fra {@link TurnoBianco#finish} e {@link TurnoBianco#start}
+     */
     public long getElapsed() {
         return elapsed;
     }
 
-    public Comando getCmd() {
-        return cmd;
-    }
 
+
+    /**
+     * Metodo che gestisce il turno del giocatore Nero, permettendogli
+     * di eseguire una serie di comandi
+     *
+     * @param partita la partita in corso
+     * @param tempoG il tempo cumulativo del giocatore aggiornato ad ogni turno
+     * @return il tempo trascorso dal giocatore nel singolo turno
+     */
     @Override
     public long turnoGiocatore(Partita partita, long tempoG) {
 
