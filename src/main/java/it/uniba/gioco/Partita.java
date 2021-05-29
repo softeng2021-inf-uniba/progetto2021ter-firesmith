@@ -51,10 +51,6 @@ public class Partita {
     /** Lista delle mosse effettuate dai giocatori. */
     private ArrayList<String> cronologiaMosse = new ArrayList<String>();
 
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int SIXTY = 60;
-
-    // Creo la partita
 
     /**
      * Imposta una nuova partita:
@@ -87,10 +83,16 @@ public class Partita {
         this.turnoPartita = turno;
     }
 
+    /**
+     * Imposta il valore di {@link Giocatore#getColore()}.
+     */
     public void setBianco() {
         bianco.setColore("bianco");
     }
 
+    /**
+     * Imposta il valore di {@link Giocatore#getColore()}.
+     */
     public void setNero() {
         nero.setColore("nero");
     }
