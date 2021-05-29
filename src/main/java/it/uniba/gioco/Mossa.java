@@ -95,16 +95,25 @@ public abstract class Mossa {
      * Fornisce la posizione di destinazione (o transitoria)
      * della pedina dopo una presa multipla.
      * @return Posizione della 3a casella nella mossa
-     * dell'utente in caso di presa semplice
+     * dell'utente in caso di presa multipla
      */
     public int getPosizione3() {
         return posizione3;
     }
-
+    /**
+     * Fornisce la posizione di destinazione (o transitoria)
+     * della pedina dopo una presa multipla.
+     * @return Posizione della 4a casella nella mossa
+     * dell'utente in caso di presa multipla
+     */
     public int getPosizione4() {
         return posizione4;
     }
 
+    /**
+     * Imposta il flag {@link Mossa#isPresaTripla}.
+     * @return isPresaTripla della mossa.
+     */
     public boolean getPresaTripla() {
         return isPresaTripla;
     }
@@ -140,8 +149,108 @@ public abstract class Mossa {
         this.isValid = false;
     }
 
+    /**
+     * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
+     * @param damiera la quale viene modificata
+     * @return getValid() che indica se la mossa e' valida
+     */
     public abstract boolean spostamentoSemplice(final Damiera damiera);
+
+    /**
+     * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
+     * @param damiera la quale viene modificata
+     * @return getValid() che indica se la mossa e' valida
+     */
     public abstract boolean presaSemplice(final Damiera damiera);
-    public abstract boolean presaMultipla(final Damiera damiera);
-    public abstract boolean presaMultiplaProva(final Damiera damiera);
+
+    /**
+     * Metodo che gestisce la presa multipla delle pedine del giocatore bianco.<br>
+     * Viene simulata su una copia della damiera, e se il metodo
+     * {@link Mossa#presaMultiplaProva} ritorna:
+     * <ul>
+     *     <li><code>true</code>, la presa &#232; valida e sar&#224; eseguita;</li>
+     *     <li><code>false</code>, altrimenti.</li>
+     * </ul>
+     * <br>
+     * Si tratta di una concatenazione di due prese semplici.
+     *
+     * @param damiera Damiera utilizzata durante la partita in corso
+     */
+    public boolean presaMultipla(final Damiera damiera) {
+
+        Damiera damieraCopia = new Damiera(damiera);
+
+        //salvo le posizioni poichÃ¨ verranno sovrascritte
+        //con la damiera di copia
+        int pos1 = getPosizione1();
+        int pos2 = getPosizione2();
+        int pos3 = getPosizione3();
+
+        //se la presa provata nella damiera di prova Ã¨ valida,
+        //allora la eseguo su quella originale
+        if (presaMultiplaProva(damieraCopia)) {
+
+            //1a PRESA
+            setPosizione1(pos1);
+            setPosizione2(pos2);
+
+            presaSemplice(damiera);
+
+            //2a PRESA
+            setPosizione1(getPosizione2());
+            setPosizione2(getPosizione3());
+
+            presaSemplice(damiera);
+
+            if (getPosizione4() != 0) {
+                //3a PRESA
+                setPosizione1(pos3);
+                setPosizione2(getPosizione4());
+
+                presaSemplice(damiera);
+
+            }
+
+        }
+        return getValid();
+    }
+
+    /**
+     * Metodo di prova che simula la presa multipla del giocatore nero.<br>
+     * Viene simulata la prima presa, e se valida viene
+     * simulata la successiva.
+     * <ul>
+     *     <li><code>true</code>, la simulazione della presa &#232; valida;</li>
+     *     <li><code>false</code>, la simulazione della presa non &#232; valida.</li>
+     * </ul>
+     * @param damieraCopia Copia della damiera utilizzata durante la partita
+     * @return Validit&#224; della presa multipla
+     */
+    public boolean presaMultiplaProva(final Damiera damieraCopia) {
+        boolean prova = false;
+        boolean prova1 = presaSemplice(damieraCopia);
+        boolean prova2;
+        boolean prova3;
+
+        if (prova1) {
+
+            setPosizione1(getPosizione2());
+            setPosizione2(getPosizione3());
+
+            prova2 = presaSemplice(damieraCopia);
+
+            if (prova2) {
+                prova = true;
+                if (getPosizione4() != 0) {
+                    setPosizione1(getPosizione3());
+                    setPosizione2(getPosizione4());
+                    prova3 = presaSemplice(damieraCopia);
+                    prova = prova3;
+                }
+            } else {
+                prova = false;
+            }
+        }
+        return prova;
+    }
 }
