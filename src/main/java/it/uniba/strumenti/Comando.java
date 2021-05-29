@@ -14,6 +14,8 @@ public final class Comando {
     /**
      * Quando viene invocato dal menu, permette al giocatore
      * di arrendersi e concludere la partita.
+     *
+     * @param partita la partita in corso
      */
     public void esci(Partita partita) {
         boolean valido = false;
@@ -46,6 +48,7 @@ public final class Comando {
      * Quando viene invocato dal menu, permette al giocatore
      * di arrendersi e concludere la partita.
      *
+     * @param p Partita in corso
      * @param g Giocatore che ha richiesto di abbandonare la partita
      */
     public void abbandona(Partita p, Giocatore g) {
@@ -99,6 +102,7 @@ public final class Comando {
     /**
      * Metodo che gestisce l'input e verifica la validità attraverso le regex
      * @param mossa su cui vengono impostate le coordinate ottenute
+     * @param comando la stringa gestita dal metodo
      * @return il comando, come mossa o comando per il menù
      */
     public String gestisciRegex(Mossa mossa, String comando) {
