@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TurnoBiancoTest {
     Turno test = new TurnoBianco();
+    Turno testn = new TurnoNero();
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -35,6 +36,42 @@ class TurnoBiancoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         test.turnoGiocatore(partita,53);
+        String inpu = "9-13";
+        InputStream inp = new ByteArrayInputStream(inpu.getBytes());
+        System.setIn(inp);
+        testn.turnoGiocatore(partita,66);
+        String presa = "18x9";
+        InputStream pres = new ByteArrayInputStream(presa.getBytes());
+        System.setIn(pres);
+        test.turnoGiocatore(partita,80);
+        String spos1 = "10-14";
+        InputStream sposner = new ByteArrayInputStream(spos1.getBytes());
+        System.setIn(sposner);
+        testn.turnoGiocatore(partita,66);
+        String spos2 = "25-21";
+        InputStream sposbianc = new ByteArrayInputStream(spos2.getBytes());
+        System.setIn(sposbianc);
+        test.turnoGiocatore(partita,80);
+        String spos3 = "5-10";
+        InputStream sposner1 = new ByteArrayInputStream(spos3.getBytes());
+        System.setIn(sposner1);
+        testn.turnoGiocatore(partita,66);
+        String spos4 = "21-17";
+        InputStream sposbianc1 = new ByteArrayInputStream(spos4.getBytes());
+        System.setIn(sposbianc1);
+        test.turnoGiocatore(partita,80);
+        String spos5 = "14-19";
+        InputStream sposbianc2 = new ByteArrayInputStream(spos5.getBytes());
+        System.setIn(sposbianc2);
+        testn.turnoGiocatore(partita,66);
+        String presamult = "23x14x5";
+        InputStream presam = new ByteArrayInputStream(presamult.getBytes());
+        System.setIn(presam);
+        test.turnoGiocatore(partita,80);
+
+
+
+
     }
 
 }
