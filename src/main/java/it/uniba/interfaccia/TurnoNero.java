@@ -85,8 +85,6 @@ public class TurnoNero implements Turno {
                 case "--help":
 
                 case "-h":
-                    Messaggi.aiuto();
-                    break;
 
                 case "help":
                     Messaggi.aiuto();
