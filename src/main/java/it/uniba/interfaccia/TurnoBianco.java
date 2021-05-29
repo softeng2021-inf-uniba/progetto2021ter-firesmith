@@ -12,11 +12,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Gestisce i comandi inseriti dal giocatore che controlla
- * le pedine bianche.<br>
- * Permette al giocatore di:
- * <ul>
- *     <li>Invocare tutti i comandi di {@link Menu#gioca()}};</li>
+ * <h1>Gestisce i comandi inseriti dal giocatore che controlla
+ *  le pedine bianche. </h1><br>
+ * <b>Class Type:</b> &#60; Control &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ * <b>Knows:</b>
+ *  <ul>
+ *      <li> La partita in corso </li>
+ *      <li> Ogni comando che il giocatore Bianco inserisce </li>
+ *  </ul> <br>
+ *
+ *  <b>Does:</b>
+ *  <ul>
+ *     <li>Invocare tutti i comandi di {@link Menu#gioca()};</li>
  *     <li>Visualizzare la damiera con le pedine disposte;</li>
  *     <li>Effettuare 3 tipi di mosse: spostamento,
  *     presa semplice e presa multipla;</li>
@@ -24,7 +32,6 @@ import java.util.regex.Pattern;
  *     partita di entrambi i giocatori.</li>
  * </ul>
  */
-
 public class TurnoBianco implements Turno {
 
     private Comando cmd = new Comando();
@@ -32,6 +39,11 @@ public class TurnoBianco implements Turno {
     private long start;
     private long finish;
     private long elapsed;
+
+    /**
+     * Costruttore vuoto
+     */
+    public TurnoBianco() {}
 
     public void setStart() {
         this.start = System.currentTimeMillis();
