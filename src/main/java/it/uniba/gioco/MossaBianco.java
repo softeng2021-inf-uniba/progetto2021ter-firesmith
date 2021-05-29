@@ -4,7 +4,7 @@ import it.uniba.strumenti.Costanti;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe che effettua le mosse per il giocatore bianco</h1><br>
+ * <h1>Classe che effettua le mosse per il giocatore bianco.</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <p><b>Knows:</b>
