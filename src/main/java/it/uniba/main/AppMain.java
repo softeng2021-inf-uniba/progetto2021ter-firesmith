@@ -56,7 +56,7 @@ public final class AppMain {
             System.out.println("Application started.");
         }
 
-        Menu menu = new Menu();
+        Menu menu = Menu.getInstance();
         menu.benvenuto();
     }
 

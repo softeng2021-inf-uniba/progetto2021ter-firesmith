@@ -64,7 +64,7 @@ public class Partita {
      *     <li>La partita non &#232; stata abbandonata da nessun giocatore.</li>
      * </ul>
      */
-    //TODO questo metodo deve essere private e non public
+
     public Partita() {
         statoPartita = false;
         turnoPartita = false;
@@ -181,7 +181,7 @@ public class Partita {
     public String stampaPedineMangiate() {
 
         System.out.println("\n\nPEDINE MANGIATE\n"
-                + "───────────────"); //TODO \u2501
+                + "───────────────");
 
         System.out.print("Bianco: ");
         for (int i = 0; i < bianco.getPedineMangiate(); i++) {

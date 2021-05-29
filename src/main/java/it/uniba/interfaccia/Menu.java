@@ -7,7 +7,7 @@ import it.uniba.strumenti.Messaggi;
 import java.util.Scanner;
 
 /**
- * <h2>Classe che gestisce l'input dell'utente durante l'esecuzione
+ * <h2>Classe SINGLETON che gestisce l'input dell'utente durante l'esecuzione
  * del programma e le interazioni tra le varie classi.</h2>
  * <b>Class Type:</b> &#60; Control &#62; <br>
  * <b>Responsabilities:</b> <br>
@@ -28,11 +28,23 @@ import java.util.Scanner;
  */
 
 public class Menu {
+
+    /**
+     * Questa è l'unica istanza di menù creata.
+     */
+    private static Menu istanza = new Menu();
+
     /**
      * Crea una nuova partita.
      */
-    private Partita partita;
-    private Comando cmd;
+    private Partita partita = new Partita();
+    private Comando cmd = new Comando();
+
+    /**
+     * Costruttore vuoto
+     */
+    public Menu() {
+    }
 
     public Partita getPartita() {
         return partita;
@@ -46,9 +58,16 @@ public class Menu {
         return cmd;
     }
 
-    public Menu() {
-        partita = new Partita();
-        cmd = new Comando();
+    /**
+     * Metodo che ritorna l'unica istanza di Menù,
+     * chiamato in AppMain.
+     * @return l'oggetto solo se NON esiste:
+     */
+    public static Menu getInstance() {
+        if (istanza == null) {
+            istanza = new Menu();
+        }
+        return istanza;
     }
 
     /**
@@ -71,17 +90,13 @@ public class Menu {
             Scanner input = new Scanner(System.in, "UTF-8");
             String comando = input.nextLine();
 
-            comando = comando.toLowerCase();
+            comando = cmd.trasformaComando(comando);
 
-            //TODO IF-ELSE IF
             switch (comando) {
+
                 case "--help":
-                    Messaggi.aiuto();
-                    break;
 
                 case "-h":
-                    Messaggi.aiuto();
-                    break;
 
                 case "help":
                     Messaggi.aiuto();
@@ -139,7 +154,7 @@ public class Menu {
             int numeroTurno = 1;
 
             do {
-                System.out.printf("\n┌───────────────────┒"
+                System.out.print("\n┌───────────────────┒"
                         + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
