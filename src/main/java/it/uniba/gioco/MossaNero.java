@@ -2,6 +2,24 @@ package it.uniba.gioco;
 import it.uniba.strumenti.Costanti;
 import it.uniba.tavolo.Damiera;
 
+/**
+ * <h1>Classe che effettua le mosse per il giocatore Nero</h1><br>
+ * <b>Class Type:</b> &#60; Control &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ *      <p><b>Knows:</b>
+ *          <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
+ *          <li> L'effettiva validità di una mossa </li>
+ *      </p> <br>
+ *      <b>Does:</b>
+ *          <ul>
+ *          <li> Permette all'utente di inserire la mossa
+ *          ed effettuare lo spostamento,
+ *          le prese semplici o le prese multiple;</li>
+ *          <li>Controlla la validit&#224; delle mosse inserite.</li>
+ *          </ul>
+ *
+ * @author Gruppo Firesmith
+ */
 public class MossaNero extends Mossa {
 
     /**
