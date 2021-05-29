@@ -79,12 +79,10 @@ public class TurnoNero implements Turno {
             String comando = in.nextLine();
             String presa = comando;
             comando = getCmd().gestisciRegex(mossa, comando);
-            comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
+
 
             switch (comando) {
                 case "--help":
-                    Messaggi.aiuto();
-                    break;
 
                 case "-h":
                     Messaggi.aiuto();
