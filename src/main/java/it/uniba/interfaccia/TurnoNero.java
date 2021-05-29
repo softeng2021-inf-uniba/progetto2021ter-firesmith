@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 public class TurnoNero implements Turno {
 
     /**
-     * Creazione istanza di Comando
+     * Istanza di Comando
      */
     private Comando cmd = new Comando();
 
@@ -53,7 +53,7 @@ public class TurnoNero implements Turno {
     private long finish;
     /**
      * Attributo che rappresenta il tempo trascorso dall'istante di tempo
-     * individuato da 'finish' da quello individuato da 'start'
+     * individuato da {@link TurnoNero#finish} da quello individuato da {@link TurnoNero#start}
      */
     private long elapsed;
 

@@ -34,10 +34,27 @@ import java.util.regex.Pattern;
  */
 public class TurnoBianco implements Turno {
 
+    /**
+     * Istanza di Comando
+     */
     private Comando cmd = new Comando();
 
+    /**
+     * Attributo che definisce l'istante di tempo dal quale iniziare
+     * a contare per calcolare il tempo trascorso nel singolo turno
+     */
     private long start;
+
+    /**
+     * Attributo che definisce l'istante di tempo nel quale terminare
+     * il conteggio del tempo
+     */
     private long finish;
+
+    /**
+     * Attributo che rappresenta il tempo trascorso dall'istante di tempo
+     * individuato da {@link TurnoBianco#finish} da quello individuato da {@link TurnoBianco#finish}
+     */
     private long elapsed;
 
     /**

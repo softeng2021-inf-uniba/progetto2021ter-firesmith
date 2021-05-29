@@ -47,7 +47,7 @@ public abstract class Mossa {
      */
     private boolean isValid;
     /**
-     * Definisce se una mossa è valida.
+     * Definisce se una mossa e' valida.
      */
     private boolean isPresaTripla;
 
