@@ -71,17 +71,13 @@ public class Menu {
             Scanner input = new Scanner(System.in, "UTF-8");
             String comando = input.nextLine();
 
-            comando = comando.toLowerCase();
+            comando = cmd.trasformaComando(comando);
 
-            //TODO IF-ELSE IF
             switch (comando) {
+
                 case "--help":
-                    Messaggi.aiuto();
-                    break;
 
                 case "-h":
-                    Messaggi.aiuto();
-                    break;
 
                 case "help":
                     Messaggi.aiuto();
@@ -139,7 +135,7 @@ public class Menu {
             int numeroTurno = 1;
 
             do {
-                System.out.printf("\n┌───────────────────┒"
+                System.out.print("\n┌───────────────────┒"
                         + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
