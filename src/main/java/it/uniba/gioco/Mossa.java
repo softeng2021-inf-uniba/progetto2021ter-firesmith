@@ -46,6 +46,9 @@ public abstract class Mossa {
      * presa multipla) &#232; consentita dalle regole.
      */
     private boolean isValid;
+    /**
+     * Definisce se una mossa è valida.
+     */
     private boolean isPresaTripla;
 
     /**
@@ -89,6 +92,11 @@ public abstract class Mossa {
         this.posizione4 = pos4;
     }
 
+    /**
+     * Imposta il flag {@link Mossa#isPresaTripla}     *
+     *
+     * @param isPresaTripla booleano che indica se la mossa è una presa tripla
+     */
     public void setPresaTripla(final boolean isPresaTripla) {
         this.isPresaTripla = isPresaTripla;
     }
