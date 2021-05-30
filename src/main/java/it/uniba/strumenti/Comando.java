@@ -27,9 +27,10 @@ import it.uniba.gioco.Partita;
 public final class Comando {
 
     /**
-     * Costruttore vuoto
+     * Costruttore vuoto.
      */
-    public Comando() {}
+    public Comando() {
+    }
 
     /**
      * Quando viene invocato dal menu, permette al giocatore
@@ -37,7 +38,7 @@ public final class Comando {
      *
      * @param partita la partita in corso
      */
-    public void esci(Partita partita) {
+    public void esci(final Partita partita) {
         boolean valido = false;
         System.out.print("\n\nPer confermare l'uscita dal gioco inserire "
                 + "[Si/No]" + "\n➤ ");
@@ -71,7 +72,7 @@ public final class Comando {
      * @param p Partita in corso
      * @param g Giocatore che ha richiesto di abbandonare la partita
      */
-    public void abbandona(Partita p, Giocatore g) {
+    public void abbandona(final Partita p, final Giocatore g) {
         // partita = true, se partita in corso
         // partita = false, se abbandona partita (partita non in corso)
         boolean statoPartita = true;
@@ -120,12 +121,13 @@ public final class Comando {
     }
 
     /**
-     * Metodo che gestisce l'input e verifica la validità attraverso le regex
-     * @param mossa su cui vengono impostate le coordinate ottenute
+     * Metodo che gestisce l'input e verifica la validità attraverso le regex.
+     *
+     * @param mossa   su cui vengono impostate le coordinate ottenute
      * @param comando la stringa gestita dal metodo
      * @return il comando, come mossa o comando per il menù
      */
-    public String gestisciRegex(Mossa mossa, String comando) {
+    public String gestisciRegex(final Mossa mossa, String comando) {
 
         Pattern p1 = Pattern.compile(Costanti.SPOSTAMENTO);
         Pattern p2 = Pattern.compile(Costanti.PRESA_S);
@@ -142,7 +144,7 @@ public final class Comando {
 
         String[] array = comando.split("[-|x]");
 
-        if(!comando.equals("-h") && !comando.equals("--help")) {
+        if (!comando.equals("-h") && !comando.equals("--help")) {
             try {
                 if ((array.length > 1)) {
 
@@ -160,7 +162,9 @@ public final class Comando {
                         posFinale2 = Integer.parseInt(posFinale2Temp);
                         mossa.setPosizione3(posFinale2);
 
-                        if (array.length > Costanti.TRE && !array[Costanti.TRE].equals("")) {
+                        if (array.length > Costanti.TRE
+                                && !array[Costanti.TRE].equals("")) {
+
                             String posFinale3Temp = array[Costanti.TRE];
                             posFinale3 = Integer.parseInt(posFinale3Temp);
                             mossa.setPosizione4(posFinale3);
@@ -194,7 +198,7 @@ public final class Comando {
      */
     public String trasformaComando(String comando) {
         comando = comando.toLowerCase();
-        comando = comando.replaceAll("\\s+","");
+        comando = comando.replaceAll("\\s+", "");
         return comando;
     }
 }

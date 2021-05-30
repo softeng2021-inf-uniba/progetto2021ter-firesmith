@@ -3,7 +3,8 @@ package it.uniba.gioco;
 import it.uniba.tavolo.Damiera;
 
 /**
- * <h1>Classe astratta che rappresenta la possibilit&#224; di effettuare mosse.</h1><br>
+ * <h1>Classe astratta che rappresenta la possibilit&#224; di effettuare
+ * mosse.</h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <b>Knows:</b>
@@ -93,12 +94,12 @@ public abstract class Mossa {
     }
 
     /**
-     * Imposta il flag {@link Mossa#isPresaTripla}     *
+     * Imposta il flag {@link Mossa#isPresaTripla}.
      *
-     * @param isPresaTripla booleano che indica se la mossa è una presa tripla
+     * @param presaTripla booleano che indica se la mossa è una presa tripla.
      */
-    public void setPresaTripla(final boolean isPresaTripla) {
-        this.isPresaTripla = isPresaTripla;
+    public void setPresaTripla(final boolean presaTripla) {
+        this.isPresaTripla = presaTripla;
     }
 
     /**
@@ -186,27 +187,31 @@ public abstract class Mossa {
     }
 
     /**
-     * Metodo astratto che viene implementato dalle sottoclassi {@link MossaBianco} e {@link MossaNero}
+     * Metodo astratto che viene implementato dalle sottoclassi
+     * {@link MossaBianco} e {@link MossaNero}.
      *
      * @param damiera la damiera che viene modificata
      * @return getValid() indica se la mossa e' valida
      */
-    public abstract boolean spostamentoSemplice(final Damiera damiera);
+    public abstract boolean spostamentoSemplice(Damiera damiera);
 
     /**
-     * Metodo astratto che viene implementato dalle sottoclassi mossaBianco e mossaNero
+     * Metodo astratto che viene implementato dalle sottoclassi mossaBianco.
+     * e mossaNero
      *
      * @param damiera la quale viene modificata
      * @return getValid() che indica se la mossa e' valida
      */
-    public abstract boolean presaSemplice(final Damiera damiera);
+    public abstract boolean presaSemplice(Damiera damiera);
 
     /**
-     * Metodo che gestisce la presa multipla delle pedine del giocatore bianco.<br>
+     * Metodo che gestisce la presa multipla delle pedine del giocatore
+     * bianco.<br>
      * Viene simulata su una copia della damiera, e se il metodo
      * {@link Mossa#presaMultiplaProva} ritorna:
      * <ul>
-     *     <li><code>true</code>, la presa &#232; valida e sar&#224; eseguita;</li>
+     *     <li><code>true</code>, la presa &#232; valida e sar&#224;
+     *     eseguita;</li>
      *     <li><code>false</code>, altrimenti.</li>
      * </ul>
      * <br>
@@ -260,7 +265,8 @@ public abstract class Mossa {
      * simulata la successiva.
      * <ul>
      *     <li><code>true</code>, la simulazione della presa &#232; valida;</li>
-     *     <li><code>false</code>, la simulazione della presa non &#232; valida.</li>
+     *     <li><code>false</code>, la simulazione della presa non &#232;
+     *     valida.</li>
      * </ul>
      *
      * @param damieraCopia Copia della damiera utilizzata durante la partita

@@ -13,11 +13,12 @@ import it.uniba.gioco.Partita;
 public interface Turno {
 
         /**
-         * Metodo implementato dalle classi TurnoBianco e TurnoNero
+         * Metodo implementato dalle classi TurnoBianco e TurnoNero.
          * @param p la partita in corso
-         * @param tempoG il tempo cumulativo del giocatore aggiornato ad ogni turno
+         * @param tempoG il tempo cumulativo del giocatore aggiornato
+         * ad ogni turno
          * @return il tempo trascorso dal giocatore nel singolo turno
          */
-        public long turnoGiocatore(Partita p, long tempoG);
+        long turnoGiocatore(Partita p, long tempoG);
 
 }
