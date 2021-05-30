@@ -11,20 +11,19 @@ import java.util.Scanner;
  * del programma e le interazioni tra le varie classi.</h2>
  * <b>Class Type:</b> &#60; Control &#62; <br>
  * <b>Responsabilities:</b> <br>
- *      <b>Knows:</b>
- *      <ul>
- *          <li> Giocatore che sta giocando durante il suo turno. </li>
- *      </ul>
- *      <b>Does:</b> <br>
- *              <ul>
- *                  <li> Richiedere informazioni sul funzionamento
- *                  del programma; </li>
- *                  <li> Iniziare una nuova partita a dama; </li>
- *                  <li> Visualizzare la damiera numerata; </li>
- *                  <li> Uscire dal programma; </li>
- *                  <li> Mostrare messaggi di avviso/errore. </li>
- *              </ul>
- *
+ * <b>Knows:</b>
+ * <ul>
+ *     <li> Giocatore che sta giocando durante il suo turno. </li>
+ * </ul>
+ * <b>Does:</b> <br>
+ *         <ul>
+ *             <li> Richiedere informazioni sul funzionamento
+ *             del programma; </li>
+ *             <li> Iniziare una nuova partita a dama; </li>
+ *             <li> Visualizzare la damiera numerata; </li>
+ *             <li> Uscire dal programma; </li>
+ *             <li> Mostrare messaggi di avviso/errore. </li>
+ *         </ul>
  */
 
 public class Menu {
@@ -38,22 +37,41 @@ public class Menu {
      * Crea una nuova partita.
      */
     private Partita partita = new Partita();
+
+    /**
+     * Crea un'istanza di comando.
+     */
     private Comando cmd = new Comando();
 
     /**
-     * Costruttore vuoto
+     * Costruttore vuoto.
      */
     public Menu() {
     }
 
+    /**
+     * Metodo getter.
+     *
+     * @return la partita in corso
+     */
     public Partita getPartita() {
         return partita;
     }
 
-    public void setPartita(Partita partita) {
-        this.partita = partita;
+    /**
+     * Metodo setter.
+     *
+     * @param p la partita in corso
+     */
+    public void setPartita(final Partita p) {
+        this.partita = p;
     }
 
+    /**
+     * Metodo getter.
+     *
+     * @return istanza di comando
+     */
     public Comando getCmd() {
         return cmd;
     }
@@ -61,6 +79,7 @@ public class Menu {
     /**
      * Metodo che ritorna l'unica istanza di Menù,
      * chiamato in AppMain.
+     *
      * @return l'oggetto solo se NON esiste:
      */
     public static Menu getInstance() {
@@ -135,6 +154,7 @@ public class Menu {
 
     /**
      * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
+     *
      * @return nullstring
      */
     public String gioca() {
