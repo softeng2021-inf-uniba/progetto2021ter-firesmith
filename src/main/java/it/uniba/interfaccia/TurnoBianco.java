@@ -8,12 +8,10 @@ import it.uniba.strumenti.Costanti;
 import it.uniba.strumenti.Messaggi;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * <h1>Gestisce i comandi inseriti dal giocatore che controlla
- *  le pedine bianche. </h1><br>
+ * le pedine bianche. </h1><br>
  * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <b>Knows:</b>
@@ -35,43 +33,46 @@ import java.util.regex.Pattern;
 public class TurnoBianco implements Turno {
 
     /**
-     * Istanza di Comando
+     * Crea stanza di Comando.
      */
     private Comando cmd = new Comando();
 
     /**
      * Attributo che definisce l'istante di tempo dal quale iniziare
-     * a contare per calcolare il tempo trascorso nel singolo turno
+     * a contare per calcolare il tempo trascorso nel singolo turno.
      */
     private long start;
 
     /**
      * Attributo che definisce l'istante di tempo nel quale terminare
-     * il conteggio del tempo
+     * il conteggio del tempo.
      */
     private long finish;
 
     /**
      * Attributo che rappresenta il tempo trascorso dall'istante di tempo
-     * individuato da {@link TurnoBianco#finish} da quello individuato da {@link TurnoBianco#finish}
+     * individuato da {@link TurnoBianco#finish} da quello individuato da
+     * {@link TurnoBianco#finish}.
      */
     private long elapsed;
 
     /**
-     * Costruttore vuoto
+     * Costruttore vuoto.
      */
-    public TurnoBianco() {}
+    public TurnoBianco() {
+    }
 
     /**
-     * Metodo getter che ritorna un istanza della classe Comando
+     * Metodo getter che ritorna un istanza della classe Comando.
      *
      * @return istanza di comando
      */
     public Comando getCmd() {
         return cmd;
     }
+
     /**
-     * Metodo setter che imposta {@link TurnoBianco#start} sfruttando il tempo
+     * Metodo setter che imposta {@link TurnoBianco#start} sfruttando il tempo.
      * del sistema
      */
     public void setStart() {
@@ -79,16 +80,18 @@ public class TurnoBianco implements Turno {
     }
 
     /**
-     * Metodo getter
-     * @return l'istante di tempo in cui è iniziato il conteggio
+     * Metodo getter.
+     *
+     * @return l'istante di tempo in cui è iniziato il conteggio.
      */
     public long getStart() {
         return start;
     }
 
     /**
-     * Metodo getter
-     * @return l'istante di tempo in cui è terminato il conteggio
+     * Metodo getter.
+     *
+     * @return l'istante di tempo in cui è terminato il conteggio.
      */
     public long getFinish() {
         return finish;
@@ -96,7 +99,7 @@ public class TurnoBianco implements Turno {
 
     /**
      * Metodo setter che imposta {@link TurnoBianco#finish} sfruttando il tempo
-     * del sistema
+     * del sistema.
      */
     public void setFinish() {
         this.finish = System.currentTimeMillis();
@@ -104,34 +107,36 @@ public class TurnoBianco implements Turno {
 
     /**
      * Metodo setter che calcola 'elapsed' come una semplice
-     * differenza fra l'istante finale e quello iniziale
-     * @param start l'istante di tempo iniziale
-     * @param finish l'istante di tempo finale
+     * differenza fra l'istante finale e quello iniziale.
+     *
+     * @param startB  l'istante di tempo iniziale
+     * @param finishB l'istante di tempo finale
      */
-    public void setElapsed(long start, long finish) {
-        this.elapsed = start - finish;
+    public void setElapsed(final long startB, final long finishB) {
+        this.elapsed = startB - finishB;
     }
 
     /**
-     * Metodo getter
-     * @return il tempo trascorso fra {@link TurnoBianco#finish} e {@link TurnoBianco#start}
+     * Metodo getter.
+     *
+     * @return il tempo trascorso fra {@link TurnoBianco#finish}
+     * e {@link TurnoBianco#start}.
      */
     public long getElapsed() {
         return elapsed;
     }
 
 
-
     /**
      * Metodo che gestisce il turno del giocatore Nero, permettendogli
-     * di eseguire una serie di comandi
+     * di eseguire una serie di comandi.
      *
      * @param partita la partita in corso
-     * @param tempoG il tempo cumulativo del giocatore aggiornato ad ogni turno
+     * @param tempoG  il tempo cumulativo del giocatore aggiornato ad ogni turno
      * @return il tempo trascorso dal giocatore nel singolo turno
      */
     @Override
-    public long turnoGiocatore(Partita partita, long tempoG) {
+    public long turnoGiocatore(final Partita partita, final long tempoG) {
 
         setStart();
 
@@ -264,7 +269,7 @@ public class TurnoBianco implements Turno {
             }
         } while (turnoBianco);
 
-        //questo per far scorrere il tempo anche se non viene richiesto il comando tempo
+        //questo per far scorrere il tempo anche se non viene rich il cmd tempo
         setFinish();
         setElapsed(getFinish(), getStart());
 
