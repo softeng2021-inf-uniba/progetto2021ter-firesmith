@@ -29,7 +29,7 @@ public class MossaBianco extends Mossa {
      * @param pos1 casella d'inizio
      * @param pos2 casella d'arrivo
      */
-    public MossaBianco(int pos1, int pos2) {
+    public MossaBianco(final int pos1, final int pos2) {
         super(pos1, pos2);
     }
 
@@ -37,6 +37,7 @@ public class MossaBianco extends Mossa {
      * Metodo che gestisce lo spostamento delle pedine del giocatore bianco.
      *
      * @param damiera Damiera utilizzata durante la partita in corso
+     * @return booleano che indica se la mossa è valida
      */
     public boolean spostamentoSemplice(final Damiera damiera) {
         //qui vengono cercate le coordinate corrispondenti alle
@@ -93,11 +94,11 @@ public class MossaBianco extends Mossa {
      * </ul>
      *
      * @param damiera Damiera utilizzata durante la partita in corso
-     * @return Validit&#224; della presa semplice
+     * @return booleano che indica se la mossa è valida
      */
     public boolean presaSemplice(final Damiera damiera) {
 
-        //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
+        //qui vengono cercate le coordinate corrisp alle posizioni fornite dall'utente
         int x1 = damiera.cercaRiga(getPosizione1());
         int x2 = damiera.cercaRiga(getPosizione2());
 

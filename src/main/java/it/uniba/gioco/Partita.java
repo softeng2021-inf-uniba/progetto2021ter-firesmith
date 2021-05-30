@@ -6,25 +6,28 @@
 package it.uniba.gioco;
 
 import it.uniba.tavolo.Damiera;
+
 import java.util.ArrayList;
 import java.util.ListIterator;
+
 import it.uniba.strumenti.Costanti;
 
 /**
  * <h2>Classe che gestisce i dati della partita in corso.</h2>
  * <b>Class Type:</b> &#60; entity &#62; <br><br>
  * <b>Responsabilities:</b><br>
- *      <b>Knows:</b>
- *      <ul>
- *          <li>Tempo di inizio e fine turno di ogni giocatore;</li>
- *      </ul>
- *      <b>Does:</b>
- *      <ul>
- *          <li>Imposta lo stato della partita;</li>
- *          <li>Visualizza le pedine mangiate di ogni giocatore;</li>
- *          <li>Visualizza la cronologia delle mosse di ogni giocatore;</li>
- *          <li>Visualizza il tempo trascorso per ogni giocatore.</li>
- *      </ul>
+ * <b>Knows:</b>
+ * <ul>
+ *     <li>Tempo di inizio e fine turno di ogni giocatore;</li>
+ * </ul>
+ * <b>Does:</b>
+ * <ul>
+ *     <li>Imposta lo stato della partita;</li>
+ *     <li>Visualizza le pedine mangiate di ogni giocatore;</li>
+ *     <li>Visualizza la cronologia delle mosse di ogni giocatore;</li>
+ *     <li>Visualizza il tempo trascorso per ogni giocatore.</li>
+ * </ul>
+ *
  * @author Gruppo Firesmith
  */
 
@@ -36,19 +39,33 @@ public class Partita {
     // turno = true, se il turno è finito
     // abbandona = false, se non è stato usato il comando abbandona
     // abbandona = true, se è stato usato il comando abbandona
-    /** Definisce se la partita &#232; in corso. */
+    /**
+     * Definisce se la partita &#232; in corso.
+     */
     private boolean statoPartita = false;
-    /** Definisce se il turno &#232; in corso. */
+    /**
+     * Definisce se il turno &#232; in corso.
+     */
     private boolean turnoPartita = false;
-    /** Definisce se un giocatore ha abbandonato la partita. */
+    /**
+     * Definisce se un giocatore ha abbandonato la partita.
+     */
     private boolean abbandonaPartita = false;
-    /** Giocatore bianco. */
+    /**
+     * Giocatore bianco.
+     */
     private Giocatore bianco = new Giocatore();
-    /** Giocatore nero. */
+    /**
+     * Giocatore nero.
+     */
     private Giocatore nero = new Giocatore();
-    /** Damiera utilizzata durante la partita. */
+    /**
+     * Damiera utilizzata durante la partita.
+     */
     private Damiera damiera = new Damiera();
-    /** Lista delle mosse effettuate dai giocatori. */
+    /**
+     * Lista delle mosse effettuate dai giocatori.
+     */
     private ArrayList<String> cronologiaMosse = new ArrayList<String>();
 
 
@@ -69,6 +86,7 @@ public class Partita {
 
     /**
      * Imposta il valore di {@link Partita#statoPartita}.
+     *
      * @param stato Stato della partita
      */
     public void setStato(final boolean stato) {
@@ -77,6 +95,7 @@ public class Partita {
 
     /**
      * Imposta il valore di {@link Partita#turnoPartita}.
+     *
      * @param turno Stato del turno del giocatore
      */
     public void setTurno(final boolean turno) {
@@ -99,7 +118,9 @@ public class Partita {
 
     /**
      * Imposta il valore di {@link Partita#abbandonaPartita}.
-     * @param abbandona Indica se la partita &#232; stata abbandonata da un giocatore
+     *
+     * @param abbandona Indica se la partita &#232; stata abbandonata
+     *                  da un giocatore
      */
     public void setAbbandona(final boolean abbandona) {
         this.abbandonaPartita = abbandona;
@@ -107,6 +128,7 @@ public class Partita {
 
     /**
      * Aggiunge alla lista delle mosse l'ultima mossa effettuata.
+     *
      * @param mossa Ultima mossa inserita dal giocatore
      */
     public void setCronologiaMosse(final String mossa) {
@@ -115,6 +137,7 @@ public class Partita {
 
     /**
      * Fornisce le informazioni del primo giocatore.
+     *
      * @return Primo giocatore
      */
     public Giocatore getBianco() {
@@ -123,6 +146,7 @@ public class Partita {
 
     /**
      * Fornisce le informazioni del secondo giocatore.
+     *
      * @return Secondo giocatore
      */
     public Giocatore getNero() {
@@ -131,6 +155,7 @@ public class Partita {
 
     /**
      * Fornisce le informazioni della damiera utilizzata durante la partita.
+     *
      * @return Damiera utilizzata dai giocatori
      */
     public Damiera getDamiera() {
@@ -144,6 +169,7 @@ public class Partita {
      *     <li><code>false</code> se la partita non &#232; iniziata
      *     o non &#232; in corso.</li>
      * </ul>
+     *
      * @return Stato della partita
      */
     public boolean getStato() {
@@ -156,6 +182,7 @@ public class Partita {
      *     <li><code>true</code>, il turno &#232; in corso;</li>
      *     <li><code>false</code>, il turno &#232; terminato.</li>
      * </ul>
+     *
      * @return Stato del turno del giocatore
      */
     public boolean getTurno() {
@@ -169,6 +196,7 @@ public class Partita {
      *     da un giocatore;</li>
      *     <li><code>false</code>, la partita &#232; ancora in corso.</li>
      * </ul>
+     *
      * @return Stato della partita
      */
     public boolean getAbbandona() {
@@ -178,6 +206,7 @@ public class Partita {
     /**
      * Visualizza graficamente il numero delle pedine mangiate
      * da entrambi i giocatori.
+     *
      * @return nullstring
      */
     public String stampaPedineMangiate() {
@@ -201,6 +230,7 @@ public class Partita {
 
     /**
      * Visualizza graficamente le mosse effettuate da entrambi i giocatori.
+     *
      * @return nullstring
      */
 
@@ -233,21 +263,21 @@ public class Partita {
         // nel caso passi il minuto cambia la stampa
         if (bianco.getColore().equals("bianco")) {
 
-            if ((bianco.getTempo()/ Costanti.INSECOND) < Costanti.MINUTO) {
-                System.out.println("Bianco: " + (bianco.getTempo()/Costanti.INSECOND)
+            if ((bianco.getTempo() / Costanti.INSECOND) < Costanti.MINUTO) {
+                System.out.println("Bianco: " + (bianco.getTempo() / Costanti.INSECOND)
                         + " s");
             } else {
-                System.out.println("Bianco: " + ((bianco.getTempo()/ Costanti.INSECOND) / Costanti.MINUTO)
-                        + " m " + ((bianco.getTempo()/ Costanti.INSECOND) % Costanti.MINUTO)
+                System.out.println("Bianco: " + ((bianco.getTempo() / Costanti.INSECOND) / Costanti.MINUTO)
+                        + " m " + ((bianco.getTempo() / Costanti.INSECOND) % Costanti.MINUTO)
                         + " s");
             }
 
-            if ((nero.getTempo()/ Costanti.INSECOND) < Costanti.MINUTO) {
-                System.out.println("Nero: " + (nero.getTempo()/ Costanti.INSECOND)
+            if ((nero.getTempo() / Costanti.INSECOND) < Costanti.MINUTO) {
+                System.out.println("Nero: " + (nero.getTempo() / Costanti.INSECOND)
                         + " s");
             } else {
-                System.out.println("Nero: " + (nero.getTempo()/ Costanti.INSECOND) / Costanti.MINUTO
-                        + " m " + ((nero.getTempo()/ Costanti.INSECOND) % Costanti.MINUTO)
+                System.out.println("Nero: " + (nero.getTempo() / Costanti.INSECOND) / Costanti.MINUTO
+                        + " m " + ((nero.getTempo() / Costanti.INSECOND) % Costanti.MINUTO)
                         + " s");
 
             }

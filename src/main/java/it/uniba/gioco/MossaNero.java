@@ -30,7 +30,7 @@ public class MossaNero extends Mossa {
      * @param pos1 casella d'inizio
      * @param pos2 casella d'arrivo
      */
-    public MossaNero(int pos1, int pos2) {
+    public MossaNero(final int pos1, final int pos2) {
         super(pos1, pos2);
     }
 
@@ -38,6 +38,7 @@ public class MossaNero extends Mossa {
      * Metodo che gestisce lo spostamento delle pedine del giocatore nero.
      *
      * @param damiera Damiera utilizzata durante la partita in corso
+     * @return booleano che indica se la mossa è valida
      */
     public boolean spostamentoSemplice(final Damiera damiera) {
 
@@ -97,7 +98,7 @@ public class MossaNero extends Mossa {
      * </ul>
      *
      * @param damiera Damiera utilizzata durante la partita in corso
-     * @return Validit&#224; della presa semplice
+     * @return booleano che indica se la mossa è valida
      */
     public boolean presaSemplice(final Damiera damiera) {
 
