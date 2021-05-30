@@ -22,6 +22,11 @@ public final class Messaggi {
     /** Costruttore della classe.*/
     private Messaggi() {
     }
+
+    /**
+     * Messaggio iniziale rivolto all'utente
+     * @return nullstring
+     */
     public static String benvenuto() {
         System.out.print("┌─────────────────────────────────┒"
                 + "\n│ Dama Italiana by Team Firesmith │"
