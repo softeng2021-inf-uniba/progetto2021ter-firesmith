@@ -24,7 +24,7 @@ public final class Messaggi {
     }
 
     /**
-     * Messaggio iniziale rivolto all'utente
+     * Messaggio iniziale rivolto all'utente.
      * @return nullstring
      */
     public static String benvenuto() {
