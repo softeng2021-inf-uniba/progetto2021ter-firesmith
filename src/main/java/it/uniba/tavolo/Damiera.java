@@ -1,6 +1,5 @@
 package it.uniba.tavolo;
 
-import it.uniba.gioco.Mossa;
 import it.uniba.strumenti.Costanti;
 
 /**
