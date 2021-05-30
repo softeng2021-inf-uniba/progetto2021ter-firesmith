@@ -1,8 +1,22 @@
 package it.uniba.strumenti;
 
+/**
+ * <h1>Classe che contiene tutte le costanti utilizzate nel programma.</h1><br>
+ * <b>Class Type:</b> &#60; Boundary &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ * <b>Knows:</b> <br>
+ *     <ul>
+ *         <li> Una serie di costanti che vengono utilizzate da alcune classi </li>
+ *     </ul>
+ * <b>Does:</b>
+ *
+ * @author Gruppo Firesmith
+ */
 public class Costanti {
+    /**
+     * Costruttore vuoto
+     */
     private Costanti() {
-
     }
 
     /** Numero massimo delle caselle disposte sulla riga. */

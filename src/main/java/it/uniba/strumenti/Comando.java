@@ -9,11 +9,33 @@ import java.util.regex.Pattern;
 import it.uniba.gioco.Mossa;
 import it.uniba.gioco.Partita;
 
+/**
+ * <h1>Classe che contiene alcuni metodi di supporto. </h1><br>
+ * <b>Class Type:</b> &#60; NOECB &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ * <b>Knows:</b> <br>
+ *
+ * <b>Does:</b>
+ * <ul>
+ *     <li> Permette di terminare il programma. </li>
+ *     <li> Permette di abbandonare la partita in corso. </li>
+ *     <li> Gestisce l'input dell'utente. </li>
+ * </ul>
+ *
+ * @author Gruppo Firesmith
+ */
 public final class Comando {
+
+    /**
+     * Costruttore vuoto
+     */
+    public Comando() {}
 
     /**
      * Quando viene invocato dal menu, permette al giocatore
      * di arrendersi e concludere la partita.
+     *
+     * @param partita la partita in corso
      */
     public void esci(Partita partita) {
         boolean valido = false;
@@ -46,6 +68,7 @@ public final class Comando {
      * Quando viene invocato dal menu, permette al giocatore
      * di arrendersi e concludere la partita.
      *
+     * @param p Partita in corso
      * @param g Giocatore che ha richiesto di abbandonare la partita
      */
     public void abbandona(Partita p, Giocatore g) {
@@ -99,6 +122,7 @@ public final class Comando {
     /**
      * Metodo che gestisce l'input e verifica la validità attraverso le regex
      * @param mossa su cui vengono impostate le coordinate ottenute
+     * @param comando la stringa gestita dal metodo
      * @return il comando, come mossa o comando per il menù
      */
     public String gestisciRegex(Mossa mossa, String comando) {
@@ -161,6 +185,13 @@ public final class Comando {
         return trasformaComando(comando);
     }
 
+    /**
+     * Metodo che permette di trasformare in lower case
+     * l'input ed elimina ogni whitespace.
+     *
+     * @param comando l'input dell'utente da gestire
+     * @return il comando dopo le trasformazioni
+     */
     public String trasformaComando(String comando) {
         comando = comando.toLowerCase();
         comando = comando.replaceAll("\\s+","");

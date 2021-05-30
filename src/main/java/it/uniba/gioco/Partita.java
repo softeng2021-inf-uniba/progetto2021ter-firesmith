@@ -51,10 +51,6 @@ public class Partita {
     /** Lista delle mosse effettuate dai giocatori. */
     private ArrayList<String> cronologiaMosse = new ArrayList<String>();
 
-    /** Costante utilizzata per il controllo della posizione delle pedine. */
-    public static final int SIXTY = 60;
-
-    // Creo la partita
 
     /**
      * Imposta una nuova partita:
@@ -87,10 +83,16 @@ public class Partita {
         this.turnoPartita = turno;
     }
 
+    /**
+     * Imposta il valore di {@link Partita#bianco}.
+     */
     public void setBianco() {
         bianco.setColore("bianco");
     }
 
+    /**
+     * Imposta il valore di {@link Partita#nero}.
+     */
     public void setNero() {
         nero.setColore("nero");
     }
@@ -176,7 +178,7 @@ public class Partita {
     /**
      * Visualizza graficamente il numero delle pedine mangiate
      * da entrambi i giocatori.
-     * @return
+     * @return nullstring
      */
     public String stampaPedineMangiate() {
 
@@ -199,7 +201,7 @@ public class Partita {
 
     /**
      * Visualizza graficamente le mosse effettuate da entrambi i giocatori.
-     * @return
+     * @return nullstring
      */
 
     public String getCronologiaMosse() {

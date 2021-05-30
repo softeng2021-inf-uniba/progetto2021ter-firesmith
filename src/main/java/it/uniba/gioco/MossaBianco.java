@@ -3,12 +3,41 @@ package it.uniba.gioco;
 import it.uniba.strumenti.Costanti;
 import it.uniba.tavolo.Damiera;
 
+/**
+ * <h1>Classe che effettua le mosse per il giocatore bianco.</h1><br>
+ * <b>Class Type:</b> &#60; Control &#62; <br><br>
+ * <b>Responsabilities:</b> <br>
+ * <p><b>Knows:</b>
+ *     <ul>
+ *     <li> Le posizioni delle caselle sulle quali effettuare le mosse </li>
+ *     <li> L'effettiva validit&#224; di una mossa </li>
+ *     </ul> <br>
+ *     <b>Does:</b>
+ *         <ul>
+ *         <li> Permette all'utente di inserire la mossa
+ *         ed effettuare lo spostamento,
+ *         le prese semplici o le prese multiple;</li>
+ *         <li>Controlla la validit&#224; delle mosse inserite.</li>
+ *         </ul>
+ *
+ * @author Gruppo Firesmith
+ */
 public class MossaBianco extends Mossa {
-
+    /**
+     * Costruttore che richiama quello della sua superclasse.
+     *
+     * @param pos1 casella d'inizio
+     * @param pos2 casella d'arrivo
+     */
     public MossaBianco(int pos1, int pos2) {
         super(pos1, pos2);
     }
 
+    /**
+     * Metodo che gestisce lo spostamento delle pedine del giocatore bianco.
+     *
+     * @param damiera Damiera utilizzata durante la partita in corso
+     */
     public boolean spostamentoSemplice(final Damiera damiera) {
         //qui vengono cercate le coordinate corrispondenti alle
         //posizioni fornite dall'utente
@@ -55,6 +84,17 @@ public class MossaBianco extends Mossa {
         return getValid();
     }
 
+    /**
+     * Metodo che gestisce la presa semplice delle pedine
+     * del giocatore bianco.
+     * <ul>
+     *     <li><code>true</code>, la presa &#232; valida;</li>
+     *     <li><code>false</code>, la presa non &#232; valida.</li>
+     * </ul>
+     *
+     * @param damiera Damiera utilizzata durante la partita in corso
+     * @return Validit&#224; della presa semplice
+     */
     public boolean presaSemplice(final Damiera damiera) {
 
         //qui vengono cercate le coordinate corrispondenti alle posizioni fornite dall'utente
@@ -130,76 +170,6 @@ public class MossaBianco extends Mossa {
         return getValid();
     }
 
-    public boolean presaMultipla(final Damiera damiera) {
 
-        Damiera damieraCopia = new Damiera(damiera);
-
-        //salvo le posizioni poichÃ¨ verranno sovrascritte
-        //con la damiera di copia
-        int pos1 = getPosizione1();
-        int pos2 = getPosizione2();
-        int pos3 = getPosizione3();
-
-        //se la presa provata nella damiera di prova Ã¨ valida,
-        //allora la eseguo su quella originale
-        if (presaMultiplaProva(damieraCopia)) {
-
-            //1a PRESA
-            setPosizione1(pos1);
-            setPosizione2(pos2);
-
-            presaSemplice(damiera);
-
-            //2a PRESA
-            setPosizione1(getPosizione2());
-            setPosizione2(getPosizione3());
-
-            presaSemplice(damiera);
-
-            if (getPosizione4() != 0) {
-                //3a PRESA
-                setPosizione1(pos3);
-                setPosizione2(getPosizione4());
-
-                presaSemplice(damiera);
-
-            }
-
-        }
-        return getValid();
-    }
-
-    public boolean presaMultiplaProva(final Damiera damieraCopia) { //PROVA
-
-        boolean prova = false;
-        boolean prova1 = presaSemplice(damieraCopia);
-        boolean prova2 = false;
-        boolean prova3 = false;
-
-        if (prova1) {
-
-            setPosizione1(getPosizione2());
-            setPosizione2(getPosizione3());
-
-            prova2 = presaSemplice(damieraCopia);
-            if (prova2) {
-
-                prova = true;
-                if (getPosizione4() != 0) {
-                    setPosizione1(getPosizione3());
-                    setPosizione2(getPosizione4());
-                    prova3 = presaSemplice(damieraCopia);
-                    if (prova3) {
-                        prova = true;
-                    } else {
-                        prova = false;
-                    }
-                }
-            } else {
-                prova = false;
-            }
-        }
-        return prova;
-    }
 }
 

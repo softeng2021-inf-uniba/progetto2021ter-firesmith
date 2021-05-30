@@ -135,7 +135,7 @@ public class Menu {
 
     /**
      * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
-     * @return
+     * @return nullstring
      */
     public String gioca() {
         Turno bianco = new TurnoBianco();

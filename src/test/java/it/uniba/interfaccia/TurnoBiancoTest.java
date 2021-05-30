@@ -43,7 +43,7 @@ class TurnoBiancoTest {
         String presa = "18x9";
         InputStream pres = new ByteArrayInputStream(presa.getBytes());
         System.setIn(pres);
-        test.turnoGiocatore(partita,80);
+        test.turnoGiocatore(partita,66);
         String spos1 = "10-14";
         InputStream sposner = new ByteArrayInputStream(spos1.getBytes());
         System.setIn(sposner);
@@ -68,9 +68,6 @@ class TurnoBiancoTest {
         InputStream presam = new ByteArrayInputStream(presamult.getBytes());
         System.setIn(presam);
         test.turnoGiocatore(partita,80);
-
-
-
 
     }
 

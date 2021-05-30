@@ -37,7 +37,8 @@ public final class Messaggi {
         return null;
     }
     /** Mostra all'utente le informazioni sul programma.
-     * @return*/
+     * @return nullstring
+     */
     public static String aiuto() {
         System.out.println("\n┌───────────────────────────┒"
                 + "\n│     Dama Help Center      │"
@@ -56,28 +57,28 @@ public final class Messaggi {
     }
 
     /** Messaggio di uscita dal programma.
-     * @return null*/
+     * @return nullstring */
     public static String uscita() {
         System.out.println("\n \uD83D\uDEAA Uscita dal gioco...");
         return null;
     }
 
     /** Messaggio di informazione di ritorno al menu.
-     * @return null*/
+     * @return nullstring */
     public static String menu() {
         System.out.println("\n ↩ Ritorno al menù... \n");
         return null;
     }
 
     /** Messaggio di errore inserimento comando.
-     * @return null*/
+     * @return nullatring */
     public static String inserimento() {
         System.out.println("\n ⚠ Comando non valido \n");
         return null;
     }
 
     /** Messaggio di avviso di partita non in corso.
-     * @return null*/
+     * @return nullstring */
     public static String partita() {
         System.out.println("\n \uD83D\uDCA1 Nessuna partita in corso,"
                 + " inizia una nuova partita (gioca)\n");
@@ -85,7 +86,7 @@ public final class Messaggi {
     }
 
     /** Messaggio di avviso di stampa damiera con partita non in corso.
-     * @return null*/
+     * @return nullstring */
     public static String damiera() {
         System.out.println("\n \uD83D\uDCA1 Per mostrare la damiera con "
                 + "i pezzi, inizia una nuova partita (gioca)\n");
@@ -93,7 +94,7 @@ public final class Messaggi {
     }
 
     /** Messaggio di errore di partita gi&#224; in corso.
-     * @return*/
+     * @return nullstring*/
     public static String errorePartita() {
         System.out.println("\n \uD83D\uDCA1 La partita è già in corso!");
         return null;
@@ -101,7 +102,7 @@ public final class Messaggi {
 
     /** Messaggio di informazione di abbandono partita
      * da parte del giocatore bianco.
-     * @return null*/
+     * @return nullstring */
     public static String biancoAbbandona() {
         System.out.println("\n ⚑ Il Bianco abbandona la partita,"
                 + " il Nero vince ✌\n");
@@ -110,7 +111,7 @@ public final class Messaggi {
 
     /** Messaggio di informazione di abbandono partita
      * da parte del giocatore bianco.
-     * @return null*/
+     * @return nullstring */
     public static String neroAbbandona() {
         System.out.println("\n ⚑ Il Nero abbandona la partita,"
                 + " il Bianco vince ✌\n");
@@ -118,21 +119,21 @@ public final class Messaggi {
     }
 
     /** Messaggio di informazione di presa effettuata.
-     * @return*/
+     * @return nullstring*/
     public static String presaOk() {
         System.out.println("Presa Effettuata\n");
         return null;
     }
 
     /** Messaggio di informazione di spostamento effettuato.
-     * @return*/
+     * @return nullstring */
     public static String spostamentoOk() {
         System.out.println("Spostamento Effettuato\n");
         return null;
     }
 
     /** Menu del turno del giocatore bianco.
-     * @return*/
+     * @return nullstring*/
     public static String menuBianco() {
         System.out.print("┌───────────────────────┒"
                 + "      \n│ Menù Giocatore Bianco │"
@@ -154,7 +155,7 @@ public final class Messaggi {
     }
 
     /** Menu del giocatore nero.
-     * @return null*/
+     * @return nullstring*/
     public static String menuNero() {
         System.out.print("┌──────────────────────┒"
                 + "      \n│ Menù Giocatore Nero  │"
@@ -176,21 +177,21 @@ public final class Messaggi {
     }
 
     /** Messaggio di informazione di riconoscimento dello spostamento.
-     * @return*/
+     * @return nullstring*/
     public static String spostamento() {
         System.out.println("\nSto effettuando uno spostamento...");
         return null;
     }
 
     /** Messaggio di informazione di riconoscimento della presa.
-     * @return*/
+     * @return nullstring */
     public static String presa() {
         System.out.println("\nSto effettuando una presa...");
         return null;
     }
 
     /** Messaggio di informazione di validità della mossa.
-     * @return null*/
+     * @return nullstring */
     public static String nonValida() {
         System.out.println("⚠ Mossa non valida");
         return null;
