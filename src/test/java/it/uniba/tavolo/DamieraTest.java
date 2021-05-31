@@ -41,19 +41,6 @@ public class DamieraTest {
         test.cercaRiga(9);
         assertEquals(2, test.cercaRiga(9));
     }
-    @Ignore
-    @Test
-    @DisplayName("disabled")
-    public void stampadamieranumeritest(){
-        System.out.println(test.stampaPosizioniPedine());
-        assertNull(null,out.toString());
-    }
-    @Ignore
-    @Test
-    @DisplayName("disabled")
-    public void stampadamieratest(){
-        System.out.println(test.stampaDamieraPedine());
-        assertNull(null,out.toString());
-    }
+
 
 }
