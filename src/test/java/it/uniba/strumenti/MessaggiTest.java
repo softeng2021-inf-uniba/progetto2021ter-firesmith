@@ -69,38 +69,8 @@ class MessaggiTest {
         assertNull(null, out.toString());
     }
     @Test
-    public void menuBiancoTest(){
-        System.out.println(Messaggi.menuBianco());
-        assertNull(null, out.toString());
-    }
-    @Test
-    public void menuNeroTest(){
-        System.out.println(Messaggi.menuNero());
-        assertNull(null, out.toString());
-    }
-    @Test
     public void errorePartitaTest(){
         System.out.println(Messaggi.errorePartita());
-        assertNull(null, out.toString());
-    }
-    @Test
-    public void presaTest(){
-        System.out.println(Messaggi.presa());
-        assertNull(null, out.toString());
-    }
-    @Test
-    public void spostamentoTest(){
-        System.out.println(Messaggi.spostamento());
-        assertNull(null, out.toString());
-    }
-    @Test
-    public void presaOkTest(){
-        System.out.println(Messaggi.presaOk());
-        assertNull(null, out.toString());
-    }
-    @Test
-    public void spostamentoOkTest(){
-        System.out.println(Messaggi.spostamentoOk());
         assertNull(null, out.toString());
     }
     @Test
