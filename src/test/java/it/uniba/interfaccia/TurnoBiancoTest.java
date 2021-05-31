@@ -71,4 +71,20 @@ class TurnoBiancoTest {
 
     }
 
+    @Test
+    public void menuTest(){
+        Partita partita = new Partita();
+        partita.setBianco();
+        String simulatedUserInput ="damiera"+System.getProperty("line.separator")+"numeri"+System.getProperty("line.separator")+"help"+System.getProperty("line.separator")+ "prese"+System.getProperty("line.separator")+"tempo"+System.getProperty("line.separator")+"gioca"+System.getProperty("line.separator")+"mosse" + System.getProperty("line.separator")
+                + "21-18" + System.getProperty("line.separator");
+
+        InputStream savedStandardInputStream = System.in;
+        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+
+        test.turnoGiocatore(partita,2323);
+// code that needs multiple user inputs
+
+        System.setIn(savedStandardInputStream);
+    }
+
 }

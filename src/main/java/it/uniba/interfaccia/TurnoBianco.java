@@ -131,11 +131,11 @@ public class TurnoBianco implements Turno {
         Mossa mossa = new MossaBianco(0, 0);
 
         boolean chk = false;
-
+        Scanner in = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.menuBianco();
 
-            Scanner in = new Scanner(System.in, "UTF-8");
+
             String comando = in.nextLine();
             String presa = comando;
             comando = Comando.gestisciRegex(mossa, comando);

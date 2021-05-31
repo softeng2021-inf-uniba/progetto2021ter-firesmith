@@ -89,11 +89,9 @@ public class Menu {
     public void benvenuto() {
         // Serve per controllare se la partita è in corso
         boolean inizio = false;
-
+        Scanner input = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.benvenuto();
-
-            Scanner input = new Scanner(System.in, "UTF-8");
             String comando = input.nextLine();
 
             comando = Comando.trasformaComando(comando);
@@ -142,9 +140,8 @@ public class Menu {
     /**
      * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
      *
-     * @return nullstring
      */
-    public String gioca() {
+    public void gioca() {
         Turno bianco = new TurnoBianco();
         Turno nero = new TurnoNero();
 
@@ -184,7 +181,6 @@ public class Menu {
                 numeroTurno++;
             } while (getPartita().getStato());
         }
-        return null;
     }
 }
 
