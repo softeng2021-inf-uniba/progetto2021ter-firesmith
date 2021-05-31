@@ -23,14 +23,19 @@ public class MossaTest {
     @DisplayName("Sto testando spostamento semplice nero \n")
     void spostamentoSempliceNeroTest() {
         Mossa mossa = new MossaNero(9,13);
+        Mossa mossafake = new MossaNero(9,10);
         assertTrue(mossa.spostamentoSemplice(test));
+        assertFalse(mossa.spostamentoSemplice(test));
     }
 
     @Test
     @DisplayName("Sto testando spostamento semplice bianco \n")
     void spostamentoSempliceBiancoTest() {
         Mossa mossa = new MossaBianco(21,18);
+        Mossa mossafake = new MossaNero(20,10);
         assertTrue(mossa.spostamentoSemplice(test));
+        assertFalse(mossa.spostamentoSemplice(test));
+
     }
 
     @Test
@@ -38,10 +43,13 @@ public class MossaTest {
     void presaSempliceBiancoTest() {
         Mossa spostamentobianco = new MossaBianco(21,18);
         Mossa spostamentonero = new MossaNero(9,13);
+        Mossa spostfalso =new MossaNero(9,10);
         spostamentobianco.spostamentoSemplice(test);
         spostamentonero.spostamentoSemplice(test);
         MossaBianco mossa = new MossaBianco(18,9);
         assertTrue(mossa.presaSemplice(test));
+        assertFalse(spostfalso.presaSemplice(test));
+
     }
     @Test
     @DisplayName("Sto testando presa semplice nero \n ")
@@ -50,10 +58,12 @@ public class MossaTest {
         Mossa spostamentonero = new MossaNero(10,14);
         Mossa spbianc1= new MossaBianco(18,13);
         Mossa mossa = new MossaNero(9,18);
+        Mossa mossafake = new MossaNero(9,10);
         assertTrue(spostamentobianco.spostamentoSemplice(test));
         assertTrue(spostamentonero.spostamentoSemplice(test));
         assertTrue(spbianc1.spostamentoSemplice(test));
         assertTrue(mossa.presaSemplice(test));
+        assertFalse(mossafake.presaSemplice(test));
     }
     @Test
     @DisplayName("Sto testando presa semplice nero a sinistra \n ")

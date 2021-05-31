@@ -39,11 +39,6 @@ public class Menu {
     private Partita partita = new Partita();
 
     /**
-     * Crea un'istanza di comando.
-     */
-    private Comando cmd = new Comando();
-
-    /**
      * Costruttore vuoto.
      */
     public Menu() {
@@ -67,14 +62,6 @@ public class Menu {
         this.partita = p;
     }
 
-    /**
-     * Metodo getter.
-     *
-     * @return istanza di comando
-     */
-    public Comando getCmd() {
-        return cmd;
-    }
 
     /**
      * Metodo che ritorna l'unica istanza di Menù,
@@ -102,14 +89,12 @@ public class Menu {
     public void benvenuto() {
         // Serve per controllare se la partita è in corso
         boolean inizio = false;
-
+        Scanner input = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.benvenuto();
-
-            Scanner input = new Scanner(System.in, "UTF-8");
             String comando = input.nextLine();
 
-            comando = cmd.trasformaComando(comando);
+            comando = Comando.trasformaComando(comando);
 
             switch (comando) {
 
@@ -139,7 +124,7 @@ public class Menu {
                     break;
 
                 case "esci":
-                    getCmd().esci(getPartita());
+                    Comando.esci(getPartita());
                     getPartita().setStato(false);
                     inizio = getPartita().getStato();
                     break;
@@ -155,9 +140,8 @@ public class Menu {
     /**
      * Gestisce tutte le operazioni permesse durante il turno di ogni giocatore.
      *
-     * @return nullstring
      */
-    public String gioca() {
+    public void gioca() {
         Turno bianco = new TurnoBianco();
         Turno nero = new TurnoNero();
 
@@ -197,7 +181,6 @@ public class Menu {
                 numeroTurno++;
             } while (getPartita().getStato());
         }
-        return null;
     }
 }
 

@@ -24,7 +24,7 @@ import it.uniba.gioco.Partita;
  *
  * @author Gruppo Firesmith
  */
-public final class Comando {
+public class Comando {
 
     /**
      * Costruttore vuoto.
@@ -38,7 +38,7 @@ public final class Comando {
      *
      * @param partita la partita in corso
      */
-    public void esci(final Partita partita) {
+    public static void esci(final Partita partita) {
         boolean valido = false;
         System.out.print("\n\nPer confermare l'uscita dal gioco inserire "
                 + "[Si/No]" + "\n➤ ");
@@ -72,7 +72,7 @@ public final class Comando {
      * @param p Partita in corso
      * @param g Giocatore che ha richiesto di abbandonare la partita
      */
-    public void abbandona(final Partita p, final Giocatore g) {
+    public static void abbandona(final Partita p, final Giocatore g) {
         // partita = true, se partita in corso
         // partita = false, se abbandona partita (partita non in corso)
         boolean statoPartita = true;
@@ -127,7 +127,7 @@ public final class Comando {
      * @param comando la stringa gestita dal metodo
      * @return il comando, come mossa o comando per il menù
      */
-    public String gestisciRegex(final Mossa mossa, String comando) {
+    public static String gestisciRegex(final Mossa mossa, String comando) {
 
         Pattern p1 = Pattern.compile(Costanti.SPOSTAMENTO);
         Pattern p2 = Pattern.compile(Costanti.PRESA_S);
@@ -196,7 +196,7 @@ public final class Comando {
      * @param comando l'input dell'utente da gestire
      * @return il comando dopo le trasformazioni
      */
-    public String trasformaComando(String comando) {
+    public static String trasformaComando(String comando) {
         comando = comando.toLowerCase();
         comando = comando.replaceAll("\\s+", "");
         return comando;

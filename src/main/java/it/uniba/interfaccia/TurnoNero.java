@@ -34,12 +34,6 @@ import java.util.Scanner;
 public class TurnoNero implements Turno {
 
     /**
-     * Istanza di Comando.
-     */
-    private Comando cmd = new Comando();
-
-
-    /**
      * Attributo che definisce l'istante di tempo dal quale iniziare
      * a contare per calcolare il tempo trascorso nel singolo turno.
      */
@@ -62,14 +56,6 @@ public class TurnoNero implements Turno {
     public TurnoNero() {
     }
 
-    /**
-     * Metodo getter che ritorna un istanza della classe Comando.
-     *
-     * @return istanza di comando
-     */
-    public Comando getCmd() {
-        return cmd;
-    }
 
     /**
      * Metodo setter che imposta {@link TurnoNero#start} sfruttando il tempo
@@ -144,14 +130,13 @@ public class TurnoNero implements Turno {
         Mossa mossa = new MossaNero(0, 0);
 
         boolean chk = false;
-
+        Scanner in = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.menuNero();
 
-            Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
             String presa = comando;
-            comando = getCmd().gestisciRegex(mossa, comando);
+            comando = Comando.gestisciRegex(mossa, comando);
 
 
             switch (comando) {
@@ -241,13 +226,13 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "abbandona":
-                    getCmd().abbandona(partita, partita.getNero());
+                    Comando.abbandona(partita, partita.getNero());
                     turnoNero = partita.getTurno();
 
                     break;
 
                 case "esci":
-                    getCmd().esci(partita); // System.exit(0);
+                    Comando.esci(partita); // System.exit(0);
                     break;
 
                 case "tempo":

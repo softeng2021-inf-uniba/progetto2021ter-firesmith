@@ -20,7 +20,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComandoTest {
-    Comando test = new Comando();
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -37,19 +37,19 @@ class ComandoTest {
     @Test
     public void gestioneRegexSpostamentoTest() {
         Mossa mossa = new MossaBianco(9,13);
-        assertEquals("spostamento",(test.gestisciRegex(mossa,"9-13")));
+        assertEquals("spostamento",(Comando.gestisciRegex(mossa,"9-13")));
     }
 
     @Test
     public void gestioneRegexPresaTest(){
         Mossa mossa = new MossaBianco(9,13);
-        assertEquals("presasemplice",(test.gestisciRegex(mossa,"9x13")));
+        assertEquals("presasemplice",(Comando.gestisciRegex(mossa,"9x13")));
     }
 
     @Test
     public void gestioneRegexPresaMultiplaTest(){
         Mossa mossa = new MossaBianco(9,13);
-        assertEquals("presamultipla",(test.gestisciRegex(mossa,"9x13x21")));
+        assertEquals("presamultipla",(Comando.gestisciRegex(mossa,"9x13x21")));
     }
 
     @Test
@@ -58,7 +58,7 @@ class ComandoTest {
         String input = "no";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        test.esci(partita);
+        Comando.esci(partita);
     }
 
 
@@ -70,7 +70,7 @@ class ComandoTest {
         String input = "si";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        test.abbandona(partita,g);
+        Comando.abbandona(partita,g);
 
     }
     @Test
@@ -81,7 +81,7 @@ class ComandoTest {
         String input = "si";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        test.abbandona(partita,g);
+        Comando.abbandona(partita,g);
     }
 
     @Test
@@ -92,7 +92,7 @@ class ComandoTest {
         String input = "no";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        test.abbandona(partita,g);
+        Comando.abbandona(partita,g);
 
     }
     @Test
@@ -103,6 +103,6 @@ class ComandoTest {
         String input = "no";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        test.abbandona(partita,g);
+        Comando.abbandona(partita,g);
     }
 }

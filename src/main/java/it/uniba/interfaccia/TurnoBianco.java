@@ -33,11 +33,6 @@ import java.util.Scanner;
 public class TurnoBianco implements Turno {
 
     /**
-     * Crea stanza di Comando.
-     */
-    private Comando cmd = new Comando();
-
-    /**
      * Attributo che definisce l'istante di tempo dal quale iniziare
      * a contare per calcolare il tempo trascorso nel singolo turno.
      */
@@ -60,15 +55,6 @@ public class TurnoBianco implements Turno {
      * Costruttore vuoto.
      */
     public TurnoBianco() {
-    }
-
-    /**
-     * Metodo getter che ritorna un istanza della classe Comando.
-     *
-     * @return istanza di comando
-     */
-    public Comando getCmd() {
-        return cmd;
     }
 
     /**
@@ -145,14 +131,14 @@ public class TurnoBianco implements Turno {
         Mossa mossa = new MossaBianco(0, 0);
 
         boolean chk = false;
-
+        Scanner in = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.menuBianco();
 
-            Scanner in = new Scanner(System.in, "UTF-8");
+
             String comando = in.nextLine();
             String presa = comando;
-            comando = getCmd().gestisciRegex(mossa, comando);
+            comando = Comando.gestisciRegex(mossa, comando);
             comando = comando.toLowerCase(); // Trasforma l'input in minuscolo
 
 
@@ -243,13 +229,13 @@ public class TurnoBianco implements Turno {
                     break;
 
                 case "abbandona":
-                    getCmd().abbandona(partita, partita.getBianco());
+                    Comando.abbandona(partita, partita.getBianco());
                     turnoBianco = partita.getTurno();
 
                     break;
 
                 case "esci":
-                    getCmd().esci(partita); // System.exit(0);
+                    Comando.esci(partita); // System.exit(0);
                     break;
 
                 case "tempo":
