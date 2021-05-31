@@ -27,12 +27,6 @@ import it.uniba.gioco.Partita;
 public class Comando {
 
     /**
-     * Costruttore vuoto.
-     */
-    public Comando() {
-    }
-
-    /**
      * Quando viene invocato dal menu, permette al giocatore
      * di arrendersi e concludere la partita.
      *
@@ -60,7 +54,7 @@ public class Comando {
 
             } else {
                 Messaggi.inserimento();
-                System.out.print("➤");
+                System.out.print("➤ ");
             }
         } while (!valido);
     }
@@ -181,7 +175,7 @@ public class Comando {
                         comando = "presa multipla";
                     }
                 }
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.err.println("\nIllegal string (exception)");
             }
         }
