@@ -130,11 +130,10 @@ public class TurnoNero implements Turno {
         Mossa mossa = new MossaNero(0, 0);
 
         boolean chk = false;
-
+        Scanner in = new Scanner(System.in, "UTF-8");
         do {
             Messaggi.menuNero();
 
-            Scanner in = new Scanner(System.in, "UTF-8");
             String comando = in.nextLine();
             String presa = comando;
             comando = Comando.gestisciRegex(mossa, comando);
