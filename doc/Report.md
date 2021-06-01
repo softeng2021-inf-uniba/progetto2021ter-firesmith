@@ -317,7 +317,7 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
 ## Diagrammi delle classi e diagrammi di sequenza
 
 ### Diagramma delle classi con prospettiva software completo
-![classDiagramPROSPETTIVAGENERALE](drawings/classDiagramPROSPETTIVAGENERALE.PNG)
+![classDiagramPROSPETTIVAGENERALE](drawings/classDiagramPROSPETTIVAGENERALE.png)
 
 ### Diagramma delle classi con prospettiva software per la user story "Mostrare Damiera con pezzi"
 <center><img src = "./drawings/classDiagram_mostraDamiera.png"></center>
