@@ -33,7 +33,7 @@ public final class AppMain {
 
     public static void main(final String[] args) {
 
-        System.out.println("Current working dir: "
+        /*System.out.println("Current working dir: "
                 + System.getProperty("user.dir"));
 
         if (args.length > 0) {
@@ -54,7 +54,7 @@ public final class AppMain {
         } else {
             System.out.println("Using default language 'en'");
             System.out.println("Application started.");
-        }
+        }*/
 
         Menu menu = Menu.getInstance();
         menu.benvenuto();

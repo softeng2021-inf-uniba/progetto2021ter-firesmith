@@ -5,17 +5,13 @@ import it.uniba.gioco.Mossa;
 import it.uniba.gioco.MossaBianco;
 
 import it.uniba.gioco.Partita;
-import it.uniba.interfaccia.Turno;
-import it.uniba.interfaccia.TurnoNero;
-import org.junit.Before;
+
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-
-
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -105,4 +101,21 @@ class ComandoTest {
         System.setIn(in);
         Comando.abbandona(partita,g);
     }
+
+    @Test
+    public void gestisciRegexErratoTest() {
+        Mossa mossa = new MossaBianco(9,13);
+        assertEquals("presamultipla",(Comando.gestisciRegex(mossa,"1x10x17x26")));
+    }
+
+    @Test
+    public void ExceptionTest() {
+        try {
+            Mossa mossa = new MossaBianco(9,13);
+            Comando.gestisciRegex(mossa, "-5-4");
+        } catch (NumberFormatException exc) {
+            fail("Exception " + exc);
+        }
+    }
+
 }
