@@ -78,7 +78,7 @@ public final class Messaggi {
     }
 
     /** Messaggio di errore inserimento comando.
-     * @return nullatring */
+     * @return nullstring */
     public static String inserimento() {
         System.out.println("\n ⚠ Comando non valido \n");
         return null;
