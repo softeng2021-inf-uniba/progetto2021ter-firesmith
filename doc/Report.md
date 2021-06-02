@@ -25,12 +25,12 @@
     - [Cosa ci ha fatti impazzire](#Cosa-ci-ha-fatti-impazzire)
 
 # Introduzione
-Dama-Firesmith è un' applicazione per il gioco della dama con interfaccia a linea di comando.
-Il gioco accetta comandi in [notazione algebrica italiana abbreviata](https://it.wikipedia.org/wiki/Notazione_algebrica) e permette a due giocatori
+*Dama by Firesmith &#169;*  è un' applicazione che simula il gioco della dama italiana, con un' interfaccia a linea di comando.
+Il programma accetta le mosse inserite dall'utente secondo la notazione algebrica standard (per esempio, 1x5 e 1-5), permettendo a due giocatori
 di sfidarsi localmente. <br>
-L'esecuzione avviene a linea di comando via [Docker](https://hub.docker.com/).
-Il progetto è stato realizzato durante il corso di Ingegneria del Software dal gruppo Firesmith
-(a.a. 2020/2021), i cui membri sono:
+
+Il progetto è stato realizzato durante il corso di Ingegneria del Software (a.a. 2020/2021) dal gruppo Firesmith,
+i cui membri sono:
 - [Giacomo Signorile](https://github.com/GiacomoSignorile)
 - [Tommaso Perniola](https://github.com/t-perniola)
 - [Ester Molinari](https://github.com/e-molinari)
@@ -254,7 +254,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
     è in grado di capire il tipo di mossa inserita.
 
 
-<br><br>
+<br>
 
 [Torna all'indice](#Indice)
 
@@ -263,7 +263,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 ## Stile architetturale adottato
 
 
-E' stato adottato lo stile architetturale Entity-Control-Boundary incentrato sui casi d'uso: essi sfruttano
+&#200; stato adottato lo stile architetturale *Model-View-Controller*, nella sua variante *Entity-Control-Boundary* incentrato sui casi d'uso: essi sfruttano
 la prospettiva dell'utente, mettendo in evidenza le funzionalità del sistema, 
 così come le percepisce chi interagisce dal mondo esterno.
 <br>
@@ -306,9 +306,9 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
 
 ## Diagramma dei package
 
-<center><img src = "./drawings/diagramPackage.png"></center>
+![classDiagramPackage](drawings/diagramPackage.png)
 
-<br><br>
+<br>
 
 [Torna all'indice](#Indice)
 
@@ -320,21 +320,22 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
 ![classDiagramPROSPETTIVAGENERALE](drawings/classDiagramPROSPETTIVAGENERALE.png)
 
 ### Diagramma delle classi con prospettiva software per la user story "Mostrare Damiera con pezzi"
-<center><img src = "./drawings/classDiagram_mostraDamiera.png"></center>
+![classDiagramDAMIERA](drawings/classDiagram_mostraDamiera.png)
 
-### Diagramma delle classi con prospettiva software per la user story "Spostamento con presa semplice "
-<center><img src = "./drawings/classDiagrampresaSemplice.png"></center>
+### Diagramma delle classi con prospettiva software per la user story "Spostamento con presa semplice"
+![classDiagramSPOSTAMENTO](drawings/classDiagrampresaSemplice.png)
 
-### Diagramma di sequenza per la user story "Spostamento con presa semplice "
-<center><img src = "./drawings/presaSempliceSEQ.png"></center>
+### Diagramma di sequenza per la user story "Spostamento con presa semplice"
+![classDiagramPRESASEMPL](drawings/presaSempliceSEQ.png)
 
-### Diagramma di sequenza per la user story "Spostamento con presa multipla "
-<center><img src = "./drawings/presaMultiplaSEQ.png"></center>
+### Diagramma di sequenza per la user story "Spostamento con presa multipla"
+![classDiagramPRESAMULT](drawings/presaMultiplaSEQ.png)
 
 ### Diagramma di sequenza per la user story "Abbandonda la partita"
-<center><img src = "./drawings/abbandonaSEQ.png"></center>
+![classDiagramABBANDONA](drawings/abbandonaSEQ.png)
 
-<br><br>
+
+<br>
 
 [Torna all'indice](#Indice)
 
@@ -349,7 +350,7 @@ Il pattern di creazione **Singleton** è stato applicato nella classe `Menu`. Qu
 fatta poiché a livello implementativo è necessaria la presenza di una sola istanza di essa che
 interagirà con l'utente.
 
-
+<br>
 
 [Torna all'indice](#Indice)
 
@@ -378,30 +379,115 @@ Qui di seguito riportiamo:
 [Torna all'indice](#Indice)
 
 # Manuale utente
+Per utilizzare il programma occorre eseguire Docker da terminale (o da applicazione desktop) ed inserire il seguente comando:
+<code>docker pull docker.pkg.github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/dama-firesmith:latest</code>
+
+Successivamente, va inserito il comando:
+<code>docker run -it --rm docker.pkg.github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/dama-firesmith:latest</code>
+
+Il programma all'avvio mostra il menu iniziale:
+
+![menuIniziale](drawings/menu.png)
+
+> I comandi vanno inseriti quando è presente il simbolo <code>➤</code>
+
+Nel menu appena comparso si possono inserire i seguenti comandi:
+- <code>--help</code><code>-h</code><code>help</code>: elenca tutti i comandi riconosciuti dal programma
+- <code>gioca</code>: permette di iniziare una nuova partita; come da regolamento, inizia per primo il giocatore bianco
+- <code>numeri</code>: mostra una damiera con il numero di ogni posizione delle pedine, da 1 a 32; le caselle nere non presentano alcun numero
+- <code>damiera</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso la partita
+- <code>tempo</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso una partita
+- <code>esci</code>: chiude il programma
+
+Dopo aver inserito il comando <code>gioca</code>, si presenta il menu del giocatore con ulteriori comandi:
+- <code>abbandona</code>: permette al giocatore di abbandonare la partita; mostra un messaggio diverso in base a chi abbandona la partita
+- <code>'spostamento'</code>: quando viene inserito un comando di tipo Spostamento semplice (vedi tabella sotto), la controlla e viene eseguita se corretta
+- <code>'presa semplice'</code>: quando viene inserito un comando di tipo Presa semplice (vedi tabella sotto), la controlla e viene eseguita se corretta
+- <code>'presa multipla'</code>: quando viene inserito un comando di tipo Presa multipla (vedi tabella sott), la controlla e viene eseguita se corretta
+- <code>prese</code>: mostra le pedine mangiate rispettivamente da entrambi i giocatori durante la partita
+- <code>mosse</code>: mostra tutti i comandi inseriti da entrambi i giocatori durante la partita
+
+> Quando viene inserito un comando non valido o sbagliato, il programma mostra un messaggio di errore.
+
+All'inizio della partita il programma attende la prima mossa del giocatore bianco.
+Al giocatore viene anche data la possibilità di abbandonare la partita appena iniziata.
+Il programma riconosce le seguenti mosse:
+
+| Mossa | Notazione |
+|-----|-----|
+| Spostamento semplice | N-N |
+| Presa semplice | NxN |
+| Presa multipla | NxNxN |
+| Presa multipla | NxNxNxN |
+
+Dove **N** è un numero intero compreso tra 1 e 32 (corrisponde alla casella in cui si vuole spostare la pedina).
+
+Nel caso in cui la mossa non risulta valida, il programma permette il reinserimento della mossa o degli altri comandi.
+
 
 [Torna all'indice](#Indice)
 
 # Processo di sviluppo e organizzazione del lavoro
 
 - ## Processo di sviluppo
-  Il processo di sviluppo di questa applicazione è avvenuto in modo iterativo ed incrementale,
-  secondo il modello [Scrum](https://it.wikipedia.org/wiki/Scrum_%28informatica%29), prevedendo quattro Sprint separati, ciascuno dei quali avente uno <b>Sprint Goal</b>.
+  Lo stile di processo di sviluppo adottato è stato quello iterativo,
+  secondo il modello [Scrum](https://it.wikipedia.org/wiki/Scrum_%28informatica%29), che prevede una serie di iterazioni
+  chiamate Sprint (quattro nel nostro caso), ciascuno dei quali con uno obiettivo principale, lo <b>Sprint Goal</b>.
 
 
 - ## Piattaforma di comunicazione adottata
-
-
+  La piattaforma utilizzata è stata [Discord](https://discord.com/), in quanto consente una rapida e comoda
+  comunicazione fra più persone, supportando strumenti molto utili come la condivisione schermo.
+  
 - ## WorkFlow utilizzato
- 
+
+   &#200; stato adottato il workflow <b>GitHub Actions</b>
+   
+   
 
 - ## Suddivisione dei compiti
+  Fin dalla creazione del gruppo la divisione dei compiti da svolgere è stata effettuata con l'obiettivo di essere quanto più *equi* ed <b>onesti</b> possibile. <br>
+  In particolare durante gli <i>scrum meetings</i> giornalieri, tenuti durante i primi dieci-quindici minuti, abbiamo ripartito i task delle issue tra i membri, in modo da allocare i compiti in base alle seguenti caratteristiche di ogni membro:
+  - lavoro svolto durante le giornate precedenti;
+  - lavoro ancora da svolgere per soddisfare il <i>definition of done</i>;
+  - propensione di uno o più componenti del gruppo nei confronti della risoluzione di un determinato task.
 
+  <br>La suddivisione dei compiti e degli issue può essere osservata [qui](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3).
+  Giornalmente venivano anche stabilite le priorità dei task da portare a termine. <br>
+  Il lavoro è stato suddiviso in modo sequenziale in modo da svolgere le issue più importanti o quelle necessarie
+  a svolgere la issue successiva , tutto ciò in base
+  a ciò che era stato assegnato per ogni <i>milestone</i>. <br> 
 
 - ## Pair programming e revisione
-
+  Il pair programming è stato adottato in modo da assegnare i task più o meno difficoltosi a uno o più membri del team, in modo da 
+  semplificare il lavoro. Mentre un membro del team svolgeva l'issue il suo compagno controllava o forniva nuove idee su come risolvere al meglio 
+  l'issue, nel caso un membro si trovasse in difficoltà, richiedeva uno scrum meeting con gli altri membri del team, dove il collega condivideva il suo schermo o
+  la propria sessione di lavoro e veniva aiutato nello svolgimento. A tale proposito è stato estremamente utile lo strumento
+  fornito dall'IDE IntellijIDEA, [CodeWithMe](https://www.jetbrains.com/code-with-me/). <br>
+  <br>Per quanto riguarda gli issue che, secondo una mera previsione, avrebbero richiesto meno tempo, essi venivano assegnati ad un solo membro del team.
+  
+  <br>Per quanto concerne le varie *review* del codice, dopo ogni pull request, venivano assegnati uno o più membri "non partecipanti" all'issue, che ne controllavano
+  il corretto funzionamento del programma e
+  la corretta scrittura del codice, i cosiddetti *rewiers*.
+  
 
 - ## Uso delle boards
-  
+  Abbiamo utilizzato delle board integrate in <b> GitHub </b> in modo da segnare lo stato degli issue.
+  Tale board è stata composta da delle cards, formati da issue, posti su un totale di 5 colonne:
+  - <b>TO DO</b> dove inserivamo le <i>issues</i> appena create, da svolgere;
+  - <b>IN PROGRESS</b> dove si trovavano le <i>issues</i> che erano state aperte e in stato di stato di lavorazione;
+  - <b>REVIEW</b> dove venivano collocate le <i>issues</i> da revisionare dai componenti del
+    team;
+  - <b>READY</b> dove si posizionavano le <i>issues</i> da revisionare dai docenti;
+  - <b>DONE</b> dove si aggiungevano le <i>issues</i> portate a termine e ufficialmente chiuse;
+
+  <br>&#200; stata creata una
+  [project board generale](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3)
+  (per le user stories) e le seguenti sprint boards:
+  - [Sprint 0](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/1)
+  - [Sprint 1](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/2)
+  - [Sprint 2](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/4)
+  - [Sprint 3](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/5)
 
 <br><br>
 
