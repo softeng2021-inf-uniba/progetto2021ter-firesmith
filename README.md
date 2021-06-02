@@ -1,4 +1,4 @@
-# Dama italiana [![CI/CD](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml/badge.svg)](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml) [![Coverage Status](https://coveralls.io/repos/github/softeng2021-inf-uniba/progetto2021ter-firesmith/badge.svg?t=35hSah&service=github)](https://coveralls.io/github/softeng2021-inf-uniba/progetto2021ter-firesmith&service=github)
+# Dama italiana [![CI/CD](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml/badge.svg)](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/actions/workflows/ingsw2021.yml) [![Coverage Status](https://coveralls.io/repos/github/softeng2021-inf-uniba/progetto2021ter-firesmith/badge.svg?t=35hSah&service=github)](https://coveralls.io/github/softeng2021-inf-uniba/progetto2021ter-firesmith)
 
 
 La struttura della repository si presenta nel seguente modo:
