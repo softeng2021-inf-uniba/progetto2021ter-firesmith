@@ -3,7 +3,7 @@ package it.uniba.gioco;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GiocatoreTest {
     @Test
@@ -12,8 +12,8 @@ class GiocatoreTest {
         Giocatore nero = new Giocatore();
         bianco.setPedineMangiate(3);
         nero.setPedineMangiate(1);
-        assertEquals(3,bianco.getPedineMangiate());
-        assertEquals(1,nero.getPedineMangiate());
+        assertEquals(3, bianco.getPedineMangiate());
+        assertEquals(1, nero.getPedineMangiate());
     }
 
     @Test
@@ -21,12 +21,13 @@ class GiocatoreTest {
         Giocatore bianco = new Giocatore();
 
         bianco.setTempo(4);
-        assertEquals(4,bianco.getTempo());
+        assertEquals(4, bianco.getTempo());
     }
-     @Test
-    void coloreTest(){
+
+    @Test
+    void coloreTest() {
         Giocatore test = new Giocatore();
         test.setColore("bianco");
-        assertEquals("bianco",test.getColore());
-     }
+        assertEquals("bianco", test.getColore());
+    }
 }
