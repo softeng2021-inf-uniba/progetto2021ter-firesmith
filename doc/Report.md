@@ -11,13 +11,13 @@
 4. [System Design](#System-Design)
     - [Stile architetturale adottato](#Stile-architetturale-adottato)
     - [Diagramma dei package](#Diagramma-dei-package)
-5. [O.O. Design](#OO-Design)
+5. [O.O. Design](#O.O.-Design)
     - [Diagrammi delle classi e diagrammi di sequenza <br> (per le user story considerate più importanti)](#Diagrammi-delle-classi-e-diagrammi-di-sequenza) <br>
     - [Design pattern utilizzati](#Design-pattern)
     - [Commenti](#Commenti)
 6. [Riepilogo dei test](#Riepilogo-dei-test)
-    - [Tabella riassuntiva di coveralls](#Tabella-riassuntiva)
-    - [CheckStyle e SpotBugs](#CheckStyle e SpotBugs)
+    - [Tabelle riassuntive](#Tabelle-riassuntive)
+    - [CheckStyle e SpotBugs](#CheckStyle-e-SpotBugs)
 7. [Manuale utente](#Manuale-utente)
 8. [Processo di sviluppo e organizzazione del lavoro](#Processo-di-sviluppo-e-organizzazione-del-lavoro)
 9. [Analisi retrospettiva](#Analisi-retrospettiva)
@@ -363,7 +363,7 @@ l'implementazione, superflua, delle prese e degli spostamenti.
 [Torna all'indice](#Indice)
 
 # Riepilogo dei test
-## Tabelle riassuntiva
+## Tabelle riassuntive
 
 Qui di seguito riportiamo:
 - La tabella riassuntiva del coverage generata da _JaCoCo_;
@@ -462,15 +462,15 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
 - ## WorkFlow utilizzato
 
   &#200; stato adottato il <b>GitHub Flow</b>, che si compone dei seguenti passi: <br><br>
-  - <h4>_Creazione di un nuovo branch_</h4> Viene creato un nuovo branch per lavorare magari su un nuovo issue o su vecchio bug da fixare. Il branch viene creato localmente con la notazione "*issue#n*". <br><br>
-  - <h4>_Aggiunta di commit_</h4> Vengono aggiunti dei commit in relazione al lavoro svolto sul branch locale (modifiche, cancellazioni, ... ). Tale passaggio è estremamente utile in quanto consente di 'documentare' 
+  - <h4>Creazione di un nuovo branch</h4> Viene creato un nuovo branch per lavorare magari su un nuovo issue o su vecchio bug da fixare. Il branch viene creato localmente con la notazione "*issue#n*". <br><br>
+  - <h4>Aggiunta di commit</h4> Vengono aggiunti dei commit in relazione al lavoro svolto sul branch locale (modifiche, cancellazioni, ... ). Tale passaggio è estremamente utile in quanto consente di 'documentare' 
     le modifiche effettuate. In seguito alle modifiche, bisogna aggiornare il branch sul server di GitHub. <br><br>
-  - <h4>_Apertura di una Pull Request_</h4> &#200; una proposta dei cambiamenti effettuati sul codice, dove si richiede agli altri membri del team
-    di revisionarla (la cosiddetta _code review_).
-  - <h4>_Discussione e Valutazione_</h4> &#200; l'effettiva discussione riguardante i cambiamenti appena proposti con la Pull Request. Tutti i componenti del team possono partecipare,
+  - <h4>Apertura di una Pull Request</h4> &#200; una proposta dei cambiamenti effettuati sul codice, dove si richiede agli altri membri del team
+    di revisionarla (la cosiddetta code review).
+  - <h4>Discussione e Valutazione</h4> &#200; l'effettiva discussione riguardante i cambiamenti appena proposti con la Pull Request. Tutti i componenti del team possono partecipare,
     sebbene nel nostro caso venisse spesso citato un solo reviewer dal quale richiedere conferma per il successivo merging della pull request. Le discussioni si sono rivelate molto utili in quanto i membri del team
     possono suggerire ulteriori modifiche e/o cambiamenti, e per questo motivo possono succedersi ulteriori commit.
-  - <h4>_Merging e Deployment_</h4> &#200; l'ultima fase del workflow, dove, in seguito all'approvazione della pull request, si passa al merge di quest' ultima sul _master branch_. Se non avvengono conflitti, si può eliminare il branch.
+  - <h4>Merging e Deployment</h4> &#200; l'ultima fase del workflow, dove, in seguito all'approvazione della pull request, si passa al merge di quest' ultima sul _master branch_. Se non avvengono conflitti, si può eliminare il branch.
     Ora si può effettuare il <b>deploy</b> del master branch. Per quanto riguarda il team, abbiamo riscontrato rare volte conflitti sul branch master, avendo cercato sempre di rispettare il workflow.  <br><br>
     
   Abbiamo tentato il più possibile di applicare le *Best Practices* notificate a lezione, tra le quali annoveriamo, 
