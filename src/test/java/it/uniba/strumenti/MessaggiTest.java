@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MessaggiTest {
 
@@ -23,58 +23,69 @@ class MessaggiTest {
     public void restoreInitialStreams() {
         System.setOut(originalOut);
     }
+
     @Test
-    public void uscitaTest(){
+    public void uscitaTest() {
         System.out.println(Messaggi.uscita());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void benvenutoTest(){
+    public void benvenutoTest() {
         System.out.println(Messaggi.benvenuto());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void aiutoTest(){
+    public void aiutoTest() {
         System.out.println(Messaggi.aiuto());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void menuTest(){
+    public void menuTest() {
         System.out.println(Messaggi.menu());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void inserimentoTest(){
+    public void inserimentoTest() {
         System.out.println(Messaggi.inserimento());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void partitaTest(){
+    public void partitaTest() {
         System.out.println(Messaggi.partita());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void messdamieraTest(){
+    public void messdamieraTest() {
         System.out.println(Messaggi.damiera());
         assertNull(null, out.toString());
     }
+
     @Test
-    public  void biancoAbbandonaTest(){
+    public void biancoAbbandonaTest() {
         System.out.println(Messaggi.biancoAbbandona());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void neroAbbandonaTest(){
+    public void neroAbbandonaTest() {
         System.out.println(Messaggi.neroAbbandona());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void errorePartitaTest(){
+    public void errorePartitaTest() {
         System.out.println(Messaggi.errorePartita());
         assertNull(null, out.toString());
     }
+
     @Test
-    public void nonValidaTest(){
+    public void nonValidaTest() {
         System.out.println(Messaggi.nonValida());
         assertNull(null, out.toString());
     }
