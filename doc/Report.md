@@ -341,16 +341,22 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
 
 ## Design pattern
 
-Nel progetto è stato applicato il Pattern di creazione
-[Singleton](https://it.wikipedia.org/wiki/Singleton_(informatica))
+L'unico pattern applicato al progetto è stato il pattern di creazione
+[Singleton](https://it.wikipedia.org/wiki/Singleton_(informatica)),
 appartenente al paradigma orientato
-agli oggetti:
+agli oggetti, nonché uno dei pattern fondamentali presentati dalla 
+"[Gang of Four](https://it.wikipedia.org/wiki/Gang_of_Four_(scrittori))".
 
-Il pattern di creazione **Singleton** è stato applicato nella classe `Menu`. Questa scelta è stata
-fatta poiché a livello implementativo è necessaria la presenza di una sola istanza di essa che
-interagirà con l'utente.
+Abbiamo individuato nella classe `Menu` e nella sua unica istanza un chiaro esempio di **Singleton**,
+vista la necessità di creare tale istanza una ed una sola volta.
 
-<br>
+
+
+#Commenti
+
+Per quanto riguarda i diagrammi precedenti, abbiamo cercato di mantenere un livello di dettaglio abbastanza elevato,
+pur credendo di aver effettuato una buona astrazione: in particolare per i diagrammi di sequenza, omettendo
+l'implementazione, superflua, delle prese e degli spostamenti.
 
 [Torna all'indice](#Indice)
 
