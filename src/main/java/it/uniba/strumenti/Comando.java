@@ -11,7 +11,7 @@ import it.uniba.gioco.Partita;
 
 /**
  * <h1>Classe che contiene alcuni metodi di supporto. </h1><br>
- * <b>Class Type:</b> &#60; NOECB &#62; <br><br>
+ * <b>Class Type:</b> &#60; Control &#62; <br><br>
  * <b>Responsabilities:</b> <br>
  * <b>Knows:</b> <br>
  *

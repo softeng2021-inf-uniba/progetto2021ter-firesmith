@@ -32,7 +32,7 @@ public final class Messaggi {
                 + "\n│ Dama Italiana by Team Firesmith │"
                 + "\n└─────────────────────────────────┘"
                 + "\nScrivere un comando:"
-                + "\n\n ♢ --help | -h"
+                + "\n\n ♢ --help | -h | help"
                 + "\n ♢ gioca"
                 + "\n ♢ numeri"
                 + "\n ♢ damiera"
@@ -57,6 +57,8 @@ public final class Messaggi {
                 + "\n ♢ Mostrare la damiera con numerazione (numeri)"
                 + "\n ♢ Mostrare la damiera con i pezzi (damiera)"
                 + "\n ♢ Mostrare il tempo di gioco (tempo)"
+                + "\n ♢ Mostrare le mosse effettuate (mosse)"
+                + "\n ♢ Mostrare le prese effettuate (prese)"
                 + "\n");
         return null;
     }
@@ -76,7 +78,7 @@ public final class Messaggi {
     }
 
     /** Messaggio di errore inserimento comando.
-     * @return nullatring */
+     * @return nullstring */
     public static String inserimento() {
         System.out.println("\n ⚠ Comando non valido \n");
         return null;
