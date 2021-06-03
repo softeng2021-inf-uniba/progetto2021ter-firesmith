@@ -17,6 +17,7 @@
     - [Commenti](#Commenti)
 6. [Riepilogo dei test](#Riepilogo-dei-test)
     - [Tabella riassuntiva di coveralls](#Tabella-riassuntiva)
+    - [CheckStyle e SpotBugs](#CheckStyle e Spotbugs)
 7. [Manuale utente](#Manuale-utente)
 8. [Processo di sviluppo e organizzazione del lavoro](#Processo-di-sviluppo-e-organizzazione-del-lavoro)
 9. [Analisi retrospettiva](#Analisi-retrospettiva)
@@ -231,12 +232,13 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 ## Requisiti non funzionali
 
 - ### Portabilità
-  L'applicazione è disponibile per le seguenti piattaforme:
-    - terminale di Linux;
-    - teminale di MacOS;
-    - Windows Terminal;
-    - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es:  
-      <code>winpty docker -it ...</code>)
+  L'applicazione è disponibile per i terminali delle seguenti piattaforme:
+    
+    - MacOS;
+    - Linux;
+    - Windows;
+    - Git Bash (i comandi Docker hanno come prefisso *winpty*)  
+      
 
 - ### Affidabilità
   L'applicazione è strutturata in modo tale da evitare eccezioni e malfunzionamenti dovuti a inserimenti errati:
@@ -251,7 +253,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   - una classe 'Costanti' che racchiude tutte le costanti utilizzate nel codice;
     alcune di esse potrebbero essere sostituite dai più eleganti Enumerativi.
   - un sistema di gestione dell'input, che tramite l'utilizzo di una espressione regolare 
-    è in grado di capire il tipo di mossa inserita.
+    è in grado di riconoscere il tipo di mossa inserita (spostamento, presa semplice o multipla)
 
 
 <br>
@@ -263,7 +265,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 ## Stile architetturale adottato
 
 
-&#200; stato adottato lo stile architetturale *Model-View-Controller*, nella sua variante *Entity-Control-Boundary* incentrato sui casi d'uso: essi sfruttano
+&#200; stato adottato lo stile architetturale *Model-View-Controller*, nella sua variante *Entity-Control-Boundary* la quale è incentrata sui casi d'uso: essi sfruttano
 la prospettiva dell'utente, mettendo in evidenza le funzionalità del sistema, 
 così come le percepisce chi interagisce dal mondo esterno.
 <br>
@@ -382,6 +384,16 @@ Qui di seguito riportiamo:
 
 <br><br>
 
+## CheckStyle e SpotBugs
+Abbiamo adottato questi due strumenti sotto indicazione del docente per migliorare significativamente la qualità del codice scritto. <br>
+Per quanto riguarda CheckStyle, abbiamo utilizzato la regola *Sun Checks*; è necessario inoltre notificare la presenza di errori volutamente lasciati irrisolti:
+- <code>[LineLenght]</code>, la cui correzione comprometterebbe la leggibilità del programma;
+- <code>[FinalParameter]</code> per la classe Comando, poiché i parametri passati nei suoi metodi vengono effettivamente riassegnati;
+- <code>[JavadocPackage]</code>, in quanto non siamo risuciti ad aggiungere la doc per i packages del progetto;
+- Gli errori del tipo <code>[JavadocVariable]</code> e <code>[MissingJavadocMethod]</code> sono stati tralasciati in quanto la documentazione per classi di test non è richiesta;
+- Gli errori del tipo <code>[MagicNumber]</code> sono stati tralasciati in quanto si trattano di numeri importanti nei casi di test,
+  e la loro sostituzione con costanti come suggerito da CheckStyle non sarebbe conveniente.
+
 [Torna all'indice](#Indice)
 
 # Manuale utente
@@ -447,45 +459,63 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
   
 - ## WorkFlow utilizzato
 
-   &#200; stato adottato il workflow <b>GitHub Actions</b>
-   
-   
+  &#200; stato adottato il <b>GitHub Flow</b>, che si compone dei seguenti passi: <br><br>
+  - <h4>*Creazione di un nuovo branch*</h4> Viene creato un nuovo branch per lavorare magari su un nuovo issue o su vecchio bug da fixare. Il branch viene creato localmente con la notazione "*issue#n*". <br><br>
+  - <h4>*Aggiunta di commit*</h4> Vengono aggiunti dei commit in relazione al lavoro svolto sul branch locale (modifiche, cancellazioni, ... ). Tale passaggio è estremamente utile in quanto consente di 'documentare' 
+    le modifiche effettuate. In seguito alle modifiche, bisogna aggiornare il branch sul server di GitHub. <br><br>
+  - <h4>*Apertura di una Pull Request*</h4> &#200; una proposta dei cambiamenti effettuati sul codice, dove si richiede agli altri membri del team
+    di revisionarla (la cosiddetta *code review*).
+  - <h4>*Discussione e Valutazione*</h4> &#200; l'effettiva discussione riguardante i cambiamenti appena proposti con la Pull Request. Tutti i componenti del team possono partecipare,
+    sebbene nel nostro caso venisse spesso citato un solo reviewer dal quale richiedere conferma per il successivo merging della pull request. Le discussioni si sono rivelate molto utili in quanto i membri del team
+    possono suggerire ulteriori modifiche e/o cambiamenti, e per questo motivo possono succedersi ulteriori commit.
+  - <h4>*Merging e Deployment*</h4> &#200; l'ultima fase del workflow, dove, in seguito all'approvazione della pull request, si passa al merge di quest' ultima sul *master branch*. Se non avvengono conflitti, si può eliminare il branch.
+    Ora si può effettuare il <b>deploy</b> del master branch. Per quanto riguarda il team, abbiamo riscontrato rare volte conflitti sul branch master, avendo cercato sempre di rispettare il workflow.  <br><br>
+    
+  Abbiamo tentato il più possibile di applicare le *Best Practices* notificate a lezione, tra le quali annoveriamo, 
+  per es. la pratica di aggiornare entrambe le repository, quella locale e quella sul server di GitHub, rispettivamente all'inizio e alla fine di qualsiasi sessione di lavoro.
+     
+    
 
 - ## Suddivisione dei compiti
-  Fin dalla creazione del gruppo la divisione dei compiti da svolgere è stata effettuata con l'obiettivo di essere quanto più *equi* ed <b>onesti</b> possibile. <br>
-  In particolare durante gli <i>scrum meetings</i> giornalieri, tenuti durante i primi dieci-quindici minuti, abbiamo ripartito i task delle issue tra i membri, in modo da allocare i compiti in base alle seguenti caratteristiche di ogni membro:
-  - lavoro svolto durante le giornate precedenti;
-  - lavoro ancora da svolgere per soddisfare il <i>definition of done</i>;
-  - propensione di uno o più componenti del gruppo nei confronti della risoluzione di un determinato task.
+  Si è cercato di ripartire i task fra i diversi componenti del gruppo nella maniera più equa. <br>
+  In seguito alla presentazione del nuovo Sprint, veniva organizzato un meeting in cui si discuteva dei nuovi issue da svolgere e
+  se ne effettuava una mera previsione, in termini di tempo e difficoltà di risoluzione. <br>
+  Per gli issue ritenuti più difficoltosi, venivano assegnate massimo due persone
+  (sebbene sia capitato che ne concorressero altre in caso di difficoltà)
+  <br>Per quanto riguarda gli issue più celeri, essi venivano assegnati ad un solo membro del team. <br><br>
+  I criteri di assegnazione sono stati i seguenti: <br><br>
+  - in base al lavoro svolto negli sprint precedenti e alla possibile continuità dei vecchi issue con i nuovi. <br><br>
+  - in base alla disponibilità di un componente in quel determinato periodo di tempo: in questo caso venivano assegnati i task ritenuti più veloci
+    (è capitato infatti che, per diversi motivi, alcuni membri del team non fossero completamente disponibili per qualche periodo di tempo).<br><br>
+  - in base alle preferenze di ogni membro. <br><br>
 
-  <br>La suddivisione dei compiti e degli issue può essere osservata [qui](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3).
-  Giornalmente venivano anche stabilite le priorità dei task da portare a termine. <br>
-  Il lavoro è stato suddiviso in modo sequenziale in modo da svolgere le issue più importanti o quelle necessarie
-  a svolgere la issue successiva , tutto ciò in base
-  a ciò che era stato assegnato per ogni <i>milestone</i>. <br> 
+  [Qui](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3) (Product Roadmap) si può vedere il riassunto degli issue assegnati.
+    
+
+  
 
 - ## Pair programming e revisione
-  Il pair programming è stato adottato in modo da assegnare i task più o meno difficoltosi a uno o più membri del team, in modo da 
-  semplificare il lavoro. Mentre un membro del team svolgeva l'issue il suo compagno controllava o forniva nuove idee su come risolvere al meglio 
-  l'issue, nel caso un membro si trovasse in difficoltà, richiedeva uno scrum meeting con gli altri membri del team, dove il collega condivideva il suo schermo o
-  la propria sessione di lavoro e veniva aiutato nello svolgimento. A tale proposito è stato estremamente utile lo strumento
+  Il Pair Programming è stato spesso attuato con successo, per i task di media/grande difficoltà.  
+  A tal proposito, è stato estremamente utile lo strumento
   fornito dall'IDE IntellijIDEA, [CodeWithMe](https://www.jetbrains.com/code-with-me/). <br>
-  <br>Per quanto riguarda gli issue che, secondo una mera previsione, avrebbero richiesto meno tempo, essi venivano assegnati ad un solo membro del team.
+  Tale strumento offre la possibilità di simulare ottimamente il Pair Programming, permettendo anche a più di due persone 
+  di collaborare sullo stesso codice, ovviando alla semplice condivisione schermo.
+  Per i task che hanno richiesto più tempo del dovuto, richiedere l'intervento di altre persone e discuterne in tempo reale è stato particolarmente proficuo.
+
   
-  <br>Per quanto concerne le varie *review* del codice, dopo ogni pull request, venivano assegnati uno o più membri "non partecipanti" all'issue, che ne controllavano
-  il corretto funzionamento del programma e
-  la corretta scrittura del codice, i cosiddetti *rewiers*.
+  <br>Per quanto concerne le varie *review* del codice, dopo ogni pull request, venivano scelti uno o più membri "non partecipanti" all'issue, che ne controllavano
+  il corretto funzionamento del programma e la corretta scrittura del codice, i cosiddetti *rewiers*.
   
 
 - ## Uso delle boards
   Abbiamo utilizzato delle board integrate in <b> GitHub </b> in modo da segnare lo stato degli issue.
-  Tale board è stata composta da delle cards, formati da issue, posti su un totale di 5 colonne:
-  - <b>TO DO</b> dove inserivamo le <i>issues</i> appena create, da svolgere;
-  - <b>IN PROGRESS</b> dove si trovavano le <i>issues</i> che erano state aperte e in stato di stato di lavorazione;
-  - <b>REVIEW</b> dove venivano collocate le <i>issues</i> da revisionare dai componenti del
+  Tale board è composta da delle cards, formati da issue, posti su un totale di cinque colonne:
+  - <b>TO DO</b> dove inseriamo le <i>issues</i> appena create, da svolgere;
+  - <b>IN PROGRESS</b> dove si trovano le <i>issues</i> aperte e in fase di lavorazione.
+  - <b>REVIEW</b> dove vengono collocate le <i>issues</i> da revisionare dai componenti del
     team;
-  - <b>READY</b> dove si posizionavano le <i>issues</i> da revisionare dai docenti;
-  - <b>DONE</b> dove si aggiungevano le <i>issues</i> portate a termine e ufficialmente chiuse;
+  - <b>READY</b> dove si posizionano le <i>issues</i> da revisionare dai docenti;
+  - <b>DONE</b> dove si aggiungono le <i>issues</i> portate a termine e ufficialmente chiuse;
 
   <br>&#200; stata creata una
   [project board generale](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3)
@@ -495,20 +525,31 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
   - [Sprint 2](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/4)
   - [Sprint 3](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/5)
 
-<br><br>
+<br>
 
 [Torna all'indice](#Indice)
 
 # Analisi retrospettiva
 ## Soddisfazioni
-
-
+&#200; stato particolarmente gratificante portare a termine gli issue più complicati, dopo ore o giorni di tentativi di risoluzione. <br>
+Abbiamo sperimentato il team-work, nonché come delle persone dovrebbero collaborare per giungere ad un obiettivo comune, che, nonostante
+testato in una dimensione più piccola, è comunque un scorcio sul mondo del lavoro che ci aspetta. <br>
+Una delle soddisfazioni più grandi è stata quella di vedere il nostro progetto nascere, plasmarsi e infine venir completato.
 
 ## Insoddisfazioni
-
+Proseguendo il discorso del paragrafo precedente, a volte la collaborazione non è stata particolarmente proficua e agevole, sicuramente
+per la poca esperienza nel collaborare. <br>
+A parte ciò, ci ha deluso non essere stati in grado di risolvere alcune problematiche riguardanti la risoluzione di alcuni issue negli sprint iniziali,
+oltre ad alcune dimenticanze che avremmo preferito di gran lunga non avere. 
 
 
 ## Cosa ci ha fatti impazzire
+&#200; capitato di dover ristrutturare varie volte il progetto, soprattutto per la nostra poca praticità ed esperienza con il
+linguaggio di programmazione, Java, a noi assolutamente nuovo; ci è voluto parecchio tempo per impararne le basi e la struttura, parallelamente
+con gli insegnamenti di MAP. <br>
+&#200; inoltre accaduto di completare un paio di issue dopo giorni estenuanti di lavoro:
+per gli issue degli spostamenti delle pedine e delle prese è stata veramente dura trovare un sistema che funzionasse per tutte le possibili
+casistiche e non presentasse bug evidenti.
 
 
 <br><br>
