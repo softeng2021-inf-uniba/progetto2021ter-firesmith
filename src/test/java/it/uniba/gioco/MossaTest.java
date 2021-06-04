@@ -1,15 +1,16 @@
 package it.uniba.gioco;
 
-import it.uniba.gioco.Mossa;
-import it.uniba.gioco.MossaBianco;
-import it.uniba.gioco.MossaNero;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import it.uniba.tavolo.Damiera;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class MossaTest {
-    Damiera test = new Damiera();
+    private Damiera test = new Damiera();
 
     @Test
     void setPosizione1PositiveValueTest() {
@@ -86,7 +87,8 @@ public class MossaTest {
     }
 
     @Test
-    @DisplayName("Sto testando una presa semplice con spostamento nero non valido")
+    @DisplayName("Sto testando una presa semplice"
+            + " con spostamento nero non valido")
     void presaSempliceNeroaSinistraFalseTest() {
         Mossa spostamentobianco = new MossaBianco(21, 18);
         Mossa spostamentonero = new MossaNero(13, 14);
