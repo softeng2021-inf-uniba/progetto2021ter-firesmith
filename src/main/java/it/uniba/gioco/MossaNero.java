@@ -148,7 +148,7 @@ public class MossaNero extends Mossa {
 
                         damiera.getDamieraPedine(x1, y1).setBlank(true);
                         damiera.getDamieraPedine(x2, y2).setBlank(false);
-                        damiera.getDamieraPedine(x2, y2).setWhite(true);
+                        damiera.getDamieraPedine(x2, y2).setWhite(false);
 
                         damiera.getDamieraPedine(x4, (y2 + Costante.UNO)).setBlank(true);
                         damiera.getDamieraPedine(x4, (y2 + Costante.UNO)).setWhite(true);
