@@ -64,7 +64,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   **Criteri di accettazione**
 
   Al comando `gioca`
-  * se nessuna partita è in corso l'app si predispone a ricevere la prima mossa di gioco o altri comandi
+  * Se nessuna partita è in corso l'app si predispone a ricevere la prima mossa di gioco o altri comandi.
   
 
 
@@ -74,16 +74,15 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   
   **Criteri di accettazione:** 
    Al comando `esci`
-  * l'applicazione chiede conferma
-  * se la conferma è positiva, l'app si chiude restituendo un _zero exit code_
-  * se la conferma è negativa, l'app si predispone a ricevere nuovi comandi
+  - L'applicazione chiede conferma:
+      - Se la conferma è positiva, l'app si chiude restituendo un _zero exit code_;
+      - Se la conferma è negativa, l'app si predispone a ricevere nuovi comandi.
 
 
 
 - [Comando help](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/issues/18)
 
-  L'utente può visualizzare l'elenco dei comandi disponibili tramite il comando `help` o invocando l'app con flag `--help`  o `-h`
-  .
+  *L'utente può visualizzare l'elenco dei comandi disponibili tramite il comando `help` o invocando l'app con flag `--help`  o `-h`*
 
   <b>Criteri di accettazione:</b>
 
@@ -99,7 +98,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   **Criteri di accettazione**
   
   Al comando `numeri`
-  * l'app mostra la damiera con i numeri sulle caselle nere<br>
+  * L'app mostra la damiera con i numeri sulle caselle nere.<br>
     
   ![damiera_con_numeri.png](drawings/img/damiera_con_numeri.png)
 
@@ -112,14 +111,12 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   **Criteri di accettazione**
    
   Al comando `damiera`
-  * se il gioco è iniziato l'app mostra la posizione di tutti pezzi sulla damiera
-  * i pezzi sono mostrati in formato [Unicode](https://en.wikipedia.org/wiki/English_draughts#Unicode)
-  * se il gioco non è iniziato l'app suggerisce il comando `gioca`
+  * se il gioco è iniziato l'app mostra la posizione di tutti pezzi sulla damiera;
+  * i pezzi sono mostrati in formato [Unicode](https://en.wikipedia.org/wiki/English_draughts#Unicode);
+  * se il gioco non è iniziato l'app suggerisce il comando `gioca`.
   
-  L'utente può visualizzare a schermo la scacchiera tramite il comando <code>gioca</code>
-  
- 
-  Tutti i pezzi sono rappresentati nel contesto della damiera in UTF-8 con i caratteri specifici (es.  ⛂ per il bianco e ⛀ per il nero).
+  > L'utente può visualizzare a schermo la scacchiera tramite il comando <code>gioca</code><br>
+  > Tutti i pezzi sono rappresentati nel contesto della damiera in UTF-8 con i caratteri specifici (es.  ⛂ per il bianco e ⛀ per il nero).
      
 
 - [Mostrare le mosse giocate](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/issues/34)
@@ -128,8 +125,8 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 
   **Criteri di accettazione**
   
-  Al comando `mosse` l'app mostra la storia delle mosse con notazione algebrica
-  _Esempio:_
+  Al comando `mosse` l'app mostra la storia delle mosse con notazione algebrica.
+  _Esempio:_<br>
   <code> Bianco: 21-18 </code><br>
   <code> Nero: 10-14 </code><br>
   <code> Bianco: 24-20 </code><br>
@@ -144,7 +141,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   _Come giocatore voglio spostare una pedina mediante spostamento semplice_
 
   **Criteri di accettazione**
-  * a partita in corso di gioco, l'app deve accettare mosse di spostamento semplice di pedina in notazione algebrica.
+  * A partita in corso di gioco, l'app deve accettare mosse di spostamento semplice di pedina in notazione algebrica.
   Es. 1-5
   * Lo spostamento semplice della pedina deve rispettare le regole del gioco della dama italiana, escludendo damature e prese:
   http://www.fid.it/regolamenti/capo1.htm
@@ -157,7 +154,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   _Come giocatore voglio spostare una pedina con presa semplice_
 
   **Criteri di accettazione**
-  * a partita in corso di gioco, l'app deve accettare mosse di spostamento di pedina con presa semplice in notazione algebrica.
+  * A partita in corso di gioco, l'app deve accettare mosse di spostamento di pedina con presa semplice in notazione algebrica.
   _Es. 18x11 (se è il bianco a muovere)_
   * Lo spostamento della pedina con presa semplice deve rispettare le regole del gioco della dama italiana
   (http://www.fid.it/regolamenti/capo1.htm)
@@ -169,7 +166,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   _Come giocatore voglio spostare una pedina con presa multipla_
 
   **Criteri di accettazione**
-  * a partita in corso di gioco, l'app deve accettare mosse di spostamento di pedina con presa multipla in notazione algebrica.
+  * A partita in corso di gioco, l'app deve accettare mosse di spostamento di pedina con presa multipla in notazione algebrica.
   _Es. 22x15x6 (se è il bianco a muovere)_
   * Lo spostamento della pedina con presa multipla deve rispettare le regole del gioco della dama italiana
   (http://www.fid.it/regolamenti/capo1.htm)
@@ -181,7 +178,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   _Come giocatore voglio spostare una pedina con damatura_
 
   **Criteri di accettazione**
-  * a partita in corso di gioco, l'app deve accettare mosse di spostamento semplice di pedina in notazione algebrica che terminano con la damatura.
+  * A partita in corso di gioco, l'app deve accettare mosse di spostamento semplice di pedina in notazione algebrica che terminano con la damatura.
   _Es. 6-3 oppure se c'è una presa 10x3_
   * Lo spostamento con damatura deve rispettare le regole del gioco della dama italiana:
   http://www.fid.it/regolamenti/capo1.htm
@@ -194,10 +191,10 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   **Criteri di accettazione:**
    
   Al comando `tempo`
-  * se il gioco è in corso
-  * l'app mostra il tempo trascorso per il Bianco dall'inizio del gioco
-  * l'app mostra il tempo trascorso per il Nero dall'inizio del gioco
-  * se il gioco non è in corso l'app suggerisce il comando `gioca` e si predispone a ricevere nuovi comandi
+  - Se il gioco è in corso:
+      - L'app mostra il tempo trascorso per il Bianco dall'inizio del gioco;
+      - L'app mostra il tempo trascorso per il Nero dall'inizio del gioco;
+  - Se il gioco non è in corso l'app suggerisce il comando `gioca` e si predispone a ricevere nuovi comandi.
 
 
 - [Mostrare le prese](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/issues/32)
@@ -206,7 +203,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 
   **Criteri di accettazione**
 
-  Al comando `prese` l'app mostra le prese del Bianco e del Nero con caratteri Unicode<br>
+  Al comando `prese` l'app mostra le prese del Bianco e del Nero con caratteri Unicode.<br>
   _Es._<br>
   Bianco: ⛀ ⛀ ⛀ ⛀<br>
   Nero: ⛂ ⛂<br>
@@ -218,9 +215,9 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
 
   **Criteri di accettazione:**<br>
   Al comando `abbandona`<br>
-  * l'app chiede conferma
-  * se la conferma è positiva, l'app comunica che il Bianco (o Nero) ha vinto per abbandono
-  * se la conferma è negativa, l'app si predispone a ricevere nuovi comandi
+  - L'app chiede conferma:
+      - Se la conferma è positiva, l'app comunica che il Bianco (o Nero) ha vinto per abbandono;
+      - Se la conferma è negativa, l'app si predispone a ricevere nuovi comandi.
 
 
 
@@ -237,7 +234,7 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
     - MacOS;
     - Linux;
     - Windows;
-    - Git Bash (i comandi Docker hanno come prefisso *winpty*)  
+    - Git Bash (i comandi Docker hanno come prefisso <code>winpty</code>)  
       
 
 - ### Affidabilità
@@ -250,10 +247,10 @@ Di seguito sono riportati i requisiti funzionali (in ordine cronologico rispetto
   L'applicazione è suddivisa semanticamente in diversi package;
   in particolare il package 'Strumenti' adotta/implementa:
   
-  - una classe 'Costanti' che racchiude tutte le costanti utilizzate nel codice;
-    alcune di esse potrebbero essere sostituite dai più eleganti Enumerativi.
-  - un sistema di gestione dell'input, che tramite l'utilizzo di una espressione regolare 
-    è in grado di riconoscere il tipo di mossa inserita (spostamento, presa semplice o multipla)
+  - Una classe 'Costanti' che racchiude tutte le costanti utilizzate nel codice;
+    alcune di esse potrebbero essere sostituite dai più eleganti Enumerativi;
+  - Un sistema di gestione dell'input, che tramite l'utilizzo di una espressione regolare 
+    è in grado di riconoscere il tipo di mossa inserita (spostamento, presa semplice o multipla).
 
 
 <br>
@@ -275,13 +272,13 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
 
 - <b>Entity</b>
   
-  Modello che rappresenta degli oggetti presenti all'interno del dominio, 
+  Modello che rappresenta degli oggetti presenti all'interno del dominio.
 
   Ad esempio :
-   - <code>Damiera</code>, è una classe entity che contiene i metodi per costruire e gestire la damiera. 
-   - <code>Partita</code>, contiene i metodi per creare una nuova Partita e gestirla.
-   - <code>Pedina</code>, contiene le caratteristiche di ogni casella della damiera.
-   - <code>Giocatore</code>, contiene i metodi per gestire il giocatore.
+   - <code>Damiera</code>, è una classe entity che contiene i metodi per costruire e gestire la damiera;
+   - <code>Partita</code>, contiene i metodi per creare una nuova Partita e gestirla;
+   - <code>Pedina</code>, contiene le caratteristiche di ogni casella della damiera;
+   - <code>Giocatore</code>, contiene i metodi per gestire il giocatore;
   
 - <b>Control</b>
   
@@ -289,20 +286,19 @@ Per questi motivi abbiamo strutturato il nostro progetto seguendo i tre stereoti
   richieste dell'utente e il loro passaggio alla logica applicativa.
   
   Ad Esempio:
-   - <code> Menu</code>, è una classe che contiene i metodi per collegare l'utente al gioco e gestirlo.
-   - <code> Turno</code>, è una classe che contiene i metodi per gestire i turni e interfaccia l'utente con il giocatore bianco o con il nero.  
-   - <code> Mossa</code>, contiene i metodi per gestire le mosse , che verranno inserite dall'utente. 
-  - <code> Comando</code>, contiene i metodi per gestire delle funzioni del menu come abbandona o esci.
-
-
+   - <code>Menu</code>, è una classe che contiene i metodi per collegare l'utente al gioco e gestirlo;
+   - <code>Turno</code>, è una classe che contiene i metodi per gestire i turni e interfaccia l'utente con il giocatore bianco o con il nero; 
+   - <code>Mossa</code>, contiene i metodi per gestire le mosse, che verranno inserite dall'utente;
+   - <code>Comando</code>, contiene i metodi per gestire delle funzioni del menu come abbandona o esci;
 
 - <b>Boundary</b>
    
   Modello di oggetti che funge da interfaccia tra utente e sistema.
 
   Ad esempio:
-  - <code>Messaggi</code>, classe che racchiude tutti i messaggi rivolti all'utente, allo scopo
-  di agevolare l'interazione con il sistema
+  - <code>Messaggio</code>, classe che racchiude tutti i messaggi rivolti all'utente, allo scopo
+  di agevolare l'interazione con il sistema;
+  - <code>Costante</code>, contiene i valori costanti utilizzati dal programma.
 
 
 
@@ -410,20 +406,20 @@ Il programma all'avvio mostra il menu iniziale:
 > I comandi vanno inseriti quando è presente il simbolo <code>➤</code>
 
 Nel menu appena comparso si possono inserire i seguenti comandi:
-- <code>--help</code><code>-h</code><code>help</code>: elenca tutti i comandi riconosciuti dal programma
-- <code>gioca</code>: permette di iniziare una nuova partita; come da regolamento, inizia per primo il giocatore bianco
-- <code>numeri</code>: mostra una damiera con il numero di ogni posizione delle pedine, da 1 a 32; le caselle nere non presentano alcun numero
-- <code>damiera</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso la partita
-- <code>tempo</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso una partita
-- <code>esci</code>: chiude il programma
+- <code>--help</code><code>-h</code><code>help</code>: elenca tutti i comandi riconosciuti dal programma;
+- <code>gioca</code>: permette di iniziare una nuova partita; come da regolamento, inizia per primo il giocatore bianco;
+- <code>numeri</code>: mostra una damiera con il numero di ogni posizione delle pedine, da 1 a 32; le caselle nere non presentano alcun numero;
+- <code>damiera</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso la partita;
+- <code>tempo</code>: questo comando genera un messaggio di errore in quanto per essere utilizzato deve essere in corso una partita;
+- <code>esci</code>: chiude il programma.
 
 Dopo aver inserito il comando <code>gioca</code>, si presenta il menu del giocatore con ulteriori comandi:
-- <code>abbandona</code>: permette al giocatore di abbandonare la partita; mostra un messaggio diverso in base a chi abbandona la partita
-- <code>'spostamento'</code>: quando viene inserito un comando di tipo Spostamento semplice (vedi tabella sotto), la controlla e viene eseguita se corretta
-- <code>'presa semplice'</code>: quando viene inserito un comando di tipo Presa semplice (vedi tabella sotto), la controlla e viene eseguita se corretta
-- <code>'presa multipla'</code>: quando viene inserito un comando di tipo Presa multipla (vedi tabella sott), la controlla e viene eseguita se corretta
-- <code>prese</code>: mostra le pedine mangiate rispettivamente da entrambi i giocatori durante la partita
-- <code>mosse</code>: mostra tutti i comandi inseriti da entrambi i giocatori durante la partita
+- <code>abbandona</code>: permette al giocatore di abbandonare la partita; mostra un messaggio diverso in base a chi abbandona la partita;
+- <code>'spostamento'</code>: quando viene inserito un comando di tipo Spostamento semplice (vedi tabella sotto), la controlla e viene eseguita se corretta;
+- <code>'presa semplice'</code>: quando viene inserito un comando di tipo Presa semplice (vedi tabella sotto), la controlla e viene eseguita se corretta;
+- <code>'presa multipla'</code>: quando viene inserito un comando di tipo Presa multipla (vedi tabella sott), la controlla e viene eseguita se corretta;
+- <code>prese</code>: mostra le pedine mangiate rispettivamente da entrambi i giocatori durante la partita;
+- <code>mosse</code>: mostra tutti i comandi inseriti da entrambi i giocatori durante la partita.
 
 > Quando viene inserito un comando non valido o sbagliato, il programma mostra un messaggio di errore.
 
@@ -459,10 +455,17 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
   <br><br>
   ![discord](drawings/img/discord.png) 
   
+- ## Scrum meetings
+  Tutti i meeting sono avvenuti principalmente nel primo pomeriggio nel server "Ingegneria del software" su Discord.<br>
+  I meeting venivano decisi da tutto il gruppo almeno un giorno prima dell'incontro effettivo in un canale testuale (#generale)
+  mentre per parlare tra i vari membri del gruppo veniva usato un canale vocale. A volte venivano aggiunti altri canali vocali
+  per poter lavorare su parti del progetto più impegnative che richiedevano una realizzazione complessa.<br>
+  
+  
 - ## WorkFlow utilizzato
 
   &#200; stato adottato il <b>GitHub Flow</b>, che si compone dei seguenti passi: <br><br>
-  - <h4>Creazione di un nuovo branch</h4> Viene creato un nuovo branch per lavorare magari su un nuovo issue o su vecchio bug da fixare. Il branch viene creato localmente con la notazione "*issue#n*". <br><br>
+  - <h4>Creazione di un nuovo branch</h4> Viene creato un nuovo branch per lavorare magari su un nuovo issue o su vecchio bug da fixare. Il branch viene creato localmente con la notazione "<b>issue#n</b>". <br><br>
   - <h4>Aggiunta di commit</h4> Vengono aggiunti dei commit in relazione al lavoro svolto sul branch locale (modifiche, cancellazioni, ... ). Tale passaggio è estremamente utile in quanto consente di 'documentare' 
     le modifiche effettuate. In seguito alle modifiche, bisogna aggiornare il branch sul server di GitHub. <br><br>
   - <h4>Apertura di una Pull Request</h4> &#200; una proposta dei cambiamenti effettuati sul codice, dove si richiede agli altri membri del team
@@ -480,16 +483,16 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
 
 - ## Suddivisione dei compiti
   Si è cercato di ripartire i task fra i diversi componenti del gruppo nella maniera più equa. <br>
-  In seguito alla presentazione del nuovo Sprint, veniva organizzato un meeting in cui si discuteva dei nuovi issue da svolgere e
+  In seguito alla presentazione del nuovo Sprint, veniva organizzato un [meeting](#Scrum-meetings) in cui si discuteva dei nuovi issue da svolgere e
   se ne effettuava una mera previsione, in termini di tempo e difficoltà di risoluzione. <br>
   Per gli issue ritenuti più difficoltosi, venivano assegnate massimo due persone
   (sebbene sia capitato che ne concorressero altre in caso di difficoltà)
   <br>Per quanto riguarda gli issue più celeri, essi venivano assegnati ad un solo membro del team. <br><br>
   I criteri di assegnazione sono stati i seguenti: <br><br>
-  - in base al lavoro svolto negli sprint precedenti e alla possibile continuità dei vecchi issue con i nuovi. <br><br>
-  - in base alla disponibilità di un componente in quel determinato periodo di tempo: in questo caso venivano assegnati i task ritenuti più veloci
+  - In base al lavoro svolto negli sprint precedenti e alla possibile continuità dei vecchi issue con i nuovi. <br><br>
+  - In base alla disponibilità di un componente in quel determinato periodo di tempo: in questo caso venivano assegnati i task ritenuti più veloci
     (è capitato infatti che, per diversi motivi, alcuni membri del team non fossero completamente disponibili per qualche periodo di tempo).<br><br>
-  - in base alle preferenze di ogni membro. <br><br>
+  - In base alle preferenze di ogni membro. <br><br>
 
   [Qui](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3) (Product Roadmap) si può vedere il riassunto degli issue assegnati.
     
@@ -507,7 +510,6 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
   
   <br>Per quanto concerne le varie *review* del codice, dopo ogni pull request, venivano scelti uno o più membri "non partecipanti" all'issue, che ne controllavano
   il corretto funzionamento del programma e la corretta scrittura del codice, i cosiddetti *rewiers*.
-  
 
 - ## Uso delle boards
   Abbiamo utilizzato delle board integrate in <b> GitHub </b> in modo da segnare lo stato degli issue.
@@ -517,7 +519,7 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
   - <b>REVIEW</b> dove vengono collocate le <i>issues</i> da revisionare dai componenti del
     team;
   - <b>READY</b> dove si posizionano le <i>issues</i> da revisionare dai docenti;
-  - <b>DONE</b> dove si aggiungono le <i>issues</i> portate a termine e ufficialmente chiuse;
+  - <b>DONE</b> dove si aggiungono le <i>issues</i> portate a termine e ufficialmente chiuse.
 
   <br>&#200; stata creata una
   [project board generale](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/projects/3)
@@ -536,11 +538,13 @@ Nel caso in cui la mossa non risulta valida, il programma permette il reinserime
 &#200; stato particolarmente gratificante portare a termine gli issue più complicati, dopo ore o giorni di tentativi di risoluzione. <br>
 Abbiamo sperimentato il team-work, nonché come delle persone dovrebbero collaborare per giungere ad un obiettivo comune, che, nonostante
 testato in una dimensione più piccola, è comunque un scorcio sul mondo del lavoro che ci aspetta. <br>
-Una delle soddisfazioni più grandi è stata quella di vedere il nostro progetto nascere, plasmarsi e infine venir completato.
+Una delle soddisfazioni più grandi è stata quella di vedere il nostro progetto nascere, plasmarsi e infine venir completato. <br>
+Durante tutta la realizzazione del progetto abbiamo rispettato fedelmente il [Code of conduct](https://github.com/softeng2021-inf-uniba/progetto2021ter-firesmith/blob/master/doc/CODE_OF_CONDUCT.md)
+ed è stato interessante imparare ad utilizzare html per la scrittura dei file markdown e GitHub come strumento per il version control di un programma.
 
 ## Insoddisfazioni
 Proseguendo il discorso del paragrafo precedente, a volte la collaborazione non è stata particolarmente proficua e agevole, sicuramente
-per la poca esperienza nel collaborare. <br>
+per la poca esperienza nel collaborare e per l'utilizzo di strumenti nuovi. <br>
 A parte ciò, ci ha deluso non essere stati in grado di risolvere alcune problematiche riguardanti la risoluzione di alcuni issue negli sprint iniziali,
 oltre ad alcune dimenticanze che avremmo preferito di gran lunga non avere. 
 
