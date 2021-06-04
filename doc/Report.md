@@ -546,7 +546,8 @@ ed è stato interessante imparare ad utilizzare html per la scrittura dei file m
 Proseguendo il discorso del paragrafo precedente, a volte la collaborazione non è stata particolarmente proficua e agevole, sicuramente
 per la poca esperienza nel collaborare e per l'utilizzo di strumenti nuovi. <br>
 A parte ciò, ci ha deluso non essere stati in grado di risolvere alcune problematiche riguardanti la risoluzione di alcuni issue negli sprint iniziali,
-oltre ad alcune dimenticanze che avremmo preferito di gran lunga non avere. 
+oltre ad alcune dimenticanze che avremmo preferito di gran lunga non avere.
+ A causa di mancanza di tempo e inesperienza con java, avremmo potuto migliorare ulteriormente la struttura del programma seguendo le regole dell'O.O Design. 
 
 
 ## Cosa ci ha fatti impazzire
