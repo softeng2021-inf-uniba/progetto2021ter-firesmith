@@ -17,6 +17,8 @@ La struttura della repository si presenta nel seguente modo:
 |–– doc
 |    |–– drawings
 |    |–– javadoc 
+|    |-- CODE_OF_CONDUCT.md
+|    |-- ISPIRATORE.md
 |    |–– Report.md
 |–– gradle
 |–– lib
@@ -27,6 +29,7 @@ La struttura della repository si presenta nel seguente modo:
 |–– .gitignore
 |–– build.gradle
 |–– Assegnazione progetto.md
+|-- Dockerfile
 |–– Guida per lo studente.md
 |–– README.md
 |–– gradlew
@@ -47,6 +50,7 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - **build.gradle**: esplicita le direttive e la configurazione per *Gradle*. 
 - **Assegnazione progetto.md**: fare riferimento a questo file per la descrizione dettagliata del progetto assegnato;
 - **Guida per lo studente.md:** elenca e descrive tutti i passi di configurazione necessari per attivare l’intero flusso di lavoro dietro lo sviluppo del progetto;
+- **Dockerfile**: file generato da Docker;  
 - **gradlew & gradlew.bat**: sono i file eseguibili di *Gradle*, rispettivamente per Unix e per Windows. Vengono generati automaticamente da Eclipse;
 - **settings.gradle**: file di configurazione di *Gradle*. Anche quest’ultimo viene generato automaticamente da Eclipse.
 
