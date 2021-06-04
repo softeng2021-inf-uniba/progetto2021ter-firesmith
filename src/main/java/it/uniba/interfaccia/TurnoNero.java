@@ -4,8 +4,8 @@ import it.uniba.gioco.Mossa;
 import it.uniba.gioco.MossaNero;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
-import it.uniba.strumenti.Costanti;
-import it.uniba.strumenti.Messaggi;
+import it.uniba.strumenti.Costante;
+import it.uniba.strumenti.Messaggio;
 
 import java.util.Scanner;
 
@@ -132,7 +132,7 @@ public class TurnoNero implements Turno {
         boolean chk = false;
         Scanner in = new Scanner(System.in, "UTF-8");
         do {
-            Messaggi.menuNero();
+            Messaggio.menuNero();
 
             String comando = in.nextLine();
             String presa = comando;
@@ -145,7 +145,7 @@ public class TurnoNero implements Turno {
                 case "-h":
 
                 case "help":
-                    Messaggi.aiuto();
+                    Messaggio.aiuto();
                     break;
 
                 case "numeri":
@@ -157,28 +157,28 @@ public class TurnoNero implements Turno {
                     break;
 
                 case "gioca":
-                    Messaggi.errorePartita();
+                    Messaggio.errorePartita();
                     break;
 
                 case "spostamento":
-                    Messaggi.spostamento();
+                    Messaggio.spostamento();
 
                     mossa.spostamentoSemplice(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setCronologiaMosse("Nero: " + presa);
                         partita.setTurno(false);
-                        Messaggi.spostamentoOk();
+                        Messaggio.spostamentoOk();
                     } else {
                         partita.setTurno(true);
-                        Messaggi.nonValida();
+                        Messaggio.nonValida();
                     }
 
                     turnoNero = partita.getTurno();
                     break;
 
                 case "presasemplice":
-                    Messaggi.presa();
+                    Messaggio.presa();
 
                     mossa.presaSemplice(partita.getDamiera());
                     chk = mossa.getValid();
@@ -187,16 +187,16 @@ public class TurnoNero implements Turno {
                         partita.setCronologiaMosse("Nero: " + presa);
 
                         partita.getNero().setPedineMangiate(1);
-                        Messaggi.presaOk();
+                        Messaggio.presaOk();
                     } else {
                         partita.setTurno(true);
-                        Messaggi.nonValida();
+                        Messaggio.nonValida();
                     }
                     turnoNero = partita.getTurno();
                     break;
 
                 case "presamultipla":
-                    Messaggi.presa();
+                    Messaggio.presa();
                     mossa.presaMultipla(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
@@ -204,15 +204,15 @@ public class TurnoNero implements Turno {
                         partita.setCronologiaMosse("Nero: " + presa);
 
                         if (mossa.getPresaTripla()) {
-                            partita.getNero().setPedineMangiate(Costanti.DUE);
+                            partita.getNero().setPedineMangiate(Costante.DUE);
                         } else {
-                            partita.getNero().setPedineMangiate(Costanti.TRE);
+                            partita.getNero().setPedineMangiate(Costante.TRE);
                         }
-                        Messaggi.presaOk();
+                        Messaggio.presaOk();
 
                     } else {
                         partita.setTurno(true);
-                        Messaggi.nonValida();
+                        Messaggio.nonValida();
                     }
                     turnoNero = partita.getTurno();
                     break;
@@ -247,7 +247,7 @@ public class TurnoNero implements Turno {
                     break;
 
                 default:
-                    Messaggi.inserimento();
+                    Messaggio.inserimento();
                     break;
             }
         } while (turnoNero);

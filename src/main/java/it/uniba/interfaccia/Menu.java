@@ -2,7 +2,7 @@ package it.uniba.interfaccia;
 
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
-import it.uniba.strumenti.Messaggi;
+import it.uniba.strumenti.Messaggio;
 
 import java.util.Scanner;
 
@@ -91,7 +91,7 @@ public class Menu {
         boolean inizio = false;
         Scanner input = new Scanner(System.in, "UTF-8");
         do {
-            Messaggi.benvenuto();
+            Messaggio.benvenuto();
             String comando = input.nextLine();
 
             comando = Comando.trasformaComando(comando);
@@ -103,7 +103,7 @@ public class Menu {
                 case "-h":
 
                 case "help":
-                    Messaggi.aiuto();
+                    Messaggio.aiuto();
                     break;
 
                 case "gioca":
@@ -116,11 +116,11 @@ public class Menu {
                     break;
 
                 case "damiera":
-                    Messaggi.damiera();
+                    Messaggio.damiera();
                     break;
 
                 case "tempo":
-                    Messaggi.partita();
+                    Messaggio.partita();
                     break;
 
                 case "esci":
@@ -130,7 +130,7 @@ public class Menu {
                     break;
 
                 default:
-                    Messaggi.inserimento();
+                    Messaggio.inserimento();
                     break;
             }
         } while (!inizio);
@@ -149,7 +149,7 @@ public class Menu {
         long tempoN = 0;
 
         if (getPartita().getStato()) {
-            Messaggi.partita();
+            Messaggio.partita();
         } else {
             getPartita().setStato(true);
             getPartita().setBianco();

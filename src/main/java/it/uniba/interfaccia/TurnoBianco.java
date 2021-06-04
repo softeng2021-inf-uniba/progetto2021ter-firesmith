@@ -4,8 +4,8 @@ import it.uniba.gioco.Mossa;
 import it.uniba.gioco.MossaBianco;
 import it.uniba.gioco.Partita;
 import it.uniba.strumenti.Comando;
-import it.uniba.strumenti.Costanti;
-import it.uniba.strumenti.Messaggi;
+import it.uniba.strumenti.Costante;
+import it.uniba.strumenti.Messaggio;
 
 import java.util.Scanner;
 
@@ -133,7 +133,7 @@ public class TurnoBianco implements Turno {
         boolean chk = false;
         Scanner in = new Scanner(System.in, "UTF-8");
         do {
-            Messaggi.menuBianco();
+            Messaggio.menuBianco();
 
 
             String comando = in.nextLine();
@@ -148,7 +148,7 @@ public class TurnoBianco implements Turno {
                 case "-h":
 
                 case "help":
-                    Messaggi.aiuto();
+                    Messaggio.aiuto();
                     break;
 
                 case "numeri":
@@ -160,18 +160,18 @@ public class TurnoBianco implements Turno {
                     break;
 
                 case "gioca":
-                    Messaggi.errorePartita();
+                    Messaggio.errorePartita();
                     break;
 
                 case "spostamento":
-                    Messaggi.spostamento();
+                    Messaggio.spostamento();
 
                     mossa.spostamentoSemplice(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
                         partita.setCronologiaMosse("Bianco: " + presa);
                         partita.setTurno(false);
-                        Messaggi.spostamentoOk();
+                        Messaggio.spostamentoOk();
                     } else {
                         partita.setTurno(true);
                         System.out.println(" ⚠ Mossa non valida");
@@ -181,7 +181,7 @@ public class TurnoBianco implements Turno {
                     break;
 
                 case "presasemplice":
-                    Messaggi.presa();
+                    Messaggio.presa();
 
                     mossa.presaSemplice(partita.getDamiera());
                     chk = mossa.getValid();
@@ -190,16 +190,16 @@ public class TurnoBianco implements Turno {
                         partita.setCronologiaMosse("Bianco: " + presa);
 
                         partita.getBianco().setPedineMangiate(1);
-                        Messaggi.presaOk();
+                        Messaggio.presaOk();
                     } else {
                         partita.setTurno(true);
-                        Messaggi.nonValida();
+                        Messaggio.nonValida();
                     }
                     turnoBianco = partita.getTurno();
                     break;
 
                 case "presamultipla":
-                    Messaggi.presa();
+                    Messaggio.presa();
                     mossa.presaMultipla(partita.getDamiera());
                     chk = mossa.getValid();
                     if (chk) {
@@ -207,15 +207,15 @@ public class TurnoBianco implements Turno {
                         partita.setCronologiaMosse("Bianco: " + presa);
 
                         if (mossa.getPresaTripla()) {
-                            partita.getBianco().setPedineMangiate(Costanti.DUE);
+                            partita.getBianco().setPedineMangiate(Costante.DUE);
                         } else {
-                            partita.getBianco().setPedineMangiate(Costanti.TRE);
+                            partita.getBianco().setPedineMangiate(Costante.TRE);
                         }
-                        Messaggi.presaOk();
+                        Messaggio.presaOk();
 
                     } else {
                         partita.setTurno(true);
-                        Messaggi.nonValida();
+                        Messaggio.nonValida();
                     }
                     turnoBianco = partita.getTurno();
                     break;
@@ -250,7 +250,7 @@ public class TurnoBianco implements Turno {
                     break;
 
                 default:
-                    Messaggi.inserimento();
+                    Messaggio.inserimento();
                     break;
             }
         } while (turnoBianco);

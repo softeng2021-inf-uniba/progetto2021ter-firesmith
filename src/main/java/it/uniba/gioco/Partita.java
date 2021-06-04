@@ -10,7 +10,7 @@ import it.uniba.tavolo.Damiera;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-import it.uniba.strumenti.Costanti;
+import it.uniba.strumenti.Costante;
 
 /**
  * <h2>Classe che gestisce i dati della partita in corso.</h2>
@@ -263,21 +263,21 @@ public class Partita {
         // nel caso passi il minuto cambia la stampa
         if (bianco.getColore().equals("bianco")) {
 
-            if ((bianco.getTempo() / Costanti.INSECOND) < Costanti.MINUTO) {
-                System.out.println("Bianco: " + (bianco.getTempo() / Costanti.INSECOND)
+            if ((bianco.getTempo() / Costante.INSECOND) < Costante.MINUTO) {
+                System.out.println("Bianco: " + (bianco.getTempo() / Costante.INSECOND)
                         + " s");
             } else {
-                System.out.println("Bianco: " + ((bianco.getTempo() / Costanti.INSECOND) / Costanti.MINUTO)
-                        + " m " + ((bianco.getTempo() / Costanti.INSECOND) % Costanti.MINUTO)
+                System.out.println("Bianco: " + ((bianco.getTempo() / Costante.INSECOND) / Costante.MINUTO)
+                        + " m " + ((bianco.getTempo() / Costante.INSECOND) % Costante.MINUTO)
                         + " s");
             }
 
-            if ((nero.getTempo() / Costanti.INSECOND) < Costanti.MINUTO) {
-                System.out.println("Nero: " + (nero.getTempo() / Costanti.INSECOND)
+            if ((nero.getTempo() / Costante.INSECOND) < Costante.MINUTO) {
+                System.out.println("Nero: " + (nero.getTempo() / Costante.INSECOND)
                         + " s");
             } else {
-                System.out.println("Nero: " + (nero.getTempo() / Costanti.INSECOND) / Costanti.MINUTO
-                        + " m " + ((nero.getTempo() / Costanti.INSECOND) % Costanti.MINUTO)
+                System.out.println("Nero: " + (nero.getTempo() / Costante.INSECOND) / Costante.MINUTO
+                        + " m " + ((nero.getTempo() / Costante.INSECOND) % Costante.MINUTO)
                         + " s");
 
             }

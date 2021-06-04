@@ -13,12 +13,12 @@ package it.uniba.strumenti;
  *
  * @author Gruppo Firesmith
  */
-public final class Costanti {
+public final class Costante {
 
     /**
      * Costruttore vuoto.
      */
-    private Costanti() {
+    private Costante() {
     }
 
     /**

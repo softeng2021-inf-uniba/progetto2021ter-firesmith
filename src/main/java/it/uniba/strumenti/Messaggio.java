@@ -17,10 +17,10 @@ package it.uniba.strumenti;
  */
 
 
-public final class Messaggi {
+public final class Messaggio {
 
     /** Costruttore della classe.*/
-    private Messaggi() {
+    private Messaggio() {
     }
 
     /**
