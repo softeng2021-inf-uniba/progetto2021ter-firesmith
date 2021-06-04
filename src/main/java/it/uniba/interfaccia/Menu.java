@@ -162,7 +162,7 @@ public class Menu {
                         + "\n│     Turno " + numeroTurno + "       │"
                         + "\n└───────────────────┘\n");
 
-                tempoB += bianco.turnoGiocatore(getPartita(), tempoB);
+                tempoB = bianco.turnoGiocatore(getPartita(), tempoB);
 
                 System.out.println("Fine turno giocatore "
                         + getPartita().getBianco().getColore());
@@ -172,7 +172,7 @@ public class Menu {
                 } else {
                     getPartita().setTurno(false);
 
-                    tempoN += nero.turnoGiocatore(partita, tempoN);
+                    tempoN = nero.turnoGiocatore(partita, tempoN);
 
                     System.out.println("Fine turno giocatore "
                             + getPartita().getNero().getColore());

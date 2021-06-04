@@ -78,7 +78,7 @@ public final class Costante {
     /**
      * Costante utilizzata per il calcolo del tempo.
      */
-    public static final int MINUTO = 60;
+    public static final long MINUTO = 60;
     /**
      * Costante utilizzata per il calcolo del tempo.
      */

@@ -259,7 +259,7 @@ public class TurnoBianco implements Turno {
         setFinish();
         setElapsed(getFinish(), getStart());
 
-        long tempoTurno = getElapsed() + tempoG;
+        long tempoTurno = getElapsed()+tempoG;
 
         partita.getBianco().setTempo(tempoTurno);
 
